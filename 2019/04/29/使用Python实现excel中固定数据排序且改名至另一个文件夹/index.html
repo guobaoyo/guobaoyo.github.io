@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-29</span>
-            <span class="time">20:44:21</span>
+            <span class="time">14:17:04</span>
           </span>
           
           <!--  Categories  -->
@@ -176,6 +176,74 @@
 <p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行前.png" alt="运行前"></p>
 <p>运行后结果：</p>
 <p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行后.png" alt="运行后"></p>
+<p>–2019-04-30–</p>
+<p>沿着上一天的小程序，老师让我找到如下面表格中的第三列的首字母为y的所有图片，并且按照第二列的命名方式放在一个文件夹里面。</p>
+<table>
+<thead>
+<tr>
+<th>Images/coat_length_labels/59e4795e641dbf0523b196daedacb960.jpg</th>
+<th>coat_length_labels</th>
+<th>nnnnnnym</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Images/coat_length_labels/8be3ded3a77538a41f15093489e5b555.jpg</td>
+<td>coat_length_labels</td>
+<td>nnnnnnym</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/19153af09f6e91703549d0b999a04ed6.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/371f5a185a703d12ae1f95241e085283.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/ba4cc8d7756a634f41abe35dd379d941.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/fa9ea1b1b6eb13bbe6a2d85449b6b3b0.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/fdc37d51cc4e5514ab4acaf0715dec03.jpg</td>
+<td>neck_design_labels</td>
+<td>nnynn</td>
+</tr>
+<tr>
+<td>Images/neckline_design_labels/58bfbc61563f9d691652e124e4ce5fe5.jpg</td>
+<td>neckline_design_labels</td>
+<td>mnnnnnnynn</td>
+</tr>
+<tr>
+<td>Images/pant_length_labels/f6bb4f1a88961851be5507a0f9cfc45e.jpg</td>
+<td>pant_length_labels</td>
+<td>ynnnnn</td>
+</tr>
+<tr>
+<td>Images/skirt_length_labels/7739c0614a3005f8aafc0b637298653b.jpg</td>
+<td>skirt_length_labels</td>
+<td>nnnnyn</td>
+</tr>
+</tbody>
+</table>
+<p>思路一：用<strong>正则表达式</strong> 匹配第三列（但是我不会正则表达式啊 <strong>迟早得学</strong>）</p>
+<p>思路二：既然是要首字母为y那我在excel中将第三列升序排列，只要后面的首字母为y的就ok了。故如法炮制，在前一天的小工具上面改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">path_csv=<span class="string">"./shouy-train2.csv"</span><span class="comment">#尽量用英文名字，这样会可靠一些</span></span><br><span class="line">path=<span class="string">"./fashionAI_attributes_train2//"</span></span><br><span class="line">df = pd.read_csv(path_csv, header=<span class="literal">None</span>)<span class="comment">#先将原来的文件读取并且称其为df</span></span><br><span class="line">df.columns = [<span class="string">'filename'</span>, <span class="string">'leibie'</span>,<span class="string">'tag'</span>]<span class="comment">#实际上将表格的两个列定义为filename 和 tiaowen</span></span><br><span class="line">list1=sorted(df.leibie)<span class="comment">#从小到大排序,而使用sort()方法对list排序会修改list本身，不会返回新的list，而sorted()会返回一个新的list，并不会改变原来的list</span></span><br><span class="line">newpath=<span class="string">"./train2/"</span><span class="comment">#新建一个tiaowen的文件夹</span></span><br><span class="line">zimulu = str(df.leibie)</span><br><span class="line">print(newpath+zimulu)</span><br><span class="line">list2=[]<span class="comment">#新建个list2这个列表</span></span><br><span class="line"><span class="keyword">for</span> z <span class="keyword">in</span> df.leibie:<span class="comment">#</span></span><br><span class="line">    list2.append(z)<span class="comment">#将tiaowen这个名字加入到list2这个列表中</span></span><br><span class="line">print(list2[<span class="number">4</span>])</span><br><span class="line">j=<span class="number">0</span><span class="comment">#设置j=0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> df.filename:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        shutil.copy(os.path.join(path+i),os.path.join(newpath+list2[j]))</span><br><span class="line">        j += <span class="number">1</span><span class="comment">#每次都让j加1，这样就可以对应上list[]这个列表了</span></span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li><p>这里我没有用自动创建文件夹<strong>（得学）</strong></p>
+</li>
+<li><p>正则表达式<strong>（得学）</strong></p>
+</li>
+</ul>
 
         </div>
       </div>
