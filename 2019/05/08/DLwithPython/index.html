@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="Rock">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习与神经网络">
+  <meta property="og:title" content="DeepLearning with Python">
   <meta property="og:description" content>
   <meta property="og:site_name" content="Rock-Blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习与神经网络</p>
+          <p class="title">DeepLearning with Python</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-24</span>
+            <span class="date">2019-05-08</span>
             <span class="time">20:05:40</span>
           </span>
           
@@ -115,15 +115,39 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a>
+<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/Python/">#Python</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本笔记是基于吴恩达老师的《深度学习工程师》的课程笔记。</p>
+          <p>本笔记是基于弗朗索瓦•肖莱(François Chollet)的DeepLearning with Python书籍的课程笔记。</p>
 <a id="more"></a>
+<p>在看书中曾遇到的不会的点：</p>
+<p>1、在P22有个<strong>准备图像数据</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">train_images = train_images.reshape((<span class="number">60000</span>, <span class="number">28</span> * <span class="number">28</span>)) </span><br><span class="line"></span><br><span class="line">train_images = train_images.astype(<span class="string">'float32'</span>) / <span class="number">255</span> </span><br><span class="line"></span><br><span class="line">test_images = test_images.reshape((<span class="number">10000</span>, <span class="number">28</span> * <span class="number">28</span>)) </span><br><span class="line"></span><br><span class="line">test_images = test_images.astype(<span class="string">'float32'</span>) / <span class="number">255</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>astype的作用是将数据类型转换为后面（）部分的数据类型，在这里是float类型。</p>
+</li>
+<li><p>后面除以255是因为灰度图的范围是[0,255]，然后再除以255，这样每个值的范围都集中在[0,1]，便于计算。</p>
+</li>
+<li><p>to_categorical()函数的作用是将类别向量转化为二进制（0和1）的矩阵类型表示。</p>
+</li>
+</ul>
+<p>2、epoch 和iteration 和 batchsize的区别（假设整个训练集为N）</p>
+<ul>
+<li>batchsize可大可小，如果大到N，那么这叫full batch learning </li>
+<li>batchsize如果小到1，就是每次只训练一个样本，就叫做online learning</li>
+<li><p>所以batchsize一般会取中间值n</p>
+<p>iteration =N/n</p>
+<p>epoch：整个N个训练集全部训练过一遍后epoch增加1  ，一般不会将epoch设置为1，因为一个大型的神经网络不可能将训练集通过一遍就训练完毕，所以随着epoch的增加，模型将从欠拟合逐步转化到过拟合。</p>
+</li>
+</ul>
+<p>参考文献：</p>
+<p>[1] François Chollet著.张亮译. DeepLearning with Python.北京:中国工信出版集团.人民邮电出版社，2018.8</p>
+<p>[2] bboysky45.<a href="https://blog.csdn.net/qq_18668137/article/details/80883350" target="_blank" rel="noopener">https://blog.csdn.net/qq_18668137/article/details/80883350</a></p>
+
         </div>
       </div>
     </div>
