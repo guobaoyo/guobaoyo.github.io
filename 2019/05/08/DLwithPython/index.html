@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-05-08</span>
-            <span class="time">20:05:40</span>
+            <span class="time">15:34:48</span>
           </span>
           
           <!--  Categories  -->
@@ -137,16 +137,29 @@
 </ul>
 <p>2、epoch 和iteration 和 batchsize的区别（假设整个训练集为N）</p>
 <ul>
-<li>batchsize可大可小，如果大到N，那么这叫full batch learning </li>
-<li>batchsize如果小到1，就是每次只训练一个样本，就叫做online learning</li>
+<li><p>batchsize可大可小，如果大到N，那么这叫full batch learning </p>
+</li>
+<li><p>batchsize如果小到1，就是每次只训练一个样本，就叫做online learning</p>
+</li>
 <li><p>所以batchsize一般会取中间值n</p>
 <p>iteration =N/n</p>
 <p>epoch：整个N个训练集全部训练过一遍后epoch增加1  ，一般不会将epoch设置为1，因为一个大型的神经网络不可能将训练集通过一遍就训练完毕，所以随着epoch的增加，模型将从欠拟合逐步转化到过拟合。</p>
 </li>
 </ul>
+<p>3、</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> len(x.shape) == <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>P30页中的assert函数可以确定后面的条件是否为真，如果为真就正常运行，如果为假会报出<strong>assertionerror</strong></p>
+<p>4、</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">naive_relu</span><span class="params">(x)</span>:</span>     </span><br><span class="line">    <span class="keyword">assert</span> len(x.shape) == <span class="number">2</span>    </span><br><span class="line">    x = x.copy()          <span class="comment">#避免覆盖输入张量</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">0</span>]):         </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(x.shape[<span class="number">1</span>]):             </span><br><span class="line">            x[i, j] = max(x[i, j], <span class="number">0</span>)     </span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<p>书中写的是“避免覆盖输入张量”</p>
+<p>但是我查copy()和deepcopy()的区别：<a href="https://blog.csdn.net/u010712012/article/details/79754132" target="_blank" rel="noopener">https://blog.csdn.net/u010712012/article/details/79754132</a> 里面讲copy()是浅复制，改变原来的值那么拷贝出来的值也会改变（在上面的文章中有标签的概念讲的很清晰可以参考）。deepcopy()是深复制，拷贝出来的东西与原来的是独立的。此外我又在电脑上试了一下，在整体改变x1的值之后必须再copy一遍才会生效，详见贴图：</p>
+<p><img src="/2019/05/08/DLwithPython/去掉2句后.png" alt="加上前"></p>
+<p><img src="/2019/05/08/DLwithPython/加上2句后.png" alt="加上后"></p>
+<p>书中写的“避免覆盖输入张量”我觉着应该用deepcopy()更合适，这样会独立出来一个对象对其进行修改并不会对原来的x造成影响。这样才会达到注释写的“避免覆盖”的作用。</p>
 <p>参考文献：</p>
 <p>[1] François Chollet著.张亮译. DeepLearning with Python.北京:中国工信出版集团.人民邮电出版社，2018.8</p>
 <p>[2] bboysky45.<a href="https://blog.csdn.net/qq_18668137/article/details/80883350" target="_blank" rel="noopener">https://blog.csdn.net/qq_18668137/article/details/80883350</a></p>
+<p>[3]大写的ADQ<a href="https://blog.csdn.net/u010712012/article/details/79754132" target="_blank" rel="noopener">https://blog.csdn.net/u010712012/article/details/79754132</a></p>
 
         </div>
       </div>
