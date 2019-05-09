@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-05-08</span>
-            <span class="time">15:34:48</span>
+            <span class="time">18:50:56</span>
           </span>
           
           <!--  Categories  -->
@@ -156,10 +156,30 @@
 <p><img src="/2019/05/08/DLwithPython/去掉2句后.png" alt="加上前"></p>
 <p><img src="/2019/05/08/DLwithPython/加上2句后.png" alt="加上后"></p>
 <p>书中写的“避免覆盖输入张量”我觉着应该用deepcopy()更合适，这样会独立出来一个对象对其进行修改并不会对原来的x造成影响。这样才会达到注释写的“避免覆盖”的作用。</p>
+<p>5、python中数组，元组，列表的区别：</p>
+<ul>
+<li><p>在python中主要是元组和列表这两个概念，主要区别在于元组创建之后不可变，不能再append元素，也不能pop出来元素，且只能进行索引，不能改变其值（已经写死了）   元组注意是小括号(1,2,3)</p>
+</li>
+<li><p>列表可以改变，可以索引，可以赋值，可以append和pop元素     列表注意是中括号[1,2,3]</p>
+</li>
+<li><p>数组主要是python中的numpy的概念，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[1,2,3],[4,5,6],[7,8,9]])</span><br></pre></td></tr></table></figure>
+<p>数组和列表的区别在于：</p>
+<ul>
+<li>列表不能像数组一样转置</li>
+<li>列表没有维度的概念</li>
+</ul>
+</li>
+</ul>
+<p>与上文中的copy()和deepcopy()的概念类似：</p>
+<p>用array得出的数组会独立出来一个数组，改变原来的值，新值不会变。(类似于deepcopy())但是用asarray得出来的新数组会随着原数组的改变而改变（类似于copy()）</p>
+<p>详见参考：<a href="https://www.jianshu.com/p/a050fecd5a29" target="_blank" rel="noopener">https://www.jianshu.com/p/a050fecd5a29</a></p>
+<p>6、</p>
 <p>参考文献：</p>
 <p>[1] François Chollet著.张亮译. DeepLearning with Python.北京:中国工信出版集团.人民邮电出版社，2018.8</p>
 <p>[2] bboysky45.<a href="https://blog.csdn.net/qq_18668137/article/details/80883350" target="_blank" rel="noopener">https://blog.csdn.net/qq_18668137/article/details/80883350</a></p>
 <p>[3]大写的ADQ<a href="https://blog.csdn.net/u010712012/article/details/79754132" target="_blank" rel="noopener">https://blog.csdn.net/u010712012/article/details/79754132</a></p>
+<p>[4]简书-yalesaleng<a href="https://www.jianshu.com/p/a050fecd5a29" target="_blank" rel="noopener">https://www.jianshu.com/p/a050fecd5a29</a></p>
 
         </div>
       </div>
