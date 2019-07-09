@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="Rock">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习相关数学知识">
+  <meta property="og:title" content="20190708日记">
   <meta property="og:description" content>
   <meta property="og:site_name" content="Rock-Blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习相关数学知识</p>
+          <p class="title">20190708日记</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-25</span>
-            <span class="time">11:12:37</span>
+            <span class="date">2019-07-08</span>
+            <span class="time">11:12:38</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/深度学习/">深度学习</a>
+<a href="/categories/日记/">日记</a>
 </span>
           
         </div>
@@ -115,15 +115,24 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/数学/">#数学</a>
+<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/三省吾身/">#三省吾身</a> <a class="tag" href="/tags/人工智能/">#人工智能</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本笔记是对深度学习相关知识的数学补充笔记。</p>
+          <p>暑期学校上课有感</p>
 <a id="more"></a>
+<hr>
+<p><strong>L1,L2正则化</strong></p>
+<p><a href="https://www.zhihu.com/question/37096933/answer/70426653" target="_blank" rel="noopener">https://www.zhihu.com/question/37096933/answer/70426653</a></p>
+<p><a href="https://www.zhihu.com/people/maigo" target="_blank" rel="noopener">王赟</a>大佬解释的关于L1 L2正则化的部分让我受益匪浅，通过上面的讲解可以了解到L1正则化利用了绝对值函数的“尖”，导致L1正则化比L2正则化更容易得到稀疏解，使得一部分w值变为0。而使用L2正则化的结果是使得一部分参数w变的非常小（接近于0但不等于0），这样就可以让这部分参数还发挥作用，但是不至于完全消除掉他们。</p>
+<p>​        纵观L1,L2正则化，都可以使一些“过大”的参数变小，从而实现防止过拟合的作用。但是L2正则化却更柔和一些，相比于L1也更中庸。</p>
+<p>​        举个例子（可能不太贴切，意会即可）：</p>
+<p>​                在一个大集体里面有一部分人直接作用不大，例如保洁员，门口保安对一个互联网公司的<strong>直接</strong>作用没有首席科学家或者算法工程师的作用大。（在这里不是刻意贬低这两个岗位，我母亲就是保洁员，我父亲曾做过门口保安，每位劳动人民都是受人尊敬的~）那我们难道因为作用大小而把这两个岗位裁掉？一天两天的缺失这种基础岗位或许可以容忍，但是长期的缺失显然是一个完备的公司所不能忍受，也不可能发生的。所以就需要以市场规律为基础，给首席科学家高薪工资，给基础工作人员一些基本工资。在这里高薪对应着训练中的较大的参数，低薪对应着训练过程中的较小参数（钱少也是钱啊，也不能像L1正则化一样咔嚓全给砍掉，一点儿也不给是不行的，那样不和谐。）   </p>
+<p>​        所以像L2正则化的这种中庸的思想可能是我以后需要注意的，需要将中华传统文化中的中庸之道和“和谐”的思想融入到智能科学这个方向中去。</p>
+
         </div>
       </div>
     </div>
