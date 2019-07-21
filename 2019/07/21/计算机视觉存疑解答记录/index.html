@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-21</span>
-            <span class="time">14:30:10</span>
+            <span class="time">17:37:17</span>
           </span>
           
           <!--  Categories  -->
@@ -122,13 +122,43 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>在转《计算机视觉-一种现代方法》pdf为word版的时候，遇到了以下问题，写上解答备忘。</p>
+          <p>在转《计算机视觉-一种现代方法》pdf为word版的时候（只是最小二乘法部分），遇到了以下问题，写上解答备忘。</p>
 <a id="more"></a>
 <hr>
-<p><strong>为什么在最开始写p个线性方程和q个变量的时候一会儿$<br>\mathbb{R}^{q}<br>$一会儿$<br>\mathbb{R}^{p}<br>$？？</strong></p>
+<p><strong>1.为什么在最开始写p个线性方程和q个变量的时候一会儿$<br>\mathbb{R}^{q}<br>$一会儿$<br>\mathbb{R}^{p}<br>$？？</strong></p>
 <p>答：在</p>
 <script type="math/tex; mode=display">
 \left\{\begin{array}{c}{u_{11} x_{1}+u_{12} x_{2}+\cdots+u_{1 q} x_{q}=y_{1}} \\ {u_{21} x_{1}+u_{22} x_{2}+\cdots+u_{2 q} x_{q}=y_{2}} \\ {\cdots} \\ {u_{p 1} x_{1}+u_{p 2} x_{2}+\cdots+u_{p q} x_{q}=y_{p}}\end{array}\right.</script><p>里面一共有p行方程，q个未知量（x），且x和y都是在实数R上面取值的，所以q个x取值空间是$<br>\mathbb{R}^{q}<br>$,p个y的取值空间是$<br>\mathbb{R}^{p}<br>$</p>
+<p><strong>2.为啥当 p &lt; q 时，方程的解集构成一个(q-p)维的$<br>\mathbb{R}^{q}<br>$上的子空间？</strong></p>
+<p><strong>补一下线代的知识：</strong></p>
+<p>答：</p>
+<p>齐次线性方程的解的个数 =未知数的个数-秩的个数（秩的个数即有效方程的个数）</p>
+<p>​    所以在齐次线性方程中有效方程的个数&lt;未知数的个数，则有非零解（也叫有多个解）</p>
+<p>​    若有效方程个数=未知数个数，就只有零解</p>
+<p>非齐次线性方程解的个数可以用矩阵的秩来判断</p>
+<p>非齐次线性方程解的个数=未知数的个数-齐次方程的秩＋1</p>
+<p>​    且系数矩阵A的秩等于增广矩阵B的秩即</p>
+<p>​    R(A)=R(B)=n的时候有唯一解</p>
+<p>​    R(A)=R(B)&lt;n的时候有多个解</p>
+<p>​    R(A)&lt;R(B)方程组无解</p>
+<p>对应着看书上的“一般情况”就好理解了</p>
+<p><strong>3.为什么$\partial E / \partial x_{i}=0$能推出$c_{i}^{T}(U x-y)=0$</strong></p>
+<p>答：在书上面$\frac{\partial \mathrm{e}}{\partial \mathrm{x}_{\mathrm{i}}}=\frac{\partial}{\partial \mathrm{x}_{\mathrm{i}}}\left[\left(c_{1} \cdots c_{q}\right)^{\left(x_{1}\right.}\right)-y ]=\frac{\partial}{\partial x_{i}}\left(x_{1} c_{1}+\cdots+x_{q} c_{q}-y\right)=c_{i}$</p>
+<p>所以顺道推出来就ok了（实验室里的小可爱贼牛皮，一眼就看出来了）</p>
+<p><strong>4.注意满秩矩阵的定义</strong></p>
+<p>答：满秩矩阵一定是线性无关的，所以其行列式一定不为0，所以书上才可以将矩阵U移到等候右面写为U的逆。</p>
+<p><strong>5.注意书中的说法，非奇异就是行列式≠0 ，奇异矩阵就是行列式=0</strong></p>
+<p><strong>6.为什么要加上个约束$|x|^{2}=1$？</strong></p>
+<p>因为单纯最小化$E=|\mathcal{U}|\left.\boldsymbol{x}\right|^{2}$是没有意义的（按照书中的说法就是总能找到x接近0，使得误差特别小）所以就加上$|x|^{2}=1$限制，其中等于1<strong>比较</strong>合理，等于2，3或者其他的数值行不行目前不知道，反正大多数都用等于1的</p>
+<p><strong>7.为什么说误差E达到最小值$\lambda_{1}^{2}$？</strong></p>
+<p>这里面的逻辑是这样的：这个矩阵有很多特征值，按照大小排列$0 \leqslant \lambda_{1} \leqslant \cdots \leqslant \lambda_{q}$ 后最小的就是$\lambda_{1}$</p>
+<p>经过书上的</p>
+<script type="math/tex; mode=display">
+\begin{aligned} E(\boldsymbol{x})-E\left(\boldsymbol{e}_{1}\right) &=\boldsymbol{x}^{T}\left(\mathcal{U}^{T} \mathcal{U}\right) \boldsymbol{x}-\boldsymbol{e}_{1}^{T}\left(\mathcal{U}^{T} \boldsymbol{U}\right) \boldsymbol{e}_{1}=\lambda_{1}^{2} \mu_{1}^{2}+\cdots+\lambda_{q}^{2} \mu_{q}^{2}-\lambda_{1}^{2} \\ & \geqslant \lambda_{1}^{2}\left(\mu_{1}^{2}+\cdots+\mu_{q}^{2}-1\right)=0 \end{aligned}</script><p>推导后可以看出</p>
+<p>​    ①（反向思维）要想使E（x）特别小，就需要使E(x)尽可能与一个非常小的数去作比较，也就是后面的$E(x)-E\left(e_{1}\right)$≥0。</p>
+<p>​    ②$E(x)-E\left(e_{1}\right)$ 可以大于等于$\lambda_{1}^{2}$  也可以大于等于$\lambda_{2}^{2}$ 而$\lambda_{1}^{2}$ 数值最小（这里的逻辑是我一开始大于等于1，后来大于等于0.1，说明我的精度提升了，意会即可），所以可以说使E最小的x就是$U^{T} U$的最小的特征值对应的特征向量$\boldsymbol{e}_{1}$ ，误差达到了$\lambda_{1}^{2}$</p>
+<p><strong>注意：书中提到的更普遍的优化问题是在$|\mathcal{V} \times|^{2}=1$ 约束下求$|\mathcal{U} \times|^{2}$的最小值，使得$\mathcal{U}^{T} \mathcal{U} \boldsymbol{x}=\lambda \mathcal{V}^{T} \mathcal{V} \boldsymbol{x}$成立的向量x和系数λ称为对称阵$U^{T} U$ 和$V^{T} V$的广义特征向量和对应的广义特征值。而且问题的解恰好是使广义特征值最小情况下的特征值和特征向量。 </strong>  </p>
+<p><strong>存疑：为什么矩阵是方阵且为非奇异矩阵的时候 ，该矩阵的伪逆=矩阵的逆？</strong></p>
 
         </div>
       </div>
