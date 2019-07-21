@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-21</span>
-            <span class="time">13:17:53</span>
+            <span class="time">13:46:45</span>
           </span>
           
           <!--  Categories  -->
@@ -125,8 +125,14 @@
           <p>在转《计算机视觉-一种现代方法》pdf为word版的时候，遇到了以下问题，写上解答备忘。</p>
 <a id="more"></a>
 <hr>
-<p><strong>为什么在最开始写p个线性方程和q个变量的时候一会儿$$<br>\mathbb{R}^{q}<br>$$一会儿$$<br>\mathbb{R}^{p}<br>$$？？</strong></p>
-<p>答：在$$<br>\left{\begin{array}{c}{u_{11} x_{1}+u_{12} x_{2}+\cdots+u_{1 q} x_{q}=y_{1}} \ {u_{21} x_{1}+u_{22} x_{2}+\cdots+u_{2 q} x_{q}=y_{2}} \ {\cdots} \ {u_{p 1} x_{1}+u_{p 2} x_{2}+\cdots+u_{p q} x_{q}=y_{p}}\end{array}\right.<br>$$里面一共有p行方程，q个未知量（x），且x和y都是在实数R上面取值的，所以q个x取值空间是$$<br>\mathbb{R}^{q}<br>$$,p个y的曲直空间是$<br>\mathbb{R}^{p}<br>$</p>
+<p>改成喽</p>
+<p>**为什么在最开始写p个线性方程和q个变量的时候一会儿$$<br>\mathbb{R}^{q}</p>
+<script type="math/tex; mode=display">一会儿</script><p>\mathbb{R}^{p}</p>
+<script type="math/tex; mode=display">？？**
+
+答：在</script><p>\left\{\begin{array}{c}{u_{11} x_{1}+u_{12} x_{2}+\cdots+u_{1 q} x_{q}=y_{1}} \ {u_{21} x_{1}+u_{22} x_{2}+\cdots+u_{2 q} x_{q}=y_{2}} \ {\cdots} \ {u_{p 1} x_{1}+u_{p 2} x_{2}+\cdots+u_{p q} x_{q}=y_{p}}\end{array}\right.</p>
+<script type="math/tex; mode=display">里面一共有p行方程，q个未知量（x），且x和y都是在实数R上面取值的，所以q个x取值空间是</script><p>\mathbb{R}^{q}</p>
+<p>$$,p个y的曲直空间是$<br>\mathbb{R}^{p}<br>$</p>
 
         </div>
       </div>
@@ -164,6 +170,22 @@
   });
 </script>
 
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

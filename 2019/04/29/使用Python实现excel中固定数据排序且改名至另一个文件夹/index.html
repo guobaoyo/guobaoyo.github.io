@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-29</span>
-            <span class="time">13:17:53</span>
+            <span class="time">13:46:45</span>
           </span>
           
           <!--  Categories  -->
@@ -125,6 +125,7 @@
           <p>用python实现excel中读取文件目录+相应数据排序+将文件重命名（学姐写的）</p>
 <a id="more"></a>
 <p>20190429老师让我把最后得到的result.csv文件中波点，豹纹，条纹的前100张图片分别弄到三个文件夹里面，想看看效果。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -166,6 +167,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>我python贼烂，下面的这个代码是学姐（半个小时之内）写的，我用一下午学会了，在这里感谢学姐并做个记录以后行了再自己慢慢写。</p>
 <ul>
 <li>先将第一行和第一列删掉再处理</li>
@@ -176,8 +178,9 @@
 <p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行前.png" alt="运行前"></p>
 <p>运行后结果：</p>
 <p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行后.png" alt="运行后"></p>
-<p>–2019-04-30–</p>
+<p>—2019-04-30—</p>
 <p>沿着上一天的小程序，老师让我找到如下面表格中的第三列的首字母为y的所有图片，并且按照第二列的命名方式放在一个文件夹里面。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -234,6 +237,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>思路一：用<strong>正则表达式</strong> 匹配第三列（但是我不会正则表达式啊 <strong>迟早得学</strong>）</p>
 <p>思路二：既然是要首字母为y那我在excel中将第三列升序排列，只要后面的首字母为y的就ok了。故如法炮制，在前一天的小工具上面改。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">path_csv=<span class="string">"./shouy-train2.csv"</span><span class="comment">#尽量用英文名字，这样会可靠一些</span></span><br><span class="line">path=<span class="string">"./fashionAI_attributes_train2//"</span></span><br><span class="line">df = pd.read_csv(path_csv, header=<span class="literal">None</span>)<span class="comment">#先将原来的文件读取并且称其为df</span></span><br><span class="line">df.columns = [<span class="string">'filename'</span>, <span class="string">'leibie'</span>,<span class="string">'tag'</span>]<span class="comment">#实际上将表格的两个列定义为filename 和 tiaowen</span></span><br><span class="line">list1=sorted(df.leibie)<span class="comment">#从小到大排序,而使用sort()方法对list排序会修改list本身，不会返回新的list，而sorted()会返回一个新的list，并不会改变原来的list</span></span><br><span class="line">newpath=<span class="string">"./train2/"</span><span class="comment">#新建一个tiaowen的文件夹</span></span><br><span class="line">zimulu = str(df.leibie)</span><br><span class="line">print(newpath+zimulu)</span><br><span class="line">list2=[]<span class="comment">#新建个list2这个列表</span></span><br><span class="line"><span class="keyword">for</span> z <span class="keyword">in</span> df.leibie:<span class="comment">#</span></span><br><span class="line">    list2.append(z)<span class="comment">#将tiaowen这个名字加入到list2这个列表中</span></span><br><span class="line">print(list2[<span class="number">4</span>])</span><br><span class="line">j=<span class="number">0</span><span class="comment">#设置j=0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> df.filename:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        shutil.copy(os.path.join(path+i),os.path.join(newpath+list2[j]))</span><br><span class="line">        j += <span class="number">1</span><span class="comment">#每次都让j加1，这样就可以对应上list[]这个列表了</span></span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
@@ -281,6 +285,22 @@
   });
 </script>
 
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 
