@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-23</span>
-            <span class="time">10:54:33</span>
+            <span class="time">11:22:13</span>
           </span>
           
           <!--  Categories  -->
@@ -138,7 +138,16 @@
 <p><a href="https://studygolang.com/articles/7506" target="_blank" rel="noopener">https://studygolang.com/articles/7506</a></p>
 <p><a href="https://studygolang.com/articles/17566" target="_blank" rel="noopener">https://studygolang.com/articles/17566</a></p>
 <p><a href="https://studygolang.com/articles/11411" target="_blank" rel="noopener">https://studygolang.com/articles/11411</a></p>
-<p><strong>5.模仿<a href="https://studygolang.com/articles/11411的流程走一遍，看懂之后再改。" target="_blank" rel="noopener">https://studygolang.com/articles/11411的流程走一遍，看懂之后再改。</a></strong></p>
+<p><strong>5.模仿<a href="https://studygolang.com/articles/11411" target="_blank" rel="noopener">https://studygolang.com/articles/11411</a>   的流程走一遍，看懂之后再改。</strong></p>
+<p><strong>6.好了，看的差不多了，下面是根据上面说的博客的代码总结，分别实现上传功能和下载功能：</strong></p>
+<p>首先列一下文件目录格式：</p>
+<p><img src="go-http搭建服务器知识点儿/文件路径.png" alt="文件路径"></p>
+<p>客户端</p>
+<p>​    1.上传文件（python模拟http-post请求，向服务器发送文件）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面的上传文件</span></span><br><span class="line"><span class="keyword">from</span> urllib3 <span class="keyword">import</span> encode_multipart_formdata</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uploadfile</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line">    basedir = os.path.abspath(os.path.dirname(__file__))<span class="comment">#获取当前文件的绝对路径</span></span><br><span class="line">    <span class="comment">#print(basedir)#D:\tensorboard-shishi\test 输出文件的绝对路径，测试用</span></span><br><span class="line">    upload_url = <span class="string">'http://localhost:8080/upload'</span><span class="comment">#需要上传的url值</span></span><br><span class="line">    header=&#123;&#125;<span class="comment">#http的header用默认配置就好</span></span><br><span class="line"></span><br><span class="line">    save_dir = basedir+<span class="string">'\\'</span>+<span class="string">'upload'</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(save_dir) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        os.makedirs(save_dir)</span><br><span class="line">    file_path = save_dir+<span class="string">'\\'</span>+file_name<span class="comment">#需要加上\\用来隔开filename和basedir</span></span><br><span class="line">    files = &#123;<span class="string">'file'</span>:open(file_path,<span class="string">'rb'</span>)&#125;<span class="comment">#此处是重点！我们操作文件上传的时候，把目标文件以open打开，然后存储到变量file里面存到一个字典里面</span></span><br><span class="line">    upload_data=&#123;<span class="string">"enctype"</span>:<span class="string">"multipart/form-data"</span>,<span class="string">"action"</span>:<span class="string">"http://localhost:8080/upload"</span>,<span class="string">"fileSize"</span>:<span class="number">179</span>,<span class="string">"fileName"</span>:<span class="string">"testpic.jpg"</span>,<span class="string">"method"</span>:<span class="string">"POST"</span>,<span class="string">"uploadfile"</span>:<span class="string">"file"</span>&#125;</span><br><span class="line">    upload_res=requests.post(upload_url,upload_data,files=files,headers=header)<span class="comment">##此处是重点！我们操作文件上传的时候，接口请求参数直接存到upload_data变量里面，在请求的时候，直接作为数据传递过去</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    uploadfile(file_name=<span class="string">'123.mp4'</span>)</span><br></pre></td></tr></table></figure>
+<p>​    2.下载文件（python模拟http-get请求下载文件）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面的是下载文件，需要输入想要下载的文件名</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downloadfile</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    real_url = <span class="string">'http://localhost:8080/download/'</span>+file_name</span><br><span class="line">    r = requests.get(real_url, stream=<span class="literal">True</span>)</span><br><span class="line">    print(r)</span><br><span class="line">    print(<span class="string">'./'</span>+file_name)</span><br><span class="line">    basedir = os.path.abspath(os.path.dirname(__file__))  <span class="comment"># 获取当前文件的绝对路径</span></span><br><span class="line">    save_dir = basedir + <span class="string">'\\'</span> + <span class="string">'download'</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(save_dir) <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">        os.makedirs(save_dir)</span><br><span class="line">    f = open(<span class="string">"./"</span>+<span class="string">'download'</span>+<span class="string">'\\'</span>+file_name, <span class="string">"wb"</span>)</span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size=<span class="number">512</span>*<span class="number">1024</span>):</span><br><span class="line">        <span class="keyword">if</span> chunk:</span><br><span class="line">            f.write(chunk)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    downloadfile(file_name=<span class="string">'123.txt'</span>)</span><br></pre></td></tr></table></figure>
+<p>服务器端：</p>
 
         </div>
       </div>
@@ -176,22 +185,6 @@
   });
 </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+  </body>
 </html>
 
