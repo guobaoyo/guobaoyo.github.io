@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-29</span>
-            <span class="time">09:21:21</span>
+            <span class="time">11:19:03</span>
           </span>
           
           <!--  Categories  -->
@@ -126,6 +126,16 @@
 <a id="more"></a>
 <p>1.对比赛有个基本了解—是个NER的任务：</p>
 <p><a href="https://biendata.com/competition/datagrand/?source=guanwang" target="_blank" rel="noopener">比赛官网</a></p>
+<p>重要知识点记录：</p>
+<p>​    1.不允许使用主办方提供的数据集之外的任何外部标注数据，也不允许使用预训练词向量，<strong>参赛选手不得在未经主办方授权情况下将比赛数据作为其他用途使用</strong>；</p>
+<p>​    2.参赛队伍可在参赛期间随时上传验证集的预测结果，一天不能超过<strong>2次</strong>；</p>
+<p>​    3.训练集有17000条，我们在17000条数据上标注了3个字段，共有字段a 9281处，字段b 14704处，字段c 9097处。预测集有3000条。</p>
+<p>​    4.比赛方提供一个大规模的未标注语料供参赛选手预训练语言模型</p>
+<p>​    5.<strong>train_set.txt</strong> </p>
+<p>此数据集用于训练模型，每一行对应一条文本数据。每一个数字对应一个“字”或“标点符号”。字和字之间用‘_’连接，在对应字段后面标注/a、/b、/c，非字段文本标注/o。比如：“欢迎来到达观数据。”是形如“1_2_3_4_5_6_7_8_9”的字符串，如果“达观数据”是字段c，就会被标成“1_2_3_4/o  5_6_7_8/c 9/o”的形式。</p>
+<p>​    6.评分标准：</p>
+<p>信息抽取的评估指标是F1值，是正确率和召回率的调和平均值。</p>
+<p> 正确率 = 抽取出的正确字段数 / 抽取出的字段数<br> 召回率 = 抽取出的正确字段数 / 样本的字段数<br> F1值 = （2 <em> 正确率 </em> 召回率）/（正确率 + 召回率）</p>
 <p>2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：</p>
 <p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-1</a></p>
 <p><a href="https://www.lookfor404.com/%e7%94%a8%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8bhmm%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%e4%ba%8c/" target="_blank" rel="noopener">NER-2</a></p>
