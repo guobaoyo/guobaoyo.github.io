@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-29</span>
-            <span class="time">18:00:07</span>
+            <span class="time">11:34:21</span>
           </span>
           
           <!--  Categories  -->
@@ -142,7 +142,10 @@
 <p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-3</a></p>
 <p>3.再看的<a href="https://segmentfault.com/a/1190000016778761#articleHeader6" target="_blank" rel="noopener">官方给的解答</a>和<a href="https://www.kaggle.com/huskylovers/fork-of-starter-datagrand" target="_blank" rel="noopener">王老板分享的代码</a></p>
 <p>条件随机场（ConditionalRandom<br>Field，CRF）是NER目前的主流模型。它的目标函数不仅考虑输入的状态特征函数，而且还包含了标签转移特征函数。在训练时可以使用SGD学习模型参数。在已知模型时，给输入序列求预测输出序列即求使目标函数最大化的最优序列，是一个动态规划问题，可以使用Viterbi算法解码来得到最优标签序列。<strong>CRF的优点在于其为一个位置进行标注的过程中可以利用丰富的内部及上下文特征信息。</strong>—出自官方给的资料</p>
-<p><strong>看完官方给的视频后总结如下</strong><br>需要学的东西：<br>1.基础知识：专业术语听不太懂，看看embedding是啥？NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。<br>2.维特比算法比较重要，对后面一系列算法的学习都有帮助。<br>3.得理解算法本身才能调参，效果才好，别瞎调。<br>4.学一下LSTM的原版论文，可以试一下这个模型。<br>5.看看能不能利用attention模型。<br>6.深度学习的调参尽量用经典的套路，例如优化函数：adam可以试试的<br>7.过拟合怎么处理：dropout可以设置大一点，再一个就是可以尽量的使用corpus这个东西，从而让它的泛化能力更强。</p>
+<p><strong>看完官方给的视频后总结如下</strong><br>需要学的东西：<br>1.基础知识：专业术语听不太懂，看看embedding是啥？</p>
+<p>（答：embedding的意思应该是将一个词转换为向量，但是之前听说过one hot encoding,只不过one hot encoding会产生大量的稀疏矩阵，且维度之间的关系也没有很好的体现，所以在比赛中能用别的就尽量别用one hot encoding，而在<a href="https://blog.csdn.net/k284213498/article/details/83474972" target="_blank" rel="noopener">YJango老师的解释中</a>Word embedding就是要从数据中自动学习到输入空间到Distributed representation空间的 映射f ，且训练词向量的过程中是无监督的。）</p>
+<p>NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。</p>
+<p>（通过数据增强可以明显提升模型性能。具体地，我们对原语料进行分句，然后随机地对各个句子进行bigram、trigram拼接，最后与原始句子一起作为训练语料。）<br>2.维特比算法比较重要，对后面一系列算法的学习都有帮助。<br>3.得理解算法本身才能调参，效果才好，别瞎调。<br>4.学一下LSTM的原版论文，可以试一下这个模型。<br>5.看看能不能利用attention模型。<br>6.深度学习的调参尽量用经典的套路，例如优化函数：adam可以试试的<br>7.过拟合怎么处理：dropout可以设置大一点，再一个就是可以尽量的使用corpus这个东西，从而让它的泛化能力更强。</p>
 <p>注意点：<br>1.一开始先看数据，做清洗，可以一开始用机器学习的模型去做知道机器学习模型的底线之后，再搞深度学习。<br>2.做文本处理神经网络的层数不要太多：否则第一容易过拟合，第二训练的慢。<br>3.一个实体有多个关系，联合标注会出问题，一个模型出一个关系就可以一定程度上解决。<br>4.CRF++有一定的局限性，如果想要扩展需要修改源码，但是改完之后不一定会有明显的效果。<br>5.只用train data的话肯定过拟合，所以数据很重要，官方给的数据尽量全用吧，corpus的利用有待提高！<br>6.观察算法本身，所以别想着再添加训练集。<br>7.在做词向量的时候，ELMO会比word2vec效果好很多。</p>
 
         </div>
