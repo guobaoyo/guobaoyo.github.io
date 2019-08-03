@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-07-29</span>
-            <span class="time">11:34:21</span>
+            <span class="time">11:25:52</span>
           </span>
           
           <!--  Categories  -->
@@ -124,10 +124,8 @@
         <div class="post-content">
           <p>达观杯备赛记录</p>
 <a id="more"></a>
-<p>1.对比赛有个基本了解—是个NER的任务：</p>
-<p><a href="https://biendata.com/competition/datagrand/?source=guanwang" target="_blank" rel="noopener">比赛官网</a></p>
-<p>重要知识点记录：</p>
-<p>​    1.不允许使用主办方提供的数据集之外的任何外部标注数据，也不允许使用预训练词向量，<strong>参赛选手不得在未经主办方授权情况下将比赛数据作为其他用途使用</strong>；</p>
+<h1 id="1-对比赛有个基本了解—是个NER的任务："><a href="#1-对比赛有个基本了解—是个NER的任务：" class="headerlink" title="1.对比赛有个基本了解—是个NER的任务："></a>1.对比赛有个基本了解—是个NER的任务：</h1><p><a href="https://biendata.com/competition/datagrand/?source=guanwang" target="_blank" rel="noopener">比赛官网</a></p>
+<h2 id="重要知识点记录："><a href="#重要知识点记录：" class="headerlink" title="重要知识点记录："></a>重要知识点记录：</h2><p>​    1.不允许使用主办方提供的数据集之外的任何外部标注数据，也不允许使用预训练词向量，<strong>参赛选手不得在未经主办方授权情况下将比赛数据作为其他用途使用</strong>；</p>
 <p>​    2.参赛队伍可在参赛期间随时上传验证集的预测结果，一天不能超过<strong>2次</strong>；</p>
 <p>​    3.训练集有17000条，我们在17000条数据上标注了3个字段，共有字段a 9281处，字段b 14704处，字段c 9097处。预测集有3000条。</p>
 <p>​    4.比赛方提供一个大规模的未标注语料供参赛选手预训练语言模型</p>
@@ -136,16 +134,25 @@
 <p>​    6.评分标准：</p>
 <p>信息抽取的评估指标是F1值，是正确率和召回率的调和平均值。</p>
 <p> 正确率 = 抽取出的正确字段数 / 抽取出的字段数<br> 召回率 = 抽取出的正确字段数 / 样本的字段数<br> F1值 = （2 <em> 正确率 </em> 召回率）/（正确率 + 召回率）</p>
-<p>2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：</p>
-<p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-1</a></p>
+<h2 id="2-学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解："><a href="#2-学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：" class="headerlink" title="2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解："></a>2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：</h2><p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-1</a></p>
 <p><a href="https://www.lookfor404.com/%e7%94%a8%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8bhmm%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%e4%ba%8c/" target="_blank" rel="noopener">NER-2</a></p>
 <p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-3</a></p>
-<p>3.再看的<a href="https://segmentfault.com/a/1190000016778761#articleHeader6" target="_blank" rel="noopener">官方给的解答</a>和<a href="https://www.kaggle.com/huskylovers/fork-of-starter-datagrand" target="_blank" rel="noopener">王老板分享的代码</a></p>
-<p>条件随机场（ConditionalRandom<br>Field，CRF）是NER目前的主流模型。它的目标函数不仅考虑输入的状态特征函数，而且还包含了标签转移特征函数。在训练时可以使用SGD学习模型参数。在已知模型时，给输入序列求预测输出序列即求使目标函数最大化的最优序列，是一个动态规划问题，可以使用Viterbi算法解码来得到最优标签序列。<strong>CRF的优点在于其为一个位置进行标注的过程中可以利用丰富的内部及上下文特征信息。</strong>—出自官方给的资料</p>
-<p><strong>看完官方给的视频后总结如下</strong><br>需要学的东西：<br>1.基础知识：专业术语听不太懂，看看embedding是啥？</p>
-<p>（答：embedding的意思应该是将一个词转换为向量，但是之前听说过one hot encoding,只不过one hot encoding会产生大量的稀疏矩阵，且维度之间的关系也没有很好的体现，所以在比赛中能用别的就尽量别用one hot encoding，而在<a href="https://blog.csdn.net/k284213498/article/details/83474972" target="_blank" rel="noopener">YJango老师的解释中</a>Word embedding就是要从数据中自动学习到输入空间到Distributed representation空间的 映射f ，且训练词向量的过程中是无监督的。）</p>
-<p>NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。</p>
-<p>（通过数据增强可以明显提升模型性能。具体地，我们对原语料进行分句，然后随机地对各个句子进行bigram、trigram拼接，最后与原始句子一起作为训练语料。）<br>2.维特比算法比较重要，对后面一系列算法的学习都有帮助。<br>3.得理解算法本身才能调参，效果才好，别瞎调。<br>4.学一下LSTM的原版论文，可以试一下这个模型。<br>5.看看能不能利用attention模型。<br>6.深度学习的调参尽量用经典的套路，例如优化函数：adam可以试试的<br>7.过拟合怎么处理：dropout可以设置大一点，再一个就是可以尽量的使用corpus这个东西，从而让它的泛化能力更强。</p>
+<h2 id="3-再看的官方给的解答和王老板分享的代码"><a href="#3-再看的官方给的解答和王老板分享的代码" class="headerlink" title="3.再看的官方给的解答和王老板分享的代码"></a>3.再看的<a href="https://segmentfault.com/a/1190000016778761#articleHeader6" target="_blank" rel="noopener">官方给的解答</a>和<a href="https://www.kaggle.com/huskylovers/fork-of-starter-datagrand" target="_blank" rel="noopener">王老板分享的代码</a></h2><p>条件随机场（ConditionalRandom<br>Field，CRF）是NER目前的主流模型。它的目标函数不仅考虑输入的状态特征函数，而且还包含了标签转移特征函数。在训练时可以使用SGD学习模型参数。在已知模型时，给输入序列求预测输出序列即求使目标函数最大化的最优序列，是一个动态规划问题，可以使用Viterbi算法解码来得到最优标签序列。<strong>CRF的优点在于其为一个位置进行标注的过程中可以利用丰富的内部及上下文特征信息。</strong>—出自官方给的资料</p>
+<p><strong>看完官方给的视频后总结如下</strong></p>
+<h2 id="需要学的东西："><a href="#需要学的东西：" class="headerlink" title="需要学的东西："></a>需要学的东西：</h2><h3 id="1-基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）"><a href="#1-基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）" class="headerlink" title="1.基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）"></a>1.基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）</h3><p>（答：embedding的意思应该是将一个词转换为向量，但是之前听说过one hot encoding,只不过one hot encoding会产生大量的稀疏矩阵，且维度之间的关系也没有很好的体现，所以在比赛中能用别的就尽量别用one hot encoding，而在<a href="https://blog.csdn.net/k284213498/article/details/83474972" target="_blank" rel="noopener">YJango老师的解释中</a>Word embedding就是要从数据中自动学习到输入空间到Distributed representation空间的 映射f ，且训练词向量的过程中是无监督的。）</p>
+<h4 id="不懂word-embedding怎么办："><a href="#不懂word-embedding怎么办：" class="headerlink" title="不懂word-embedding怎么办："></a><strong>不懂word-embedding怎么办：</strong></h4><p>one-hot维度太高且过于稀疏，不考虑词序信息，且每个词之间是孤立的，没有联系，所以只是作为知识了解即可，不适用于该任务。</p>
+<p>Glove模型实际上是基于矩阵的分部表示，其中每一行表示一个词向量，每一列表示一个文本，维度较低考虑了语法和词序信息。</p>
+<p>NNLM模型是基于神经网络的模型，通过前面的几个词语来预测当前的词语。</p>
+<p>LBL模型应该算是在NNLM的基础上继续改进的，使用log-bilinear energy function，不用tanh函数，没有MMLM那么复杂。</p>
+<p>C&amp;W只训练词向量模型，且将目标词放到输入层，输出层变为1个节点，这个节点表示对这n元短语进行打分（这个模型目前只是感性理解，需要详细看）</p>
+<p>virtual model order模型是考虑词与词之间的顺序的模型。暂时理解为来博士在CBOW的基础上的改进，保留了序列顺序信息。</p>
+<p>skip-gram模型复杂度特别低，比较简易，暂不考虑（后期可以尝试）。</p>
+<h5 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h5><p>1.如果语料库大的话，可以选择更为复杂的模型，例如，CBOW或者Order</p>
+<p>2.模型复杂度方面CBOW&lt;Oder&lt;LBL&lt;C&amp;W和NNLM，所以在本任务中就暂时使用Order，LBL</p>
+<p>3.且在选择使用哪个模型的哪些参数的时候，应该设置一个验证测试集来验证。</p>
+<p>4.先试试50维的词向量，再试试100维</p>
+<h3 id="2-NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。"><a href="#2-NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。" class="headerlink" title="2.NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。"></a>2.NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。</h3><p>（通过数据增强可以明显提升模型性能。具体地，我们对原语料进行分句，然后随机地对各个句子进行bigram、trigram拼接，最后与原始句子一起作为训练语料。）</p>
+<h3 id="3-维特比算法比较重要，对后面一系列算法的学习都有帮助。"><a href="#3-维特比算法比较重要，对后面一系列算法的学习都有帮助。" class="headerlink" title="3.维特比算法比较重要，对后面一系列算法的学习都有帮助。"></a>3.维特比算法比较重要，对后面一系列算法的学习都有帮助。</h3><p>4.得理解算法本身才能调参，效果才好，别瞎调。<br>5.学一下LSTM的原版论文，可以试一下这个模型。<br>6.看看能不能利用attention模型。<br>7.深度学习的调参尽量用经典的套路，例如优化函数：adam可以试试的<br>8.过拟合怎么处理：dropout可以设置大一点，再一个就是可以尽量的使用corpus这个东西，从而让它的泛化能力更强。</p>
 <p>注意点：<br>1.一开始先看数据，做清洗，可以一开始用机器学习的模型去做知道机器学习模型的底线之后，再搞深度学习。<br>2.做文本处理神经网络的层数不要太多：否则第一容易过拟合，第二训练的慢。<br>3.一个实体有多个关系，联合标注会出问题，一个模型出一个关系就可以一定程度上解决。<br>4.CRF++有一定的局限性，如果想要扩展需要修改源码，但是改完之后不一定会有明显的效果。<br>5.只用train data的话肯定过拟合，所以数据很重要，官方给的数据尽量全用吧，corpus的利用有待提高！<br>6.观察算法本身，所以别想着再添加训练集。<br>7.在做词向量的时候，ELMO会比word2vec效果好很多。</p>
 
         </div>
