@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-24</span>
-            <span class="time">16:01:20</span>
+            <span class="time">19:34:09</span>
           </span>
           
           <!--  Categories  -->
@@ -124,6 +124,13 @@
         <div class="post-content">
           <p>本笔记是基于吴恩达老师的《深度学习工程师》的课程笔记。</p>
 <a id="more"></a>
+<p>1.tf.boolean_mask（）函数的作用详见下面的博客，一言以蔽之：<strong>boolean_mask(a,b)</strong> 将使a (m维)矩阵仅保留与b中“True”元素同下标的部分。</p>
+<p><a href="https://blog.csdn.net/qq_29444571/article/details/84574526" target="_blank" rel="noopener">https://blog.csdn.net/qq_29444571/article/details/84574526</a></p>
+<p>2.</p>
+<p>tf.image.non_max_suppression(）函数的作用：（<a href="https://blog.csdn.net/m0_37393514/article/details/81777244" target="_blank" rel="noopener">https://blog.csdn.net/m0_37393514/article/details/81777244</a>  主要翻译了各个参数的作用）</p>
+<p>首先从所有的检测框中找到置信度较大的那个框，然后挨个计算其与剩余框的IOU，如果其值大于一定阈值（重合度过高），那么就将该框剔除；然后对剩余的检测框重复上述过程，直到处理完所有的检测框。Yolo预测过程也需要用到NMS算法。—<a href="https://blog.csdn.net/wuguangbin1230/article/details/79895364" target="_blank" rel="noopener">https://blog.csdn.net/wuguangbin1230/article/details/79895364</a></p>
+<p>3.</p>
+
         </div>
       </div>
     </div>
