@@ -8,10 +8,10 @@
   <meta name="description" content>
   <meta name="author" content="Rock">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习与神经网络">
+  <meta property="og:title" content="Rock-Blog">
   <meta property="og:description" content>
   <meta property="og:site_name" content="Rock-Blog">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:image" content="http://rock-blog.top">
   
     <link rel="alternate" href="/atom.xml" title="Rock-Blog" type="application/atom+xml">
@@ -35,7 +35,8 @@
 </head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/龙珠3.jpg)">
@@ -43,7 +44,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习与神经网络</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -88,54 +89,41 @@
   </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By Rock</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2019-04-24</span>
-            <span class="time">15:41:45</span>
-          </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2019/04/15/考研历程反思总结/" class="post-title">
+    考研历程反思总结
+  </a>
+  <div class="date text-muted">Posted on 2019-04-15 21:25:01</div>
+</div>
 
-<a href="/categories/深度学习/">深度学习</a>
-</span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
+      
 
-<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/CV/">#CV</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>本笔记是基于吴恩达老师的《深度学习工程师》的课程笔记。</p>
-<a id="more"></a>
-<p>1.tf.boolean_mask（）函数的作用详见下面的博客，一言以蔽之：<strong>boolean_mask(a,b)</strong> 将使a (m维)矩阵仅保留与b中“True”元素同下标的部分。</p>
-<p><a href="https://blog.csdn.net/qq_29444571/article/details/84574526" target="_blank" rel="noopener">https://blog.csdn.net/qq_29444571/article/details/84574526</a></p>
-<p>2.</p>
-<p>tf.image.non_max_suppression(）函数的作用：（<a href="https://blog.csdn.net/m0_37393514/article/details/81777244" target="_blank" rel="noopener">https://blog.csdn.net/m0_37393514/article/details/81777244</a>  主要翻译了各个参数的作用）</p>
-<p>首先从所有的检测框中找到置信度较大的那个框，然后挨个计算其与剩余框的IOU，如果其值大于一定阈值（重合度过高），那么就将该框剔除；然后对剩余的检测框重复上述过程，直到处理完所有的检测框。Yolo预测过程也需要用到NMS算法。—<a href="https://blog.csdn.net/wuguangbin1230/article/details/79895364" target="_blank" rel="noopener">https://blog.csdn.net/wuguangbin1230/article/details/79895364</a></p>
-<p>3.</p>
-
-        </div>
-      </div>
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+              <li class="previous">
+                <a href="/archives/2019/">
+                  <span class="symbol-left">&lt;</span>
+                  <span>上一页</span>
+                </a>
+              </li>
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
