@@ -8,7 +8,7 @@
   <meta name="description" content>
   <meta name="author" content="Rock">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="深度学习与神经网络">
+  <meta property="og:title" content="deep-reinforcement-learning">
   <meta property="og:description" content>
   <meta property="og:site_name" content="Rock-Blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">深度学习与神经网络</p>
+          <p class="title">deep-reinforcement-learning</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-04-24</span>
-            <span class="time">12:19:40</span>
+            <span class="date">2019-09-14</span>
+            <span class="time">12:19:39</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/深度学习/">深度学习</a>
+<a href="/categories/强化学习/">强化学习</a>
 </span>
           
         </div>
@@ -115,21 +115,38 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/CV/">#CV</a>
+<a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/深度强化学习/">#深度强化学习</a> <a class="tag" href="/tags/数学/">#数学</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本笔记是基于吴恩达老师的《深度学习工程师》的课程笔记。</p>
+          <p>李宏毅《深度强化学习》学习笔记-<a href="https://www.bilibili.com/video/av58458003/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av58458003/?p=1</a></p>
 <a id="more"></a>
-<p>1.tf.boolean_mask（）函数的作用详见下面的博客，一言以蔽之：<strong>boolean_mask(a,b)</strong> 将使a (m维)矩阵仅保留与b中“True”元素同下标的部分。</p>
-<p><a href="https://blog.csdn.net/qq_29444571/article/details/84574526" target="_blank" rel="noopener">https://blog.csdn.net/qq_29444571/article/details/84574526</a></p>
-<p>2.</p>
-<p>tf.image.non_max_suppression(）函数的作用：（<a href="https://blog.csdn.net/m0_37393514/article/details/81777244" target="_blank" rel="noopener">https://blog.csdn.net/m0_37393514/article/details/81777244</a>  主要翻译了各个参数的作用）</p>
-<p>首先从所有的检测框中找到置信度较大的那个框，然后挨个计算其与剩余框的IOU，如果其值大于一定阈值（重合度过高），那么就将该框剔除；然后对剩余的检测框重复上述过程，直到处理完所有的检测框。Yolo预测过程也需要用到NMS算法。—<a href="https://blog.csdn.net/wuguangbin1230/article/details/79895364" target="_blank" rel="noopener">https://blog.csdn.net/wuguangbin1230/article/details/79895364</a></p>
+<h1 id="李宏毅《深度强化学习》学习笔记"><a href="#李宏毅《深度强化学习》学习笔记" class="headerlink" title="李宏毅《深度强化学习》学习笔记"></a>李宏毅《深度强化学习》学习笔记</h1><h2 id="P1-0导论："><a href="#P1-0导论：" class="headerlink" title="P1-0导论："></a>P1-0导论：</h2><p>1.注意在强化学习里面的state指的是环境的状态而不是智能体的状态，智能体观测到环境的状态，也叫observation,而智能体做的动作叫action或者是policy。</p>
+<p>2.在下棋这种博弈对抗的游戏中不建议用监督学习的原因是当输入某个棋局状态的时候，无法像图像识别或检测位置一样给出准确的标答，所以需要用强化学习的思想去训练智能体，故在训练Alpha Go的训练过程中是搞两个智能体互相下棋，同理还可以应用在制作聊天机器人上。</p>
 <p>3.</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/应用方向1.png" alt="1强化学习应用方向"></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/应用方向2.png" alt="1强化学习应用方向"></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/more-reference.png" alt="更多"></p>
+<p>4.李宏毅老师认为强化学习的难点：    </p>
+<ul>
+<li>reward的出现具有延迟性</li>
+<li>智能体需要主动去<strong>探索</strong>，对环境做出改变进而得到正向或负向的反馈</li>
+</ul>
+<p>5.A3C：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/A3C.png" alt="A3C"></p>
+<p>6.李宏毅老师讲因为电玩的未知性太大，model based的方法在电玩游戏方面应用比较困难。</p>
+<p>7.深度学习的步骤:</p>
+<p>​    1.使用神经网络作为智能体，当智能体是深度神经网络的时候，这套系统就是深度强化学习系统。</p>
+<p>​    2.最大化total reward的多次平均值（因为游戏具有随机性，且对于同一个Actor，输入相同的observation，做出的反应也可能不同），并用total reward评判函数的好坏，注：</p>
+<script type="math/tex; mode=display">
+\tau=\left\{s_{1}, a_{1}, r_{1}, s_{2}, a_{2}, r_{2}, \cdots, s_{T}, a_{T}, r_{T}\right\}且
+R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)且P(\tau | \theta)是智能体参数为\theta 的时候发生事件\tau的概率</script><p>​    3.选择最好的Actor-&gt;使用Gradient Ascent的方法找到θ使下式最大：</p>
+<script type="math/tex; mode=display">
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)</script><p>​            3.1随机初始化θ0和η0，再对 <script type="math/tex">\overline{R}_{\theta}</script> 求微分</p>
 
         </div>
       </div>
