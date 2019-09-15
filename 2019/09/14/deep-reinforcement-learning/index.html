@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">12:19:39</span>
+            <span class="time">18:36:03</span>
           </span>
           
           <!--  Categories  -->
@@ -124,29 +124,54 @@
         <div class="post-content">
           <p>李宏毅《深度强化学习》学习笔记-<a href="https://www.bilibili.com/video/av58458003/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av58458003/?p=1</a></p>
 <a id="more"></a>
-<h1 id="李宏毅《深度强化学习》学习笔记"><a href="#李宏毅《深度强化学习》学习笔记" class="headerlink" title="李宏毅《深度强化学习》学习笔记"></a>李宏毅《深度强化学习》学习笔记</h1><h2 id="P1-0导论："><a href="#P1-0导论：" class="headerlink" title="P1-0导论："></a>P1-0导论：</h2><p>1.注意在强化学习里面的state指的是环境的状态而不是智能体的状态，智能体观测到环境的状态，也叫observation,而智能体做的动作叫action或者是policy。</p>
-<p>2.在下棋这种博弈对抗的游戏中不建议用监督学习的原因是当输入某个棋局状态的时候，无法像图像识别或检测位置一样给出准确的标答，所以需要用强化学习的思想去训练智能体，故在训练Alpha Go的训练过程中是搞两个智能体互相下棋，同理还可以应用在制作聊天机器人上。</p>
-<p>3.</p>
-<p><img src="/2019/09/14/deep-reinforcement-learning/应用方向1.png" alt="1强化学习应用方向"></p>
+<h1 id="李宏毅《深度强化学习》学习笔记"><a href="#李宏毅《深度强化学习》学习笔记" class="headerlink" title="李宏毅《深度强化学习》学习笔记"></a>李宏毅《深度强化学习》学习笔记</h1><h2 id="0导论："><a href="#0导论：" class="headerlink" title="0导论："></a>0导论：</h2><h3 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1.名词解释"></a>1.名词解释</h3><p>注意在强化学习里面的state指的是环境的状态而不是智能体的状态，智能体观测到环境的状态，也叫observation,而智能体做的动作叫action或者是policy。</p>
+<h3 id="2-基本应用与前提知识铺垫"><a href="#2-基本应用与前提知识铺垫" class="headerlink" title="2.基本应用与前提知识铺垫"></a>2.基本应用与前提知识铺垫</h3><p>在下棋这种博弈对抗的游戏中不建议用监督学习的原因是当输入某个棋局状态的时候，无法像图像识别或检测位置一样给出准确的标答，所以需要用强化学习的思想去训练智能体，故在训练Alpha Go的训练过程中是搞两个智能体互相下棋，同理还可以应用在制作聊天机器人上。</p>
+<h3 id="3-更多应用以及参考书目"><a href="#3-更多应用以及参考书目" class="headerlink" title="3.更多应用以及参考书目"></a>3.更多应用以及参考书目</h3><p><img src="/2019/09/14/deep-reinforcement-learning/应用方向1.png" alt="1强化学习应用方向"></p>
 <p><img src="/2019/09/14/deep-reinforcement-learning/应用方向2.png" alt="1强化学习应用方向"></p>
 <p><img src="/2019/09/14/deep-reinforcement-learning/more-reference.png" alt="更多"></p>
-<p>4.李宏毅老师认为强化学习的难点：    </p>
-<ul>
+<h3 id="4-李宏毅老师认为强化学习的难点："><a href="#4-李宏毅老师认为强化学习的难点：" class="headerlink" title="4.李宏毅老师认为强化学习的难点："></a>4.李宏毅老师认为强化学习的难点：</h3><ul>
 <li>reward的出现具有延迟性</li>
 <li>智能体需要主动去<strong>探索</strong>，对环境做出改变进而得到正向或负向的反馈</li>
 </ul>
-<p>5.A3C：</p>
-<p><img src="/2019/09/14/deep-reinforcement-learning/A3C.png" alt="A3C"></p>
-<p>6.李宏毅老师讲因为电玩的未知性太大，model based的方法在电玩游戏方面应用比较困难。</p>
-<p>7.深度学习的步骤:</p>
-<p>​    1.使用神经网络作为智能体，当智能体是深度神经网络的时候，这套系统就是深度强化学习系统。</p>
-<p>​    2.最大化total reward的多次平均值（因为游戏具有随机性，且对于同一个Actor，输入相同的observation，做出的反应也可能不同），并用total reward评判函数的好坏，注：</p>
+<h3 id="5-A3C："><a href="#5-A3C：" class="headerlink" title="5.A3C："></a>5.A3C：</h3><p><img src="/2019/09/14/deep-reinforcement-learning/A3C.png" alt="A3C"></p>
+<p>李宏毅老师讲因为电玩的未知性太大，model based的方法在电玩游戏方面应用比较困难。</p>
+<h3 id="6-深度学习的步骤"><a href="#6-深度学习的步骤" class="headerlink" title="6.深度学习的步骤:"></a>6.深度学习的步骤:</h3><h4 id="6-1基本介绍"><a href="#6-1基本介绍" class="headerlink" title="6.1基本介绍"></a>6.1基本介绍</h4><p>​    使用神经网络作为智能体，当智能体是深度神经网络的时候，这套系统就是深度强化学习系统。</p>
+<h4 id="6-2评价函数好坏："><a href="#6-2评价函数好坏：" class="headerlink" title="6.2评价函数好坏："></a>6.2评价函数好坏：</h4><p>​    最大化total reward的多次平均值（因为游戏具有随机性，且对于同一个Actor，输入相同的observation，做出的反应也可能不同），并用total reward评判函数的好坏，注：</p>
 <script type="math/tex; mode=display">
 \tau=\left\{s_{1}, a_{1}, r_{1}, s_{2}, a_{2}, r_{2}, \cdots, s_{T}, a_{T}, r_{T}\right\}且
 R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
-\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)且P(\tau | \theta)是智能体参数为\theta 的时候发生事件\tau的概率</script><p>​    3.选择最好的Actor-&gt;使用Gradient Ascent的方法找到θ使下式最大：</p>
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)且P(\tau | \theta)是智能体参数为\theta 的时候发生事件\tau的概率</script><h4 id="6-3选择最好的函数"><a href="#6-3选择最好的函数" class="headerlink" title="6.3选择最好的函数"></a>6.3选择最好的函数</h4><p>选择最好的Actor-&gt;使用Gradient Ascent的方法找到θ使下式最大：</p>
 <script type="math/tex; mode=display">
-\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)</script><p>​            3.1随机初始化θ0和η0，再对 <script type="math/tex">\overline{R}_{\theta}</script> 求微分</p>
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)</script><h5 id="6-3-1"><a href="#6-3-1" class="headerlink" title="6.3.1"></a>6.3.1</h5><p>随机初始化θ0和η0，再对 <script type="math/tex">\overline{R}_{\theta}</script> 求微分，更新参数，一直循环，最后得到使得<script type="math/tex">\overline{R}_{\theta}</script> 最大的Actor</p>
+<h6 id="6-3-1-1"><a href="#6-3-1-1" class="headerlink" title="6.3.1.1"></a>6.3.1.1</h6><p>对<script type="math/tex">\overline{R}_{\theta}</script> 求微分的时候<script type="math/tex">R(\tau)</script> 里面不含θ，不需要微分， 故<script type="math/tex">R(\tau)</script> 是否可微不重要，即使是黑盒子也无所谓。 <script type="math/tex">P(\tau | \theta)</script> 含有θ，需要对其求微分。</p>
+<p>具体演算：</p>
+<script type="math/tex; mode=display">\nabla \overline{R}_{\theta}=\sum_{\tau} R(\tau) \nabla P(\tau | \theta)=\sum_{\tau} R(\tau) P(\tau | \theta) \frac{\nabla P(\tau | \theta)}{P(\tau | \theta)}$$ 分子分母同时乘以个$$ P(\tau | \theta)</script><p>又由于复合函数求导f[g(x)]设g(x)=u,则f[g(x)]=f(u)，从而f’[g(x)]=f’(u)*g’(x)</p>
+<p>故<script type="math/tex">\frac{d \log (f(x))}{d x}=\frac{1}{f(x)} \frac{d f(x)}{d x}</script> 所以上式 <script type="math/tex">\nabla \overline{R}_{\theta}\ = \sum_{\tau} R(\tau) P(\tau | \theta) \nabla \log P(\tau | \theta)</script> </p>
+<p>又有6.3所示公式，代换过来<script type="math/tex">\nabla \overline{R}_{\theta}\ \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log P\left(\tau^{n} | \theta\right)</script> </p>
+<p>然后重点就放在<script type="math/tex">\nabla \log P\left(\tau^{n} | \theta\right)</script> </p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{P(\tau | \theta)=}  {p\left(s_{1}\right) p\left(a_{1} | s_{1}, \theta\right) p\left(r_{1}, s_{2} | s_{1}, a_{1}\right) p\left(a_{2} | s_{2}, \theta\right) p\left(r_{2}, s_{3} | s_{2}, a_{2}\right) \cdots} \\ {=p\left(s_{1}\right) \prod_{t=1}^{T} p\left(a_{t} | s_{t}, \theta\right) p\left(r_{t}, s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{l}{\log P(\tau | \theta)}  {=\log p\left(s_{1}\right)+\sum_{t=1}^{T} \log p\left(a_{t} | s_{t}, \theta\right)+\log p\left(r_{t}, s_{t+1} | s_{t}, a_{t}\right)} 
+\\ 因为一三项跟θ无关，则{\nabla \log P(\tau | \theta)=\sum_{t=1}^{T} \nabla \log p\left(a_{t} | s_{t}, \theta\right) \quad \text {  }}\end{array}</script><p>（注意上面的t指的是第几次动作，一共有T次动作，每次动作环境都会有变化）</p>
+<p>最后整理得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \nabla \overline{R}_{\theta} & \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log P\left(\tau^{n} | \theta\right)=\frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \sum_{t=1}^{T_{n}} \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right) \\ &=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right) \end{aligned}</script><p>李老师在这里做了非常符合直觉的解释：</p>
+<p>当<script type="math/tex">R\left(\tau^{n}\right)</script>为正时，问题转化为调整θ去增加<script type="math/tex">p\left(a_{t}^{n} | s_{t}^{n}\right)</script> </p>
+<p>当<script type="math/tex">R\left(\tau^{n}\right)</script>为负时，问题转化为调整θ去减少<script type="math/tex">p\left(a_{t}^{n} | s_{t}^{n}\right)</script> </p>
+<p>实际上对于 <script type="math/tex">\nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 中的log的解释是</p>
+<script type="math/tex; mode=display">
+\nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)=\frac{\nabla p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}{p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}</script><p>符合直觉的是除以某个参数θ和环境状态下发出某个动作的概率，李老师举的例子是这样的：因为当s,θ相同时action不会相同，如下图所示<img src="/2019/09/14/deep-reinforcement-learning/log的解释.png" alt="log的解释"></p>
+<p>在更新参数的时候Actor会偏向采取发生概率大的action b ，为了避免这种偏移，在这里采取类似于正则化的手段，除以发生这个动作的概率，<strong>这样会避免某些正确的动作因发生概率小而忽略的情况，不会偏好于出现概率大的动作</strong>。</p>
+<p>会出现个问题：</p>
+<p>有可能会存在Actor没有尝试过的动作，一旦没有试过，这个动作就容易被忽视。解决方法是设置一个b（baseline的意思）更改为<script type="math/tex">\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 比较直观的理解是如果<script type="math/tex">R\left(\tau^{n}\right)</script> 的值大于b的baseline的值，我们就增加其概率，若<script type="math/tex">R\left(\tau^{n}\right)</script> 的值小于b的值，所得的<script type="math/tex">R\left(\tau^{n}\right)-b</script>就是负值，我们就减少其概率。</p>
+<h2 id="1Policy-Gradient"><a href="#1Policy-Gradient" class="headerlink" title="1Policy Gradient"></a>1Policy Gradient</h2><p>1.对于强化学习系统中的三大组成部分：Actor，environment，reward function来说，后两者是定量不可改变的，唯一可以改变的是Actor的策略。</p>
+<p>在<script type="math/tex">\text { Trajectory } \tau=\left\{s_{1}, a_{1}, s_{2}, a_{2}, \cdots, s_{T}, a_{T}\right\}</script>情况下：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p_{\theta}(\tau)} \\ {\quad=p\left(s_{1}\right) p_{\theta}\left(a_{1} | s_{1}\right) p\left(s_{2} | s_{1}, a_{1}\right) p_{\theta}\left(a_{2} | s_{2}\right) p\left(s_{3} | s_{2}, a_{2}\right) \cdots} \\ {\quad=p\left(s_{1}\right) \prod_{t=1}^{T} p_{\theta}\left(a_{t} | s_{t}\right) p\left(s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><p>最后所得的式子取决于2部分，一个是environment本身内部的规则也就是<script type="math/tex">p\left(s_{t+1} | s_{t}, a_{t}\right)</script> 是无法改变的。另一部分是<script type="math/tex">p_{\theta}\left(a_{t} | s_{t}\right)</script> 是在Actor参数为θ，且环境输入为<script type="math/tex">s_{t}</script>的情况下,Actor会做出什么动作，这是可以控制的部分。</p>
+<p>—————————————————————————————-小分割线—————————————————————————————————-</p>
+<p>老师讲到这个图的时候，画的r1是依赖于s1和a1，我感觉好像不是特别准确，奖励这个概念应该是来源于1部分，只有环境的奖励，细分的话可以分为2类：一个是境应该指的是做出action后改变的环境带来的直接奖励。另一部分是环境变化后激励自身给的奖励，比如自己在某项工作取的进展后，信心大增，这个信心是环境变化后自己给自己精神方面的奖励。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/灵光一闪.png" alt="灵光一闪"></p>
+<p>—————————————————————————————-小分割线—————————————————————————————————-</p>
 
         </div>
       </div>
