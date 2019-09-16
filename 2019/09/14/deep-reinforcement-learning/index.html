@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">11:48:36</span>
+            <span class="time">11:52:17</span>
           </span>
           
           <!--  Categories  -->
@@ -172,27 +172,22 @@ R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
 <h3 id="2-灵光一闪"><a href="#2-灵光一闪" class="headerlink" title="2.灵光一闪"></a>2.灵光一闪</h3><p>老师讲到这个图的时候，画的r1是依赖于s1和a1，我感觉好像不是特别准确，奖励这个概念应该是来源于1部分，只有环境的奖励，细分的话可以分为2类：一个是境应该指的是做出action后改变的环境带来的直接物质方面的奖励。另一部分是环境变化后激励自身给的奖励，比如自己在某项工作取的进展后，信心大增，这个信心是环境变化后自己给自己精神方面的奖励。</p>
 <p><img src="/2019/09/14/deep-reinforcement-learning/灵光一闪.png" alt="灵光一闪"></p>
 <p>——————————————-小分割线—————————————</p>
-<h3 id="3-详细推导："><a href="#3-详细推导：" class="headerlink" title="3.详细推导："></a>3.详细推导：</h3><script type="math/tex; mode=display">R(\tau)=\sum_{t=1}^{T} r_{t}$$ 中实际上$$R(\tau)$$不是标量而是随机变量，所以需要计算它的期望值。期望值$$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)=E_{\tau \sim p_{\theta}(\tau)}[R(\tau)]$$ 穷举所有的$${\tau} $$ 且每个$${\tau}$$ 都有一定的概率。
-
-问题转化为如何求得最大的$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)$ 
-
-在深度学习的基础课中求损失函数的最小值用到的是梯度下降的算法，在这里想要使得Total reward最大，需要用到梯度上升的算法-Policy-Gradient-Asent，想要用这个算法就必须计算  且因为$R(\tau)$里面不含有${\tau}$所以没有必要要求他是可微的，即使是黑盒子也ok的。
-
-同导论中的推导：</script><p>\nabla \overline{R}_{\theta}=\sum_{\tau} R(\tau) \nabla p_{\theta}(\tau)=\sum_{\tau} R(\tau) p_{\theta}(\tau) \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau) }</p>
+<h3 id="3-详细推导："><a href="#3-详细推导：" class="headerlink" title="3.详细推导："></a>3.详细推导：</h3><p>$R(\tau)=\sum_{t=1}^{T} r_{t}$ 中实际上$R(\tau)$ 不是标量而是随机变量，所以需要计算它的期望值。期望值$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)=E_{\tau \sim p_{\theta}(\tau)}[R(\tau)]<script type="math/tex">穷举所有的</script>{\tau} <script type="math/tex">且每个</script>{\tau}$ 都有一定的概率。</p>
+<p>问题转化为如何求得最大的$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)$ </p>
+<p>在深度学习的基础课中求损失函数的最小值用到的是梯度下降的算法，在这里想要使得Total reward最大，需要用到梯度上升的算法-Policy-Gradient-Asent，想要用这个算法就必须计算  且因为$R(\tau)$里面不含有${\tau}$所以没有必要要求他是可微的，即使是黑盒子也ok的。</p>
+<p>同导论中的推导：</p>
 <script type="math/tex; mode=display">
-</script><p>=\sum_{\tau} R(\tau) p_{\theta}(\tau) \nabla \log p_{\theta}(\tau) \ =E_{\tau \sim p_{\theta}(\tau)}\left[R(\tau) \nabla \log p_{\theta}(\tau)\right] )</p>
-<script type="math/tex; mode=display">
-</script><p>\approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log p_{\Theta}\left(\tau^{n}\right) \ =\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</p>
-<script type="math/tex; mode=display">
-
-公式注意点：
-
-- $\tau^{n} $  指的就是第n种情况
-
-- $p_{\Theta}\left(\tau^{n}\right)$   实际上有两部分在**前提知识**提到的</script><p>  \begin{array}{l}{p_{\theta}(\tau)} \ {\quad=p\left(s_{1}\right) p_{\theta}\left(a_{1} | s_{1}\right) p\left(s_{2} | s_{1}, a_{1}\right) p_{\theta}\left(a_{2} | s_{2}\right) p\left(s_{3} | s_{2}, a_{2}\right) \cdots} \ {\quad=p\left(s_{1}\right) \prod_{t=1}^{T} p_{\theta}\left(a_{t} | s_{t}\right) p\left(s_{t+1} | s_{t}, a_{t}\right)}\end{array}</p>
-<p>  $$<br>  其中$p\left(s_{t+1} | s_{t}, a_{t}\right) $ 是环境的部分，与θ无关，在对θ求梯度的时候会消失掉。</p>
-<p>  而$p_{\theta}\left(a_{t} | s_{t}\right) $ 是Agent部分，与θ有关 ，是我们需要主要考虑的，所以式子变为$=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)$ </p>
+\nabla \overline{R}_{\theta}=\sum_{\tau} R(\tau) \nabla p_{\theta}(\tau)=\sum_{\tau} R(\tau) p_{\theta}(\tau) \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau) }</script><script type="math/tex; mode=display">
+=\sum_{\tau} R(\tau) p_{\theta}(\tau) \nabla \log p_{\theta}(\tau) \\ =E_{\tau \sim p_{\theta}(\tau)}\left[R(\tau) \nabla \log p_{\theta}(\tau)\right] )</script><script type="math/tex; mode=display">
+\approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log p_{\Theta}\left(\tau^{n}\right) \\ =\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>公式注意点：</p>
 <ul>
+<li><p>$\tau^{n} $  指的就是第n种情况</p>
+</li>
+<li><p>$p_{\Theta}\left(\tau^{n}\right)$   实际上有两部分在<strong>前提知识</strong>提到的</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p_{\theta}(\tau)} \\ {\quad=p\left(s_{1}\right) p_{\theta}\left(a_{1} | s_{1}\right) p\left(s_{2} | s_{1}, a_{1}\right) p_{\theta}\left(a_{2} | s_{2}\right) p\left(s_{3} | s_{2}, a_{2}\right) \cdots} \\ {\quad=p\left(s_{1}\right) \prod_{t=1}^{T} p_{\theta}\left(a_{t} | s_{t}\right) p\left(s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><p>其中$p\left(s_{t+1} | s_{t}, a_{t}\right) $ 是环境的部分，与θ无关，在对θ求梯度的时候会消失掉。</p>
+<p>而$p_{\theta}\left(a_{t} | s_{t}\right) $ 是Agent部分，与θ有关 ，是我们需要主要考虑的，所以式子变为$=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)$ </p>
+</li>
 <li><p>同理从直观上理解：如果在某个状态下，执行某个动作即$p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)$ 最后发现这个trajectory的total reward为正， 我们就需要增加这一项出现的概率。</p>
 </li>
 <li><p>可以记住一个公式：</p>
