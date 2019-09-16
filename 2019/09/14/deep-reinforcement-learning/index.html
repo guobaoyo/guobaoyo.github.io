@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">11:52:17</span>
+            <span class="time">19:05:11</span>
           </span>
           
           <!--  Categories  -->
@@ -163,7 +163,9 @@ R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
 \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)=\frac{\nabla p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}{p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}</script><p>符合直觉的是除以某个参数θ和环境状态下发出某个动作的概率，李老师举的例子是这样的：因为当s,θ相同时action不会相同，如下图所示<img src="/2019/09/14/deep-reinforcement-learning/log的解释.png" alt="log的解释"></p>
 <p>在更新参数的时候Actor会偏向采取发生概率大的action b ，为了避免这种偏移，在这里采取类似于正则化的手段，除以发生这个动作的概率，<strong>这样会避免某些正确的动作因发生概率小而忽略的情况，不会偏好于出现概率大的动作</strong>。</p>
 <p>会出现个问题：</p>
-<p>有可能会存在Actor没有尝试过的动作，一旦没有试过，这个动作就容易被忽视。解决方法是设置一个b（baseline的意思）更改为<script type="math/tex">\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 比较直观的理解是如果<script type="math/tex">R\left(\tau^{n}\right)</script> 的值大于b的baseline的值，我们就增加其概率，若<script type="math/tex">R\left(\tau^{n}\right)</script> 的值小于b的值，所得的<script type="math/tex">R\left(\tau^{n}\right)-b</script>就是负值，我们就减少其概率。</p>
+<p>有可能会存在Actor没有尝试过的动作，一旦没有试过，这个动作就容易被忽视。一旦这个动作被忽视了，那么其他没有被忽视的动作被选择的概率会增加，相对而言这个本应该选择的最优解a-action没有被选到，反而选的是b-action。如图</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/baseline.png" alt="baseline"></p>
+<p>解决方法是设置一个b（baseline的意思）更改为<script type="math/tex">\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 比较直观的理解是如果<script type="math/tex">R\left(\tau^{n}\right)</script> 的值大于b的baseline的值（b可以取$R(\tau^{n})$的期望值），我们就增加其概率，若<script type="math/tex">R\left(\tau^{n}\right)</script> 的值小于b的值，所得的<script type="math/tex">R\left(\tau^{n}\right)-b</script>就是负值，我们就减少其概率。</p>
 <h2 id="1Policy-Gradient"><a href="#1Policy-Gradient" class="headerlink" title="1Policy Gradient"></a>1Policy Gradient</h2><h3 id="1-前提知识："><a href="#1-前提知识：" class="headerlink" title="1.前提知识："></a>1.前提知识：</h3><p>对于强化学习系统中的三大组成部分：Actor，environment，reward function来说，后两者是定量不可改变的，唯一可以改变的是Actor的策略。</p>
 <p>在<script type="math/tex">\text { Trajectory } \tau=\left\{s_{1}, a_{1}, s_{2}, a_{2}, \cdots, s_{T}, a_{T}\right\}</script>情况下：</p>
 <script type="math/tex; mode=display">
@@ -216,7 +218,51 @@ R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
 <p><img src="/2019/09/14/deep-reinforcement-learning/雷达图.png" alt="雷达图"></p>
 <p>就是我们给一个新生儿一个θ里面有他的力量值，耐力值，表达能力值，逻辑推理能力……然后我们用这个初始值让他遍历各种人生，可以做工程师，教师，医生等职业，算出平均的Total Reward，再将Total Reward对θ求梯度，再更新θ，一直循环，最后得到一个可以使得Total Reward值最大的θ值（先天属性），这就是最牛皮的属性或者叫最牛皮的人（虽然有点种族歧视的味道，但是我们可以在后天的训练中逐渐增加某项θ值，勤能补拙就OK）</p>
 <p>——————————————-小分割线—————————————</p>
-<h3 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h3>
+<h3 id="5-极大似然函数与得到最大奖励之间的关系："><a href="#5-极大似然函数与得到最大奖励之间的关系：" class="headerlink" title="5.极大似然函数与得到最大奖励之间的关系："></a>5.极大似然函数与得到最大奖励之间的关系：</h3><p><img src="/2019/09/14/deep-reinforcement-learning/区别.png" alt="区别"></p>
+<p>只不过是乘以了一个权重值$R\left(\tau^{n}\right)$ 即这种trajectory下的total reward</p>
+<h3 id="6-有可能我们在一场游戏中所有的小的reward值都为正："><a href="#6-有可能我们在一场游戏中所有的小的reward值都为正：" class="headerlink" title="6.有可能我们在一场游戏中所有的小的reward值都为正："></a>6.有可能我们在一场游戏中所有的小的reward值都为正：</h3><p>若都为正，那我们就需要将这些概率都最大化，这是不符合人们的直观理解的，所以我们需要加一个baseline ,思想与导论中的举例相同。</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><h3 id="7-目前的弊端以及解决方法-Assign-suitable-credit"><a href="#7-目前的弊端以及解决方法-Assign-suitable-credit" class="headerlink" title="7.目前的弊端以及解决方法-Assign suitable credit"></a>7.目前的弊端以及解决方法-Assign suitable credit</h3><p>上面这个式子有一个弊端就是不论$s_{t}^{n}$ 和$a_{t}^{n}$ 如何，他都会在前面乘以权重值$ R \left( \tau^{n}\right)-b $  ，这种不管黑猫白猫抓到兔子就是好猫的思想是不合理的。所以我们需要给每个动作都置以合适的contribution贡献度或者叫credit信任度。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/credit.png" alt="credit"></p>
+<p>如图的思想a1执行后，a3也有一定可能是因为执行a1后才出现的，所以获得total reward为3，故a1的权重值为3。而a2和a3是在a1发生后执行的动作，a2和a3是向后产生影响的，并不会影响前一时刻的动作，所以权重为该action执行后的部分total reward。简而言之：时间不可逆，过去得到的奖励并不应该算作未来发生的动作所得到的单步奖励。（这只是李老师讲的观点，）</p>
+<p>所以改为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式变为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在这里我们将$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b$ 称为Advantage Function 也可以写成$A^{\theta}\left(s_{t}, a_{t}\right)$ </p>
+<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
+<p>off-policy：我们要得到的agent和跟环境互动的agent如果不是同一个agent，叫off-policy（这个agent通过看别人玩儿来学习，叫off-policy）</p>
+<h3 id="2-前一节课存在的问题"><a href="#2-前一节课存在的问题" class="headerlink" title="2.前一节课存在的问题"></a>2.前一节课存在的问题</h3><p>之前的agent是自带天生的θ与环境做互动，得到大量的trajectory（特别浪费时间），再将$\overline{R}_{\theta}$ 对θ求梯度，再更新θ。但是更新θ后之前罗列出的那些数据就不能用了，这样就又需要花费大量时间罗列再依次循环—这是很明显的On-policy缺点是浪费时间。</p>
+<p>所以，可以将on-policy变成off-policy: 使用另外一个$π_θ$与环境做互动并收集数据去训练θ ，意味着我们可以将$π_θ$收集到的数据用非常多次，在同一笔数据的前提下做gradient ascent时可以更新参数很多次。（直观上理解，就好比一个人读书，书上面记录了古人各种各样的人生事迹，Agent可以通过读书了解什么样的决策会带来什么样的奖励而积累经验就好，而不是自己亲自去尝试体验。）</p>
+<h4 id="Importance-sampling："><a href="#Importance-sampling：" class="headerlink" title="Importance sampling："></a>Importance sampling：</h4><script type="math/tex; mode=display">
+E_{x \sim p}[f(x)] \approx \frac{1}{N} \sum_{i=1}^{N} f\left(x^{i}\right)</script><p>若不能对p[f(x)]做积分的话，可以从p这个分布去罗列大量的数据，之前紫的期望值就相当于对其求平均值。</p>
+<p>假设我们现在不能从p[f(x)]这个分布sample data的话，我们只能从另外的分布q(x)去sample data</p>
+<p>故上式可以转化为：</p>
+<script type="math/tex; mode=display">
+=\int f(x) p(x) d x=\int f(x) \frac{p(x)}{q(x)} q(x) d x=E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]</script><h4 id="Importance-sampling存在的问题"><a href="#Importance-sampling存在的问题" class="headerlink" title="Importance sampling存在的问题"></a>Importance sampling存在的问题</h4><p>实际上p(x)与q(x)还是不要差太多否则会出问题—&gt;方差不一致。</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{E_{x \sim p}[f(x)]=E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]} \\ {\operatorname{Var}_{x \sim p}[f(x)] ≠ \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]}\end{array}</script><script type="math/tex; mode=display">
+\begin{aligned} \operatorname{Var}_{x \sim p}[f(x)]=E_{x \sim p} &\left[f(x)^{2}\right]-\left(E_{x \sim p}[f(x)]\right)^{2} \\ \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] &=E_{x \sim q}\left[\left(f(x) \frac{p(x)}{q(x)}\right)^{2}\right]-\left(E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]\right)^{2} \\ &=E_{x \sim p}\left[f(x)^{2} \frac{p(x)}{q(x)}\right]-\left(E_{x \sim p}[f(x)]\right)^{2} \end{aligned}</script><p>上面公式块的2部分的差别就在于${Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] $的第一项乘以$\frac{p(x)}{q(x)}$ 所以p(x)和q(x)最好还是近似一点比较好。</p>
+<p>因此实际上</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta}=E_{\tau \sim p_{\theta^{\prime}}(\tau)}\left[\frac{p_{\theta}(\tau)}{p_{\theta^{\prime}}(\tau)} R(\tau) \nabla \log p_{\theta}(\tau)\right]</script><p>而我们需要的是对θ求梯度，所以上式乘以$\frac{p(x)}{q(x)}$是起到了一个修正的作用。这样就完成了on-policy到off-policy</p>
+<p>接着policy-gradient课程的推导，应用Importance sampling后的公式变为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}}\left[A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]} \\ {=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]}\end{array}</script><p>注意上式的$A^{\theta}\left(s_{t}, a_{t}\right)$中的θ是Actor-θ跟环境互动后所计算出来的A，但在这里$\theta$变为${\theta}^{\prime}$ 所以等于</p>
+<script type="math/tex; mode=display">
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta^\prime}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red">注意老师在这里暂时先假设 $A^{\theta^\prime}\left(s_{t}, a_{t}\right)$ 与$A^{\theta }\left(s_{t}, a_{t}\right)$ 相等</font>
+
+<p>又由条件概率公式$P(A | B)=\frac{P(A B)}{P(B)}$ 可以化为：</p>
+<script type="math/tex; mode=display">
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red"> 在这里又假设$\theta$ 与 $\theta^\prime$ 前提下看到 $s_t$的概率是相等的，这样就可以将这项分式删掉。有个更直观的理解是因为${p_{\theta}\left(s_{t}\right)}$是无法测量的，所以直接就忽视了--在这里不确定的是因为无法测量而忽视是不是有些鲁莽且不科学？而且为啥是无法测量的？   </font>  
+
+<p>注意得到了一个新的目标函数：</p>
+<script type="math/tex; mode=display">
+J^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]</script><p>且这个新的目标函数与三行上的那个式子是可以互相推导的，对$J^{\theta^{\prime}}(\theta)$求梯度就是三行上的公式。</p>
+<h3 id="3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO"><a href="#3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO" class="headerlink" title="3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:"></a>3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:</h3><h4 id="TRPO-Trust-Region-Policy-Optimization"><a href="#TRPO-Trust-Region-Policy-Optimization" class="headerlink" title="TRPO(Trust Region Policy Optimization)"></a>TRPO(Trust Region Policy Optimization)</h4><script type="math/tex; mode=display">
+J_{T R P O}^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]  规定K L\left(\theta, \theta^{\prime}\right)<δ</script><h4 id="PPO（proximal-policy-optimization）"><a href="#PPO（proximal-policy-optimization）" class="headerlink" title="PPO（proximal policy optimization）"></a>PPO（proximal policy optimization）</h4><p>实际上就是加上了个约束项变为$J_{P P O}^{\theta^{\prime}}(\theta)=J^{\theta^{\prime}}(\theta)-\beta K L\left(\theta, \theta^{\prime}\right)$ 这个$K L\left(\theta, \theta^{\prime}\right)$ 就是$\theta$ 与 $\theta^\prime$ 两个model output的action的KL divergence。（PPO在实际操作上比TRPO容易的多）</p>
+<p>我们在这里的$K L\left(\theta, \theta^{\prime}\right)$ 并不是参数上的距离，而是$\theta$ 与 $\theta^\prime$ 的behavior或者叫action的距离。</p>
+
         </div>
       </div>
     </div>
