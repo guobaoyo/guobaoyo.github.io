@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">19:05:11</span>
+            <span class="time">12:07:50</span>
           </span>
           
           <!--  Categories  -->
@@ -250,18 +250,166 @@ E_{x \sim p}[f(x)] \approx \frac{1}{N} \sum_{i=1}^{N} f\left(x^{i}\right)</scrip
 <script type="math/tex; mode=display">
 \begin{array}{l}{=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}}\left[A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]} \\ {=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]}\end{array}</script><p>注意上式的$A^{\theta}\left(s_{t}, a_{t}\right)$中的θ是Actor-θ跟环境互动后所计算出来的A，但在这里$\theta$变为${\theta}^{\prime}$ 所以等于</p>
 <script type="math/tex; mode=display">
-=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta^\prime}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red">注意老师在这里暂时先假设 $A^{\theta^\prime}\left(s_{t}, a_{t}\right)$ 与$A^{\theta }\left(s_{t}, a_{t}\right)$ 相等</font>
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta^\prime}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red">**注意老师在这里暂时先假设 $A^{\theta^\prime}\left(s_{t}, a_{t}\right)$ 与$A^{\theta }\left(s_{t}, a_{t}\right)$ 相等**</font>
 
 <p>又由条件概率公式$P(A | B)=\frac{P(A B)}{P(B)}$ 可以化为：</p>
 <script type="math/tex; mode=display">
-=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red"> 在这里又假设$\theta$ 与 $\theta^\prime$ 前提下看到 $s_t$的概率是相等的，这样就可以将这项分式删掉。有个更直观的理解是因为${p_{\theta}\left(s_{t}\right)}$是无法测量的，所以直接就忽视了--在这里不确定的是因为无法测量而忽视是不是有些鲁莽且不科学？而且为啥是无法测量的？   </font>  
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red"> **在这里又假设$\theta$ 与 $\theta^\prime$ 前提下看到 $s_t$的概率是相等的，这样就可以将这项分式删掉。有个更直观的理解是因为${p_{\theta}\left(s_{t}\right)}$是无法测量的，所以直接就忽视了--在这里不确定的是因为无法测量而忽视是不是有些鲁莽且不科学？而且为啥是无法测量的？  ** </font>  
 
 <p>注意得到了一个新的目标函数：</p>
 <script type="math/tex; mode=display">
 J^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]</script><p>且这个新的目标函数与三行上的那个式子是可以互相推导的，对$J^{\theta^{\prime}}(\theta)$求梯度就是三行上的公式。</p>
 <h3 id="3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO"><a href="#3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO" class="headerlink" title="3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:"></a>3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:</h3><h4 id="TRPO-Trust-Region-Policy-Optimization"><a href="#TRPO-Trust-Region-Policy-Optimization" class="headerlink" title="TRPO(Trust Region Policy Optimization)"></a>TRPO(Trust Region Policy Optimization)</h4><script type="math/tex; mode=display">
-J_{T R P O}^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]  规定K L\left(\theta, \theta^{\prime}\right)<δ</script><h4 id="PPO（proximal-policy-optimization）"><a href="#PPO（proximal-policy-optimization）" class="headerlink" title="PPO（proximal policy optimization）"></a>PPO（proximal policy optimization）</h4><p>实际上就是加上了个约束项变为$J_{P P O}^{\theta^{\prime}}(\theta)=J^{\theta^{\prime}}(\theta)-\beta K L\left(\theta, \theta^{\prime}\right)$ 这个$K L\left(\theta, \theta^{\prime}\right)$ 就是$\theta$ 与 $\theta^\prime$ 两个model output的action的KL divergence。（PPO在实际操作上比TRPO容易的多）</p>
+J_{T R P O}^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]  规定K L\left(\theta, \theta^{\prime}\right)<δ</script><h4 id="PPO（proximal-policy-optimization）"><a href="#PPO（proximal-policy-optimization）" class="headerlink" title="PPO（proximal policy optimization）"></a>PPO（proximal policy optimization）</h4><h5 id="PPO1-Algorithm"><a href="#PPO1-Algorithm" class="headerlink" title="PPO1 Algorithm"></a>PPO1 Algorithm</h5><p>实际上就是加上了个约束项变为$J_{P P O}^{\theta^{\prime}}(\theta)=J^{\theta^{\prime}}(\theta)-\beta K L\left(\theta, \theta^{\prime}\right)$ 这个$K L\left(\theta, \theta^{\prime}\right)$ 就是$\theta$ 与 $\theta^\prime$ 两个智能体输出动作的KL divergence，在这里β的作用实际上就是惩罚的作用也叫<font color="red">惩罚值</font> 。（PPO在实际操作上比TRPO容易的多）</p>
 <p>我们在这里的$K L\left(\theta, \theta^{\prime}\right)$ 并不是参数上的距离，而是$\theta$ 与 $\theta^\prime$ 的behavior或者叫action的距离。</p>
+<p>具体算法：</p>
+<ul>
+<li><p>初始化参数$\theta_0$ </p>
+</li>
+<li><p>在每一轮的迭代过程中</p>
+<ul>
+<li><p>使用$\theta_k$与环境进行互动，并且收集所有的数据资料，并计算每一个动作的信任值(advantage)$A^{\theta^{k}}\left(s_{t}, a_{t}\right)$ </p>
+</li>
+<li><p>找到$\theta $ 使得$J_{PPO}(\theta)$ 最优，其中</p>
+<script type="math/tex; mode=display">
+J_{P P O}^{\theta^{k}}(\theta)=J^{\theta^{k}}(\theta)-\beta K L\left(\theta, \theta^{k}\right) 其中 \begin{array}{l}{J^{\theta^{k}}(\theta) \approx} {\sum_{\left(s_{t}, a_{t}\right)} \frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)} A^{\theta^{k}}\left(s_{t}, a_{t}\right)}\end{array}</script><p>在这里我们用的是$\theta_k$与环境做互动，所以$\theta_k$得到的这些数据，也就相当于我们成长过程中从书上读到知识，所以就可以让$ \theta $ 更新很多次。</p>
+</li>
+<li><p>我们在优化之前先设置$K L\left(\theta, \theta^{\prime}\right)$ 的最大最小值：</p>
+<ul>
+<li>if  $K L\left(\theta, \theta^{\prime}\right)$ &gt;$KL_{max}$ 说明惩罚值没有起到作用，需要增大β</li>
+<li>if  $K L\left(\theta, \theta^{\prime}\right)$ &lt;$KL_{max}$ 说明惩罚值作用太强，需要减小β</li>
+</ul>
+</li>
+<li><p>Adaptive KL Penalty的直观理解：$\theta^k$是从书中读到的名人，他们在于环境做互动的时候，其实就相当于我们想要从名人事迹中学习到经验教训，且这个$KL_{max}$和$KL_{min}$ 是我们预测我们自己与名人之间的差距：</p>
+<ul>
+<li>如果实际上我们与名人的差距特别大，大到超出了我们之前的预测值$KL_{max}$ 说明，书中的人物所得到的的经验教训为我们所用的不多，所以在优化$J_{P P O}^{\theta^{k}}(\theta)$的时候，所得到的值会虚高，因此应该将β增大。</li>
+<li>如果实际上我们与名人的差距特别小，小到超出了我们之前的预测值$KL_{min}$ 说明，书中的人物跟我非常像，所以在优化$J_{P P O}^{\theta^{k}}(\theta)$的时候，所得到的值应该更高，因此应该将β减小。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="PPO2-Algorithm"><a href="#PPO2-Algorithm" class="headerlink" title="PPO2 Algorithm"></a>PPO2 Algorithm</h5><script type="math/tex; mode=display">
+\begin{aligned} J_{P P O 2}^{\theta^k}(\theta) \approx \sum_{\left(s_{t}, a_{t}\right)} \min \left(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)} A^{\theta^{k}}\left(s_{t}, a_{t}\right)\right.,&\left.\operatorname{clip}\left(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}, 1-\varepsilon, 1+\varepsilon\right) A^{\theta^{k}}\left(s_{t}, a_{t}\right)\right) \end{aligned}</script><p>注意：</p>
+<ul>
+<li>clip()里面有3项，如果$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1-\varepsilon$ 就取值为$1-\varepsilon$ </li>
+<li>如果$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 就取值为$1+\varepsilon$  </li>
+</ul>
+<h6 id="如图"><a href="#如图" class="headerlink" title="如图"></a>如图</h6><p><img src="/2019/09/14/deep-reinforcement-learning/PPO.png" alt="PPO"></p>
+<ul>
+<li>当A&gt;0,即这个环境下的这个动作是合适的，那么我们当然希望增加发生这个动作的概率，即希望${p_{\theta}\left(a_{t} | s_{t}\right)} $ 增大：<ul>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过大，大到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 我们取$1+\varepsilon$  </li>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过小，小到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1- \varepsilon$ ，又由前面的”min”所以就取$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$</li>
+</ul>
+</li>
+<li>当A&lt;0,即这个环境下的这个动作是不合适，错误的，那么我们当然希望减小发生这个动作的概率，即希望${p_{\theta}\left(a_{t} | s_{t}\right)} $ 减小：<ul>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过大，大到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 我们取  $\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ （因为这时$A^{\theta^{k}}\left(s_{t}, a_{t}\right) $ 为负，取min最小值当然去绝对值最大的咯）</li>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过小，小到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1- \varepsilon$ ，就取值为$1- \varepsilon$ </li>
+</ul>
+</li>
+</ul>
+<p>——————————————-小分割线—————————————↓</p>
+<p>上面的那个A&gt;0和A&lt;0的解释，可以有更直观的理解：</p>
+<p>就是我们在向书中的伟人学习的时候：${p_{\theta}\left(a_{t} | s_{t}\right)}$ 是我自己，${p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 是伟人，且假设$\varepsilon $=0.2：</p>
+<ul>
+<li>当A&gt;0，即伟人在某种客观环境下做了件贼正确的选择，假设他做这件事儿的概率为0.6,<ul>
+<li>自己做这件事儿的概率是0.9，0.9/0.6&gt;(1+0.2)(就是自己做这个选择的概率比伟人还要大，自己比伟人还要厉害的时候)，这个公式的内层含义告诉我们”老弟，应该谦虚点儿，可往后稍稍吧，比伟人还厉害咋不上天呢~~“所以这个值就保持谦虚到1.2*0.6就为止了。</li>
+<li>而自己做这件事儿的概率是0.3甚至更小的时候，那这个值就不需要设置下限，说明我们的前瞻性不如伟人（这是客观存在的）</li>
+</ul>
+</li>
+<li>当A&lt;0，即伟人在某种客观环境下做了件比较错误的选择，假设他做这件事儿的概率为0.6,<ul>
+<li>自己做这件错的概率是0.9，0.9/0.6&gt;(1+0.2)(就是自己做这个错误选择的概率比伟人还要大，自己确实不如伟人)，这个公式的内层含义告诉我们，所以这个值就应该大一些。</li>
+<li>而自己做这件事儿的概率是0.3甚至更小的时候(0.3/0.6&lt;(1-0.2))，那这个公式的内在含义告诉我们“正常人肯定比伟人要差一些的，伟人的做错事的概率都那么高，常人就不要飘”即我们的前瞻性不如伟人（这是客观存在的），所以这个值谦虚到0.6*（1-0.2）为止了。</li>
+</ul>
+</li>
+</ul>
+<p>——————————————-小分割线—————————————↑</p>
+<h2 id="3-Q-learning"><a href="#3-Q-learning" class="headerlink" title="3  Q-learning"></a>3  Q-learning</h2><h3 id="1-V-π-（s）-："><a href="#1-V-π-（s）-：" class="headerlink" title="1.$V^π （s）$："></a>1.$V^π （s）$：</h3><p>一个critic 一个Actor-π，这个critic根据Actor-π与环境做的互动去评判Actor的好坏，而Actor 的输入是观察到的环境状态s，输出是$V^π （s）$代表着在这个状态下可以得到的总奖励值。</p>
+<p>而这个总奖励值怎么预估呢？</p>
+<h4 id="1-monte-carlo-MC"><a href="#1-monte-carlo-MC" class="headerlink" title="1.monte-carlo(MC)"></a>1.monte-carlo(MC)</h4><p>让Actor-π与环境做互动，给critic去看，然后critic统计Actor看到各种state后所做决策后返回的<strong>总奖励值</strong>。（因为state是图片的格式，所以不能将所有的state都遍历完，所以$V^π （s）$是一个network结构。）</p>
+<p>-&gt;转化为神经网络的回归问题。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/monte-carlo.png" alt></p>
+<h4 id="2-Temporal-difference-TD"><a href="#2-Temporal-difference-TD" class="headerlink" title="2.Temporal-difference(TD)"></a>2.Temporal-difference(TD)</h4><p>因为第一种monte-carlo的方法需要将游戏玩到结束，所以比较耗时，在这里TD方法不需要将游戏玩到底,不需要得到总奖励值，只需要用神经网络判断出$s_t $与$s_{t+1}$的value值即可，核心公式是：$V^{\pi}\left(s_{t}\right)=V^{\pi}\left(s_{t+1}\right)+r_{t}$  </p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/TD.png" alt></p>
+<h4 id="3-比较两种方法的差别"><a href="#3-比较两种方法的差别" class="headerlink" title="3.比较两种方法的差别"></a>3.比较两种方法的差别</h4><p>因为游戏具有很强的随机性，所以MC这种估计总奖励值的方法所得结果的方差比较大（随机性太大，$G_a$实际上是很多state的reward之和。）</p>
+<p>而用TD方法所得的r会比较稳定，但是缺点是$V^{\pi}\left(s_{t}\right)$和$V^{\pi}\left(s_{t+1}\right)$不一定准，会导致整个式子是无效的。且TD更常见呦~</p>
+<h3 id="2-Q-π-（s-a）"><a href="#2-Q-π-（s-a）" class="headerlink" title="2.$Q^π （s,a）$"></a>2.$Q^π （s,a）$</h3><p>在某一个state强制采取某一个Action-a（实际上可供选择的策略很多，这里只是强制采取a这种），接下来计算使用Actor-π，得到的<strong>总</strong>奖励值。</p>
+<h4 id="1-Q-Learning步骤："><a href="#1-Q-Learning步骤：" class="headerlink" title="1.Q-Learning步骤："></a>1.Q-Learning步骤：</h4><p><img src="/2019/09/14/deep-reinforcement-learning/Q-learning.png" alt> </p>
+<ol>
+<li><p>Actor-π与环境进行互动</p>
+</li>
+<li><p>使用TD或者MC的方法学到$Q^π （s,a）$ </p>
+</li>
+<li><p>找到比π<strong>好</strong>的Actor-π‘然后代替π （这里好的定义是对于所有的环境状态s，$V^{\pi ’}\left(s_{t}\right)$ &gt;$V^{\pi}\left(s_{t}\right)$ ）</p>
+</li>
+</ol>
+<p>   $\pi^{\prime}(s)=\arg \max \limits_{a} Q^{\pi}(s, a)$ </p>
+<p>   公式解读：因为刚才是强制action为a然后计算奖励值，但是刚才的state状态下可以选择的action不止a这一种，所以找出所有的action，分别计算$Q^π （s,a）$ 然后找出可以使其最大的a,那这个a就是π‘要采取的动作。</p>
+<p>   证明：对于所有的s，$V^{\pi ’}\left(s_{t}\right)$ &gt;$V^{\pi}\left(s_{t}\right)$ </p>
+<p>   因为</p>
+<script type="math/tex; mode=display">\begin{aligned} V^{\pi}(s)=Q^{\pi}(s, \pi(s))  & \leq \max _{a} Q^{\pi}(s, a)=Q^{\pi}\left(s, \pi^{\prime}(s)\right) \end{aligned}</script><p>   $\begin{aligned}  V^{\pi}(s) \leq Q^{\pi}\left(s, \pi^{\prime}(s)\right) &amp; \\=&amp; E\left[r_{t+1}+V^{\pi}\left(s_{t+1}\right) | s_{t}=s, a_{t}=\pi^{\prime}\left(s_{t}\right)\right] \ \leq &amp; E\left[r_{t+1}+Q^{\pi}\left(s_{t+1}, \pi^{\prime}\left(s_{t+1}\right)\right) | s_{t}=s, a_{t}=\pi^{\prime}\left(s_{t}\right)\right] \ \leq &amp; E\left[r_{t+1}+r_{t+2}+V^{\pi}\left(s_{t+1}\right) | \ldots\right] \\=&amp; E\left[r_{t+1}+r_{t+2}+Q^{\pi}\left(s_{t+2}, \pi^{\prime}\left(s_{t+2}\right)\right) | \ldots\right] \ldots \leq V^{\pi^{\prime}}(s) \end{aligned}$ </p>
+<p>注：</p>
+<ul>
+<li><p>$V^{\pi}(s)$ 如果没有指定t指的就是一直玩下去的total reward，如果不这么理解的话，解释不过去。</p>
+</li>
+<li><p>上面的推导公式我觉着这么理解比较好：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/改写.png" alt></p>
+</li>
+</ul>
+<p>​    </p>
+<h3 id="3-Q-Learning-TIPS"><a href="#3-Q-Learning-TIPS" class="headerlink" title="3.Q-Learning -TIPS"></a>3.Q-Learning -TIPS</h3><h4 id="TIP1-Target-Network"><a href="#TIP1-Target-Network" class="headerlink" title="TIP1-Target Network"></a>TIP1-Target Network</h4><p>在训练模型的时候，因为输出值和目标值都是在变化的，所以训练过程很不稳定，故将$s_{t+1} $的$Q^π$ 固定住，只更新$s_{t} $的$Q^π$  ，使$r_t$ 达到最大而用梯度上升法更新参数，更新小数量次数后，再用更新过的参数替换掉之前固定的$Q^π$ </p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/targetnetwork.pnG" alt> </p>
+<h4 id="TIP2-Exploration"><a href="#TIP2-Exploration" class="headerlink" title="TIP2-Exploration"></a>TIP2-Exploration</h4><p>因为之前是强制让action为能获得最大奖励的动作，这个是存在一定问题的：就是一旦有个策略之前没有被发掘出来（没有被example到的话），那么就永远定格了。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>这个问题就像去餐厅点餐一样，如果第一次吃麻辣香锅还行，那么如果按照之前的算法来搞的话，就是每次都去点麻辣香锅，这是不科学的。</p>
+<p>——————————————-小分割线—————————————↑</p>
+<p>解决办法1：</p>
+<p>epsilon greedy ($\epsilon$ 随着时间减少)</p>
+<p>$a=\left\{\begin{array}{cc}{\arg \max \limits_{a} Q(s, a),} &amp; {\text { with probability } 1-\varepsilon} \ {\text { random, }} &amp; {\text { otherwise }}\end{array}\right.$</p>
+<p>解决办法2：</p>
+<p>根据Q值设定几率：</p>
+<p>$P(a | s)=\frac{\exp (Q(s, a))}{\sum_{a} \exp (Q(s, a))}$</p>
+<h4 id="TIP3-Replay-Buffer-减少与环境做互动的次数-从而降低训练时间"><a href="#TIP3-Replay-Buffer-减少与环境做互动的次数-从而降低训练时间" class="headerlink" title="TIP3-Replay Buffer-减少与环境做互动的次数-从而降低训练时间-"></a>TIP3-Replay Buffer-减少与环境做互动的次数-从而降低训练时间-</h4><h4 id="转化为off-policy"><a href="#转化为off-policy" class="headerlink" title="转化为off-policy"></a>转化为off-policy</h4><p>1.把之前不同情况下π与环境做互动所收集到的data都放到一个buffer里面，使数据多样化，有利于训练。</p>
+<p>2.将π’得到的新data替换掉之前的旧data，更新数据。</p>
+<p>3.buffer里面不是trajectory，而是一些experience，所以即使里面是别的经验也都OK  的。 </p>
+<h4 id="TIP4-Double-DQN"><a href="#TIP4-Double-DQN" class="headerlink" title="TIP4-Double DQN"></a>TIP4-Double DQN</h4><p>之前单独的DQN存在的问题：</p>
+<p>Q-function对实际情况的判断会有虚高：</p>
+<p>$Q\left(s_{t}, a_{t}\right)  &lt;-&gt; r_{t}+\max \limits_{a} Q\left(s_{t+1}, a\right)$</p>
+<p>因为target值中有一项是$\max\limits_{a} Q\left(s_{t+1}, a\right)$ 很容易会被设的特别高，但是真正的$Q\left(s_{t+1}, a\right)$ 可能没有那么高，所以导致$Q\left(s_{t}, a_{t}\right) $虚高。</p>
+<p>而Double-DQN的做法是用两个Q-function，即选Action的Q-function和算Q-value的Q-function不是同一个。</p>
+<p>$Q\left(s_{t}, a_{t}\right) &lt;-&gt; r_{t}+Q^{\prime}\left(s_{t+1}, \arg \max \limits_{a} Q\left(s_{t+1}, a\right)\right)$  </p>
+<p>其中Q’是没更新之前，Q是正在更新的Q-function。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>通俗理解就是：我现在正在上研究生，$Q\left(s_{t+1}, a\right)$ 为我选择工作的公司所带给我的价值，以目前的视野所见，最厉害的可能是去google即Q(选公司，去谷歌)=100，其实实际上Q(选公司，去谷歌)的真实值没有那么高，也就90，但以我目前的价值观会认为他贼高，这样就直接把双箭头右侧的的值判断过高，间接的使得当前的$Q\left(s_{t}, a_{t}\right)$也判断虚高。</p>
+<p>而Double-DQN的深层一点可理解的含义是2个不同的价值观，其中Q’是参数未更新的价值判断函数，Q是正在准备更新的价值判断函数，也就是说Q’是我大学本科时候的价值观，Q是我现在的价值观，即使$\arg \max \limits_{a} Q\left(s_{t+1}, a\right)$ 所判断的动作是虚高的去谷歌，但是在本科时候的价值观体系里去华为和思科这种网络巨头的价值才是最大的，所以$Q’（本科找工作，去谷歌）$的值会相应的减小，这样就达到了防止Q-function判断价值虚高情况。</p>
+<p>——————————————-小分割线—————————————↑</p>
+<h4 id="TIP5-Dueling-DQN"><a href="#TIP5-Dueling-DQN" class="headerlink" title="TIP5-Dueling DQN"></a>TIP5-Dueling DQN</h4><p><img src="/2019/09/14/deep-reinforcement-learning/dueling.png" alt> </p>
+<p>实际上将网络模型进行更改，其中V（s）是scalar标量1。A(s,a)是向量(2,-2,0)。而Q(s,a)=A(s,a)+V(s)会将V（s）的标量加到向量A（s,a）的每一项中。最后得到的Q(s，a)=(3,-1,1)</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/dueling2.png" alt> </p>
+<p>如图是3种Action，4种state，视频中讲如果我只想将3,-1都增大1的话，我需要将V(s)从0变为1。然后再将1加到3,-1,-2这样会无形中将-2变为-1。因此，即使没有将第三种Action列举出来也没有关系，也会将其改变。</p>
+<p>注意：为了避免Q（s,a）=A(s,a)需要对A（s,a）加一些限制条件，例如限制A(s,a)的每一列之和为0(深层含义是，在同一种情景下，我所做的所有动作不管带来的奖励值还是惩罚值都归于0)。如下图的normalization</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/dueling-norm.png" alt> </p>
+<h4 id="TIP6-Prioritized-Reply"><a href="#TIP6-Prioritized-Reply" class="headerlink" title="TIP6-Prioritized Reply"></a>TIP6-Prioritized Reply</h4><p>较大TD-error的数据经验应该有更大的几率被选到</p>
+<p>①提高几率</p>
+<p>②更改training 的process</p>
+<h4 id="TIP7-Multi-step-balance-between-MC-and-TD"><a href="#TIP7-Multi-step-balance-between-MC-and-TD" class="headerlink" title="TIP7-Multi-step-balance between MC and TD"></a>TIP7-Multi-step-balance between MC and TD</h4><p>在experience buffer里面存储N个step</p>
+<p>$\left(s_{t}, a_{t}, r_{t}, \cdots, s_{t+N}, a_{t+N}, r_{t+N}, s_{t+N+1}\right)$</p>
+<p>因此式子改为：$Q\left(s_{t}, a_{t}\right)&lt;-&gt;\sum_{t^{\prime}=t}^{t+N} r_{t^{\prime}}+\hat{Q}\left(s_{t+N+1}, a_{t+N+1}\right)$ </p>
+<h4 id="TIP8-Noisy-Net"><a href="#TIP8-Noisy-Net" class="headerlink" title="TIP8-Noisy Net"></a>TIP8-Noisy Net</h4><p>原来是用epsilon-greedy的方法</p>
+<p>但是这个方法存在个问题：给同样的state，智能体所采取的动作不一定相同，具有很强的随机性，这是不合适的。举个例子就是：我去食堂打饭，如果每次遇到的场景相同，我应该选择相同的菜(麻辣香锅)，而不是之前说的epsilon-greedy方法还会有一定的概率会选别的菜，在这里的一定概率就体现为随机乱试。而如果我的Q进行微调(加入今天中午就想吃点儿酸甜的，那我不会选麻辣香锅，而是选择糖醋里脊，这是因为我的某一个控制酸甜的参数增高了，这是非常系统的尝试。)</p>
+<p>因此现在将Q的参数加上高斯噪音，变为$\tilde{Q}(s, a)$  直到本场游戏玩到结束，再对参数更改。</p>
+<h4 id="TIP9-Distributional-Q-function"><a href="#TIP9-Distributional-Q-function" class="headerlink" title="TIP9-Distributional Q-function"></a>TIP9-Distributional Q-function</h4><p>算出来的$Q^{\pi}(s, a)$ 是一个概率期望值(条形统计图)</p>
+<p>Q-function的期望值在-10,10之间拆成很多个组成部分，其高度代表概率值。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/distributional.png" alt> </p>
+<h3 id="4-Rainbow"><a href="#4-Rainbow" class="headerlink" title="4 Rainbow"></a>4 Rainbow</h3><p><img src="/2019/09/14/deep-reinforcement-learning/rainbow.png" alt></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/rainbow2.png" alt></p>
+<p>第二个图片，将double-DQN拿掉后发现效果不明显，论文里面解释说：如果用了distributional DQN输出值是一个范围，不可能是无限宽的，一旦有特别大的奖励值的action，就会把这个动作忽视掉，因此会一定程度上避免overestimate过誉。</p>
+<h3 id="5-Q-Learning-for-Continuous-Actions"><a href="#5-Q-Learning-for-Continuous-Actions" class="headerlink" title="5 Q-Learning for Continuous Actions"></a>5 Q-Learning for Continuous Actions</h3><p>continuous的情况不可能将$a=\arg \max  \limits_{a} Q(s,a)$所有的action都穷举出来:</p>
+<p>解决方法1：列举出一系列的动作，寻找Q-value最大值</p>
+<p>解决方法2：使用梯度上升的办法求得最大值</p>
+<p>解决方法3：设置一个网络模型输出一个vector 一个matrix 一个scalar如图所示：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/continuous.png" alt></p>
+<p>如图，因为$\sum (s)$ 是正定矩阵，所以a与μ(s)越接近，最后所得的Q(s,a)越大。</p>
 
         </div>
       </div>
