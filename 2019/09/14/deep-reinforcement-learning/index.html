@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">12:07:50</span>
+            <span class="time">16:00:38</span>
           </span>
           
           <!--  Categories  -->
@@ -227,10 +227,12 @@ R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
 <p>如图的思想a1执行后，a3也有一定可能是因为执行a1后才出现的，所以获得total reward为3，故a1的权重值为3。而a2和a3是在a1发生后执行的动作，a2和a3是向后产生影响的，并不会影响前一时刻的动作，所以权重为该action执行后的部分total reward。简而言之：时间不可逆，过去得到的奖励并不应该算作未来发生的动作所得到的单步奖励。（这只是李老师讲的观点，）</p>
 <p>所以改为</p>
 <script type="math/tex; mode=display">
-\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式变为</p>
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式<code>[公式](#jump)</code>变为</p>
 <script type="math/tex; mode=display">
 \nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在这里我们将$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b$ 称为Advantage Function 也可以写成$A^{\theta}\left(s_{t}, a_{t}\right)$ </p>
-<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
+<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是</p>
+<p><code>&lt;span id=&quot;jump&quot;&gt;跳转到的地方&lt;/span&gt;</code></p>
+<p>同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
 <p>off-policy：我们要得到的agent和跟环境互动的agent如果不是同一个agent，叫off-policy（这个agent通过看别人玩儿来学习，叫off-policy）</p>
 <h3 id="2-前一节课存在的问题"><a href="#2-前一节课存在的问题" class="headerlink" title="2.前一节课存在的问题"></a>2.前一节课存在的问题</h3><p>之前的agent是自带天生的θ与环境做互动，得到大量的trajectory（特别浪费时间），再将$\overline{R}_{\theta}$ 对θ求梯度，再更新θ。但是更新θ后之前罗列出的那些数据就不能用了，这样就又需要花费大量时间罗列再依次循环—这是很明显的On-policy缺点是浪费时间。</p>
 <p>所以，可以将on-policy变成off-policy: 使用另外一个$π_θ$与环境做互动并收集数据去训练θ ，意味着我们可以将$π_θ$收集到的数据用非常多次，在同一笔数据的前提下做gradient ascent时可以更新参数很多次。（直观上理解，就好比一个人读书，书上面记录了古人各种各样的人生事迹，Agent可以通过读书了解什么样的决策会带来什么样的奖励而积累经验就好，而不是自己亲自去尝试体验。）</p>
@@ -410,6 +412,7 @@ J_{P P O}^{\theta^{k}}(\theta)=J^{\theta^{k}}(\theta)-\beta K L\left(\theta, \th
 <p>解决方法3：设置一个网络模型输出一个vector 一个matrix 一个scalar如图所示：</p>
 <p><img src="/2019/09/14/deep-reinforcement-learning/continuous.png" alt></p>
 <p>如图，因为$\sum (s)$ 是正定矩阵，所以a与μ(s)越接近，最后所得的Q(s,a)越大。</p>
+<h2 id="4-Actor-Critic-asynchronous-advantage-actor-critic"><a href="#4-Actor-Critic-asynchronous-advantage-actor-critic" class="headerlink" title="4 Actor-Critic  asynchronous advantage actor-critic"></a>4 Actor-Critic  asynchronous advantage actor-critic</h2><p>在啊</p>
 
         </div>
       </div>
