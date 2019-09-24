@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-14</span>
-            <span class="time">16:00:38</span>
+            <span class="time">15:29:51</span>
           </span>
           
           <!--  Categories  -->
@@ -227,12 +227,10 @@ R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
 <p>如图的思想a1执行后，a3也有一定可能是因为执行a1后才出现的，所以获得total reward为3，故a1的权重值为3。而a2和a3是在a1发生后执行的动作，a2和a3是向后产生影响的，并不会影响前一时刻的动作，所以权重为该action执行后的部分total reward。简而言之：时间不可逆，过去得到的奖励并不应该算作未来发生的动作所得到的单步奖励。（这只是李老师讲的观点，）</p>
 <p>所以改为</p>
 <script type="math/tex; mode=display">
-\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式<code>[公式](#jump)</code>变为</p>
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式变为</p>
 <script type="math/tex; mode=display">
 \nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在这里我们将$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b$ 称为Advantage Function 也可以写成$A^{\theta}\left(s_{t}, a_{t}\right)$ </p>
-<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是</p>
-<p><code>&lt;span id=&quot;jump&quot;&gt;跳转到的地方&lt;/span&gt;</code></p>
-<p>同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
+<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
 <p>off-policy：我们要得到的agent和跟环境互动的agent如果不是同一个agent，叫off-policy（这个agent通过看别人玩儿来学习，叫off-policy）</p>
 <h3 id="2-前一节课存在的问题"><a href="#2-前一节课存在的问题" class="headerlink" title="2.前一节课存在的问题"></a>2.前一节课存在的问题</h3><p>之前的agent是自带天生的θ与环境做互动，得到大量的trajectory（特别浪费时间），再将$\overline{R}_{\theta}$ 对θ求梯度，再更新θ。但是更新θ后之前罗列出的那些数据就不能用了，这样就又需要花费大量时间罗列再依次循环—这是很明显的On-policy缺点是浪费时间。</p>
 <p>所以，可以将on-policy变成off-policy: 使用另外一个$π_θ$与环境做互动并收集数据去训练θ ，意味着我们可以将$π_θ$收集到的数据用非常多次，在同一笔数据的前提下做gradient ascent时可以更新参数很多次。（直观上理解，就好比一个人读书，书上面记录了古人各种各样的人生事迹，Agent可以通过读书了解什么样的决策会带来什么样的奖励而积累经验就好，而不是自己亲自去尝试体验。）</p>
@@ -412,7 +410,101 @@ J_{P P O}^{\theta^{k}}(\theta)=J^{\theta^{k}}(\theta)-\beta K L\left(\theta, \th
 <p>解决方法3：设置一个网络模型输出一个vector 一个matrix 一个scalar如图所示：</p>
 <p><img src="/2019/09/14/deep-reinforcement-learning/continuous.png" alt></p>
 <p>如图，因为$\sum (s)$ 是正定矩阵，所以a与μ(s)越接近，最后所得的Q(s,a)越大。</p>
-<h2 id="4-Actor-Critic-asynchronous-advantage-actor-critic"><a href="#4-Actor-Critic-asynchronous-advantage-actor-critic" class="headerlink" title="4 Actor-Critic  asynchronous advantage actor-critic"></a>4 Actor-Critic  asynchronous advantage actor-critic</h2><p>在啊</p>
+<p>解决方法4：pathwise derivative policy gradient(同时也是特别的actor-critic的方法)</p>
+<p>不只是告诉Agent某一个动作是好还是不好，更进一步会告诉Agent应该怎么做：</p>
+<h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>我们需要在训练网络的时候找到这种网络，它可以输入s，输出action，而输出的action刚好可以使得$Q^π$ 达到最大，在实操的时候，先让π与环境做互动，将一系列数据信息放入buffer里面，再使用TD/MC的方法学到Q-function，然后固定住$Q^π$ 再对θ求梯度更新参数得到π‘，用π’替换掉π再与环境做互动。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/pdpg.png" alt> </p>
+<h2 id="4-Actor-Critic-Asynchronous-Advantage-Actor-critic"><a href="#4-Actor-Critic-Asynchronous-Advantage-Actor-critic" class="headerlink" title="4 Actor-Critic  Asynchronous Advantage Actor-critic"></a>4 Actor-Critic  Asynchronous Advantage Actor-critic</h2><h3 id="1-之前存在的问题："><a href="#1-之前存在的问题：" class="headerlink" title="1.之前存在的问题："></a>1.之前存在的问题：</h3><p>在1-Policy-gradient的最后的式子的表达存在个问题：就是$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}$的随机性很大，而且我们不可能将所有的情况都列举出来，所以所得值非常不稳定且会落下某些情况。</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>解决办法：用<strong>累计奖励的期望值</strong>即Q值<script type="math/tex">Q^{\pi_{\theta}}\left(s_{t}^{n}, a_{t}^{n}\right)</script>(不同于总奖励值 )代替$G^n_t =\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}$  </p>
+<p>且b可以用$V^{π_θ}(s^n_t)$ 这样式子就可以变为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} \left(Q^{\pi_{\theta}}\left(s_{t}^{n}, a_{t}^{n}\right) - V^{π_θ}(s^n_t)   \right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>虽然这样比较合理，但是还是存在缺点：</p>
+<p>1.需要训练出两个网络：一个Q，一个V。这样同时训练两个网络可能会估测不准。</p>
+<p>所以需要将Q-function进行改造：</p>
+<p>$\begin{aligned} Q^{\pi}\left(s_{t}^{n}, a_{t}^{n}\right) &amp;=E\left[r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right)\right] \ Q^{\pi}\left(s_{t}^{n}, a_{t}^{n}\right) &amp;=r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right) \end{aligned}$</p>
+<p>因此，式子变为：</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} \left(r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right)  - V^{π_θ}(s^n_t)   \right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>引入了随机的变量$r_{t}^{n}$  ，但是这个随机变量的方差要比之前的$G^n_t $ 要小很多。(毕竟估计单步的奖励肯定比估计总奖励要靠谱得多。)</p>
+<h3 id="2-Advantage-Actor-Critic-TIPs"><a href="#2-Advantage-Actor-Critic-TIPs" class="headerlink" title="2.Advantage Actor-Critic TIPs"></a>2.Advantage Actor-Critic TIPs</h3><p><img src="/2019/09/14/deep-reinforcement-learning/A2CTIP.PNG" alt> </p>
+<h4 id="1-π-s-和-V-π-（s）-的参数可以共用"><a href="#1-π-s-和-V-π-（s）-的参数可以共用" class="headerlink" title="1.π(s)和$V^π （s）$的参数可以共用"></a>1.π(s)和$V^π （s）$的参数可以共用</h4><p>因为这两个网络的输入都是state即图像，在最后的输出略有不同(π(s)输出的是采取动作的分布，$V^π （s）$)输出的是未来的累计奖励值，所以前面几层的神经网络是可以共用的。可以是这样的：</p>
+<p>输入图像数据，在CNN的作用下变为比较高维的特征，再将这些比较高维的特征分别输入到π(s)和$V^π （s）$ 。</p>
+<h4 id="2-exploration"><a href="#2-exploration" class="headerlink" title="2.exploration"></a>2.exploration</h4><p>在π(s)输出的是采取动作的分布加上一个限制条件：就是尽量增大输出动作的entropy，即增加动作的可能性，这样探索的比较好，就不会落下某些比较优秀的动作。</p>
+<h3 id="3-A3C"><a href="#3-A3C" class="headerlink" title="3.A3C"></a>3.A3C</h3><p>同时开很多的worker，就相当于开很多的影分身（需要同时调动很多个CPU）:</p>
+<p>在这里假设Global Network的参数整体为$\theta ^1$ </p>
+<p>1.从globalnetwork中将$\theta ^1$ 参数copy过来到“分身”中</p>
+<p>2.让每一个Actor与环境做互动</p>
+<p>3.计算参数梯度</p>
+<p>4.将参数(经验值)返回到global-network里面</p>
+<p>5.global-network根据梯度信息更新参数</p>
+<p>6.注意：当我在刚好将参数$\theta ‘$ 传回到global-network的时候，如果global-network的参数从原来的$\theta ^1$ 变为$\theta ^2$也没有关系，用最新的参数去替换掉旧的就ok</p>
+<h2 id="5sparse-reward"><a href="#5sparse-reward" class="headerlink" title="5sparse reward"></a>5sparse reward</h2><h3 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h3><p>在用reinforcement-learning训练Agent的时候，多数情况下，这个Agent是得不到reward。</p>
+<p>举个例子：训练机械手臂拧螺丝的时候机械手臂做了巨多的动作reward都是0，直到他捡起来螺丝刀拧上去，这个概率特别小，就会导致sparse的问题。</p>
+<h3 id="1-reward-shaping"><a href="#1-reward-shaping" class="headerlink" title="1 reward shaping"></a>1 reward shaping</h3><p>核心思想为改变暂时reward看似为负值的action的reward，从而引导模型向正确的方向变化，类似于高中的时候父母讲的，高中使劲学上大学后就可以随便玩儿一样。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/rewardshaping.png" alt> </p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>核心思想与英雄联盟里面攻破一个塔防，抗美援朝战争，海峡两岸，台湾问题都十分类似。</p>
+<p>“你有一万种方法血赚，但我绝对不亏。”</p>
+<p>——————————————-小分割线—————————————↑</p>
+<h3 id="2-curiosity"><a href="#2-curiosity" class="headerlink" title="2 curiosity"></a>2 curiosity</h3><p>加上curiosity模块，增加模型的好奇心。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/curiosty.png" alt> </p>
+<p>具体做法1：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/ICM1.PNG" alt> </p>
+<p>设置一个network1,输入是$a_t$ 和$s_t$输出为$\hat{s}_{t+1}$ 如果$s_{t+1}$ 与 $\hat{s}_{t+1}$ 相差越大，说明$s_{t+1}$不好预测，这样奖励越大。</p>
+<p>但是这样存在一个问题：$a_t$所带来的下一步环境预测值有可能特别差，也会导致diff很大，从而reward比较大，这样是不合理的。因此需要一个机制去判断使得这个$a_t$尽可能的比较好。</p>
+<p>改进做法2：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/ICM2.png" alt> </p>
+<p>如图所示将$s_t$和$s_t+1$提取特征为φ($s_t$) 和 φ($s_t+1$) 增加一个network2，其输入为φ($s_t$) 和 φ($s_t+1$) 输出为$\hat{a}_{t}$ 使得$\hat{a}_{t}$与$a_t$越接近越好。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>感性理解：为了增加我们的好奇心，遍历到更多种的action，增加好奇心机制：其中$a_t$可以是天天好好学习也可以是天天打游戏，$s_t$是研一的状态，$s_{t+1}$是进大厂的状态。如果按照”具体做法1”的算法</p>
+<p>$a_t$可以是天天打游戏等不务正业的做法，最后算出来的diff也非常大，然后得到的$r_t^i$也会很大，但这不是我们想要的结果。因此需要一个网络去判断我们的$a_t$是合适的，因此用network2，其输入是$s_t$是研一的状态，$s_{t+1}$是进大厂的状态，输出是$\hat a_t$即我们想要达到这样的目标所需要的预测动作(在这里可以将这个动作截石位好好学习)，然后让$\hat a_t$和$a_t$越接近越好，这样就保证了$a_t$的正确性。</p>
+<font color="red">这样仍然存在个问题：就是按照前面的举例，φ($s_{t+1}$)是进大厂，不管$\hatφ(s_{t+1})$是进稍微大点儿的厂还是进非常大的厂，diff是一样的，所以感觉这里面缺个东西：就是评判φ($s_{t+1}$) 与$\hatφ(s_{t+1})$好坏优劣的网络模型。可以作为以后的创新点~没准别人早就想出来了。</font>  
+
+<p>具体的还应再看这篇论文！    </p>
+<p>——————————————-小分割线—————————————↑</p>
+<h3 id="3-curriculum-learning"><a href="#3-curriculum-learning" class="headerlink" title="3 curriculum learning"></a>3 curriculum learning</h3><p>核心思想是给模型训练数据的时候是有先后顺序的，一般情况下是由简单到难。</p>
+<h3 id="4-reverse-curriculum-generation"><a href="#4-reverse-curriculum-generation" class="headerlink" title="4 reverse curriculum generation"></a>4 reverse curriculum generation</h3><p>核心思想与施瓦辛格和马斯克的做法十分相似：</p>
+<p>1.举出一个最终目标$s_g$</p>
+<p>2.找到与$s_g$很接近的观测状态$s_1$ </p>
+<p>3.列举各种$s_1$+a=$s_g$ 并且得到的reward-&gt;r</p>
+<p>4.去掉特别小和特别大的reward，因为他们不合适~（中庸之道）</p>
+<p>5.在s1周围找到与s1比较接近的s2，同第三步和第四步</p>
+<h3 id="5-hierarchical-reinforcement-learning"><a href="#5-hierarchical-reinforcement-learning" class="headerlink" title="5 hierarchical reinforcement learning"></a>5 hierarchical reinforcement learning</h3><p><img src="/2019/09/14/deep-reinforcement-learning/hierarchical.png" alt> </p>
+<p>1.把一件非常困难的事情拆解为许多较为简单的小事儿。</p>
+<p>2.如果阶层的低端没有完成相应的工作，上层是要谢罪的。</p>
+<p>3.如果最后达到的目标没有预期的那么好，就假设原先的目标本来就很低。（自我安慰？还得看论文）</p>
+<p>在李老师的讲解中，这篇论文的思想比较像逐步引到的概念。</p>
+<h2 id="6-imitation-learning"><a href="#6-imitation-learning" class="headerlink" title="6 imitation learning"></a>6 imitation learning</h2><p>又叫learning by demonstration 或者叫apprenticeship（学徒） learning</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>在expert(老师)教怎样解决问题的时候存在以下难点：</p>
+<ul>
+<li>模型可以与环境进行互动，但是很难去获得明确的奖励(很多都是隐形的，或者很久之后才起作用)</li>
+<li>某些任务定义reward比较困难</li>
+<li>认为提取的特征可能导致不可控的行为。</li>
+</ul>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
+<li><h4 id="behavior-cloning"><a href="#behavior-cloning" class="headerlink" title="behavior cloning"></a>behavior cloning</h4></li>
+</ul>
+<p>类似于supervised learning，expert做什么，机器就做什么。</p>
+<p>behavior cloning缺点1：列举出来的states非常少，如果训练数据里面全都是正样本数据(自动驾驶的车顺利右拐弯)，但是模型若特别笨快要撞墙的话，他会不知所措（因为训练数据中没有给过快要撞墙怎么处理这种训练数据。） 即training data和testing data的mismatch问题。</p>
+<p>解决办法1：所以面对单纯的<strong>behavior cloning</strong> 解决办法是dataset aggregation：</p>
+<p>​        1.π1与环境互动</p>
+<p>​        2.派一个expert跟着π1，让π1一直问expert当前这种情况怎么处理啊？</p>
+<p>​        3.但是π1不会听expert的指示，直到撞南墙游戏结束。</p>
+<p>​        4.撞南墙后得到经验值，下次再遇到这种情况就知道避坑了。</p>
+<p>behavior cloning缺点2：无论expert的动作怎么样，模型都会去学。(可能学到一堆没意义的动作，且一旦神经网络的容量有限，那么去除掉无意义的动作就十分重要)</p>
+<p>故引出第二种解决办法inverse reinforcement learning：</p>
+<ul>
+<li><h4 id="inverse-reinforcement-learning-inverse-optimal-control"><a href="#inverse-reinforcement-learning-inverse-optimal-control" class="headerlink" title="inverse reinforcement learning(inverse optimal control)"></a>inverse reinforcement learning(inverse optimal control)</h4><ul>
+<li>一般意义上的强化学习：在reward function和environment的基础上，利用reinforcement learning技术学到optimal actor。</li>
+<li>在有一堆expert的demonstration和environment条件下，智能体与环境互动，但是reward不是来自于reward function，这个reward来自于expert 的 demonstration，从而反推出reward-function是什么东西。再通过求得的reward-function，利用一般的reinforcement learning技术推导出optimal actor。</li>
+</ul>
+<p><img src="/2019/09/14/deep-reinforcement-learning/IRL.png" alt></p>
+</li>
+</ul>
+<p>如上图所示：首先expert  -$\hat π$与环境互动得到一些列$\hat τ$ 且初始的π也与环境互动得到一系列τ。然后增加一个网络模型，其输入是$\hat τ$ 和τ，输出是reward function，在词reward function基础上找到一个可以使reward最大的actor  - π’ 再用π‘与环境互动，得到一系列τ2 ，再将τ2与$\hat τ$ 作为输入到网络中得到reward function，每次更新的reward function都会使得$\hat π$ 的reward最大，不断优化直到π与π’的reward十分接近且非常高。（<strong>先射箭，后画靶。</strong>actor就是generator，reward function就是discriminator 就是GAN。）</p>
+<p>需要读的论文：</p>
+<p>connecting generative adversarial networks and actor-critic methods—2016</p>
+<p>Playing Atari with Deep Reinforcement Learning-1312.5602v1</p>
 
         </div>
       </div>
