@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-25</span>
-            <span class="time">19:01:25</span>
+            <span class="time">17:25:35</span>
           </span>
           
           <!--  Categories  -->
@@ -122,8 +122,91 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>本笔记是对深度学习相关知识的数学补充笔记。</p>
+          <p>本笔记是对深度学习相关知识的数学补充笔记—出自<strong>Linear Algebra Review and Reference-Zico Kolter</strong></p>
+<p>背景状态：刚考完研对部分数学知识模糊</p>
 <a id="more"></a>
+<h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><h2 id="1-补充基本概念"><a href="#1-补充基本概念" class="headerlink" title="1.补充基本概念"></a>1.补充基本概念</h2><p><strong>奇异矩阵</strong> ：一个列向量线性相关的方阵称为奇异矩阵。</p>
+<p><strong>正定矩阵</strong>：设M是n阶方阵，如果对任何非零向量z，都有$z^T Mz&gt;0$，其中$z^T$表示$z$的转置，就称M为正定矩阵。且正定矩阵的所有特征值都大于0</p>
+<p><strong>半正定矩阵</strong>：设A是n阶方阵，如果对任何非零向量X，都有$X^T A X ≥0$，就称A为半正定矩阵。</p>
+<p>且半正定矩阵的所有特征值均不小于0</p>
+<p>注：</p>
+<p>​    1.一般情况下说矩阵的逆，矩阵都是方阵，且所有列向量都是线性无关的。</p>
+<p>​    2.由于奇异矩阵或非方阵的矩阵不存在逆矩阵，则求其逆为该矩阵的伪逆矩阵X，X是一个与A的转置矩阵A’ 同型    的矩阵，并且满足：AXA=A,XAX=X.    此时，称矩阵X为矩阵A的伪逆，也称为广义逆矩阵。</p>
+<p>​    3.矩阵$A∈ \mathbb R^{m×n}$ 可写为以下两种形式，在后续部分数学推导中会用到：</p>
+<p>​        $A=\left[\begin{array}{llll}{|} &amp; {|} &amp; {|} &amp;{|}\ {a_{1}} &amp; {a_{2}} &amp; {\cdots} &amp; {a_{n}} \ {|} &amp; {|} &amp; {|} &amp; {|}\end{array}\right]$   或者$A=\left[\begin{array}{c}{-a_{1}^{T}-} \ {-a_{2}^{T}-} \ {\vdots} \ {-a_{m}^{T}-}\end{array}\right]$ <strong>注意这里的$a_1$与$a_1^T$并不是同一个向量</strong>  </p>
+<h2 id="2-矩阵乘法"><a href="#2-矩阵乘法" class="headerlink" title="2.矩阵乘法"></a>2.矩阵乘法</h2><p>$x,y∈R^n$ 则$x^T y$被称为<strong>点积</strong>(dot product )也称为<strong>内积</strong>（inner product）</p>
+<script type="math/tex; mode=display">
+x^{T} y \in \mathbb{R}=\left[\begin{array}{llll}{x_{1}} & {x_{2}} & {\cdots} & {x_{n}}\end{array}\right]\left[\begin{array}{c}{y_{1}} \\ {x_{2}} \\ {\vdots} \\ {y_{n}}\end{array}\right]=\sum_{i=1}^{n} x_{i} y_{i}</script><p>$x∈\mathbb R^m,y∈\mathbb R^n$ 则$x y^T∈\mathbb R^{m×n}$被称为<strong>外积</strong>(outer product )</p>
+<script type="math/tex; mode=display">
+x y^{T} \in \mathbb{R}^{m \times n}=\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{m}}\end{array}\right]\left[\begin{array}{llll}{y_{1}} & {y_{2}} & {\cdots} & {y_{n}}\end{array}\right]=\left[\begin{array}{cccc}{x_{1} y_{1}} & {x_{1} y_{2}} & {\cdots} & {x_{1} y_{n}} \\ {x_{2} y_{1}} & {x_{2} y_{2}} & {\cdots} & {x_{2} y_{n}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {x_{m} y_{1}} & {x_{m} y_{2}} & {\cdots} & {x_{m} y_{n}}\end{array}\right]</script><h3 id="矩阵与向量相乘"><a href="#矩阵与向量相乘" class="headerlink" title="矩阵与向量相乘"></a>矩阵与向量相乘</h3><p>矩阵$A∈\mathbb R^{m×n}$  向量$x∈\mathbb R^n$ 则$y=Ax∈\mathbb R^m$ 由第一部分中注3可将矩阵A写为</p>
+<p><strong>第一种形式</strong>：</p>
+<script type="math/tex; mode=display">
+y=A x=\left[\begin{array}{c}{-a_{1}^{T}-} \\ {-a_{2}^{T}-} \\ {\vdots} \\ {-a_{m}^{T}-}\end{array}\right] x=\left[\begin{array}{c}{a_{1}^{T} x} \\ {a_{2}^{T} x} \\ {\vdots} \\ {a_{m}^{T} x}\end{array}\right]</script><p>上式中第$i$个$y$是A的第$i$行与$x$的内积即$y_i=a_i^Tx$   </p>
+<p><strong>第二种形式</strong>：</p>
+<script type="math/tex; mode=display">
+y=A x=\left[\begin{array}{cccc}{|} & {|} & {|} & {|} \\ {a_{1}} & {a_{2}} & {\cdots} & {a_{n}} \\ {|} & {|} & {|} & {|}\end{array}\right]\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{n}}\end{array}\right]=\left[\begin{array}{c}\\{a_{1}} \\ {}\end{array}\right] x_{1}+\left[\begin{array}{c}\\{a_{2}} \\ {}\end{array}\right] x_{2}+\ldots+\left[\begin{array}{c}\\{a_{n}} \\ {}\end{array}\right] x_{n}</script><p>第二种形式中$y$是A列向量的线性组合，且线性组合的系数是为$x$ 。</p>
+<p>上面两种形式均为在矩阵$A$的右侧乘以一个列向量，同理也可以在矩阵$A$的左侧乘以一个行向量，写为$y^T=x^TA$</p>
+<p>且$A∈\mathbb R ^{m×n}， x∈\mathbb R^m  ,y∈\mathbb R^n$    同理可以将$y^T$ 写为两种形式：</p>
+<p><strong>第一种形式</strong>：</p>
+<script type="math/tex; mode=display">
+y^{T}=x^{T} A=x^{T}\left[\begin{array}{cccc}{|} & {|} & {|} & {|} \\ {a_{1}} & {a_{2}} & {\cdots} & {a_{n}} \\ {|} & {|} & {|} & {|}\end{array}\right]=\left[\begin{array}{llll}{x^{T} a_{1}} & {x^{T} a_{2}} & {\cdots} & {x^{T} a_{n}}\end{array}\right]</script><p><strong>第二种形式</strong>： </p>
+<script type="math/tex; mode=display">
+\begin{aligned} y^{T} &=x^{T} A \\ &=\left[\begin{array}{llll}{x_{1}} & {x_{2}} & {\cdots} & {x_{n}}\end{array}\right]\left[\begin{array} {c} {-a_{1}^{T}-} \\ {-}{a_{2}^{T}-} \\ {\vdots} {} \\ {-} {a_{m}^{T}-}\end{array}\right] \\ &=x_{1}\left[\begin{array}{cc}{-a_{1}^{T}} {-}\end{array}\right]+x_{2}\left[\begin{array}{cc}{-a_{2}^{T}} {-}\end{array}\right]+\ldots+x_{n}\left[-a_{n}^{T}-\right] \end{aligned}</script><h3 id="矩阵与矩阵相乘"><a href="#矩阵与矩阵相乘" class="headerlink" title="矩阵与矩阵相乘"></a>矩阵与矩阵相乘</h3><p>与之前类似，我们可以将$C=AB$写为4种形式(其中$A∈\mathbb R^{m×n} ,B∈\mathbb R^{n×p},C∈\mathbb R^{m×p} $ )： </p>
+<p><strong>第一种形式</strong>：</p>
+<script type="math/tex; mode=display">
+C=A B=\left[\begin{array}{c}{-a_{1}^{T}-} \\ {-a_{2}^{T}-} \\ {\vdots} \\ {-a_{m}^{T}-}\end{array}\right]\left[\begin{array}{cccc}{|} & {|} & {} & {|} \\ {b_{1}} & {b_{2}} & {\cdots} & {b_{p}} \\ {|} & {|} & {} & {|}\end{array}\right]=\left[\begin{array}{cccc}{a_{1}^{T} b_{1}} & {a_{1}^{T} b_{2}} & {\cdots} & {a_{1}^{T} b_{p}} \\ {a_{2}^{T} b_{1}} & {a_{2}^{T} b_{2}} & {\cdots} & {a_{2}^{T} b_{p}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {a_{m}^{T} b_{1}} & {a_{m}^{T} b_{2}} & {\cdots} & {a_{m}^{T} b_{p}}\end{array}\right]</script><p><strong>第二种形式</strong>：</p>
+<script type="math/tex; mode=display">
+C=A B=\left[\begin{array}{cccc}{|} & {|} & {} & {|} \\ {a_{1}} & {a_{2}} & {\cdots} & {a_{n}} \\ {|} & {|} & {} & {|}\end{array}\right]\left[\begin{array}{c}{-b_{1}^{T}-} \\ {-b_{2}^{T}-} \\ {\vdots} \\ {-b_{n}^{T}-}\end{array}\right]=\sum_{i=1}^{n} a_{i} b_{i}^{T}</script><p><strong>第三种形式</strong>：</p>
+<script type="math/tex; mode=display">
+C=A B=A\left[\begin{array}{cccc}{|} & {|} & {} & {|} \\ {b_{1}} & {b_{2}} & {\cdots} & {b_{p}} \\ {|} & {|} & {} & {|}\end{array}\right]=\left[\begin{array}{ccc}{|} & {|} & {} & {|}\\ {A b_{1}} & {A b_{2}} & {\cdots} & {A b_{p}} \\ {|} & {|} & {} & {|}\end{array}\right]</script><p><strong>第四种形式</strong>：</p>
+<script type="math/tex; mode=display">
+C=A B=\left[\begin{array}{c}{-a_{1}^{T}-} \\ {-a_{2}^{T}-} \\ {\vdots} \\ {-a_{m}^{T}-}\end{array}\right] B=\left[\begin{array}{c}{-a_{1}^{T} B-} \\ {-a_{2}^{T} B-} \\ {\vdots} \\ {-a_{m}^{T} B-}\end{array}\right]</script><h3 id="证明矩阵乘法结合律"><a href="#证明矩阵乘法结合律" class="headerlink" title="证明矩阵乘法结合律"></a><strong>证明矩阵乘法结合律</strong></h3><script type="math/tex; mode=display">
+\begin{aligned}((A B) C)_{i j} &=\sum_{k=1}^{p}(A B)_{i k} C_{k j}=\sum_{k=1}^{p}\left(\sum_{l=1}^{n} A_{i l} B_{l k}\right) C_{k j} \\ &=\sum_{k=1}^{p}\left(\sum_{l=1}^{n} A_{i l} B_{l k} C_{k j}\right)=\sum_{l=1}^{n}\left(\sum_{k=1}^{p} A_{i l} B_{l k} C_{k j}\right) \\ &=\sum_{l=1}^{n} A_{i l}\left(\sum_{k=p}^{n} B_{l k} C_{k j}\right)=\sum_{l=1}^{n} A_{i l}(B C)_{l j}=(A(B C))_{i j} \end{aligned}</script><h3 id="矩阵的性质补充"><a href="#矩阵的性质补充" class="headerlink" title="矩阵的性质补充"></a>矩阵的性质补充</h3><p>1.$(A^T)^T=A$ </p>
+<p>2.$(A+B)^T=A^T+B^T$ </p>
+<p>3.反对称矩阵：$A=-A^T$  且易得对于一个方阵$A∈\mathbb R^{n×n}$ $A+A^T$是对称阵，$A-A^T$是反对称阵</p>
+<p>4.矩阵的迹性质补充：</p>
+<p>​    4.1：$A,B∈\mathbb R^{n×n} \quad tr(A+B)=trA+trB$   </p>
+<p>​    4.2：$A∈\mathbb R^{n×n} \quad t∈\mathbb R \quad tr(tA)=t*trA$ </p>
+<p>​    4.3在$A∈\mathbb R^{m×n},B∈\mathbb R^{n×m}$证明$trAB=trBA$ </p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{tr} A B &=\sum_{i=1}^{m}(A B)_{i i}=\sum_{i=1}^{m}\left(\sum_{j=1}^{n} A_{i j} B_{j i}\right) \\ &=\sum_{i=1}^{m} \sum_{j=1}^{n} A_{i j} B_{j i}=\sum_{j=1}^{n} \sum_{i=1}^{m} B_{j i} A_{i j} \\ &=\sum_{j=1}^{n}\left(\sum_{i=1}^{m} B_{j i} A_{i j}\right)=\sum_{j=1}^{n}(B A)_{j j}=\operatorname{tr} B A \end{aligned}</script><p>5.矩阵的秩：</p>
+<p>​    5.1三秩相等：矩阵A的行秩等于A的列秩等于A的秩</p>
+<p>​    5.2对于$A∈\mathbb R^{m×n}，rank(A)=rank(A^T)$ </p>
+<p>​    5.3$A∈\mathbb R^{m×n}，rank(A)≤min(m,n)$且如果 $rank(A)=min(m,n)$ 称A为满秩</p>
+<p>​    5.4$A∈\mathbb R^{m×n}，B∈\mathbb R^{n×p}，rank(AB)≤min(rank(A)，rank(B))$ </p>
+<p>​    5.5$A,B∈\mathbb R^{m×n}，rank(A+B)≤rank(A)+rank(B)$  </p>
+<p>6.矩阵的逆：</p>
+<p>​    6.1$(A^{-1})^{-1} =A$</p>
+<p>​    6.2$(AB)^{-1}=B^{-1}A^{-1}$</p>
+<p>​    6.3$(A^{-1})^T=(A^T)^{-1}$ </p>
+<p>7.正交矩阵：</p>
+<p>​    7.1正交矩阵的逆等于正交矩阵的转秩</p>
+<p>​    7.2一个向量与一个正交阵相乘所得的$L^2$ 范数与该向量的$L^2$范数相等：</p>
+<p>​        $||Ux||_2 = ||x||_2$ </p>
+<h2 id="3-矩阵的列空间，零空间知识补充-【1】"><a href="#3-矩阵的列空间，零空间知识补充-【1】" class="headerlink" title="3.矩阵的列空间，零空间知识补充^【1】^"></a>3.矩阵的列空间，零空间知识补充^【1】^</h2><h3 id="列空间"><a href="#列空间" class="headerlink" title="列空间"></a>列空间</h3><p>m × n矩阵$A$,n×1矩阵$x$,m×1的矩阵b，运算$Ax=b$：</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{ccccc}{a_{11}} & {a_{12}} & {\cdots} & {a_{1(n-1)}} & {a_{1 n}} \\ {a_{21}} & {a_{22}} & {\cdots} & {a_{2(n-1)}} & {a_{2 n}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} & {\vdots} \\ {a_{m 1}} & {a_{m 2}} & {\cdots} & {a_{m(n-1)}} & {a_{m n}}\end{array}\right] \cdot\left[\begin{array}{c}{x_{1}} \\ {x_{2}} \\ {\vdots} \\ {x_{n-1}} \\ {x_{n}}\end{array}\right]=\left[\begin{array}{c}{b_{1}} \\ {b_{2}} \\ {\vdots} \\ {b_{m}}\end{array}\right]</script><p>将$A$中的每一列看为一个向量，$A=(v_1  v_2  v_3…  v_n   )$,由A的列向量生成的子空间为A的列空间。记为</p>
+<script type="math/tex; mode=display">
+\mathcal{R}(A)=\left\{v \in \mathbb{R}^{m}: v=A x, x \in \mathbb{R}^{n}\right\}</script><h3 id="零空间"><a href="#零空间" class="headerlink" title="零空间"></a>零空间</h3><p>矩阵A的零空间是$Av=0$的所有解$v$的集合。记为：</p>
+<script type="math/tex; mode=display">
+\mathcal{N}(A)=\left\{x \in \mathbb{R}^{n}: A x=0\right\}</script><h3 id="向量的映射"><a href="#向量的映射" class="headerlink" title="向量的映射"></a>向量的映射</h3><p>向量$y∈\mathbb R^m$ ,其在${\{x_1,…,x_n\}}$的投影是在 ${\{x_1,…,x_n\}}$里面找到向量$v$使得$v$与$y$的欧几里得范数最小，记为</p>
+<script type="math/tex; mode=display">
+\operatorname{Proj}\left(y ;\left\{x_{1}, \ldots x_{n}\right\}\right)=\operatorname{argmin}_{v \in \operatorname{span}\left(\left\{x_{1}, \ldots, x_{n}\right\}\right)}\|y-v\|_{2}</script><p>且注意：</p>
+<p>矩阵A的列空间和零空间共同构成了整个$\mathbb R^m$ </p>
+<script type="math/tex; mode=display">
+\left\{w: w=u+v, u \in \mathcal{R}\left(A^{T}\right), v \in \mathcal{N}(A)\right\}=\mathbb{R}^{n}$ and $\mathcal{R}\left(A^{T}\right) \cap \mathcal{N}(A)=\emptyset</script><p>且这两部分称为正交补，记为 $\mathcal{R}\left(A^{T}\right)=\mathcal{N}(A)^{\perp}$  </p>
+<h2 id="3-主成分分析"><a href="#3-主成分分析" class="headerlink" title="3.主成分分析"></a>3.主成分分析</h2><h3 id="注意点1："><a href="#注意点1：" class="headerlink" title="注意点1："></a>注意点1：</h3><p><img src="/2019/04/25/math/2.68.png" alt> </p>
+<p>2.68-2.69公式推导时省略了一步：</p>
+<script type="math/tex; mode=display">
+D^{*}=\underset{D}{\arg \min } \sqrt{\sum_{i, j}\left(x_{j}^{(i)}-r\left(x^{(i)}\right)_{j}\right)^{2}}   \ subject \ to  \   D^{\top} D=I_{l}</script><p>与其平方等价：</p>
+<script type="math/tex; mode=display">
+D^{*}=\underset{D}{\arg \min } {\sum_{i, j}\left(x_{j}^{(i)}-r\left(x^{(i)}\right)_{j}\right)^{2}}   \ subject \ to  \   D^{\top} D=I_{l}</script><p>再将$\sum _{i,j}$ 分为$ \sum_i \sum_j $</p>
+<script type="math/tex; mode=display">
+D^{*}=\underset{D}{\arg \min } {\sum_{i} \sum_j \left(x_{j}^{(i)}-r\left(x^{(i)}\right)_{j}\right)^{2}}   \ subject \ to  \   D^{\top} D=I_{l}</script><p>又因为将p=2带入(2.30)公式，再将其平方得$||x||_2^2 = \sum_i |x_i|^2 $  同理可整理为</p>
+<script type="math/tex; mode=display">
+D^{*}=\underset{D}{\arg \min } {\sum_{i} ||x^{(i)}-dd^Tx^{(i)}||_2^2}   \ subject \ to  \   D^{\top} D=I_{l}</script><h3 id="注意点2："><a href="#注意点2：" class="headerlink" title="注意点2："></a>注意点2：</h3><p>2.72式如何将$x$转化为$X$且$dd$变为$dd^T$  </p>
+<p>【1】：<a href="https://www.mashangxue123.com/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/1399073038.html](https://www.mashangxue123.com/线性代数/1399073038.html" target="_blank" rel="noopener">https://www.mashangxue123.com/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/1399073038.html](https://www.mashangxue123.com/线性代数/1399073038.html</a>)</p>
+
         </div>
       </div>
     </div>
