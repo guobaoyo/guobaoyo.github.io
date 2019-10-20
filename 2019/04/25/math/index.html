@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-25</span>
-            <span class="time">17:25:35</span>
+            <span class="time">21:10:08</span>
           </span>
           
           <!--  Categories  -->
@@ -126,9 +126,18 @@
 <p>背景状态：刚考完研对部分数学知识模糊</p>
 <a id="more"></a>
 <h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><h2 id="1-补充基本概念"><a href="#1-补充基本概念" class="headerlink" title="1.补充基本概念"></a>1.补充基本概念</h2><p><strong>奇异矩阵</strong> ：一个列向量线性相关的方阵称为奇异矩阵。</p>
-<p><strong>正定矩阵</strong>：设M是n阶方阵，如果对任何非零向量z，都有$z^T Mz&gt;0$，其中$z^T$表示$z$的转置，就称M为正定矩阵。且正定矩阵的所有特征值都大于0</p>
-<p><strong>半正定矩阵</strong>：设A是n阶方阵，如果对任何非零向量X，都有$X^T A X ≥0$，就称A为半正定矩阵。</p>
+<p><strong>二次型矩阵</strong>：对于$A∈\mathbb R^{n×n}$ 和一个向量$x∈\mathbb R^n$ $x^TAx$形式称为二次型，记为：</p>
+<p>$x^{T} A x=\sum_{i=1}^{n} x_{i}(A x)_{i}=\sum_{i=1}^{n} x_{i}\left(\sum_{j=1}^{n} A_{i j} x_{j}\right)=\sum_{i=1}^{n} \sum_{j=1}^{n} A_{i j} x_{i} x_{j}$  </p>
+<p><strong>正定矩阵</strong>：设A是n阶方阵，如果对任何非零向量x，都有$x^T Mx&gt;0$，其中$ x^T$表示$x$的转置，就称A为正定矩阵。记为$A&gt;0$且正定矩阵的所有特征值都大于0</p>
+<p><strong>半正定矩阵</strong>：设A是n阶方阵，如果对任何非零向量X，都有$x^T A x ≥0$，就称A为半正定矩阵。记为$A≥0$ </p>
 <p>且半正定矩阵的所有特征值均不小于0</p>
+<p><strong>负定矩阵</strong>：设A是n阶方阵，如果对任何非零向量x，都有$x^T Mx&lt;0$，其中$ x^T$表示$x$的转置，就称A为正定矩阵。记为$A&lt;0$</p>
+<p><strong>半负定矩阵</strong>：设A是n阶方阵，如果对任何非零向量X，都有$x^T A x ≤0$，就称A为半正定矩阵。记为$A≤0$ </p>
+<p><strong>性质补充</strong>：</p>
+<ul>
+<li>正定或者负定矩阵必须是满秩矩阵</li>
+<li>矩阵$A∈\mathbb R^{m×n}$ ，既不用要求矩阵A是对称矩阵也不用要求矩阵A是方阵，gram矩阵$G=A^TA$总是半正定的，更进一步若m≥n，G是正定矩阵。 </li>
+</ul>
 <p>注：</p>
 <p>​    1.一般情况下说矩阵的逆，矩阵都是方阵，且所有列向量都是线性无关的。</p>
 <p>​    2.由于奇异矩阵或非方阵的矩阵不存在逆矩阵，则求其逆为该矩阵的伪逆矩阵X，X是一个与A的转置矩阵A’ 同型    的矩阵，并且满足：AXA=A,XAX=X.    此时，称矩阵X为矩阵A的伪逆，也称为广义逆矩阵。</p>
@@ -195,7 +204,44 @@ C=A B=\left[\begin{array}{c}{-a_{1}^{T}-} \\ {-a_{2}^{T}-} \\ {\vdots} \\ {-a_{m
 <p>矩阵A的列空间和零空间共同构成了整个$\mathbb R^m$ </p>
 <script type="math/tex; mode=display">
 \left\{w: w=u+v, u \in \mathcal{R}\left(A^{T}\right), v \in \mathcal{N}(A)\right\}=\mathbb{R}^{n}$ and $\mathcal{R}\left(A^{T}\right) \cap \mathcal{N}(A)=\emptyset</script><p>且这两部分称为正交补，记为 $\mathcal{R}\left(A^{T}\right)=\mathcal{N}(A)^{\perp}$  </p>
-<h2 id="3-主成分分析"><a href="#3-主成分分析" class="headerlink" title="3.主成分分析"></a>3.主成分分析</h2><h3 id="注意点1："><a href="#注意点1：" class="headerlink" title="注意点1："></a>注意点1：</h3><p><img src="/2019/04/25/math/2.68.png" alt> </p>
+<h2 id="4-行列式性质补充"><a href="#4-行列式性质补充" class="headerlink" title="4.行列式性质补充"></a>4.行列式性质补充</h2><ul>
+<li><p>单位矩阵的行列式为1，记为$|I|=1$</p>
+</li>
+<li><p>矩阵$A∈ \mathbb R^{n×n}$ ，将该矩阵的某一行乘以实数t，则行列式变为原来行列式的t倍。记为$\left|\left[\begin{array}{ccc}{-} &amp; {t a_{1}^{T}} &amp; {-} \ {-} &amp; {a_{2}^{T}} &amp; {-} \ {} &amp; {\vdots} &amp; {} \ {-} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right]\right|=t|A|$ </p>
+</li>
+<li><p>交换矩阵A的某两行， 行列式变为原来的相反数，记为</p>
+<p>$\left|\left[\begin{array}{ccc}{-} &amp; { a_{2}^{T}} &amp; {-} \ {-} &amp; {a_{1}^{T}} &amp; {-} \ {} &amp; {\vdots} &amp; {} \ {-} &amp; {a_{m}^{T}} &amp; {-}\end{array}\right]\right|=-|A|$ </p>
+</li>
+<li><p>矩阵$A∈  \mathbb R^{n×n}，|A|=|A^T|$</p>
+</li>
+<li><p>矩阵$A,B∈  \mathbb R^{n×n}，|AB|=|A||B|$</p>
+</li>
+<li><p>矩阵$A∈  \mathbb R^{n×n}，|A|=0$  当且仅当矩阵是奇异矩阵(或者说当且仅当矩阵A不可逆)</p>
+</li>
+<li><p>矩阵$A∈  \mathbb R^{n×n}，$矩阵A是非奇异矩阵，$|A^{-1}|=1/|A|$  </p>
+</li>
+</ul>
+<h2 id="5-特征值和特征向量性质补充"><a href="#5-特征值和特征向量性质补充" class="headerlink" title="5.特征值和特征向量性质补充"></a>5.特征值和特征向量性质补充</h2><ul>
+<li><p>矩阵A的特征值的和等于矩阵A的迹。记为$trA=\sum_{i=1}^{n} λ_i$ </p>
+</li>
+<li><p>矩阵A的行列式矩阵A的特征值的乘积。记为$|A|= \prod_{i=1}^{n} λ_{i} $  </p>
+</li>
+<li><p>矩阵A的秩等于A非零特征向量的个数</p>
+</li>
+<li><p>若A是非奇异矩阵，则$1/ \lambda _i$是$A^{-1}$ 关于特征向量$x_i$的特征值</p>
+</li>
+<li><p>对角矩阵D的特征值是对角元素</p>
+</li>
+<li><p>矩阵与最优化结合的实例应用：</p>
+<p>可以将$Ax=λx \quad x≠0$ 写为$AX = X\Lambda $ 其中$X∈\mathbb R^{n×n}$ 是A的特征向量组成的矩阵，V是A矩阵的特征值组成的对角矩阵。且记 $X∈\mathbb R^{n×n}=\left[\begin{array}{cccc}{|} &amp; {|} &amp; {} &amp; {|} \ {x_{1}} &amp; {x_{2}} &amp; {\cdots} &amp; {x_{n}} \ {|} &amp; {|} &amp; {} &amp; {|}\end{array}\right],  \Lambda =diag(λ_1,…,λ_n)$   </p>
+<p>若A的特征向量均线性不相关，即矩阵$X$可逆，那么可以写为$A=X\Lambda X^{-1}$ 则称A是可对角化矩阵。</p>
+<p>在这里我们防止混淆用$U$表示矩阵的多个特征向量，则$A=U\Lambda U^T$ ,在这里$X^{-1}$ 转变为$U^T$是因为正交矩阵的转秩与正交矩阵的逆相等。则有$x^TAx=x^TU\Lambda U^Tx=y^T\Lambda y=\sum_{i=1}^nλ_iy_i^2$  (U为满秩矩阵，$y∈\mathbb R^n$ 都可以这样表示)且因为$y_i^2$是总是大于0的，所以表达式的正负大小均由λ值决定。</p>
+<p>由上述可知特征值和特征向量可以应用在求矩阵乘积最大化问题上：</p>
+<script type="math/tex; mode=display">
+max_{x∈\mathbb R^{n}}x^TAx        \quad subject \quad to\quad  ||x||_2^2=1</script><p>假设该问题中$λ_1≥λ_2≥…≥λ_n$ 则最合适的x即为特征值$λ_1$对应的特征向量$x_1$ </p>
+</li>
+</ul>
+<h2 id="6-主成分分析"><a href="#6-主成分分析" class="headerlink" title="6.主成分分析"></a>6.主成分分析</h2><h3 id="注意点1："><a href="#注意点1：" class="headerlink" title="注意点1："></a>注意点1：</h3><p><img src="/2019/04/25/math/2.68.png" alt> </p>
 <p>2.68-2.69公式推导时省略了一步：</p>
 <script type="math/tex; mode=display">
 D^{*}=\underset{D}{\arg \min } \sqrt{\sum_{i, j}\left(x_{j}^{(i)}-r\left(x^{(i)}\right)_{j}\right)^{2}}   \ subject \ to  \   D^{\top} D=I_{l}</script><p>与其平方等价：</p>
@@ -204,7 +250,33 @@ D^{*}=\underset{D}{\arg \min } {\sum_{i, j}\left(x_{j}^{(i)}-r\left(x^{(i)}\righ
 <script type="math/tex; mode=display">
 D^{*}=\underset{D}{\arg \min } {\sum_{i} \sum_j \left(x_{j}^{(i)}-r\left(x^{(i)}\right)_{j}\right)^{2}}   \ subject \ to  \   D^{\top} D=I_{l}</script><p>又因为将p=2带入(2.30)公式，再将其平方得$||x||_2^2 = \sum_i |x_i|^2 $  同理可整理为</p>
 <script type="math/tex; mode=display">
-D^{*}=\underset{D}{\arg \min } {\sum_{i} ||x^{(i)}-dd^Tx^{(i)}||_2^2}   \ subject \ to  \   D^{\top} D=I_{l}</script><h3 id="注意点2："><a href="#注意点2：" class="headerlink" title="注意点2："></a>注意点2：</h3><p>2.72式如何将$x$转化为$X$且$dd$变为$dd^T$  </p>
+D^{*}=\underset{D}{\arg \min } {\sum_{i} ||x^{(i)}-dd^Tx^{(i)}||_2^2}   \ subject \ to  \   D^{\top} D=I_{l}</script><h3 id="注意点2："><a href="#注意点2：" class="headerlink" title="注意点2："></a>注意点2：</h3><p>2.72式 将$x$转化为$X$中$dd$变为$dd^T$  只是表达形式的转变，并不涉及数学推导。</p>
+<h2 id="7-矩阵微分"><a href="#7-矩阵微分" class="headerlink" title="7.矩阵微分"></a>7.矩阵微分</h2><h3 id="矩阵梯度"><a href="#矩阵梯度" class="headerlink" title="矩阵梯度"></a>矩阵梯度</h3><h4 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h4><p>设函数$f$对矩阵$A∈\mathbb R^{m×n}$ 有梯度，且$f$函数输入的是m×n的矩阵，输出为一个实数$\mathbb R$，则求出的梯度为与$A$同形的矩阵</p>
+<script type="math/tex; mode=display">
+\nabla_{A} f(A) \in \mathbb{R}^{m \times n}=\left[\begin{array}{cccc}{\frac{\partial f(A)}{\partial A_{11}}} & {\frac{\partial f(A)}{\partial A_{12}}} & {\cdots} & {\frac{\partial f(A)}{\partial A_{1 n}}} \\ {\frac{\partial f(A)}{\partial A_{21}}} & {\frac{\partial f(A)}{\partial A_{22}}} & {\cdots} & {\frac{\partial f(A)}{\partial A_{2 n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial f(A)}{\partial A_{m 1}}} & {\frac{\partial f(A)}{\partial A_{m 2}}} & {\cdots} & {\frac{\partial f(A)}{\partial A_{m n}}}\end{array}\right]</script><p>即记为$\left(\nabla_{A} f(A)\right)_{i j}=\frac{\partial f(A)}{\partial A_{i j}}$ </p>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><p>性质1 $\nabla_{x}(f(x)+g(x))=\nabla_{x} f(x)+\nabla_{x} g(x)$<br>性质2 For $t \in \mathbb{R}, \nabla_{x}(t f(x))=t \nabla_{x} f(x)$</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在矩阵表达式中<strong>对谁求梯度一定要写明</strong>，$\nabla_{Ax} f(Ax ) $  是对Ax求梯度，$\nabla_{x} f(Ax) $  则是对x求梯度 </p>
+<p>只有当$f(x))$返回值是实数的时候，矩阵的梯度才有定义。</p>
+<h3 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h3><p>假设$f$ 是输入为$\mathbb R^n$,输出为实数R的函数，相对于$x$的hessian矩阵就是一个n×n的矩阵</p>
+<script type="math/tex; mode=display">
+\nabla_{x}^{2} f(x) \in \mathbb{R}^{n \times n}=\left[\begin{array}{cccc}{\frac{\partial^{2} f(x)}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{n}^{2}}}\end{array}\right]</script><p>或者可以写为$\left(\nabla_{x}^{2} f(x)\right)_{i j}=\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{j}}$ </p>
+<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><p>1.因为$\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{j}}=\frac{\partial^{2} f(x)}{\partial x_{j} \partial x_{i}}$ 所以hessian矩阵是对称矩阵。</p>
+<p>2.只有当$f(x))$返回值是实数的时候，hessian矩阵才有定义。</p>
+<p>3.若$f$是一个输入为实数，输出为实数的函数，那么根据高等数学知识，</p>
+<script type="math/tex; mode=display">
+\frac{\partial^{2} f(x)}{\partial x^{2}}=\frac{\partial}{\partial x} \frac{\partial}{\partial x} f(x)在这里如果把$x$换为向量，那么对向量求梯</script><p>在这里如果把$x$换为向量 ，对向量求梯度后大小为n×1，再求梯度还是n×1的，是不等于hessian矩阵(n×n)</p>
+<script type="math/tex; mode=display">
+\nabla_{x} \nabla_{x} f(x)=\nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \\ {\frac{\partial f(x)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]</script><p>所以对向量的梯度求梯度是不等于hessian矩阵的：</p>
+<script type="math/tex; mode=display">
+\nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \\ {\frac{\partial f(x)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]≠ \left[\begin{array}{cccc}{\frac{\partial^{2} f(x)}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{n}^{2}}}\end{array}\right]</script><p><strong>但是</strong>，若将$\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \ {\frac{\partial f(x)}{\partial x_{2}}} \ {\vdots} \ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]$ 的某一行拿出来对$x$求梯度,则会发现求出来的是hessian矩阵的一列(或一行)：</p>
+<script type="math/tex; mode=display">
+\nabla_{x} \frac{\partial f(x)}{\partial x_{i}}=\left[\begin{array}{c}{\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{1}}} \\ {\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{i} \partial x_{n}}}\end{array}\right]</script><p>因此</p>
+<script type="math/tex; mode=display">
+\nabla_{x}^{2} f(x)=\left[\nabla_{x}\left(\nabla_{x} f(x)\right)_{1} \quad \nabla_{x}\left(\nabla_{x} f(x)\right)_{2} \quad \cdots \quad \nabla_{x}\left(\nabla_{x} f(x)\right)_{n}\right]</script><p>注意上式为了方便理解可以写为</p>
+<script type="math/tex; mode=display">
+\nabla_{x}^{2} f(x)=[\nabla_{x} \frac{\partial f(x)}{\partial x_{1}}...\nabla_{x} \frac{\partial f(x)}{\partial x_{i}}...\nabla_{x} \frac{\partial f(x)}{\partial x_{n}}]</script><h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><p>性质1 $\nabla_{x} b^{T} x=b$ </p>
+<p>性质2 $\nabla_{x} x^{T} A x=2 A x$  (若 $A$ 是对称阵) </p>
+<p>性质3$ \nabla_{x}^{2} x^{T} A x=2 A$ (若$A$ 是对称阵)  </p>
 <p>【1】：<a href="https://www.mashangxue123.com/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/1399073038.html](https://www.mashangxue123.com/线性代数/1399073038.html" target="_blank" rel="noopener">https://www.mashangxue123.com/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/1399073038.html](https://www.mashangxue123.com/线性代数/1399073038.html</a>)</p>
 
         </div>
