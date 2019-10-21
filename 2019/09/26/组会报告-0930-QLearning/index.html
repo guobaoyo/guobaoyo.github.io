@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-26</span>
-            <span class="time">14:37:52</span>
+            <span class="time">14:41:48</span>
           </span>
           
           <!--  Categories  -->
@@ -203,7 +203,6 @@ Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\
 <p>通俗理解就是：我现在正在上研究生，$Q\left(s_{t+1}, a\right)$ 为我选择工作的公司所带给我的价值，以目前的视野所见，最厉害的可能是去google即Q(选公司，去谷歌)=100，其实实际上Q(选公司，去谷歌)的真实值没有那么高，也就90，但以我目前的价值观会认为他贼高，这样就直接把双箭头右侧的的值判断过高，间接的使得当前的$Q\left(s_{t}, a_{t}\right)$也判断虚高。</p>
 <p>而Double-DQN的深层一点可理解的含义是2个不同的价值观，其中Q’是参数未更新的价值判断函数，Q是正在准备更新的价值判断函数，也就是说Q’是我大学本科时候的价值观，Q是我现在的价值观，即使$\arg \max \limits_{a} Q\left(s_{t+1}, a\right)$ 所判断的动作是虚高的去谷歌，但是在本科时候的价值观体系里去华为和思科这种网络巨头的价值才是最大的，所以Q’（本科找工作，去谷歌）的值会相应的减小，这样就达到了防止Q-function判断价值虚高情况。</p>
 <p>——————————————-小分割线—————————————↑</p>
-<p>玩至游戏结t=1-&gt;T</p>
 <h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>Qlearning的<strong>主要优势</strong>就是使用了<strong>时间差分法TD</strong>（融合了蒙特卡洛和动态规划）能够进行<strong>离线学习</strong>, 使用<strong>bellman方程</strong>可以对<strong>马尔科夫过程</strong>求解最优策略。^[1]^</p>
 <p>[1] <a href="https://blog.csdn.net/qq_30615903/article/details/80739243" target="_blank" rel="noopener">https://blog.csdn.net/qq_30615903/article/details/80739243</a></p>
 <p>[2] <a href="https://www.cnblogs.com/pinard/p/9463815.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/9463815.html</a></p>
