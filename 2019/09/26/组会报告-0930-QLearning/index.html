@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-09-26</span>
-            <span class="time">14:27:07</span>
+            <span class="time">14:32:50</span>
           </span>
           
           <!--  Categories  -->
@@ -142,8 +142,8 @@ V^{\pi}(s)=\mathbb{E}_{\pi}\left[r_{t+1}+\gamma r_{t+2}+\gamma^{2} r_{t+3}+\cdot
 <h3 id="4-贝尔曼方程和贝尔曼最优方程"><a href="#4-贝尔曼方程和贝尔曼最优方程" class="headerlink" title="4.贝尔曼方程和贝尔曼最优方程"></a>4.贝尔曼方程和贝尔曼最优方程</h3><p>贝尔曼方程表明了当前状态的值函数与下个状态的值函数的关系。</p>
 <p>$V^{\pi}(\mathrm{s})=\sum_{s^{\prime} \in S} p\left(s^{\prime} | s, \pi(s)\right)\left[r\left(s^{\prime} | s, \pi(s)\right)+\gamma V^{π}(s)\right]=E_{\pi}\left[r\left(s^{\prime} | s, a\right)+\gamma V^{\pi}\left(s^{\prime}\right) | s_{0}=s\right]$  </p>
 <p>贝尔曼最优方程：</p>
-<p>$V^{<em>}(\mathrm{s})=\max _{a} E\left[r\left(s^{\prime} | s, a\right)+\gamma V^{</em>}(\mathrm{s}) | s_{0}=s\right]$<br>$=\max _{\alpha∈A(s)} \sum p\left(\mathrm{s}^{\prime} | s, \pi(\mathrm{s})\right)\left[\mathrm{r}\left(\mathrm{s}^{\prime} | \mathrm{s}, \pi(\mathrm{s})\right)+\gamma V^{\pi}\left(\mathrm{s}^{\prime}\right)\right]$  </p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/组会报告-1030-QLearning/贝尔曼方程.png" alt="1569481986066">    </p>
+<p>$V^{<em>}(\mathrm{s})=\max _{a} E\left[r\left(s^{\prime} | s, a\right)+\gamma V^{</em>}(\mathrm{s}) | s_{0}=s\right]$<br>$=\max _{\alpha∈A(s)} \sum p\left(\mathrm{s}^{\prime} | s, \pi(\mathrm{s})\right)\left[\mathrm{r}\left(\mathrm{s}^{\prime} | \mathrm{s}, \pi(\mathrm{s})\right)+\gamma V^{\pi}\left(\mathrm{s}^{\prime}\right)\right]$   </p>
+<p><img src="/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png" alt="1569481986066">     </p>
 <p>这个式子告诉我们，一个状态的价值由该状态的奖励以及后续状态价值按一定的衰减比例联合组成。</p>
 <p>同理推至Q-function</p>
 <p>贝尔曼最优方程：</p>
@@ -154,22 +154,22 @@ V^{\pi}(s)=\mathbb{E}_{\pi}\left[r_{t+1}+\gamma r_{t+2}+\gamma^{2} r_{t+3}+\cdot
 Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\gamma \sum_{a^{\prime}} Q^{\pi}\left(s^{\prime}, a^{\prime}\right)\right]​</script><h3 id="5-动态规划与TD，MC"><a href="#5-动态规划与TD，MC" class="headerlink" title="5.动态规划与TD，MC"></a>5.动态规划与TD，MC</h3><h4 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1.动态规划"></a>1.动态规划</h4><p>动态规划的关键点有两个：一是问题的最优解可以由若干小问题的最优解构成，即通过寻找子问题的最优解来得到问题的最优解。第二是可以找到子问题状态之间的递推关系，通过较小的子问题状态递推出较大的子问题的状态。而强化学习的问题恰好是满足这两个条件的。^[2]^</p>
 <h4 id="2-monte-carlo-MC"><a href="#2-monte-carlo-MC" class="headerlink" title="2.monte-carlo(MC)"></a>2.monte-carlo(MC)</h4><p>蒙特卡罗法通过采样若干经历完整的状态序列(episode)来估计状态的真实价值。</p>
 <p>缺点，这就是它每次采样都需要一个完整的状态序列。</p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/E:/rockblog/source/_posts/deep-reinforcement-learning/monte-carlo.png" alt></p>
+<p><img src="/2019/09/26/组会报告-0930-QLearning/deep-reinforcement-learning/monte-carlo.png" alt></p>
 <h4 id="3-Temporal-difference-TD"><a href="#3-Temporal-difference-TD" class="headerlink" title="3.Temporal-difference(TD)"></a>3.Temporal-difference(TD)</h4><p>因为第一种monte-carlo的方法需要将游戏玩到结束，所以比较耗时，在这里TD方法不需要将游戏玩到底,不需要得到总奖励值，只需要用神经网络判断出$s_t $与$s_{t+1}$的value值即可，核心公式是：$V^{\pi}\left(s_{t}\right)=V^{\pi}\left(s_{t+1}\right)+r_{t}$  </p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/E:/rockblog/source/_posts/deep-reinforcement-learning/TD.png" alt></p>
+<p><img src="/2019/09/26/组会报告-0930-QLearning/deep-reinforcement-learning/TD.png" alt></p>
 <p>这两种方法区别与优劣：</p>
 <p>1.因为游戏具有很强的随机性，所以MC这种估计总奖励值的方法所得结果的方差比较大（随机性太大，$G_a$实际上是很多state的reward之和。）</p>
 <p>2.而用TD方法所得的r会比较稳定，但是缺点是$V^{\pi}\left(s_{t}\right)$和$V^{\pi}\left(s_{t+1}\right)$是当前状态价值的有偏估计，不一定很准，会导致整个式子是无效的。而蒙特卡洛算法需要知道整个序列的奖励信息，所以是当前状态价值的无偏估计。且TD更常见~</p>
 <p>3.MC可以在持续的试探中学习。</p>
 <p>6.Q-learning</p>
-<h4 id="1-雏形"><a href="#1-雏形" class="headerlink" title="1.雏形"></a>1.雏形</h4><p> <img src="/2019/09/26/组会报告-0930-QLearning/E:/rockblog/source/_posts/deep-reinforcement-learning/Q-learning.png" alt> </p>
+<h4 id="1-雏形"><a href="#1-雏形" class="headerlink" title="1.雏形"></a>1.雏形</h4><p> <img src="/2019/09/26/组会报告-0930-QLearning/deep-reinforcement-learning/Q-learning.png" alt> </p>
 <ol>
 <li>Actor-π与环境进行互动</li>
 <li>使用TD或者MC的方法学到$Q^π （s,a）$ </li>
 <li>找到比π<strong>好</strong>的Actor-π‘然后代替π   </li>
 </ol>
 <h4 id="2-改进"><a href="#2-改进" class="headerlink" title="2.改进"></a>2.改进</h4><h5 id="1-target-network"><a href="#1-target-network" class="headerlink" title="1.target network"></a>1.target network</h5><p>在训练$Q^π （s,a）$ 模型的时候，因为输出值和目标值都是在变化的，所以训练过程很不稳定，故将$s_{t+1} $的$Q^π$ 固定住，只更新$s_{t} $的$Q^π$  ，使$r_t$ 达到最大而用梯度上升法更新参数，更新小数量次数后，再用更新过的参数替换掉之前固定的$Q^π$ </p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/E:/rockblog/source/_posts/deep-reinforcement-learning/targetnetwork.pnG" alt></p>
+<p><img src="/2019/09/26/组会报告-0930-QLearning/deep-reinforcement-learning/targetnetwork.pnG" alt></p>
 <h5 id="2-epsilon-greedy"><a href="#2-epsilon-greedy" class="headerlink" title="2.$\epsilon $ -greedy"></a>2.$\epsilon $ -greedy</h5><p>因为之前是强制让action为能获得最大奖励的动作，这个是存在一定问题的：就是一旦有个策略之前没有被发掘出来（没有被example到的话），那么就永远定格了。</p>
 <p>——————————————-小分割线—————————————↓</p>
 <p>这个问题就像去餐厅点餐一样，如果第一次吃麻辣香锅还行，那么如果按照之前的算法来搞的话，就是每次都去点麻辣香锅，这是不科学的。</p>
@@ -183,7 +183,7 @@ Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\
 <h5 id="3-replay-buffer"><a href="#3-replay-buffer" class="headerlink" title="3.replay-buffer"></a>3.replay-buffer</h5><p>1.把之前不同情况下π与环境做互动所收集到的data都放到一个buffer里面，使数据多样化，有利于训练。</p>
 <p>2.将π’得到的新data替换掉之前的旧data，更新数据。</p>
 <p>3.buffer里面不是trajectory，而是一些experience，所以即使里面是别的经验也都OK。 </p>
-<h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3.算法流程"></a>3.算法流程</h4><p><img src="/2019/09/26/组会报告-0930-QLearning/组会报告-1030-QLearning/算法流程.png" alt> </p>
+<h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3.算法流程"></a>3.算法流程</h4><p><img src="/2019/09/26/组会报告-0930-QLearning/算法流程.png" alt> </p>
 <h3 id="需要注意的点："><a href="#需要注意的点：" class="headerlink" title="需要注意的点："></a>需要注意的点：</h3><h4 id="基于模型和非基于模型"><a href="#基于模型和非基于模型" class="headerlink" title="基于模型和非基于模型"></a>基于模型和非基于模型</h4><p>基于模型 (Model-based) 和非基于模型 (Model-free)。基于模型的强化学习算法是知道并可以存储所有马尔科夫决策过程信息，非基于模型的强化学习算法则需要自己探索未知的马尔科夫过程。</p>
 <h4 id="待改进："><a href="#待改进：" class="headerlink" title="待改进："></a>待改进：</h4><h5 id="Prioritized-Reply"><a href="#Prioritized-Reply" class="headerlink" title="Prioritized Reply"></a>Prioritized Reply</h5><p>好的数据经验应该有更大的几率被选到。</p>
 <h5 id="Multi-step-balance-between-MC-and-TD"><a href="#Multi-step-balance-between-MC-and-TD" class="headerlink" title="Multi-step-balance between MC and TD"></a>Multi-step-balance between MC and TD</h5><p>在experience buffer里面存储N个step</p>
@@ -245,6 +245,22 @@ Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\
   });
 </script>
 
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+//<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 
