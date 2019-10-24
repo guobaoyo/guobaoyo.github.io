@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-25</span>
-            <span class="time">14:41:49</span>
+            <span class="time">20:40:25</span>
           </span>
           
           <!--  Categories  -->
@@ -257,16 +257,19 @@ D^{*}=\underset{D}{\arg \min } {\sum_{i} ||x^{(i)}-dd^Tx^{(i)}||_2^2}   \ subjec
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><p>性质1 $\nabla_{x}(f(x)+g(x))=\nabla_{x} f(x)+\nabla_{x} g(x)$<br>性质2 For $t \in \mathbb{R}, \nabla_{x}(t f(x))=t \nabla_{x} f(x)$</p>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>在矩阵表达式中<strong>对谁求梯度一定要写明</strong>，$\nabla_{Ax} f(Ax ) $  是对Ax求梯度，$\nabla_{x} f(Ax) $  则是对x求梯度 </p>
 <p>只有当$f(x))$返回值是实数的时候，矩阵的梯度才有定义。</p>
-<h3 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h3><p>假设$f$ 是输入为$\mathbb R^n$,输出为实数R的函数，相对于$x$的hessian矩阵就是一个n×n的矩阵</p>
+<h3 id="Jacobian-矩阵"><a href="#Jacobian-矩阵" class="headerlink" title="Jacobian 矩阵"></a><strong>Jacobian</strong> 矩阵</h3><p>雅可比矩阵是一阶偏导数以一定方式排列成的矩阵,假设$f$是是输入为$\mathbb R^m$ 输出为$\mathbb R^n$ 则$f$ 的雅可比矩阵$J∈\mathbb R^{n×m}$ </p>
+<script type="math/tex; mode=display">
+J_{i, j}=\frac{\partial}{\partial x_{j}} f(x)_i</script><script type="math/tex; mode=display">
+\mathbf{J}=\left[\begin{array}{ccc}{\frac{\partial \mathbf{f}}{\partial x_{1}}} & {\cdots} & {\frac{\partial \mathbf{f}}{\partial x_{m}}}\end{array}\right]=\left[\begin{array}{ccc}{\frac{\partial f_{1}}{\partial x_{1}}} & {\cdots} & {\frac{\partial f_{1}}{\partial x_{m}}} \\ {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial f_{n}}{\partial x_{1}}} & {\cdots} & {\frac{\partial f_{n}}{\partial x_{m}}}\end{array}\right]</script><h3 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h3><p>假设$f$ 是输入为$\mathbb R^n$,输出为实数R的函数，相对于$x$的hessian矩阵就是一个n×n的矩阵    </p>
 <script type="math/tex; mode=display">
 \nabla_{x}^{2} f(x) \in \mathbb{R}^{n \times n}=\left[\begin{array}{cccc}{\frac{\partial^{2} f(x)}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{n}^{2}}}\end{array}\right]</script><p>或者可以写为$\left(\nabla_{x}^{2} f(x)\right)_{i j}=\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{j}}$ </p>
 <h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><p>1.因为$\frac{\partial^{2} f(x)}{\partial x_{i} \partial x_{j}}=\frac{\partial^{2} f(x)}{\partial x_{j} \partial x_{i}}$ 所以hessian矩阵是对称矩阵。</p>
 <p>2.只有当$f(x))$返回值是实数的时候，hessian矩阵才有定义。</p>
 <p>3.若$f$是一个输入为实数，输出为实数的函数，那么根据高等数学知识，</p>
 <script type="math/tex; mode=display">
-\frac{\partial^{2} f(x)}{\partial x^{2}}=\frac{\partial}{\partial x} \frac{\partial}{\partial x} f(x)在这里如果把$x$换为向量，那么对向量求梯</script><p>在这里如果把$x$换为向量 ，对向量求梯度后大小为n×1，再求梯度还是n×1的，是不等于hessian矩阵(n×n)</p>
+\frac{\partial^{2} f(x)}{\partial x^{2}}=\frac{\partial}{\partial x} \frac{\partial}{\partial x} f(x)</script><p>在这里如果把$x$换为向量 ，对向量求梯度后大小为n×1，再求梯度还是n×1的，是不等于hessian矩阵(n×n)</p>
 <script type="math/tex; mode=display">
-\nabla_{x} \nabla_{x} f(x)=\nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \\ {\frac{\partial f(x)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]</script><p>所以对向量的梯度求梯度是不等于hessian矩阵的：</p>
+\nabla_{x} \nabla_{x} f(x)=\nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \\ {\frac{\partial f(x)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{n}}}\end{array}\right]</script><p>所以对向量的梯度求梯度是不等于hessian矩阵的：</p>
 <script type="math/tex; mode=display">
 \nabla_{x}\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \\ {\frac{\partial f(x)}{\partial x_{2}}} \\ {\vdots} \\ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]≠ \left[\begin{array}{cccc}{\frac{\partial^{2} f(x)}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{1} \partial x_{n}}} \\ {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{2} \partial x_{n}}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f(x)}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f(x)}{\partial x_{n}^{2}}}\end{array}\right]</script><p><strong>但是</strong>，若将$\left[\begin{array}{c}{\frac{\partial f(x)}{\partial x_{1}}} \ {\frac{\partial f(x)}{\partial x_{2}}} \ {\vdots} \ {\frac{\partial f(x)}{\partial x_{1}}}\end{array}\right]$ 的某一行拿出来对$x$求梯度,则会发现求出来的是hessian矩阵的一列(或一行)：</p>
 <script type="math/tex; mode=display">

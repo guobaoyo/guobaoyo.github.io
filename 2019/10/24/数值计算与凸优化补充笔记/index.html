@@ -8,10 +8,10 @@
   <meta name="description" content>
   <meta name="author" content="Rock">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Rock-Blog">
+  <meta property="og:title" content="数值计算与凸优化补充笔记">
   <meta property="og:description" content>
   <meta property="og:site_name" content="Rock-Blog">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:image" content="http://rock-blog.top">
   
     <link rel="alternate" href="/atom.xml" title="Rock-Blog" type="application/atom+xml">
@@ -35,8 +35,7 @@
 </head>
 
   <body>
-    <!-- Archive Header -->
-<!-- Page Header -->
+    <!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/龙珠3.jpg)">
@@ -44,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Blog Archives</p>
+          <p class="title">数值计算与凸优化补充笔记</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -89,113 +88,45 @@
   </div>
 </header>
 
-<!-- Archive List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-        <div class="archive-item">
-  <a href="/2019/10/24/数值计算与凸优化补充笔记/" class="post-title">
-    数值计算与凸优化补充笔记
-  </a>
-  <div class="date text-muted">Posted on 2019-10-24 16:14:54</div>
-</div>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Rock</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-10-24</span>
+            <span class="time">20:40:25</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
 
-      
-        <div class="archive-item">
-  <a href="/2019/09/26/组会报告-0930-QLearning/" class="post-title">
-    组会报告-0930-QLearning
-  </a>
-  <div class="date text-muted">Posted on 2019-09-26 15:15:04</div>
-</div>
+<a class="tag" href="/tags/深度学习/">#深度学习</a> <a class="tag" href="/tags/人工智能/">#人工智能</a> <a class="tag" href="/tags/数学/">#数学</a>
 
-      
-        <div class="archive-item">
-  <a href="/2019/09/14/deep-reinforcement-learning/" class="post-title">
-    deep-reinforcement-learning
-  </a>
-  <div class="date text-muted">Posted on 2019-09-14 10:00:12</div>
-</div>
 
-      
-        <div class="archive-item">
-  <a href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" class="post-title">
-    物体检测打标小脚本-获取当前图片中鼠标位置
-  </a>
-  <div class="date text-muted">Posted on 2019-09-05 15:30:36</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/07/29/达观杯比赛记录/" class="post-title">
-    达观杯比赛记录
-  </a>
-  <div class="date text-muted">Posted on 2019-07-29 20:19:39</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/07/23/go-http搭建服务器知识点儿/" class="post-title">
-    go-http搭建服务器知识点儿
-  </a>
-  <div class="date text-muted">Posted on 2019-07-23 11:29:08</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/07/21/计算机视觉存疑解答记录/" class="post-title">
-    计算机视觉存疑解答记录
-  </a>
-  <div class="date text-muted">Posted on 2019-07-21 13:04:25</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/07/08/20190708日记/" class="post-title">
-    20190708日记
-  </a>
-  <div class="date text-muted">Posted on 2019-07-08 19:43:26</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/05/08/DLwithPython/" class="post-title">
-    DeepLearning with Python
-  </a>
-  <div class="date text-muted">Posted on 2019-05-08 17:54:01</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" class="post-title">
-    基于python实现excel中读取文件目录+相应数据排序+将文件重命名
-  </a>
-  <div class="date text-muted">Posted on 2019-04-29 19:30:06</div>
-</div>
-
-      
-
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>本笔记是对深度学习相关知识的数学补充笔记—出自<strong>Convex Optimization Overview -Zico Kolter</strong></p>
+<p>背景状态：刚考完研对部分数学知识模糊</p>
+<a id="more"></a>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><h2 id="1-Lipschitz-连续"><a href="#1-Lipschitz-连续" class="headerlink" title="1.Lipschitz 连续"></a>1.Lipschitz 连续</h2><p>是比一致连续更强的连续性条件。从直观上看，连续（或一致连续）要求自变量x发生改变的时候，因变量f(x)不可发生突变,且当$x$是向量时，$x$与$y$的距离用二范数表示：</p>
+<script type="math/tex; mode=display">
+\forall x, \quad \forall y,|f(x)-f(y)| \leq \mathcal{L}\|x -y\|_{2}</script>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-          
-            <li class="next">
-              <a href="/archives/2019/page/2/">
-                <span>NEXT</span>
-                <span class="symbol-right">&gt;</span>
-              </a>
-            </li>
-          
-      </ul>
-    </div>
-  </div>
-</div>
+</article>
 
 
 
