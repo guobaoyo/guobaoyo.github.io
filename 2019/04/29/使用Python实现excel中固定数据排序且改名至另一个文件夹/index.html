@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>基于python实现excel中读取文件目录+相应数据排序+将文件重命名 | Rock-Blog</title>
+  <meta name="keywords" content=" python , 技术小结 , 编程 ">
+  <meta name="description" content="基于python实现excel中读取文件目录+相应数据排序+将文件重命名 | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta name="keywords" content="深度学习,人工智能,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值计算与凸优化补充笔记">
+<meta property="og:url" content="http://rock-blog.top/2019/10/24/数值计算与凸优化补充笔记/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-24T08:21:54.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数值计算与凸优化补充笔记">
+<meta name="twitter:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(14)</small></div></li>
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="深度学习">深度学习<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="words">words<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="python">python<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="go">go<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会">组会<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="NLP">NLP<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">人工智能</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">words</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">日记</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">组会</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">深度强化学习</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="深度学习,三省吾身,人工智能" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,Python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="words " href="/2019/04/29/DLwords/" data-tag="深度学习,人工智能,words" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/24/deeplearningnerualnetwork/" data-tag="深度学习,人工智能,CV" data-author>
+            <span class="post-title" title="深度学习与神经网络">深度学习与神经网络</span>
+            <span class="post-date" title="2019-04-24 21:25:01">2019/04/24</span>
+        </a>
+        
+        <a class="python " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="python " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="数学 " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研,日记" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="go " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="组会 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,组会,强化学习" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/25/math/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="深度学习相关数学知识">深度学习相关数学知识</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="NLP " href="/2019/07/29/达观杯比赛记录/" data-tag="深度学习,人工智能,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/09/14/deep-reinforcement-learning/" data-tag="人工智能,数学,深度强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-使用Python实现excel中固定数据排序且改名至另一个文件夹" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="python">python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color2">python</a>
+            
+            <a href="javascript:" class="color5">技术小结</a>
+            
+            <a href="javascript:" class="color3">编程</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-07-29 20:34:32">2019-04-29 19:30</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用python实现excel中读取文件目录+相应数据排序+将文件重命名（学姐写的）</p>
+<a id="more"></a>
+<p>20190429老师让我把最后得到的result.csv文件中波点，豹纹，条纹的前100张图片分别弄到三个文件夹里面，想看看效果。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>filename</th>
+<th>波点</th>
+<th>波点</th>
+<th>条纹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>./data/compress/FSLW171155_FR_FL.jpg</td>
+<td>0.002193883</td>
+<td>4.56E-05</td>
+<td>0.99776053</td>
+</tr>
+<tr>
+<td>1</td>
+<td>./data/compress/SSLS182301_FR_FL.jpg</td>
+<td>0.72255033</td>
+<td>0.000795163</td>
+<td>0.27665445</td>
+</tr>
+<tr>
+<td>2</td>
+<td>./data/compress/SSLS182403_FR_CR.jpg</td>
+<td>0.18390518</td>
+<td>0.00028514</td>
+<td>0.81580967</td>
+</tr>
+<tr>
+<td>3</td>
+<td>./data/compress/LXLM183416_FR_FL.jpg</td>
+<td>0.12954296</td>
+<td>0.000408304</td>
+<td>0.87004876</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我python贼烂，下面的这个代码是学姐（半个小时之内）写的，我用一下午学会了，在这里感谢学姐并做个记录以后行了再自己慢慢写。</p>
+<p>文件结构如下：</p>
+<p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/文件结构.png" alt="文件结构"></p>
+<ul>
+<li>先将第一行和第一列删掉再处理</li>
+<li>最后一个for循环是为了将图片的名字改为概率大小，这样看起来比较方便</li>
+</ul>
+<pre><code class="lang-python">import os
+from PIL import Image
+import shutil
+import pandas as pd
+path_csv=&quot;./tiaowen.csv&quot;#尽量用英文名字，这样会可靠一些
+path=&quot;&quot;
+df = pd.read_csv(path_csv, header=None)#先将原来的文件读取并且称其为df
+df.columns = [&#39;filename&#39;, &#39;tiaowen&#39;]#实际上将表格的两个列定义为filename 和 tiaowen
+list1=sorted(df.tiaowen)#从小到大排序,而使用sort()方法对list排序会修改list本身，不会返回新的list，而sorted()会返回一个新的list，并不会改变原来的list
+#print(&#39;**************&#39;)
+for i in (sorted(df.tiaowen)[-100:]):#看看倒数100个都是多少评分
+    print(i)
+#print(&#39;**************&#39;)
+df1=df[df.tiaowen&gt;0.999528]#根据刚才的倒数第100个的分数决定数值
+#print(df1.filename)
+list2=[]#新建个list2这个列表
+for i in df1.tiaowen:#
+    list2.append(i)#将tiaowen这个  概率  加入到list2这个列表中
+print(list2)#
+print(&#39;**************&#39;)
+
+newpath=&quot;./上衣/tiaowen1&quot;#新建一个tiaowen的文件夹
+for i in df1.filename:
+    print(i)
+    try:
+        shutil.copy(i,newpath)#i为源路径，newpath为目标路径，在这里做一个try和except目的是将报错的文件跳过去（之前不用try的时候会发生文件重名的bug）
+    except FileNotFoundError as e:
+        continue
+j=0#下面的这个for循环的作用是将图片的名字改为概率.jpg
+for file_name in os.listdir(newpath):#在这里就将file_name全变为newpath里面的文件名字
+
+    os.rename(os.path.join(newpath,file_name),os.path.join(newpath,str(list2[j])+&quot;.jpg&quot;))
+    j+=1#上面这句话最好加个try和except的语句这样就可以避免报错
+</code></pre>
+<p>运行前结果：</p>
+<p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行前.png" alt="运行前"></p>
+<p>运行后结果：</p>
+<p><img src="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/运行后.png" alt="运行后"></p>
+<p>—2019-04-30—</p>
+<p>沿着上一天的小程序，老师让我找到如下面表格中的第三列的首字母为y的所有图片，并且按照第二列的命名方式放在一个文件夹里面。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Images/coat_length_labels/59e4795e641dbf0523b196daedacb960.jpg</th>
+<th>coat_length_labels</th>
+<th>nnnnnnym</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Images/coat_length_labels/8be3ded3a77538a41f15093489e5b555.jpg</td>
+<td>coat_length_labels</td>
+<td>nnnnnnym</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/19153af09f6e91703549d0b999a04ed6.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/371f5a185a703d12ae1f95241e085283.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/ba4cc8d7756a634f41abe35dd379d941.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/fa9ea1b1b6eb13bbe6a2d85449b6b3b0.jpg</td>
+<td>neck_design_labels</td>
+<td>ynnnn</td>
+</tr>
+<tr>
+<td>Images/neck_design_labels/fdc37d51cc4e5514ab4acaf0715dec03.jpg</td>
+<td>neck_design_labels</td>
+<td>nnynn</td>
+</tr>
+<tr>
+<td>Images/neckline_design_labels/58bfbc61563f9d691652e124e4ce5fe5.jpg</td>
+<td>neckline_design_labels</td>
+<td>mnnnnnnynn</td>
+</tr>
+<tr>
+<td>Images/pant_length_labels/f6bb4f1a88961851be5507a0f9cfc45e.jpg</td>
+<td>pant_length_labels</td>
+<td>ynnnnn</td>
+</tr>
+<tr>
+<td>Images/skirt_length_labels/7739c0614a3005f8aafc0b637298653b.jpg</td>
+<td>skirt_length_labels</td>
+<td>nnnnyn</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>思路一：用<strong>正则表达式</strong> 匹配第三列（但是我不会正则表达式啊 <strong>迟早得学</strong>）</p>
+<p>思路二：既然是要首字母为y那我在excel中将第三列升序排列，只要后面的首字母为y的就ok了。故如法炮制，在前一天的小工具上面改。</p>
+<pre><code class="lang-python">import os
+from PIL import Image
+import shutil
+import pandas as pd
+path_csv=&quot;./shouy-train2.csv&quot;#尽量用英文名字，这样会可靠一些
+path=&quot;./fashionAI_attributes_train2//&quot;
+df = pd.read_csv(path_csv, header=None)#先将原来的文件读取并且称其为df
+df.columns = [&#39;filename&#39;, &#39;leibie&#39;,&#39;tag&#39;]#实际上将表格的两个列定义为filename 和 tiaowen
+list1=sorted(df.leibie)#从小到大排序,而使用sort()方法对list排序会修改list本身，不会返回新的list，而sorted()会返回一个新的list，并不会改变原来的list
+newpath=&quot;./train2/&quot;#新建一个tiaowen的文件夹
+zimulu = str(df.leibie)
+print(newpath+zimulu)
+list2=[]#新建个list2这个列表
+for z in df.leibie:#
+    list2.append(z)#将tiaowen这个名字加入到list2这个列表中
+print(list2[4])
+j=0#设置j=0
+for i in df.filename:
+    try:
+        shutil.copy(os.path.join(path+i),os.path.join(newpath+list2[j]))
+        j += 1#每次都让j加1，这样就可以对应上list[]这个列表了
+    except FileNotFoundError as e:
+        continue
+</code></pre>
+<p>注：</p>
+<ul>
+<li><p>这里我没有用自动创建文件夹<strong>（得学）</strong></p>
+</li>
+<li><p>正则表达式<strong>（得学）</strong></p>
+</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>基于python实现excel中读取文件目录+相应数据排序+将文件重命名</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-04-29, 19:30:06</p>
+    <p><span class="copy-title">最后更新:</span>2019-07-29, 20:34:32</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">http://rock-blog.top/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#深度学习','#三省吾身','#人工智能','#CV','#Python','#words','#python','#技术小结','#编程','#数学','#考研','#日记','#go','#组会','#强化学习','#NLP','#深度强化学习',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
