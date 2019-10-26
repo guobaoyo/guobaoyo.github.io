@@ -6,18 +6,25 @@
   <meta name="keywords" content=" python , 技术小结 , 编程 ">
   <meta name="description" content="基于python实现excel中读取文件目录+相应数据排序+将文件重命名 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
-<meta name="keywords" content="深度学习,人工智能,数学">
+<meta name="description" content="组会报告-0930-QLearning">
+<meta name="keywords" content="深度学习,组会,强化学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数值计算与凸优化补充笔记">
-<meta property="og:url" content="http://rock-blog.top/2019/10/24/数值计算与凸优化补充笔记/index.html">
+<meta property="og:title" content="组会报告-0930-QLearning">
+<meta property="og:url" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta property="og:description" content="组会报告-0930-QLearning">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-24T08:21:54.382Z">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/monte-carlo.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/TD.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/Q-learning.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/targetnetwork.pnG">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/算法流程.png">
+<meta property="og:updated_time" content="2019-10-21T06:41:36.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数值计算与凸优化补充笔记">
-<meta name="twitter:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta name="twitter:title" content="组会报告-0930-QLearning">
+<meta name="twitter:description" content="组会报告-0930-QLearning">
+<meta name="twitter:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -124,7 +131,7 @@
     
         
             
-            <li><div data-rel="深度学习">深度学习<small>(2)</small></div>
+            <li><div data-rel="words">words<small>(1)</small></div>
                 
             </li>
             
@@ -132,7 +139,7 @@
     
         
             
-            <li><div data-rel="words">words<small>(1)</small></div>
+            <li><div data-rel="深度学习">深度学习<small>(2)</small></div>
                 
             </li>
             
@@ -190,8 +197,6 @@
 <div class="left-bottom">
     <div class="menus">
     
-    
-    <a class="dynamic-menu site_url" href="/photo">相册</a>
     
     
     
@@ -299,14 +304,14 @@
             <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
         </a>
         
-        <a class="深度学习 " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
-            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
-            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
-        </a>
-        
         <a class="words " href="/2019/04/29/DLwords/" data-tag="深度学习,人工智能" data-author>
             <span class="post-title" title="DLwords">DLwords</span>
             <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
         </a>
         
         <a class="python " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,技术小结,编程" data-author>
@@ -634,7 +639,7 @@ for i in df.filename:
 </ul>
 
       
-       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
 </article>
 
@@ -688,7 +693,7 @@ for i in df.filename:
 
     </div>
     <div class="copyright">
-        <p class="footer-entry">©2016-2019 Yelog</p>
+        <p class="footer-entry">©2016-2019 Rock&#39;s  blog</p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
@@ -957,8 +962,6 @@ for i in df.filename:
 </div>
 <div class="mobile-menus">
     
-    
-    <a class="dynamic-menu site_url" href="/photo">相册</a>
     
     
     
