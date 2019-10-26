@@ -223,10 +223,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">人工智能</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">技术小结</a>
     </li>
     
@@ -284,14 +280,14 @@
             <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
         </a>
         
-        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
-            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
-            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
-        </a>
-        
         <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,技术小结,编程" data-author>
             <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
             <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
         </a>
         
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
@@ -299,7 +295,7 @@
             <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
         </a>
         
-        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,深度学习" data-author>
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
             <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
             <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
         </a>
@@ -945,7 +941,7 @@ J_{P P O}^{\theta^{k}}(\theta)=J^{\theta^{k}}(\theta)-\beta K L\left(\theta, \th
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#人工智能','#技术小结','#编程','#考研','#go','#组会报告','#强化学习','#NLP',],
+            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#技术小结','#编程','#考研','#go','#组会报告','#强化学习','#NLP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
