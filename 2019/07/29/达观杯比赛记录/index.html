@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>达观杯比赛记录 | Rock-Blog</title>
+  <meta name="keywords" content=" 深度学习 , 人工智能 , NLP ">
+  <meta name="description" content="达观杯比赛记录 | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="组会报告-0930-QLearning">
+<meta name="keywords" content="深度学习,组会,强化学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组会报告-0930-QLearning">
+<meta property="og:url" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="组会报告-0930-QLearning">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/monte-carlo.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/TD.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/Q-learning.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/targetnetwork.pnG">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/算法流程.png">
+<meta property="og:updated_time" content="2019-10-21T06:41:36.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组会报告-0930-QLearning">
+<meta name="twitter:description" content="组会报告-0930-QLearning">
+<meta name="twitter:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(14)</small></div></li>
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="深度学习">深度学习<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="words">words<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="python">python<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="go">go<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会">组会<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="NLP">NLP<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">人工智能</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">words</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">日记</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">组会</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">深度强化学习</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="深度学习,三省吾身,人工智能" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,Python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="words " href="/2019/04/29/DLwords/" data-tag="深度学习,人工智能,words" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/24/deeplearningnerualnetwork/" data-tag="深度学习,人工智能,CV" data-author>
+            <span class="post-title" title="深度学习与神经网络">深度学习与神经网络</span>
+            <span class="post-date" title="2019-04-24 21:25:01">2019/04/24</span>
+        </a>
+        
+        <a class="python " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="python " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研,日记" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="数学 " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="go " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="组会 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,组会,强化学习" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="NLP " href="/2019/07/29/达观杯比赛记录/" data-tag="深度学习,人工智能,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/25/math/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="深度学习相关数学知识">深度学习相关数学知识</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/09/14/deep-reinforcement-learning/" data-tag="人工智能,数学,深度强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-达观杯比赛记录" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">达观杯比赛记录</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="NLP">NLP</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">深度学习</a>
+            
+            <a href="javascript:" class="color5">人工智能</a>
+            
+            <a href="javascript:" class="color4">NLP</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-09-02 16:00:22">2019-07-29 20:19</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-对比赛有个基本了解—是个NER的任务："><span class="toc-text">1.对比赛有个基本了解—是个NER的任务：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#重要知识点记录："><span class="toc-text">重要知识点记录：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解："><span class="toc-text">2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-再看的官方给的解答和王老板分享的代码"><span class="toc-text">3.再看的官方给的解答和王老板分享的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要学的东西："><span class="toc-text">需要学的东西：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）"><span class="toc-text">1.基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不懂word-embedding怎么办："><span class="toc-text">不懂word-embedding怎么办：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注意点："><span class="toc-text">注意点：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。"><span class="toc-text">2.NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-维特比算法比较重要，对后面一系列算法的学习都有帮助。"><span class="toc-text">3.维特比算法比较重要，对后面一系列算法的学习都有帮助。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-听官方给的声音回放"><span class="toc-text">4.听官方给的声音回放</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>达观杯备赛记录</p>
+<a id="more"></a>
+<h1 id="1-对比赛有个基本了解—是个NER的任务："><a href="#1-对比赛有个基本了解—是个NER的任务：" class="headerlink" title="1.对比赛有个基本了解—是个NER的任务："></a>1.对比赛有个基本了解—是个NER的任务：</h1><p><a href="https://biendata.com/competition/datagrand/?source=guanwang" target="_blank" rel="noopener">比赛官网</a></p>
+<h2 id="重要知识点记录："><a href="#重要知识点记录：" class="headerlink" title="重要知识点记录："></a>重要知识点记录：</h2><p>​    1.不允许使用主办方提供的数据集之外的任何外部标注数据，也不允许使用预训练词向量，<strong>参赛选手不得在未经主办方授权情况下将比赛数据作为其他用途使用</strong>；</p>
+<p>​    2.参赛队伍可在参赛期间随时上传验证集的预测结果，一天不能超过<strong>2次</strong>；</p>
+<p>​    3.训练集有17000条，我们在17000条数据上标注了3个字段，共有字段a 9281处，字段b 14704处，字段c 9097处。预测集有3000条。</p>
+<p>​    4.比赛方提供一个大规模的未标注语料供参赛选手预训练语言模型</p>
+<p>​    5.train_set.txt </p>
+<p>此数据集用于训练模型，每一行对应一条文本数据。每一个数字对应一个“字”或“标点符号”。字和字之间用‘_’连接，在对应字段后面标注/a、/b、/c，非字段文本标注/o。比如：“欢迎来到达观数据。”是形如“1_2_3_4_5_6_7_8_9”的字符串，如果“达观数据”是字段c，就会被标成“1_2_3_4/o  5_6_7_8/c 9/o”的形式。</p>
+<p>​    6.评分标准：</p>
+<p>信息抽取的评估指标是F1值，是正确率和召回率的调和平均值。</p>
+<p> 正确率 = 抽取出的正确字段数 / 抽取出的字段数<br> 召回率 = 抽取出的正确字段数 / 样本的字段数<br> F1值 = （2 <em> 正确率 </em> 召回率）/（正确率 + 召回率）</p>
+<h2 id="2-学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解："><a href="#2-学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：" class="headerlink" title="2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解："></a>2.学习王老板给的三篇网上大佬学习资料，先对NER有个基本了解：</h2><p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-1</a></p>
+<p><a href="https://www.lookfor404.com/%e7%94%a8%e9%9a%90%e9%a9%ac%e5%b0%94%e5%8f%af%e5%a4%ab%e6%a8%a1%e5%9e%8bhmm%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%e4%ba%8c/" target="_blank" rel="noopener">NER-2</a></p>
+<p><a href="https://www.lookfor404.com/%e7%94%a8%e8%a7%84%e5%88%99%e5%81%9a%e5%91%bd%e5%90%8d%e5%ae%9e%e4%bd%93%e8%af%86%e5%88%ab-ner%e7%b3%bb%e5%88%97%ef%bc%88%e4%b8%80%ef%bc%89/" target="_blank" rel="noopener">NER-3</a></p>
+<h2 id="3-再看的官方给的解答和王老板分享的代码"><a href="#3-再看的官方给的解答和王老板分享的代码" class="headerlink" title="3.再看的官方给的解答和王老板分享的代码"></a>3.再看的<a href="https://segmentfault.com/a/1190000016778761#articleHeader6" target="_blank" rel="noopener">官方给的解答</a>和<a href="https://www.kaggle.com/huskylovers/fork-of-starter-datagrand" target="_blank" rel="noopener">王老板分享的代码</a></h2><p>条件随机场（ConditionalRandom<br>Field，CRF）是NER目前的主流模型。它的目标函数不仅考虑输入的状态特征函数，而且还包含了标签转移特征函数。在训练时可以使用SGD学习模型参数。在已知模型时，给输入序列求预测输出序列即求使目标函数最大化的最优序列，是一个动态规划问题，可以使用Viterbi算法解码来得到最优标签序列。<strong>CRF的优点在于其为一个位置进行标注的过程中可以利用丰富的内部及上下文特征信息。</strong>—出自官方给的资料</p>
+<p><strong>看完官方给的视频后总结如下</strong></p>
+<h2 id="需要学的东西："><a href="#需要学的东西：" class="headerlink" title="需要学的东西："></a>需要学的东西：</h2><h3 id="1-基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）"><a href="#1-基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）" class="headerlink" title="1.基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）"></a>1.基础知识：专业术语听不太懂，看看embedding是啥？（确定词向量模型的选择及参数）</h3><p>（答：embedding的意思应该是将一个词转换为向量，但是之前听说过one hot encoding,只不过one hot encoding会产生大量的稀疏矩阵，且维度之间的关系也没有很好的体现，所以在比赛中能用别的就尽量别用one hot encoding，而在<a href="https://blog.csdn.net/k284213498/article/details/83474972" target="_blank" rel="noopener">YJango老师的解释中</a>Word embedding就是要从数据中自动学习到输入空间到Distributed representation空间的 映射f ，且训练词向量的过程中是无监督的。）</p>
+<h4 id="不懂word-embedding怎么办："><a href="#不懂word-embedding怎么办：" class="headerlink" title="不懂word-embedding怎么办："></a><strong>不懂word-embedding怎么办：</strong></h4><p>one-hot维度太高且过于稀疏，不考虑词序信息，且每个词之间是孤立的，没有联系，所以只是作为知识了解即可，不适用于该任务。</p>
+<p>Glove模型实际上是基于矩阵的分部表示，其中每一行表示一个词向量，每一列表示一个文本，维度较低考虑了语法和词序信息。</p>
+<p>NNLM模型是基于神经网络的模型，通过前面的几个词语来预测当前的词语。</p>
+<p>LBL模型应该算是在NNLM的基础上继续改进的，使用log-bilinear energy function，不用tanh函数，没有MMLM那么复杂。</p>
+<p>C&amp;W只训练词向量模型，且将目标词放到输入层，输出层变为1个节点，这个节点表示对这n元短语进行打分（这个模型目前只是感性理解，需要详细看）</p>
+<p>virtual model order模型是考虑词与词之间的顺序的模型。暂时理解为来博士在CBOW的基础上的改进，保留了序列顺序信息。</p>
+<p>skip-gram模型复杂度特别低，比较简易，暂不考虑（后期可以尝试）。</p>
+<h5 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h5><p>1.如果语料库大的话，可以选择更为复杂的模型，例如，CBOW或者Order</p>
+<p>2.模型复杂度方面CBOW&lt;Oder&lt;LBL&lt;C&amp;W和NNLM，所以在本任务中就暂时使用Order，LBL</p>
+<p>3.且在选择使用哪个模型的哪些参数的时候，应该设置一个验证测试集来验证。</p>
+<p>4.先试试50维的词向量，再试试100维</p>
+<h3 id="2-NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。"><a href="#2-NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。" class="headerlink" title="2.NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。"></a>2.NLP里面的数据增强，最好是在预训练模型加入一些同数据源的特征。</h3><p>（通过数据增强可以明显提升模型性能。具体地，我们对原语料进行分句，然后随机地对各个句子进行bigram、trigram拼接，最后与原始句子一起作为训练语料。）</p>
+<h3 id="3-维特比算法比较重要，对后面一系列算法的学习都有帮助。"><a href="#3-维特比算法比较重要，对后面一系列算法的学习都有帮助。" class="headerlink" title="3.维特比算法比较重要，对后面一系列算法的学习都有帮助。"></a>3.维特比算法比较重要，对后面一系列算法的学习都有帮助。</h3><p>4.得理解算法本身才能调参，效果才好，别瞎调。<br>5.学一下LSTM的原版论文，可以试一下这个模型。<br>6.看看能不能利用attention模型。<br>7.深度学习的调参尽量用经典的套路，例如优化函数：adam可以试试的<br>8.过拟合怎么处理：dropout可以设置大一点，再一个就是可以尽量的使用corpus这个东西，从而让它的泛化能力更强。</p>
+<p>注意点：<br>1.一开始先看数据，做清洗，可以一开始用机器学习的模型去做知道机器学习模型的底线之后，再搞深度学习。<br>2.做文本处理神经网络的层数不要太多：否则第一容易过拟合，第二训练的慢。<br>3.一个实体有多个关系，联合标注会出问题，一个模型出一个关系就可以一定程度上解决。<br>4.CRF++有一定的局限性，如果想要扩展需要修改源码，但是改完之后不一定会有明显的效果。<br>5.只用train data的话肯定过拟合，所以数据很重要，官方给的数据尽量全用吧，corpus的利用有待提高！<br>6.观察算法本身，所以别想着再添加训练集。<br>7.在做词向量的时候，ELMO会比word2vec效果好很多。</p>
+<h2 id="4-听官方给的声音回放"><a href="#4-听官方给的声音回放" class="headerlink" title="4.听官方给的声音回放"></a>4.听官方给的声音回放</h2><p>这个赛题需要更多的标注数据才能有比较好的效果。<br>比赛的baseline：<br>1.用CRF++工具，需要到一个网站上把工具下载好。<br>2.相当于序列标注的问题，需要将数据转化为不同标签集的序列的样式。（有BIO,BMESO）在这里官方用BIO做的。<br>3.用CRF++做这个任务，需要训练集变成几列特征+1列标签的形式。在这里用的是最基本的字符的本身特征。（每个字的index+每个index对应的标签-&gt;BI开头+a,b,c字段）  可以自己往里面加上这个词的词性，词频，词边界，实体的边界<br>4.处理预测集：除了标签与训练集相同—template取到最远的前三个字和后三个字再取他们的组合特征。正负3即可。还可以考虑这个词是否是停用词，或者这个字的前一个字是不是停用词。<br>5.除了unigram还有bigram？/o （other）不参与评分，但是还是要加上，要不他会报错。<br>6.数据做了脱敏处理了，所以数据就都是字符串形式的，所以在CRF++的时候，训练数据就不是词向量了，分词的特征已经没有了。<br>7.只有1w7k条数据，用深度学习模型很容易过拟合。<br>8.应该用训练语言模型的方式去搞。<br>9.unigram怎么重组： 通过特征模板生成特征函数。u00这个特征，从当前字符往前找第三个字符。还有2个字符或者3个字符的组合特征。<br>10：双向LSTM+CRF：<br>11.没有给分词的信息，只能用字向量来做。但是容易过拟合。字向量一般是k级别的，也会过拟合。 先做数据增强，将几句话拆开再拼加在一起。数据量到2-3倍。<br>12.如果是字向量过拟合了，可以将学习率调低，或者加上L2正则化。<br>13.至于无监督语料，不能训练BERT，数据量少或者质量差会使得BERT模型训练效果变的很差。<br>14.数据量多大决定了使用多大的模型。<br>15.sklearn+CRFsuit  也是可以的。<br>16.baseline能到多少分的话，大约在0.85（特征模板是主办方随便选的，这个可以深入了解学习）<br>17.elmo是可以使用的，可以把自卷积变成词，然后再输入至LSTM里面。<br>18.前排同学有用BERT和xlnet做的？（主办方说太容易过拟合了）<br>19.idcn+CRF可以了解一下，idcn可以替代掉biLSTM，icdn训练速度非常快。还是可以去掉后面的CRF层。但是还有个不实用的地方就是对于长关联字段会存在关联异常。<br>20.NER任务可以用char级别。（NER任务如果没有数据加密处理的话，可以用BERT处理）<br>21.BERT+LSTM+CRF可以否？<br>在本比赛中BERT会过拟合，在其他场合中CRF加的比较多余。<br>22.在windows系统下应该改哪里才能生成一个可以提交的文档：该最后一句话的，把\n\n 改为\r\n 才可以。<br>23.小姐姐在Q群里发了windows版的baseline。<br>24.未标注数据只能训练词向量吗？<br>应该用来训练语言模型，设计这个corpus的初衷就是为了模仿CV那种可以使用预训练模型。只要数据量足够大，就可以发现里面的语言学规律（例如wiki百科）<br>25.微调BERT后，文本数据量需要多大？<br>在有大训练数据集训练后，只需要很小数据，就可以训练BERT。<br>26.biLSTM+CRF是很老的，idcn+CRF（上下文关联不长）也是几年前的，但是都比较老。<br>27.可以试试概率编程的思路。<br>28.order the new rounce 顶会的最佳论文？或者 ON-LSTM(带有状态更新的)模型也可以试试。<br>29.无监督分词是不太可行的。<br>30.latice 是去年还是前年的sota?实用度好像不是特别高。<br>31.LSTM 2层足够了吧<br>32.字，词向量如何得到，是否有锁定词向量，数据是否有增强比较重要，维度一般在100左右。<br>33.怎么构造nsp? 给的corpus是分句了的，是不可以构造NSP的，但是这个比赛更需要的是局部的特征。</p>
+<p>前期未学习的知识点太多学不过来同时放暑假回家呆了2个星期，因此耽搁比赛了。付出越多，收获不一定与其成正比，但是像我这样懒得付出还想有成绩应该是在想peach。</p>
+<p>​                                                                                                        ——纪念本次胎死腹中的比赛，以后切勿犯同样错误</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>达观杯比赛记录</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-07-29, 20:19:39</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-02, 16:00:22</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/29/达观杯比赛记录/" title="达观杯比赛记录">http://rock-blog.top/2019/07/29/达观杯比赛记录/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#深度学习','#三省吾身','#人工智能','#CV','#Python','#words','#python','#技术小结','#编程','#数学','#考研','#日记','#go','#组会','#强化学习','#NLP','#深度强化学习',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

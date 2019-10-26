@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>deep-reinforcement-learning | Rock-Blog</title>
+  <meta name="keywords" content=" 人工智能 , 数学 , 深度强化学习 ">
+  <meta name="description" content="deep-reinforcement-learning | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="组会报告-0930-QLearning">
+<meta name="keywords" content="深度学习,组会,强化学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组会报告-0930-QLearning">
+<meta property="og:url" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="组会报告-0930-QLearning">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/monte-carlo.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/TD.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/Q-learning.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/targetnetwork.pnG">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/算法流程.png">
+<meta property="og:updated_time" content="2019-10-21T06:41:36.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组会报告-0930-QLearning">
+<meta name="twitter:description" content="组会报告-0930-QLearning">
+<meta name="twitter:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(14)</small></div></li>
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="深度学习">深度学习<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="words">words<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="python">python<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="go">go<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会">组会<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="NLP">NLP<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">人工智能</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">Python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">words</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">日记</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">组会</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">深度强化学习</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="深度学习,三省吾身,人工智能" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,Python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="words " href="/2019/04/29/DLwords/" data-tag="深度学习,人工智能,words" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/24/deeplearningnerualnetwork/" data-tag="深度学习,人工智能,CV" data-author>
+            <span class="post-title" title="深度学习与神经网络">深度学习与神经网络</span>
+            <span class="post-date" title="2019-04-24 21:25:01">2019/04/24</span>
+        </a>
+        
+        <a class="python " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="python " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,技术小结,编程" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研,日记" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="数学 " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="go " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="组会 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,组会,强化学习" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="NLP " href="/2019/07/29/达观杯比赛记录/" data-tag="深度学习,人工智能,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="深度学习 " href="/2019/04/25/math/" data-tag="深度学习,人工智能,数学" data-author>
+            <span class="post-title" title="深度学习相关数学知识">深度学习相关数学知识</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/09/14/deep-reinforcement-learning/" data-tag="人工智能,数学,深度强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-deep-reinforcement-learning" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">deep-reinforcement-learning</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="强化学习">强化学习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">人工智能</a>
+            
+            <a href="javascript:" class="color3">数学</a>
+            
+            <a href="javascript:" class="color2">深度强化学习</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2019-10-26 15:15:50">2019-09-14 10:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#李宏毅《深度强化学习》学习笔记"><span class="toc-text">李宏毅《深度强化学习》学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0导论："><span class="toc-text">0导论：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-名词解释"><span class="toc-text">1.名词解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-基本应用与前提知识铺垫"><span class="toc-text">2.基本应用与前提知识铺垫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-更多应用以及参考书目"><span class="toc-text">3.更多应用以及参考书目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-李宏毅老师认为强化学习的难点："><span class="toc-text">4.李宏毅老师认为强化学习的难点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-A3C："><span class="toc-text">5.A3C：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-深度学习的步骤"><span class="toc-text">6.深度学习的步骤:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1基本介绍"><span class="toc-text">6.1基本介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2评价函数好坏："><span class="toc-text">6.2评价函数好坏：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3选择最好的函数"><span class="toc-text">6.3选择最好的函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-1"><span class="toc-text">6.3.1</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#6-3-1-1"><span class="toc-text">6.3.1.1</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1Policy-Gradient"><span class="toc-text">1Policy Gradient</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前提知识："><span class="toc-text">1.前提知识：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-灵光一闪"><span class="toc-text">2.灵光一闪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-详细推导："><span class="toc-text">3.详细推导：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-参数更新过程"><span class="toc-text">4.参数更新过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-极大似然函数与得到最大奖励之间的关系："><span class="toc-text">5.极大似然函数与得到最大奖励之间的关系：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-有可能我们在一场游戏中所有的小的reward值都为正："><span class="toc-text">6.有可能我们在一场游戏中所有的小的reward值都为正：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-目前的弊端以及解决方法-Assign-suitable-credit"><span class="toc-text">7.目前的弊端以及解决方法-Assign suitable credit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-PPO-default-algorithm-in-openAI"><span class="toc-text">2  PPO-default algorithm in openAI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-on-policy-与off-policy的区别"><span class="toc-text">1.on-policy 与off-policy的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-前一节课存在的问题"><span class="toc-text">2.前一节课存在的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Importance-sampling："><span class="toc-text">Importance sampling：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Importance-sampling存在的问题"><span class="toc-text">Importance sampling存在的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO"><span class="toc-text">3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TRPO-Trust-Region-Policy-Optimization"><span class="toc-text">TRPO(Trust Region Policy Optimization)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PPO（proximal-policy-optimization）"><span class="toc-text">PPO（proximal policy optimization）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PPO1-Algorithm"><span class="toc-text">PPO1 Algorithm</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PPO2-Algorithm"><span class="toc-text">PPO2 Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#如图"><span class="toc-text">如图</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Q-learning"><span class="toc-text">3  Q-learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-V-π-（s）-："><span class="toc-text">1.$V^π （s）$：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-monte-carlo-MC"><span class="toc-text">1.monte-carlo(MC)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Temporal-difference-TD"><span class="toc-text">2.Temporal-difference(TD)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-比较两种方法的差别"><span class="toc-text">3.比较两种方法的差别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Q-π-（s-a）"><span class="toc-text">2.$Q^π （s,a）$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Q-Learning步骤："><span class="toc-text">1.Q-Learning步骤：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Q-Learning-TIPS"><span class="toc-text">3.Q-Learning -TIPS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP1-Target-Network"><span class="toc-text">TIP1-Target Network</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP2-Exploration"><span class="toc-text">TIP2-Exploration</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP3-Replay-Buffer-减少与环境做互动的次数-从而降低训练时间"><span class="toc-text">TIP3-Replay Buffer-减少与环境做互动的次数-从而降低训练时间-</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#转化为off-policy"><span class="toc-text">转化为off-policy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP4-Double-DQN"><span class="toc-text">TIP4-Double DQN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP5-Dueling-DQN"><span class="toc-text">TIP5-Dueling DQN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP6-Prioritized-Reply"><span class="toc-text">TIP6-Prioritized Reply</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP7-Multi-step-balance-between-MC-and-TD"><span class="toc-text">TIP7-Multi-step-balance between MC and TD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP8-Noisy-Net"><span class="toc-text">TIP8-Noisy Net</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIP9-Distributional-Q-function"><span class="toc-text">TIP9-Distributional Q-function</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Rainbow"><span class="toc-text">4 Rainbow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Q-Learning-for-Continuous-Actions"><span class="toc-text">5 Q-Learning for Continuous Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#核心思想"><span class="toc-text">核心思想</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Actor-Critic-Asynchronous-Advantage-Actor-critic"><span class="toc-text">4 Actor-Critic  Asynchronous Advantage Actor-critic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-之前存在的问题："><span class="toc-text">1.之前存在的问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Advantage-Actor-Critic-TIPs"><span class="toc-text">2.Advantage Actor-Critic TIPs</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-π-s-和-V-π-（s）-的参数可以共用"><span class="toc-text">1.π(s)和$V^π （s）$的参数可以共用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-exploration"><span class="toc-text">2.exploration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-A3C"><span class="toc-text">3.A3C</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5sparse-reward"><span class="toc-text">5sparse reward</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存在的问题："><span class="toc-text">存在的问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-reward-shaping"><span class="toc-text">1 reward shaping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-curiosity"><span class="toc-text">2 curiosity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-curriculum-learning"><span class="toc-text">3 curriculum learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-reverse-curriculum-generation"><span class="toc-text">4 reverse curriculum generation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-hierarchical-reinforcement-learning"><span class="toc-text">5 hierarchical reinforcement learning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-imitation-learning"><span class="toc-text">6 imitation learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-text">难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法："><span class="toc-text">解决方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#behavior-cloning"><span class="toc-text">behavior cloning</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inverse-reinforcement-learning-inverse-optimal-control"><span class="toc-text">inverse reinforcement learning(inverse optimal control)</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>李宏毅《深度强化学习》学习笔记-<a href="https://www.bilibili.com/video/av58458003/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av58458003/?p=1</a></p>
+<a id="more"></a>
+<h1 id="李宏毅《深度强化学习》学习笔记"><a href="#李宏毅《深度强化学习》学习笔记" class="headerlink" title="李宏毅《深度强化学习》学习笔记"></a>李宏毅《深度强化学习》学习笔记</h1><h2 id="0导论："><a href="#0导论：" class="headerlink" title="0导论："></a>0导论：</h2><h3 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1.名词解释"></a>1.名词解释</h3><p>注意在强化学习里面的state指的是环境的状态而不是智能体的状态，智能体观测到环境的状态，也叫observation,而智能体做的动作叫action或者是policy。</p>
+<h3 id="2-基本应用与前提知识铺垫"><a href="#2-基本应用与前提知识铺垫" class="headerlink" title="2.基本应用与前提知识铺垫"></a>2.基本应用与前提知识铺垫</h3><p>在下棋这种博弈对抗的游戏中不建议用监督学习的原因是当输入某个棋局状态的时候，无法像图像识别或检测位置一样给出准确的标答，所以需要用强化学习的思想去训练智能体，故在训练Alpha Go的训练过程中是搞两个智能体互相下棋，同理还可以应用在制作聊天机器人上。</p>
+<h3 id="3-更多应用以及参考书目"><a href="#3-更多应用以及参考书目" class="headerlink" title="3.更多应用以及参考书目"></a>3.更多应用以及参考书目</h3><p><img src="/2019/09/14/deep-reinforcement-learning/应用方向1.png" alt="1强化学习应用方向"></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/应用方向2.png" alt="1强化学习应用方向"></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/more-reference.png" alt="更多"></p>
+<h3 id="4-李宏毅老师认为强化学习的难点："><a href="#4-李宏毅老师认为强化学习的难点：" class="headerlink" title="4.李宏毅老师认为强化学习的难点："></a>4.李宏毅老师认为强化学习的难点：</h3><ul>
+<li>reward的出现具有延迟性</li>
+<li>智能体需要主动去<strong>探索</strong>，对环境做出改变进而得到正向或负向的反馈</li>
+</ul>
+<h3 id="5-A3C："><a href="#5-A3C：" class="headerlink" title="5.A3C："></a>5.A3C：</h3><p><img src="/2019/09/14/deep-reinforcement-learning/A3C.png" alt="A3C"></p>
+<p>李宏毅老师讲因为电玩的未知性太大，model based的方法在电玩游戏方面应用比较困难。</p>
+<h3 id="6-深度学习的步骤"><a href="#6-深度学习的步骤" class="headerlink" title="6.深度学习的步骤:"></a>6.深度学习的步骤:</h3><h4 id="6-1基本介绍"><a href="#6-1基本介绍" class="headerlink" title="6.1基本介绍"></a>6.1基本介绍</h4><p>​    使用神经网络作为智能体，当智能体是深度神经网络的时候，这套系统就是深度强化学习系统。</p>
+<h4 id="6-2评价函数好坏："><a href="#6-2评价函数好坏：" class="headerlink" title="6.2评价函数好坏："></a>6.2评价函数好坏：</h4><p>​    最大化total reward的多次平均值（因为游戏具有随机性，且对于同一个Actor，输入相同的observation，做出的反应也可能不同），并用total reward评判函数的好坏，注：</p>
+<script type="math/tex; mode=display">
+\tau=\left\{s_{1}, a_{1}, r_{1}, s_{2}, a_{2}, r_{2}, \cdots, s_{T}, a_{T}, r_{T}\right\}且
+R(\tau)=\sum_{n=1}^{N} r_{n}</script><script type="math/tex; mode=display">
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)且P(\tau | \theta)是智能体参数为\theta 的时候发生事件\tau的概率</script><h4 id="6-3选择最好的函数"><a href="#6-3选择最好的函数" class="headerlink" title="6.3选择最好的函数"></a>6.3选择最好的函数</h4><p>选择最好的Actor-&gt;使用Gradient Ascent的方法找到θ使下式最大：</p>
+<script type="math/tex; mode=display">
+\overline{R}_{\theta}=\sum_{\tau} R(\tau) P(\tau | \theta) \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right)</script><h5 id="6-3-1"><a href="#6-3-1" class="headerlink" title="6.3.1"></a>6.3.1</h5><p>随机初始化θ0和η0，再对 <script type="math/tex">\overline{R}_{\theta}</script> 求微分，更新参数，一直循环，最后得到使得<script type="math/tex">\overline{R}_{\theta}</script> 最大的Actor</p>
+<h6 id="6-3-1-1"><a href="#6-3-1-1" class="headerlink" title="6.3.1.1"></a>6.3.1.1</h6><p>对<script type="math/tex">\overline{R}_{\theta}</script> 求微分的时候<script type="math/tex">R(\tau)</script> 里面不含θ，不需要微分， 故<script type="math/tex">R(\tau)</script> 是否可微不重要，即使是黑盒子也无所谓。 <script type="math/tex">P(\tau | \theta)</script> 含有θ，需要对其求微分。</p>
+<p>具体演算：</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta}=\sum_{\tau} R(\tau) \nabla P(\tau | \theta)=\sum_{\tau} R(\tau) P(\tau | \theta) \frac{\nabla P(\tau | \theta)}{P(\tau | \theta)}</script><p>分子分母同时乘以个<script type="math/tex">P(\tau | \theta)</script> </p>
+<p>又由于复合函数求导f[g(x)]设g(x)=u,则f[g(x)]=f(u)，从而f’[g(x)]=f’(u)*g’(x)</p>
+<p>故<script type="math/tex">\frac{d \log (f(x))}{d x}=\frac{1}{f(x)} \frac{d f(x)}{d x}</script> 所以上式 <script type="math/tex">\nabla \overline{R}_{\theta}\ = \sum_{\tau} R(\tau) P(\tau | \theta) \nabla \log P(\tau | \theta)</script> </p>
+<p>又有6.3所示公式，代换过来<script type="math/tex">\nabla \overline{R}_{\theta}\ \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log P\left(\tau^{n} | \theta\right)</script> </p>
+<p>然后重点就放在<script type="math/tex">\nabla \log P\left(\tau^{n} | \theta\right)</script> </p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{P(\tau | \theta)=}  {p\left(s_{1}\right) p\left(a_{1} | s_{1}, \theta\right) p\left(r_{1}, s_{2} | s_{1}, a_{1}\right) p\left(a_{2} | s_{2}, \theta\right) p\left(r_{2}, s_{3} | s_{2}, a_{2}\right) \cdots} \\ {=p\left(s_{1}\right) \prod_{t=1}^{T} p\left(a_{t} | s_{t}, \theta\right) p\left(r_{t}, s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{l}{\log P(\tau | \theta)}  {=\log p\left(s_{1}\right)+\sum_{t=1}^{T} \log p\left(a_{t} | s_{t}, \theta\right)+\log p\left(r_{t}, s_{t+1} | s_{t}, a_{t}\right)} 
+\\ 因为一三项跟θ无关，则{\nabla \log P(\tau | \theta)=\sum_{t=1}^{T} \nabla \log p\left(a_{t} | s_{t}, \theta\right) \quad \text {  }}\end{array}</script><p>（注意上面的t指的是第几次动作，一共有T次动作，每次动作环境都会有变化）</p>
+<p>最后整理得：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \nabla \overline{R}_{\theta} & \approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log P\left(\tau^{n} | \theta\right)=\frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \sum_{t=1}^{T_{n}} \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right) \\ &=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right) \end{aligned}</script><p>李老师在这里做了非常符合直觉的解释：</p>
+<p>当<script type="math/tex">R\left(\tau^{n}\right)</script>为正时，问题转化为调整θ去增加<script type="math/tex">p\left(a_{t}^{n} | s_{t}^{n}\right)</script> </p>
+<p>当<script type="math/tex">R\left(\tau^{n}\right)</script>为负时，问题转化为调整θ去减少<script type="math/tex">p\left(a_{t}^{n} | s_{t}^{n}\right)</script> </p>
+<p>实际上对于 <script type="math/tex">\nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 中的log的解释是</p>
+<script type="math/tex; mode=display">
+\nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)=\frac{\nabla p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}{p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)}</script><p>符合直觉的是除以某个参数θ和环境状态下发出某个动作的概率，李老师举的例子是这样的：因为当s,θ相同时action不会相同，如下图所示<img src="/2019/09/14/deep-reinforcement-learning/log的解释.png" alt="log的解释"></p>
+<p>在更新参数的时候Actor会偏向采取发生概率大的action b ，为了避免这种偏移，在这里采取类似于正则化的手段，除以发生这个动作的概率，<strong>这样会避免某些正确的动作因发生概率小而忽略的情况，不会偏好于出现概率大的动作</strong>。</p>
+<p>会出现个问题：</p>
+<p>有可能会存在Actor没有尝试过的动作，一旦没有试过，这个动作就容易被忽视。一旦这个动作被忽视了，那么其他没有被忽视的动作被选择的概率会增加，相对而言这个本应该选择的最优解a-action没有被选到，反而选的是b-action。如图</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/baseline.png" alt="baseline"></p>
+<p>解决方法是设置一个b（baseline的意思）更改为<script type="math/tex">\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p\left(a_{t}^{n} | s_{t}^{n}, \theta\right)</script> 比较直观的理解是如果<script type="math/tex">R\left(\tau^{n}\right)</script> 的值大于b的baseline的值（b可以取$R(\tau^{n})$的期望值），我们就增加其概率，若<script type="math/tex">R\left(\tau^{n}\right)</script> 的值小于b的值，所得的<script type="math/tex">R\left(\tau^{n}\right)-b</script>就是负值，我们就减少其概率。</p>
+<h2 id="1Policy-Gradient"><a href="#1Policy-Gradient" class="headerlink" title="1Policy Gradient"></a>1Policy Gradient</h2><h3 id="1-前提知识："><a href="#1-前提知识：" class="headerlink" title="1.前提知识："></a>1.前提知识：</h3><p>对于强化学习系统中的三大组成部分：Actor，environment，reward function来说，后两者是定量不可改变的，唯一可以改变的是Actor的策略。</p>
+<p>在<script type="math/tex">\text { Trajectory } \tau=\left\{s_{1}, a_{1}, s_{2}, a_{2}, \cdots, s_{T}, a_{T}\right\}</script>情况下：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p_{\theta}(\tau)} \\ {\quad=p\left(s_{1}\right) p_{\theta}\left(a_{1} | s_{1}\right) p\left(s_{2} | s_{1}, a_{1}\right) p_{\theta}\left(a_{2} | s_{2}\right) p\left(s_{3} | s_{2}, a_{2}\right) \cdots} \\ {\quad=p\left(s_{1}\right) \prod_{t=1}^{T} p_{\theta}\left(a_{t} | s_{t}\right) p\left(s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><p>最后所得的式子取决于2部分，一个是environment本身内部的规则也就是<script type="math/tex">p\left(s_{t+1} | s_{t}, a_{t}\right)</script> 是无法改变的。另一部分是<script type="math/tex">p_{\theta}\left(a_{t} | s_{t}\right)</script> 是在Actor参数为θ，且环境输入为<script type="math/tex">s_{t}</script>的情况下,Actor会做出什么动作，这是可以控制的部分。</p>
+<p>——————————————-小分割线—————————————</p>
+<h3 id="2-灵光一闪"><a href="#2-灵光一闪" class="headerlink" title="2.灵光一闪"></a>2.灵光一闪</h3><p>老师讲到这个图的时候，画的r1是依赖于s1和a1，我感觉好像不是特别准确，奖励这个概念应该是来源于1部分，只有环境的奖励，细分的话可以分为2类：一个是境应该指的是做出action后改变的环境带来的直接物质方面的奖励。另一部分是环境变化后激励自身给的奖励，比如自己在某项工作取的进展后，信心大增，这个信心是环境变化后自己给自己精神方面的奖励。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/灵光一闪.png" alt="灵光一闪"></p>
+<p>——————————————-小分割线—————————————</p>
+<h3 id="3-详细推导："><a href="#3-详细推导：" class="headerlink" title="3.详细推导："></a>3.详细推导：</h3><p>$R(\tau)=\sum_{t=1}^{T} r_{t}$ 中实际上$R(\tau)$ 不是标量而是随机变量，所以需要计算它的期望值。期望值$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)=E_{\tau \sim p_{\theta}(\tau)}[R(\tau)]<script type="math/tex">穷举所有的</script>{\tau} <script type="math/tex">且每个</script>{\tau}$ 都有一定的概率。</p>
+<p>问题转化为如何求得最大的$\overline{R}_{\theta}=\sum_{\tau} R(\tau) p_{\theta}(\tau)$ </p>
+<p>在深度学习的基础课中求损失函数的最小值用到的是梯度下降的算法，在这里想要使得Total reward最大，需要用到梯度上升的算法-Policy-Gradient-Asent，想要用这个算法就必须计算  且因为$R(\tau)$里面不含有${\tau}$所以没有必要要求他是可微的，即使是黑盒子也ok的。</p>
+<p>同导论中的推导：</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta}=\sum_{\tau} R(\tau) \nabla p_{\theta}(\tau)=\sum_{\tau} R(\tau) p_{\theta}(\tau) \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau) }</script><script type="math/tex; mode=display">
+=\sum_{\tau} R(\tau) p_{\theta}(\tau) \nabla \log p_{\theta}(\tau) \\ =E_{\tau \sim p_{\theta}(\tau)}\left[R(\tau) \nabla \log p_{\theta}(\tau)\right] )</script><script type="math/tex; mode=display">
+\approx \frac{1}{N} \sum_{n=1}^{N} R\left(\tau^{n}\right) \nabla \log p_{\Theta}\left(\tau^{n}\right) \\ =\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>公式注意点：</p>
+<ul>
+<li><p>$\tau^{n} $  指的就是第n种情况</p>
+</li>
+<li><p>$p_{\Theta}\left(\tau^{n}\right)$   实际上有两部分在<strong>前提知识</strong>提到的</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{p_{\theta}(\tau)} \\ {\quad=p\left(s_{1}\right) p_{\theta}\left(a_{1} | s_{1}\right) p\left(s_{2} | s_{1}, a_{1}\right) p_{\theta}\left(a_{2} | s_{2}\right) p\left(s_{3} | s_{2}, a_{2}\right) \cdots} \\ {\quad=p\left(s_{1}\right) \prod_{t=1}^{T} p_{\theta}\left(a_{t} | s_{t}\right) p\left(s_{t+1} | s_{t}, a_{t}\right)}\end{array}</script><p>其中$p\left(s_{t+1} | s_{t}, a_{t}\right) $ 是环境的部分，与θ无关，在对θ求梯度的时候会消失掉。</p>
+<p>而$p_{\theta}\left(a_{t} | s_{t}\right) $ 是Agent部分，与θ有关 ，是我们需要主要考虑的，所以式子变为$=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} R\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)$ </p>
+</li>
+<li><p>同理从直观上理解：如果在某个状态下，执行某个动作即$p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)$ 最后发现这个trajectory的total reward为正， 我们就需要增加这一项出现的概率。</p>
+</li>
+<li><p>可以记住一个公式：</p>
+<p>​    $\begin{array}{c}{\nabla f(x)=}  {f(x) \nabla \log f(x)}\end{array}$ </p>
+</li>
+</ul>
+<h3 id="4-参数更新过程"><a href="#4-参数更新过程" class="headerlink" title="4.参数更新过程"></a>4.参数更新过程</h3><p>——————————————-小分割线—————————————</p>
+<h3 id><a href="#" class="headerlink" title></a><img src="/2019/09/14/deep-reinforcement-learning/参数更新过程.png" alt="参数更新过程"></h3><p>李老师在讲到这个图的时的讲解为先初始化一个θ，我们在这个θ的前提下</p>
+<ul>
+<li>遍历所有可能性得到大量的$\tau^{n}$ </li>
+<li>然后用这列$\tau^n$做梯度上升</li>
+<li>再更新θ<ul>
+<li>再用新的θ遍历所有可能性得到大量的$\tau ^n$</li>
+<li></li>
+<li><ul>
+<li></li>
+<li></li>
+<li>一直循环 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在做第二次遍历的时候，前一次的遍历结果就可以丢掉了。</p>
+<p>在这里可以开个小脑洞：我们可以把θ理解为</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/雷达图.png" alt="雷达图"></p>
+<p>就是我们给一个新生儿一个θ里面有他的力量值，耐力值，表达能力值，逻辑推理能力……然后我们用这个初始值让他遍历各种人生，可以做工程师，教师，医生等职业，算出平均的Total Reward，再将Total Reward对θ求梯度，再更新θ，一直循环，最后得到一个可以使得Total Reward值最大的θ值（先天属性），这就是最牛皮的属性或者叫最牛皮的人（虽然有点种族歧视的味道，但是我们可以在后天的训练中逐渐增加某项θ值，勤能补拙就OK）</p>
+<p>——————————————-小分割线—————————————</p>
+<h3 id="5-极大似然函数与得到最大奖励之间的关系："><a href="#5-极大似然函数与得到最大奖励之间的关系：" class="headerlink" title="5.极大似然函数与得到最大奖励之间的关系："></a>5.极大似然函数与得到最大奖励之间的关系：</h3><p><img src="/2019/09/14/deep-reinforcement-learning/区别.png" alt="区别"></p>
+<p>只不过是乘以了一个权重值$R\left(\tau^{n}\right)$ 即这种trajectory下的total reward</p>
+<h3 id="6-有可能我们在一场游戏中所有的小的reward值都为正："><a href="#6-有可能我们在一场游戏中所有的小的reward值都为正：" class="headerlink" title="6.有可能我们在一场游戏中所有的小的reward值都为正："></a>6.有可能我们在一场游戏中所有的小的reward值都为正：</h3><p>若都为正，那我们就需要将这些概率都最大化，这是不符合人们的直观理解的，所以我们需要加一个baseline ,思想与导论中的举例相同。</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(R\left(\tau^{n}\right)-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><h3 id="7-目前的弊端以及解决方法-Assign-suitable-credit"><a href="#7-目前的弊端以及解决方法-Assign-suitable-credit" class="headerlink" title="7.目前的弊端以及解决方法-Assign suitable credit"></a>7.目前的弊端以及解决方法-Assign suitable credit</h3><p>上面这个式子有一个弊端就是不论$s_{t}^{n}$ 和$a_{t}^{n}$ 如何，他都会在前面乘以权重值$ R \left( \tau^{n}\right)-b $  ，这种不管黑猫白猫抓到兔子就是好猫的思想是不合理的。所以我们需要给每个动作都置以合适的contribution贡献度或者叫credit信任度。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/credit.png" alt="credit"></p>
+<p>如图的思想a1执行后，a3也有一定可能是因为执行a1后才出现的，所以获得total reward为3，故a1的权重值为3。而a2和a3是在a1发生后执行的动作，a2和a3是向后产生影响的，并不会影响前一时刻的动作，所以权重为该action执行后的部分total reward。简而言之：时间不可逆，过去得到的奖励并不应该算作未来发生的动作所得到的单步奖励。（这只是李老师讲的观点，）</p>
+<p>所以改为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在一开始的动作虽然会影响后面所有的后续动作及奖励，但是这个影响会随着时间的增加而慢慢变小，所以需要乘以一个小于1的参数，时间离的越远参数越小，所以公式变为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>在这里我们将$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b$ 称为Advantage Function 也可以写成$A^{\theta}\left(s_{t}, a_{t}\right)$ </p>
+<h2 id="2-PPO-default-algorithm-in-openAI"><a href="#2-PPO-default-algorithm-in-openAI" class="headerlink" title="2  PPO-default algorithm in openAI"></a>2  PPO-default algorithm in openAI</h2><h3 id="1-on-policy-与off-policy的区别"><a href="#1-on-policy-与off-policy的区别" class="headerlink" title="1.on-policy 与off-policy的区别"></a>1.on-policy 与off-policy的区别</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
+<p>off-policy：我们要得到的agent和跟环境互动的agent如果不是同一个agent，叫off-policy（这个agent通过看别人玩儿来学习，叫off-policy）</p>
+<h3 id="2-前一节课存在的问题"><a href="#2-前一节课存在的问题" class="headerlink" title="2.前一节课存在的问题"></a>2.前一节课存在的问题</h3><p>之前的agent是自带天生的θ与环境做互动，得到大量的trajectory（特别浪费时间），再将$\overline{R}_{\theta}$ 对θ求梯度，再更新θ。但是更新θ后之前罗列出的那些数据就不能用了，这样就又需要花费大量时间罗列再依次循环—这是很明显的On-policy缺点是浪费时间。</p>
+<p>所以，可以将on-policy变成off-policy: 使用另外一个$π_θ$与环境做互动并收集数据去训练θ ，意味着我们可以将$π_θ$收集到的数据用非常多次，在同一笔数据的前提下做gradient ascent时可以更新参数很多次。（直观上理解，就好比一个人读书，书上面记录了古人各种各样的人生事迹，Agent可以通过读书了解什么样的决策会带来什么样的奖励而积累经验就好，而不是自己亲自去尝试体验。）</p>
+<h4 id="Importance-sampling："><a href="#Importance-sampling：" class="headerlink" title="Importance sampling："></a>Importance sampling：</h4><script type="math/tex; mode=display">
+E_{x \sim p}[f(x)] \approx \frac{1}{N} \sum_{i=1}^{N} f\left(x^{i}\right)</script><p>若不能对p[f(x)]做积分的话，可以从p这个分布去罗列大量的数据，之前紫的期望值就相当于对其求平均值。</p>
+<p>假设我们现在不能从p[f(x)]这个分布sample data的话，我们只能从另外的分布q(x)去sample data</p>
+<p>故上式可以转化为：</p>
+<script type="math/tex; mode=display">
+=\int f(x) p(x) d x=\int f(x) \frac{p(x)}{q(x)} q(x) d x=E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]</script><h4 id="Importance-sampling存在的问题"><a href="#Importance-sampling存在的问题" class="headerlink" title="Importance sampling存在的问题"></a>Importance sampling存在的问题</h4><p>实际上p(x)与q(x)还是不要差太多否则会出问题—&gt;方差不一致。</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{E_{x \sim p}[f(x)]=E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]} \\ {\operatorname{Var}_{x \sim p}[f(x)] ≠ \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]}\end{array}</script><script type="math/tex; mode=display">
+\begin{aligned} \operatorname{Var}_{x \sim p}[f(x)]=E_{x \sim p} &\left[f(x)^{2}\right]-\left(E_{x \sim p}[f(x)]\right)^{2} \\ \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] &=E_{x \sim q}\left[\left(f(x) \frac{p(x)}{q(x)}\right)^{2}\right]-\left(E_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]\right)^{2} \\ &=E_{x \sim p}\left[f(x)^{2} \frac{p(x)}{q(x)}\right]-\left(E_{x \sim p}[f(x)]\right)^{2} \end{aligned}</script><p>上面公式块的2部分的差别就在于${Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] $的第一项乘以$\frac{p(x)}{q(x)}$ 所以p(x)和q(x)最好还是近似一点比较好。</p>
+<p>因此实际上</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta}=E_{\tau \sim p_{\theta^{\prime}}(\tau)}\left[\frac{p_{\theta}(\tau)}{p_{\theta^{\prime}}(\tau)} R(\tau) \nabla \log p_{\theta}(\tau)\right]</script><p>而我们需要的是对θ求梯度，所以上式乘以$\frac{p(x)}{q(x)}$是起到了一个修正的作用。这样就完成了on-policy到off-policy</p>
+<p>接着policy-gradient课程的推导，应用Importance sampling后的公式变为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}}\left[A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]} \\ {=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]}\end{array}</script><p>注意上式的$A^{\theta}\left(s_{t}, a_{t}\right)$中的θ是Actor-θ跟环境互动后所计算出来的A，但在这里$\theta$变为${\theta}^{\prime}$ 所以等于</p>
+<script type="math/tex; mode=display">
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}^{\prime}}\left[\frac{P_{\theta}\left(s_{t}, a_{t}\right)}{P_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta^\prime}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red">**注意老师在这里暂时先假设 $A^{\theta^\prime}\left(s_{t}, a_{t}\right)$ 与$A^{\theta }\left(s_{t}, a_{t}\right)$ 相等**</font>
+
+<p>又由条件概率公式$P(A | B)=\frac{P(A B)}{P(B)}$ 可以化为：</p>
+<script type="math/tex; mode=display">
+=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]</script><font color="red"> **在这里又假设$\theta$ 与 $\theta^\prime$ 前提下看到 $s_t$的概率是相等的，这样就可以将这项分式删掉。有个更直观的理解是因为${p_{\theta}\left(s_{t}\right)}$是无法测量的，所以直接就忽视了--在这里不确定的是因为无法测量而忽视是不是有些鲁莽且不科学？而且为啥是无法测量的？  ** </font>  
+
+<p>注意得到了一个新的目标函数：</p>
+<script type="math/tex; mode=display">
+J^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]</script><p>且这个新的目标函数与三行上的那个式子是可以互相推导的，对$J^{\theta^{\prime}}(\theta)$求梯度就是三行上的公式。</p>
+<h3 id="3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO"><a href="#3-那我们怎么保证-theta-与-theta-prime-的分布类似呢？用到了PPO-TRPO" class="headerlink" title="3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:"></a>3.那我们怎么保证$\theta$ 与 $\theta^\prime$的分布类似呢？用到了PPO/TRPO:</h3><h4 id="TRPO-Trust-Region-Policy-Optimization"><a href="#TRPO-Trust-Region-Policy-Optimization" class="headerlink" title="TRPO(Trust Region Policy Optimization)"></a>TRPO(Trust Region Policy Optimization)</h4><script type="math/tex; mode=display">
+J_{T R P O}^{\theta^{\prime}}(\theta)=E_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]  规定K L\left(\theta, \theta^{\prime}\right)<δ</script><h4 id="PPO（proximal-policy-optimization）"><a href="#PPO（proximal-policy-optimization）" class="headerlink" title="PPO（proximal policy optimization）"></a>PPO（proximal policy optimization）</h4><h5 id="PPO1-Algorithm"><a href="#PPO1-Algorithm" class="headerlink" title="PPO1 Algorithm"></a>PPO1 Algorithm</h5><p>实际上就是加上了个约束项变为$J_{P P O}^{\theta^{\prime}}(\theta)=J^{\theta^{\prime}}(\theta)-\beta K L\left(\theta, \theta^{\prime}\right)$ 这个$K L\left(\theta, \theta^{\prime}\right)$ 就是$\theta$ 与 $\theta^\prime$ 两个智能体输出动作的KL divergence，在这里β的作用实际上就是惩罚的作用也叫<font color="red">惩罚值</font> 。（PPO在实际操作上比TRPO容易的多）</p>
+<p>我们在这里的$K L\left(\theta, \theta^{\prime}\right)$ 并不是参数上的距离，而是$\theta$ 与 $\theta^\prime$ 的behavior或者叫action的距离。</p>
+<p>具体算法：</p>
+<ul>
+<li><p>初始化参数$\theta_0$ </p>
+</li>
+<li><p>在每一轮的迭代过程中</p>
+<ul>
+<li><p>使用$\theta_k$与环境进行互动，并且收集所有的数据资料，并计算每一个动作的信任值(advantage)$A^{\theta^{k}}\left(s_{t}, a_{t}\right)$ </p>
+</li>
+<li><p>找到$\theta $ 使得$J_{PPO}(\theta)$ 最优，其中</p>
+<script type="math/tex; mode=display">
+J_{P P O}^{\theta^{k}}(\theta)=J^{\theta^{k}}(\theta)-\beta K L\left(\theta, \theta^{k}\right) 其中 \begin{array}{l}{J^{\theta^{k}}(\theta) \approx} {\sum_{\left(s_{t}, a_{t}\right)} \frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)} A^{\theta^{k}}\left(s_{t}, a_{t}\right)}\end{array}</script><p>在这里我们用的是$\theta_k$与环境做互动，所以$\theta_k$得到的这些数据，也就相当于我们成长过程中从书上读到知识，所以就可以让$ \theta $ 更新很多次。</p>
+</li>
+<li><p>我们在优化之前先设置$K L\left(\theta, \theta^{\prime}\right)$ 的最大最小值：</p>
+<ul>
+<li>if  $K L\left(\theta, \theta^{\prime}\right)$ &gt;$KL_{max}$ 说明惩罚值没有起到作用，需要增大β</li>
+<li>if  $K L\left(\theta, \theta^{\prime}\right)$ &lt;$KL_{max}$ 说明惩罚值作用太强，需要减小β</li>
+</ul>
+</li>
+<li><p>Adaptive KL Penalty的直观理解：$\theta^k$是从书中读到的名人，他们在于环境做互动的时候，其实就相当于我们想要从名人事迹中学习到经验教训，且这个$KL_{max}$和$KL_{min}$ 是我们预测我们自己与名人之间的差距：</p>
+<ul>
+<li>如果实际上我们与名人的差距特别大，大到超出了我们之前的预测值$KL_{max}$ 说明，书中的人物所得到的的经验教训为我们所用的不多，所以在优化$J_{P P O}^{\theta^{k}}(\theta)$的时候，所得到的值会虚高，因此应该将β增大。</li>
+<li>如果实际上我们与名人的差距特别小，小到超出了我们之前的预测值$KL_{min}$ 说明，书中的人物跟我非常像，所以在优化$J_{P P O}^{\theta^{k}}(\theta)$的时候，所得到的值应该更高，因此应该将β减小。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="PPO2-Algorithm"><a href="#PPO2-Algorithm" class="headerlink" title="PPO2 Algorithm"></a>PPO2 Algorithm</h5><script type="math/tex; mode=display">
+\begin{aligned} J_{P P O 2}^{\theta^k}(\theta) \approx \sum_{\left(s_{t}, a_{t}\right)} \min \left(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)} A^{\theta^{k}}\left(s_{t}, a_{t}\right)\right.,&\left.\operatorname{clip}\left(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}, 1-\varepsilon, 1+\varepsilon\right) A^{\theta^{k}}\left(s_{t}, a_{t}\right)\right) \end{aligned}</script><p>注意：</p>
+<ul>
+<li>clip()里面有3项，如果$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1-\varepsilon$ 就取值为$1-\varepsilon$ </li>
+<li>如果$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 就取值为$1+\varepsilon$  </li>
+</ul>
+<h6 id="如图"><a href="#如图" class="headerlink" title="如图"></a>如图</h6><p><img src="/2019/09/14/deep-reinforcement-learning/PPO.png" alt="PPO"></p>
+<ul>
+<li>当A&gt;0,即这个环境下的这个动作是合适的，那么我们当然希望增加发生这个动作的概率，即希望${p_{\theta}\left(a_{t} | s_{t}\right)} $ 增大：<ul>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过大，大到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 我们取$1+\varepsilon$  </li>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过小，小到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1- \varepsilon$ ，又由前面的”min”所以就取$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$</li>
+</ul>
+</li>
+<li>当A&lt;0,即这个环境下的这个动作是不合适，错误的，那么我们当然希望减小发生这个动作的概率，即希望${p_{\theta}\left(a_{t} | s_{t}\right)} $ 减小：<ul>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过大，大到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 大于$1+\varepsilon$ 我们取  $\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ （因为这时$A^{\theta^{k}}\left(s_{t}, a_{t}\right) $ 为负，取min最小值当然去绝对值最大的咯）</li>
+<li>当${p_{\theta}\left(a_{t} | s_{t}\right)} $ 过小，小到$\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 小于$1- \varepsilon$ ，就取值为$1- \varepsilon$ </li>
+</ul>
+</li>
+</ul>
+<p>——————————————-小分割线—————————————↓</p>
+<p>上面的那个A&gt;0和A&lt;0的解释，可以有更直观的理解：</p>
+<p>就是我们在向书中的伟人学习的时候：${p_{\theta}\left(a_{t} | s_{t}\right)}$ 是我自己，${p_{\theta^{k}}\left(a_{t} | s_{t}\right)}$ 是伟人，且假设$\varepsilon $=0.2：</p>
+<ul>
+<li>当A&gt;0，即伟人在某种客观环境下做了件贼正确的选择，假设他做这件事儿的概率为0.6,<ul>
+<li>自己做这件事儿的概率是0.9，0.9/0.6&gt;(1+0.2)(就是自己做这个选择的概率比伟人还要大，自己比伟人还要厉害的时候)，这个公式的内层含义告诉我们”老弟，应该谦虚点儿，可往后稍稍吧，比伟人还厉害咋不上天呢~~“所以这个值就保持谦虚到1.2*0.6就为止了。</li>
+<li>而自己做这件事儿的概率是0.3甚至更小的时候，那这个值就不需要设置下限，说明我们的前瞻性不如伟人（这是客观存在的）</li>
+</ul>
+</li>
+<li>当A&lt;0，即伟人在某种客观环境下做了件比较错误的选择，假设他做这件事儿的概率为0.6,<ul>
+<li>自己做这件错的概率是0.9，0.9/0.6&gt;(1+0.2)(就是自己做这个错误选择的概率比伟人还要大，自己确实不如伟人)，这个公式的内层含义告诉我们，所以这个值就应该大一些。</li>
+<li>而自己做这件事儿的概率是0.3甚至更小的时候(0.3/0.6&lt;(1-0.2))，那这个公式的内在含义告诉我们“正常人肯定比伟人要差一些的，伟人的做错事的概率都那么高，常人就不要飘”即我们的前瞻性不如伟人（这是客观存在的），所以这个值谦虚到0.6*（1-0.2）为止了。</li>
+</ul>
+</li>
+</ul>
+<p>——————————————-小分割线—————————————↑</p>
+<h2 id="3-Q-learning"><a href="#3-Q-learning" class="headerlink" title="3  Q-learning"></a>3  Q-learning</h2><h3 id="1-V-π-（s）-："><a href="#1-V-π-（s）-：" class="headerlink" title="1.$V^π （s）$："></a>1.$V^π （s）$：</h3><p>一个critic 一个Actor-π，这个critic根据Actor-π与环境做的互动去评判Actor的好坏，而Actor 的输入是观察到的环境状态s，输出是$V^π （s）$代表着在这个状态下可以得到的总奖励值。</p>
+<p>而这个总奖励值怎么预估呢？</p>
+<h4 id="1-monte-carlo-MC"><a href="#1-monte-carlo-MC" class="headerlink" title="1.monte-carlo(MC)"></a>1.monte-carlo(MC)</h4><p>让Actor-π与环境做互动，给critic去看，然后critic统计Actor看到各种state后所做决策后返回的<strong>总奖励值</strong>。（因为state是图片的格式，所以不能将所有的state都遍历完，所以$V^π （s）$是一个network结构。）</p>
+<p>-&gt;转化为神经网络的回归问题。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/monte-carlo.png" alt></p>
+<h4 id="2-Temporal-difference-TD"><a href="#2-Temporal-difference-TD" class="headerlink" title="2.Temporal-difference(TD)"></a>2.Temporal-difference(TD)</h4><p>因为第一种monte-carlo的方法需要将游戏玩到结束，所以比较耗时，在这里TD方法不需要将游戏玩到底,不需要得到总奖励值，只需要用神经网络判断出$s_t $与$s_{t+1}$的value值即可，核心公式是：$V^{\pi}\left(s_{t}\right)=V^{\pi}\left(s_{t+1}\right)+r_{t}$  </p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/TD.png" alt></p>
+<h4 id="3-比较两种方法的差别"><a href="#3-比较两种方法的差别" class="headerlink" title="3.比较两种方法的差别"></a>3.比较两种方法的差别</h4><p>因为游戏具有很强的随机性，所以MC这种估计总奖励值的方法所得结果的方差比较大（随机性太大，$G_a$实际上是很多state的reward之和。）</p>
+<p>而用TD方法所得的r会比较稳定，但是缺点是$V^{\pi}\left(s_{t}\right)$和$V^{\pi}\left(s_{t+1}\right)$不一定准，会导致整个式子是无效的。且TD更常见呦~</p>
+<h3 id="2-Q-π-（s-a）"><a href="#2-Q-π-（s-a）" class="headerlink" title="2.$Q^π （s,a）$"></a>2.$Q^π （s,a）$</h3><p>在某一个state强制采取某一个Action-a（实际上可供选择的策略很多，这里只是强制采取a这种），接下来计算使用Actor-π，得到的<strong>总</strong>奖励值。</p>
+<h4 id="1-Q-Learning步骤："><a href="#1-Q-Learning步骤：" class="headerlink" title="1.Q-Learning步骤："></a>1.Q-Learning步骤：</h4><p><img src="/2019/09/14/deep-reinforcement-learning/Q-learning.png" alt> </p>
+<ol>
+<li><p>Actor-π与环境进行互动</p>
+</li>
+<li><p>使用TD或者MC的方法学到$Q^π （s,a）$ </p>
+</li>
+<li><p>找到比π<strong>好</strong>的Actor-π‘然后代替π （这里好的定义是对于所有的环境状态s，$V^{\pi ’}\left(s_{t}\right)$ &gt;$V^{\pi}\left(s_{t}\right)$ ）</p>
+</li>
+</ol>
+<p>   $\pi^{\prime}(s)=\arg \max \limits_{a} Q^{\pi}(s, a)$ </p>
+<p>   公式解读：因为刚才是强制action为a然后计算奖励值，但是刚才的state状态下可以选择的action不止a这一种，所以找出所有的action，分别计算$Q^π （s,a）$ 然后找出可以使其最大的a,那这个a就是π‘要采取的动作。</p>
+<p>   证明：对于所有的s，$V^{\pi ’}\left(s_{t}\right)$ &gt;$V^{\pi}\left(s_{t}\right)$ </p>
+<p>   因为</p>
+<script type="math/tex; mode=display">\begin{aligned} V^{\pi}(s)=Q^{\pi}(s, \pi(s))  & \leq \max _{a} Q^{\pi}(s, a)=Q^{\pi}\left(s, \pi^{\prime}(s)\right) \end{aligned}</script><script type="math/tex; mode=display">
+   V^{\pi}(s) \leq Q^{\pi}\left(s, \pi^{\prime}(s)\right)</script><script type="math/tex; mode=display">
+   =E\left[r_{t+1}+V^{\pi}\left(s_{t+1}\right) | s_{t}=s, a_{t}=\pi^{\prime}\left(s_{t}\right)\right] \\</script><script type="math/tex; mode=display">
+   ≤E\left[r_{t+1}+Q^{\pi}\left(s_{t+1}, \pi^{\prime}\left(s_{t+1}\right)\right) | s_{t}=s, a_{t}=\pi^{\prime}\left(s_{t}\right)\right]</script><script type="math/tex; mode=display">
+   ≤E\left[r_{t+1}+r_{t+2}+V^{\pi}\left(s_{t+1}\right) | \ldots\right] \\</script><script type="math/tex; mode=display">
+= E\left[r_{t+1}+r_{t+2}+Q^{\pi}\left(s_{t+2}, \pi^{\prime}\left(s_{t+2}\right)\right) | \ldots\right] \ldots \leq V^{\pi^{\prime}}(s)</script><p>   注：</p>
+<ul>
+<li><p>$V^{\pi}(s)$ 如果没有指定t指的就是一直玩下去的total reward，如果不这么理解的话，解释不过去。</p>
+</li>
+<li><p>上面的推导公式我觉着这么理解比较好：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/改写.png" alt></p>
+</li>
+</ul>
+<p>​    </p>
+<h3 id="3-Q-Learning-TIPS"><a href="#3-Q-Learning-TIPS" class="headerlink" title="3.Q-Learning -TIPS"></a>3.Q-Learning -TIPS</h3><h4 id="TIP1-Target-Network"><a href="#TIP1-Target-Network" class="headerlink" title="TIP1-Target Network"></a>TIP1-Target Network</h4><p>在训练模型的时候，因为输出值和目标值都是在变化的，所以训练过程很不稳定，故将$s_{t+1} $的$Q^π$ 固定住，只更新$s_{t} $的$Q^π$  ，使$r_t$ 达到最大而用梯度上升法更新参数，更新小数量次数后，再用更新过的参数替换掉之前固定的$Q^π$ </p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/targetnetwork.png" alt> </p>
+<h4 id="TIP2-Exploration"><a href="#TIP2-Exploration" class="headerlink" title="TIP2-Exploration"></a>TIP2-Exploration</h4><p>因为之前是强制让action为能获得最大奖励的动作，这个是存在一定问题的：就是一旦有个策略之前没有被发掘出来（没有被example到的话），那么就永远定格了。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>这个问题就像去餐厅点餐一样，如果第一次吃麻辣香锅还行，那么如果按照之前的算法来搞的话，就是每次都去点麻辣香锅，这是不科学的。</p>
+<p>——————————————-小分割线—————————————↑</p>
+<p>解决办法1：</p>
+<p>epsilon greedy ($\epsilon$ 随着时间减少)</p>
+<p>$a=\left\{\begin{array}{cc}{\arg \max \limits_{a} Q(s, a),} &amp; {\text { with probability } 1-\varepsilon} \ {\text { random, }} &amp; {\text { otherwise }}\end{array}\right.$</p>
+<p>解决办法2：</p>
+<p>根据Q值设定几率：</p>
+<p>$P(a | s)=\frac{\exp (Q(s, a))}{\sum_{a} \exp (Q(s, a))}$</p>
+<h4 id="TIP3-Replay-Buffer-减少与环境做互动的次数-从而降低训练时间"><a href="#TIP3-Replay-Buffer-减少与环境做互动的次数-从而降低训练时间" class="headerlink" title="TIP3-Replay Buffer-减少与环境做互动的次数-从而降低训练时间-"></a>TIP3-Replay Buffer-减少与环境做互动的次数-从而降低训练时间-</h4><h4 id="转化为off-policy"><a href="#转化为off-policy" class="headerlink" title="转化为off-policy"></a>转化为off-policy</h4><p>1.把之前不同情况下π与环境做互动所收集到的data都放到一个buffer里面，使数据多样化，有利于训练。</p>
+<p>2.将π’得到的新data替换掉之前的旧data，更新数据。</p>
+<p>3.buffer里面不是trajectory，而是一些experience，所以即使里面是别的经验也都OK  的。 </p>
+<h4 id="TIP4-Double-DQN"><a href="#TIP4-Double-DQN" class="headerlink" title="TIP4-Double DQN"></a>TIP4-Double DQN</h4><p>之前单独的DQN存在的问题：</p>
+<p>Q-function对实际情况的判断会有虚高：</p>
+<p>$Q\left(s_{t}, a_{t}\right)  &lt;-&gt; r_{t}+\max \limits_{a} Q\left(s_{t+1}, a\right)$</p>
+<p>因为target值中有一项是$\max\limits_{a} Q\left(s_{t+1}, a\right)$ 很容易会被设的特别高，但是真正的$Q\left(s_{t+1}, a\right)$ 可能没有那么高，所以导致$Q\left(s_{t}, a_{t}\right) $虚高。</p>
+<p>而Double-DQN的做法是用两个Q-function，即选Action的Q-function和算Q-value的Q-function不是同一个。</p>
+<p>$Q\left(s_{t}, a_{t}\right) &lt;-&gt; r_{t}+Q^{\prime}\left(s_{t+1}, \arg \max \limits_{a} Q\left(s_{t+1}, a\right)\right)$  </p>
+<p>其中Q’是没更新之前，Q是正在更新的Q-function。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>通俗理解就是：我现在正在上研究生，$Q\left(s_{t+1}, a\right)$ 为我选择工作的公司所带给我的价值，以目前的视野所见，最厉害的可能是去google即Q(选公司，去谷歌)=100，其实实际上Q(选公司，去谷歌)的真实值没有那么高，也就90，但以我目前的价值观会认为他贼高，这样就直接把双箭头右侧的的值判断过高，间接的使得当前的$Q\left(s_{t}, a_{t}\right)$也判断虚高。</p>
+<p>而Double-DQN的深层一点可理解的含义是2个不同的价值观，其中Q’是参数未更新的价值判断函数，Q是正在准备更新的价值判断函数，也就是说Q’是我大学本科时候的价值观，Q是我现在的价值观，即使$\arg \max \limits_{a} Q\left(s_{t+1}, a\right)$ 所判断的动作是虚高的去谷歌，但是在本科时候的价值观体系里去华为和思科这种网络巨头的价值才是最大的，所以$Q’（本科找工作，去谷歌）$的值会相应的减小，这样就达到了防止Q-function判断价值虚高情况。</p>
+<p>——————————————-小分割线—————————————↑</p>
+<h4 id="TIP5-Dueling-DQN"><a href="#TIP5-Dueling-DQN" class="headerlink" title="TIP5-Dueling DQN"></a>TIP5-Dueling DQN</h4><p><img src="/2019/09/14/deep-reinforcement-learning/dueling.png" alt> </p>
+<p>实际上将网络模型进行更改，其中V（s）是scalar标量1。A(s,a)是向量(2,-2,0)。而Q(s,a)=A(s,a)+V(s)会将V（s）的标量加到向量A（s,a）的每一项中。最后得到的Q(s，a)=(3,-1,1)</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/dueling2.png" alt> </p>
+<p>如图是3种Action，4种state，视频中讲如果我只想将3,-1都增大1的话，我需要将V(s)从0变为1。然后再将1加到3,-1,-2这样会无形中将-2变为-1。因此，即使没有将第三种Action列举出来也没有关系，也会将其改变。</p>
+<p>注意：为了避免Q（s,a）=A(s,a)需要对A（s,a）加一些限制条件，例如限制A(s,a)的每一列之和为0(深层含义是，在同一种情景下，我所做的所有动作不管带来的奖励值还是惩罚值都归于0)。如下图的normalization</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/dueling-norm.png" alt> </p>
+<h4 id="TIP6-Prioritized-Reply"><a href="#TIP6-Prioritized-Reply" class="headerlink" title="TIP6-Prioritized Reply"></a>TIP6-Prioritized Reply</h4><p>较大TD-error的数据经验应该有更大的几率被选到</p>
+<p>①提高几率</p>
+<p>②更改training 的process</p>
+<h4 id="TIP7-Multi-step-balance-between-MC-and-TD"><a href="#TIP7-Multi-step-balance-between-MC-and-TD" class="headerlink" title="TIP7-Multi-step-balance between MC and TD"></a>TIP7-Multi-step-balance between MC and TD</h4><p>在experience buffer里面存储N个step</p>
+<p>$\left(s_{t}, a_{t}, r_{t}, \cdots, s_{t+N}, a_{t+N}, r_{t+N}, s_{t+N+1}\right)$</p>
+<p>因此式子改为：$Q\left(s_{t}, a_{t}\right)&lt;-&gt;\sum_{t^{\prime}=t}^{t+N} r_{t^{\prime}}+\hat{Q}\left(s_{t+N+1}, a_{t+N+1}\right)$ </p>
+<h4 id="TIP8-Noisy-Net"><a href="#TIP8-Noisy-Net" class="headerlink" title="TIP8-Noisy Net"></a>TIP8-Noisy Net</h4><p>原来是用epsilon-greedy的方法</p>
+<p>但是这个方法存在个问题：给同样的state，智能体所采取的动作不一定相同，具有很强的随机性，这是不合适的。举个例子就是：我去食堂打饭，如果每次遇到的场景相同，我应该选择相同的菜(麻辣香锅)，而不是之前说的epsilon-greedy方法还会有一定的概率会选别的菜，在这里的一定概率就体现为随机乱试。而如果我的Q进行微调(加入今天中午就想吃点儿酸甜的，那我不会选麻辣香锅，而是选择糖醋里脊，这是因为我的某一个控制酸甜的参数增高了，这是非常系统的尝试。)</p>
+<p>因此现在将Q的参数加上高斯噪音，变为$\tilde{Q}(s, a)$  直到本场游戏玩到结束，再对参数更改。</p>
+<h4 id="TIP9-Distributional-Q-function"><a href="#TIP9-Distributional-Q-function" class="headerlink" title="TIP9-Distributional Q-function"></a>TIP9-Distributional Q-function</h4><p>算出来的$Q^{\pi}(s, a)$ 是一个概率期望值(条形统计图)</p>
+<p>Q-function的期望值在-10,10之间拆成很多个组成部分，其高度代表概率值。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/distributional.png" alt> </p>
+<h3 id="4-Rainbow"><a href="#4-Rainbow" class="headerlink" title="4 Rainbow"></a>4 Rainbow</h3><p><img src="/2019/09/14/deep-reinforcement-learning/rainbow.png" alt></p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/rainbow2.png" alt></p>
+<p>第二个图片，将double-DQN拿掉后发现效果不明显，论文里面解释说：如果用了distributional DQN输出值是一个范围，不可能是无限宽的，一旦有特别大的奖励值的action，就会把这个动作忽视掉，因此会一定程度上避免overestimate过誉。</p>
+<h3 id="5-Q-Learning-for-Continuous-Actions"><a href="#5-Q-Learning-for-Continuous-Actions" class="headerlink" title="5 Q-Learning for Continuous Actions"></a>5 Q-Learning for Continuous Actions</h3><p>continuous的情况不可能将$a=\arg \max  \limits_{a} Q(s,a)$所有的action都穷举出来:</p>
+<p>解决方法1：列举出一系列的动作，寻找Q-value最大值</p>
+<p>解决方法2：使用梯度上升的办法求得最大值</p>
+<p>解决方法3：设置一个网络模型输出一个vector 一个matrix 一个scalar如图所示：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/continuous.png" alt></p>
+<p>如图，因为$\sum (s)$ 是正定矩阵，所以a与μ(s)越接近，最后所得的Q(s,a)越大。</p>
+<p>解决方法4：pathwise derivative policy gradient(同时也是特别的actor-critic的方法)</p>
+<p>不只是告诉Agent某一个动作是好还是不好，更进一步会告诉Agent应该怎么做：</p>
+<h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>我们需要在训练网络的时候找到这种网络，它可以输入s，输出action，而输出的action刚好可以使得$Q^π$ 达到最大，在实操的时候，先让π与环境做互动，将一系列数据信息放入buffer里面，再使用TD/MC的方法学到Q-function，然后固定住$Q^π$ 再对θ求梯度更新参数得到π‘，用π’替换掉π再与环境做互动。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/pdpg.png" alt> </p>
+<h2 id="4-Actor-Critic-Asynchronous-Advantage-Actor-critic"><a href="#4-Actor-Critic-Asynchronous-Advantage-Actor-critic" class="headerlink" title="4 Actor-Critic  Asynchronous Advantage Actor-critic"></a>4 Actor-Critic  Asynchronous Advantage Actor-critic</h2><h3 id="1-之前存在的问题："><a href="#1-之前存在的问题：" class="headerlink" title="1.之前存在的问题："></a>1.之前存在的问题：</h3><p>在1-Policy-gradient的最后的式子的表达存在个问题：就是$\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}$的随机性很大，而且我们不可能将所有的情况都列举出来，所以所得值非常不稳定且会落下某些情况。</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}}\left(\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}-b\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>解决办法：用<strong>累计奖励的期望值</strong>即Q值<script type="math/tex">Q^{\pi_{\theta}}\left(s_{t}^{n}, a_{t}^{n}\right)</script>(不同于总奖励值 )代替$G^n_t =\sum_{t^{\prime}=t}^{T_{n}} \gamma^{t^{\prime}-t} r_{t^{\prime}}^{n}$  </p>
+<p>且b可以用$V^{π_θ}(s^n_t)$ 这样式子就可以变为</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} \left(Q^{\pi_{\theta}}\left(s_{t}^{n}, a_{t}^{n}\right) - V^{π_θ}(s^n_t)   \right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>虽然这样比较合理，但是还是存在缺点：</p>
+<p>1.需要训练出两个网络：一个Q，一个V。这样同时训练两个网络可能会估测不准。</p>
+<p>所以需要将Q-function进行改造：</p>
+<p>$\begin{aligned} Q^{\pi}\left(s_{t}^{n}, a_{t}^{n}\right) &amp;=E\left[r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right)\right] \ Q^{\pi}\left(s_{t}^{n}, a_{t}^{n}\right) &amp;=r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right) \end{aligned}$</p>
+<p>因此，式子变为：</p>
+<script type="math/tex; mode=display">
+\nabla \overline{R}_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} \left(r_{t}^{n}+V^{\pi}\left(s_{t+1}^{n}\right)  - V^{π_θ}(s^n_t)   \right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)</script><p>引入了随机的变量$r_{t}^{n}$  ，但是这个随机变量的方差要比之前的$G^n_t $ 要小很多。(毕竟估计单步的奖励肯定比估计总奖励要靠谱得多。)</p>
+<h3 id="2-Advantage-Actor-Critic-TIPs"><a href="#2-Advantage-Actor-Critic-TIPs" class="headerlink" title="2.Advantage Actor-Critic TIPs"></a>2.Advantage Actor-Critic TIPs</h3><p><img src="/2019/09/14/deep-reinforcement-learning/A2CTIP.PNG" alt> </p>
+<h4 id="1-π-s-和-V-π-（s）-的参数可以共用"><a href="#1-π-s-和-V-π-（s）-的参数可以共用" class="headerlink" title="1.π(s)和$V^π （s）$的参数可以共用"></a>1.π(s)和$V^π （s）$的参数可以共用</h4><p>因为这两个网络的输入都是state即图像，在最后的输出略有不同(π(s)输出的是采取动作的分布，$V^π （s）$)输出的是未来的累计奖励值，所以前面几层的神经网络是可以共用的。可以是这样的：</p>
+<p>输入图像数据，在CNN的作用下变为比较高维的特征，再将这些比较高维的特征分别输入到π(s)和$V^π （s）$ 。</p>
+<h4 id="2-exploration"><a href="#2-exploration" class="headerlink" title="2.exploration"></a>2.exploration</h4><p>在π(s)输出的是采取动作的分布加上一个限制条件：就是尽量增大输出动作的entropy，即增加动作的可能性，这样探索的比较好，就不会落下某些比较优秀的动作。</p>
+<h3 id="3-A3C"><a href="#3-A3C" class="headerlink" title="3.A3C"></a>3.A3C</h3><p>同时开很多的worker，就相当于开很多的影分身（需要同时调动很多个CPU）:</p>
+<p>在这里假设Global Network的参数整体为$\theta ^1$ </p>
+<p>1.从globalnetwork中将$\theta ^1$ 参数copy过来到“分身”中</p>
+<p>2.让每一个Actor与环境做互动</p>
+<p>3.计算参数梯度</p>
+<p>4.将参数(经验值)返回到global-network里面</p>
+<p>5.global-network根据梯度信息更新参数</p>
+<p>6.注意：当我在刚好将参数$\theta ‘$ 传回到global-network的时候，如果global-network的参数从原来的$\theta ^1$ 变为$\theta ^2$也没有关系，用最新的参数去替换掉旧的就ok</p>
+<h2 id="5sparse-reward"><a href="#5sparse-reward" class="headerlink" title="5sparse reward"></a>5sparse reward</h2><h3 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h3><p>在用reinforcement-learning训练Agent的时候，多数情况下，这个Agent是得不到reward。</p>
+<p>举个例子：训练机械手臂拧螺丝的时候机械手臂做了巨多的动作reward都是0，直到他捡起来螺丝刀拧上去，这个概率特别小，就会导致sparse的问题。</p>
+<h3 id="1-reward-shaping"><a href="#1-reward-shaping" class="headerlink" title="1 reward shaping"></a>1 reward shaping</h3><p>核心思想为改变暂时reward看似为负值的action的reward，从而引导模型向正确的方向变化，类似于高中的时候父母讲的，高中使劲学上大学后就可以随便玩儿一样。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/rewardshaping.png" alt> </p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>核心思想与英雄联盟里面攻破一个塔防，抗美援朝战争，海峡两岸，台湾问题都十分类似。</p>
+<p>“你有一万种方法血赚，但我绝对不亏。”</p>
+<p>——————————————-小分割线—————————————↑</p>
+<h3 id="2-curiosity"><a href="#2-curiosity" class="headerlink" title="2 curiosity"></a>2 curiosity</h3><p>加上curiosity模块，增加模型的好奇心。</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/curiosty.png" alt> </p>
+<p>具体做法1：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/ICM1.png" alt> </p>
+<p>设置一个network1,输入是$a_t$ 和$s_t$输出为$\hat{s}_{t+1}$ 如果$s_{t+1}$ 与 $\hat{s}_{t+1}$ 相差越大，说明$s_{t+1}$不好预测，这样奖励越大。</p>
+<p>但是这样存在一个问题：$a_t$所带来的下一步环境预测值有可能特别差，也会导致diff很大，从而reward比较大，这样是不合理的。因此需要一个机制去判断使得这个$a_t$尽可能的比较好。</p>
+<p>改进做法2：</p>
+<p><img src="/2019/09/14/deep-reinforcement-learning/ICM2.png" alt> </p>
+<p>如图所示将$s_t$和$s_t+1$提取特征为φ($s_t$) 和 φ($s_t+1$) 增加一个network2，其输入为φ($s_t$) 和 φ($s_t+1$) 输出为$\hat{a}_{t}$ 使得$\hat{a}_{t}$与$a_t$越接近越好。</p>
+<p>——————————————-小分割线—————————————↓</p>
+<p>感性理解：为了增加我们的好奇心，遍历到更多种的action，增加好奇心机制：其中$a_t$可以是天天好好学习也可以是天天打游戏，$s_t$是研一的状态，$s_{t+1}$是进大厂的状态。如果按照”具体做法1”的算法</p>
+<p>$a_t$可以是天天打游戏等不务正业的做法，最后算出来的diff也非常大，然后得到的$r_t^i$也会很大，但这不是我们想要的结果。因此需要一个网络去判断我们的$a_t$是合适的，因此用network2，其输入是$s_t$是研一的状态，$s_{t+1}$是进大厂的状态，输出是$\hat a_t$即我们想要达到这样的目标所需要的预测动作(在这里可以将这个动作截石位好好学习)，然后让$\hat a_t$和$a_t$越接近越好，这样就保证了$a_t$的正确性。</p>
+<font color="red">这样仍然存在个问题：就是按照前面的举例，φ($s_{t+1}$)是进大厂，不管$\hatφ(s_{t+1})$是进稍微大点儿的厂还是进非常大的厂，diff是一样的，所以感觉这里面缺个东西：就是评判φ($s_{t+1}$) 与$\hatφ(s_{t+1})$好坏优劣的网络模型。可以作为以后的创新点~没准别人早就想出来了。</font>  
+
+<p>具体的还应再看这篇论文！    </p>
+<p>——————————————-小分割线—————————————↑</p>
+<h3 id="3-curriculum-learning"><a href="#3-curriculum-learning" class="headerlink" title="3 curriculum learning"></a>3 curriculum learning</h3><p>核心思想是给模型训练数据的时候是有先后顺序的，一般情况下是由简单到难。</p>
+<h3 id="4-reverse-curriculum-generation"><a href="#4-reverse-curriculum-generation" class="headerlink" title="4 reverse curriculum generation"></a>4 reverse curriculum generation</h3><p>核心思想与施瓦辛格和马斯克的做法十分相似：</p>
+<p>1.举出一个最终目标$s_g$</p>
+<p>2.找到与$s_g$很接近的观测状态$s_1$ </p>
+<p>3.列举各种$s_1$+a=$s_g$ 并且得到的reward-&gt;r</p>
+<p>4.去掉特别小和特别大的reward，因为他们不合适~（中庸之道）</p>
+<p>5.在s1周围找到与s1比较接近的s2，同第三步和第四步</p>
+<h3 id="5-hierarchical-reinforcement-learning"><a href="#5-hierarchical-reinforcement-learning" class="headerlink" title="5 hierarchical reinforcement learning"></a>5 hierarchical reinforcement learning</h3><p><img src="/2019/09/14/deep-reinforcement-learning/hierarchical.png" alt> </p>
+<p>1.把一件非常困难的事情拆解为许多较为简单的小事儿。</p>
+<p>2.如果阶层的低端没有完成相应的工作，上层是要谢罪的。</p>
+<p>3.如果最后达到的目标没有预期的那么好，就假设原先的目标本来就很低。（自我安慰？还得看论文）</p>
+<p>在李老师的讲解中，这篇论文的思想比较像逐步引到的概念。</p>
+<h2 id="6-imitation-learning"><a href="#6-imitation-learning" class="headerlink" title="6 imitation learning"></a>6 imitation learning</h2><p>又叫learning by demonstration 或者叫apprenticeship（学徒） learning</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>在expert(老师)教怎样解决问题的时候存在以下难点：</p>
+<ul>
+<li>模型可以与环境进行互动，但是很难去获得明确的奖励(很多都是隐形的，或者很久之后才起作用)</li>
+<li>某些任务定义reward比较困难</li>
+<li>认为提取的特征可能导致不可控的行为。</li>
+</ul>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
+<li><h4 id="behavior-cloning"><a href="#behavior-cloning" class="headerlink" title="behavior cloning"></a>behavior cloning</h4></li>
+</ul>
+<p>类似于supervised learning，expert做什么，机器就做什么。</p>
+<p>behavior cloning缺点1：列举出来的states非常少，如果训练数据里面全都是正样本数据(自动驾驶的车顺利右拐弯)，但是模型若特别笨快要撞墙的话，他会不知所措（因为训练数据中没有给过快要撞墙怎么处理这种训练数据。） 即training data和testing data的mismatch问题。</p>
+<p>解决办法1：所以面对单纯的<strong>behavior cloning</strong> 解决办法是dataset aggregation：</p>
+<p>​        1.π1与环境互动</p>
+<p>​        2.派一个expert跟着π1，让π1一直问expert当前这种情况怎么处理啊？</p>
+<p>​        3.但是π1不会听expert的指示，直到撞南墙游戏结束。</p>
+<p>​        4.撞南墙后得到经验值，下次再遇到这种情况就知道避坑了。</p>
+<p>behavior cloning缺点2：无论expert的动作怎么样，模型都会去学。(可能学到一堆没意义的动作，且一旦神经网络的容量有限，那么去除掉无意义的动作就十分重要)</p>
+<p>故引出第二种解决办法inverse reinforcement learning：</p>
+<ul>
+<li><h4 id="inverse-reinforcement-learning-inverse-optimal-control"><a href="#inverse-reinforcement-learning-inverse-optimal-control" class="headerlink" title="inverse reinforcement learning(inverse optimal control)"></a>inverse reinforcement learning(inverse optimal control)</h4><ul>
+<li>一般意义上的强化学习：在reward function和environment的基础上，利用reinforcement learning技术学到optimal actor。</li>
+<li>在有一堆expert的demonstration和environment条件下，智能体与环境互动，但是reward不是来自于reward function，这个reward来自于expert 的 demonstration，从而反推出reward-function是什么东西。再通过求得的reward-function，利用一般的reinforcement learning技术推导出optimal actor。</li>
+</ul>
+<p><img src="/2019/09/14/deep-reinforcement-learning/IRL.png" alt></p>
+</li>
+</ul>
+<p>如上图所示：首先expert  -$\hat π$与环境互动得到一些列$\hat τ$ 且初始的π也与环境互动得到一系列τ。然后增加一个网络模型，其输入是$\hat τ$ 和τ，输出是reward function，在词reward function基础上找到一个可以使reward最大的actor  - π’ 再用π‘与环境互动，得到一系列τ2 ，再将τ2与$\hat τ$ 作为输入到网络中得到reward function，每次更新的reward function都会使得$\hat π$ 的reward最大，不断优化直到π与π’的reward十分接近且非常高。（<strong>先射箭，后画靶。</strong>actor就是generator，reward function就是discriminator 就是GAN。）</p>
+<p>需要读的论文：</p>
+<p>connecting generative adversarial networks and actor-critic methods—2016</p>
+<p>Playing Atari with Deep Reinforcement Learning-1312.5602v1</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>deep-reinforcement-learning</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-09-14, 10:00:12</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-26, 15:15:50</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/14/deep-reinforcement-learning/" title="deep-reinforcement-learning">http://rock-blog.top/2019/09/14/deep-reinforcement-learning/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#深度学习','#三省吾身','#人工智能','#CV','#Python','#words','#python','#技术小结','#编程','#数学','#考研','#日记','#go','#组会','#强化学习','#NLP','#深度强化学习',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
