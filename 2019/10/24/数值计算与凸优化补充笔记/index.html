@@ -3,21 +3,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   <title>数值计算与凸优化补充笔记 | Rock-Blog</title>
-  <meta name="keywords" content=" 深度学习 , AI , 数学 ">
+  <meta name="keywords" content=" AI , 数学 , 深度学习 ">
   <meta name="description" content="数值计算与凸优化补充笔记 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
-<meta name="keywords" content="深度学习,AI,数学">
+<meta name="description" content="10.31-11.1两天的2019北京智源大会，听课笔记以及感悟如下">
+<meta name="keywords" content="三省吾身,AI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数值计算与凸优化补充笔记">
-<meta property="og:url" content="http://rock-blog.top/2019/10/24/数值计算与凸优化补充笔记/index.html">
+<meta property="og:title" content="智源大会听学术报告笔记">
+<meta property="og:url" content="http://rock-blog.top/2019/11/03/智源大会听报告笔记/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta property="og:description" content="10.31-11.1两天的2019北京智源大会，听课笔记以及感悟如下">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-26T14:30:05.236Z">
+<meta property="og:image" content="http://rock-blog.top/2019/11/03/智源大会听报告笔记/占比.png">
+<meta property="og:image" content="http://rock-blog.top/2019/11/03/智源大会听报告笔记/heng.png">
+<meta property="og:image" content="http://rock-blog.top/2019/11/03/智源大会听报告笔记/zong.png">
+<meta property="og:updated_time" content="2019-11-09T08:05:31.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数值计算与凸优化补充笔记">
-<meta name="twitter:description" content="本笔记是对深度学习相关知识的数学补充笔记—出自Convex Optimization Overview -Zico Kolter 背景状态：刚考完研对部分数学知识模糊">
+<meta name="twitter:title" content="智源大会听学术报告笔记">
+<meta name="twitter:description" content="10.31-11.1两天的2019北京智源大会，听课笔记以及感悟如下">
+<meta name="twitter:image" content="http://rock-blog.top/2019/11/03/智源大会听报告笔记/占比.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -114,7 +118,7 @@
     
         
             
-            <li><div data-rel="AI">AI<small>(4)</small></div>
+            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
                 
             </li>
             
@@ -122,7 +126,7 @@
     
         
             
-            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+            <li><div data-rel="AI">AI<small>(4)</small></div>
                 
             </li>
             
@@ -199,6 +203,18 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">AI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">深度学习</a>
     </li>
     
@@ -208,18 +224,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">python</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">AI</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">三省吾身</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">数学</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -260,19 +264,19 @@
     
     <nav id="title-list-nav">
         
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="三省吾身,AI,数学" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
         <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
             <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
             <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
         </a>
         
-        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="深度学习,AI" data-author>
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
             <span class="post-title" title="DLwords">DLwords</span>
             <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
-        </a>
-        
-        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="AI,三省吾身,数学" data-author>
-            <span class="post-title" title="20190708日记">20190708日记</span>
-            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
         </a>
         
         <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,技术小结,编程" data-author>
@@ -280,14 +284,9 @@
             <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
         </a>
         
-        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,AI,数学" data-author>
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
             <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
             <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
-        </a>
-        
-        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="AI,三省吾身" data-author>
-            <span class="post-title" title="智源大会听报告笔记">智源大会听报告笔记</span>
-            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
         <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,技术小结,编程" data-author>
@@ -295,14 +294,19 @@
             <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
         </a>
         
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
             <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
             <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
         </a>
         
-        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="CV,AI,数学" data-author>
-            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
-            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
         <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
@@ -315,17 +319,17 @@
             <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
         </a>
         
-        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="AI,三省吾身,NLP" data-author>
+        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="三省吾身,AI,NLP" data-author>
             <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
             <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
         </a>
         
-        <a class="数学 " href="/2019/04/25/math/" data-tag="深度学习,AI,数学" data-author>
+        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
             <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
             <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
         </a>
         
-        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="深度学习,数学,强化学习" data-author>
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
             <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
             <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
         </a>
@@ -359,18 +363,18 @@
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">深度学习</a>
-            
             <a href="javascript:" class="color3">AI</a>
             
             <a href="javascript:" class="color3">数学</a>
+            
+            <a href="javascript:" class="color5">深度学习</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-10-26 22:30:05">2019-10-24 16:14</time>
+        创建时间:<time class="date" title="更新时间: 2019-11-05 16:16:30">2019-10-24 16:14</time>
         
     </div>
     <div class="article-meta">
@@ -403,7 +407,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注意点"><span class="toc-text">注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Lipschitz-连续"><span class="toc-text">1.Lipschitz 连续</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#注意点"><span class="toc-text">注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Lipschitz-连续"><span class="toc-text">1.Lipschitz 连续</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-preceq"><span class="toc-text">2.$\preceq$</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -424,7 +428,9 @@
 <a id="more"></a>
 <h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><h2 id="1-Lipschitz-连续"><a href="#1-Lipschitz-连续" class="headerlink" title="1.Lipschitz 连续"></a>1.Lipschitz 连续</h2><p>是比一致连续更强的连续性条件。从直观上看，连续（或一致连续）要求自变量x发生改变的时候，因变量f(x)不可发生突变,且当$x$是向量时，$x$与$y$的距离用二范数表示：</p>
 <script type="math/tex; mode=display">
-\forall x, \quad \forall y,|f(x)-f(y)| \leq \mathcal{L}\|x -y\|_{2}</script>
+\forall x, \quad \forall y,|f(x)-f(y)| \leq \mathcal{L}\|x -y\|_{2}</script><h1 id="2-preceq"><a href="#2-preceq" class="headerlink" title="2.$\preceq$"></a>2.$\preceq$</h1><p>2.1向量$x  \preceq y$表明$x$中的每一个元素都小于$y$中的对应元素值</p>
+<p>2.2  对称矩阵$X∈ \mathbb S^n$ $X \preceq 0$ 表明$X$是半负定矩阵</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
@@ -441,7 +447,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2019-10-24, 16:14:54</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-26, 22:30:05</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-05, 16:16:30</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/24/数值计算与凸优化补充笔记/" title="数值计算与凸优化补充笔记">http://rock-blog.top/2019/10/24/数值计算与凸优化补充笔记/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -562,7 +568,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#深度学习','#CV','#python','#AI','#三省吾身','#数学','#技术小结','#编程','#考研','#go','#组会报告','#强化学习','#NLP',],
+            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#技术小结','#编程','#考研','#go','#组会报告','#强化学习','#NLP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
