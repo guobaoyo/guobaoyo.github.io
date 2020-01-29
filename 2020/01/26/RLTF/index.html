@@ -6,22 +6,25 @@
   <meta name="keywords" content=" AI , 数学 , 强化学习 ">
   <meta name="description" content="RLTF | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本笔记主要针对《强化学习精要-核心算法与TensorFlow实现》进行问题及相关心得的记录">
-<meta name="keywords" content="AI,数学,强化学习">
+<meta name="description" content="组会报告-0930-QLearning">
+<meta name="keywords" content="深度学习,强化学习,组会报告">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RLTF">
-<meta property="og:url" content="http://rock-blog.top/2020/01/26/RLTF/index.html">
+<meta property="og:title" content="组会报告-0930-QLearning">
+<meta property="og:url" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="本笔记主要针对《强化学习精要-核心算法与TensorFlow实现》进行问题及相关心得的记录">
+<meta property="og:description" content="组会报告-0930-QLearning">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/y1.png">
-<meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/y2.png">
-<meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/Gaussian_KL.png">
-<meta property="og:updated_time" content="2020-01-27T08:40:32.538Z">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/monte-carlo.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/TD.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/Q-learning.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/targetnetwork.png">
+<meta property="og:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/算法流程.png">
+<meta property="og:updated_time" content="2019-11-26T03:11:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RLTF">
-<meta name="twitter:description" content="本笔记主要针对《强化学习精要-核心算法与TensorFlow实现》进行问题及相关心得的记录">
-<meta name="twitter:image" content="http://rock-blog.top/2020/01/26/RLTF/y1.png">
+<meta name="twitter:title" content="组会报告-0930-QLearning">
+<meta name="twitter:description" content="组会报告-0930-QLearning">
+<meta name="twitter:image" content="http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -118,7 +121,7 @@
     
         
             
-            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+            <li><div data-rel="AI">AI<small>(4)</small></div>
                 
             </li>
             
@@ -126,7 +129,7 @@
     
         
             
-            <li><div data-rel="AI">AI<small>(4)</small></div>
+            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
                 
             </li>
             
@@ -211,18 +214,6 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">三省吾身</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">AI</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">数学</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">深度学习</a>
     </li>
     
@@ -232,6 +223,18 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">AI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -272,17 +275,17 @@
     
     <nav id="title-list-nav">
         
-        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="三省吾身,AI,数学" data-author>
-            <span class="post-title" title="20190708日记">20190708日记</span>
-            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
-        </a>
-        
         <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
             <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
             <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
         </a>
         
-        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="三省吾身,AI,数学" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="深度学习,AI" data-author>
             <span class="post-title" title="DLwords">DLwords</span>
             <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
         </a>
@@ -292,7 +295,7 @@
             <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
         </a>
         
-        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="深度学习,数学,强化学习" data-author>
             <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
             <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
         </a>
@@ -302,17 +305,17 @@
             <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
         </a>
         
-        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
-            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
-            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
-        </a>
-        
         <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,编程,技术小结" data-author>
             <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
             <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
         </a>
         
-        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
+        <a class="数学 " href="/2019/04/25/math/" data-tag="深度学习,AI,数学" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,AI,数学" data-author>
             <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
             <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
         </a>
@@ -332,14 +335,14 @@
             <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
         </a>
         
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="CV,AI,数学" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
             <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
             <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
-        </a>
-        
-        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
-            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
-            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
         </a>
         
         <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="三省吾身,AI,NLP" data-author>
@@ -387,7 +390,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-01-27 16:40:32">2020-01-26 19:21</time>
+        创建时间:<time class="date" title="更新时间: 2020-01-29 13:27:37">2020-01-26 19:21</time>
         
     </div>
     <div class="article-meta">
@@ -420,7 +423,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-第二章硬币问题的概率与熵的关系图"><span class="toc-text">1.第二章硬币问题的概率与熵的关系图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Gaussian-KL"><span class="toc-text">2.Gaussian_KL</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-第二章硬币问题的概率与熵的关系图"><span class="toc-text">1.第二章硬币问题的概率与熵的关系图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Gaussian-KL"><span class="toc-text">2.Gaussian_KL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-存疑，未解决-momentum与nesterov对比："><span class="toc-text">3.[存疑，未解决 ]momentum与nesterov对比：</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -478,6 +481,47 @@ if __name__ == &#39;__main__&#39;:
 <p>rstride指的是行步长，cstride指的是列步长，步长越大图像越粗糙，且步长不能为小数。</p>
 <p><img src="/2020/01/26/RLTF/Gaussian_KL.png" alt="Gaussian_KL"> </p>
 <p>参考:<a href="https://blog.csdn.net/ygdxt/article/details/86618606" target="_blank" rel="noopener">https://blog.csdn.net/ygdxt/article/details/86618606</a></p>
+<h1 id="3-存疑，未解决-momentum与nesterov对比："><a href="#3-存疑，未解决-momentum与nesterov对比：" class="headerlink" title="3.[存疑，未解决 ]momentum与nesterov对比："></a>3.[存疑，<font color="red"><strong>未解决</strong> </font>]momentum与nesterov对比：</h1><pre><code class="lang-python">def momentum(x_start,step,g,discount = 0.7):
+    x = np.array(x_start,dtype=&#39;float64&#39;)
+    print(x)
+    pre_grad = np.zeros_like(x)
+    for i in range(50):
+        grad = g(x)
+        pre_grad = pre_grad*discount + grad * step
+        x -= pre_grad
+        print(&#39;[epoch {0}] grad = {1} , x = {2} &#39;.format(i,grad,x))
+        if abs(sum(grad))&lt;1e-6:
+            break
+    return x
+</code></pre>
+<pre><code class="lang-python">def nesterov(x_start,step,g,discount = 0.7):
+    x = np.array(x_start,dtype=&#39;float64&#39;)
+    pre_grad = np.zeros_like(x)
+    for i in range(50):
+        x_future = x - step*discount*pre_grad
+        grad = g(x_future)
+        pre_grad = pre_grad*0.7 + grad
+        x -= pre_grad * step
+        print(&#39;[epoch {0}] grad = {1} , x = {2} &#39;.format(i,grad,x))
+        if abs(sum(grad)) &lt; 1e-6:
+            break
+</code></pre>
+<p>①存在的问题是我只是画出来了U型的弯道，但没有像书中一样画出上面递进更新的点（这是其次）</p>
+<p><img src="/2020/01/26/RLTF/momentum.png" alt="momentum"></p>
+<p>②重要的是<font color="red"><strong>对比上述两算法</strong> </font>，nesterov为什么👇？</p>
+<pre><code class="lang-python">pre_grad = pre_grad*0.7 + grad
+x -= pre_grad * step
+</code></pre>
+<p>按照momentum的理解方式，不应该是👇？</p>
+<pre><code>pre_grad = pre_grad*0.7 + grad*step
+x -= pre_grad
+</code></pre><p>解决：将momentum算法做对比实验，分别将step参数如上面两种方式进行计算，所得结果一样：<img src="/2020/01/26/RLTF/计算结果对比.png" alt="计算结果对比"></p>
+<p>但是这是为什么呢？不合常人理解啊？</p>
+<p>③<font color="red"><strong>另外</strong> </font>，算法中使用</p>
+<pre><code class="lang-python">x = np.array(x_start,dtype=&#39;float64&#39;)
+pre_grad = np.zeros_like(x)
+</code></pre>
+<p>目的是为了照顾底下数组形式的输入.</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -495,7 +539,7 @@ if __name__ == &#39;__main__&#39;:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-01-26, 19:21:06</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-27, 16:40:32</p>
+    <p><span class="copy-title">最后更新:</span>2020-01-29, 13:27:37</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/26/RLTF/" title="RLTF">http://rock-blog.top/2020/01/26/RLTF/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -616,7 +660,7 @@ if __name__ == &#39;__main__&#39;:
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#强化学习','#go','#编程','#技术小结','#组会报告','#考研','#NLP',],
+            'data': ['#深度学习','#CV','#python','#三省吾身','#AI','#数学','#强化学习','#go','#编程','#技术小结','#组会报告','#考研','#NLP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
