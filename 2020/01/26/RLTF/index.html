@@ -19,7 +19,8 @@
 <meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/Gaussian_KL.png">
 <meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/momentum.png">
 <meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/计算结果对比.png">
-<meta property="og:updated_time" content="2020-01-30T05:18:57.608Z">
+<meta property="og:image" content="http://rock-blog.top/2020/01/26/RLTF/DS1.jpg">
+<meta property="og:updated_time" content="2020-01-30T12:34:22.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RLTF">
 <meta name="twitter:description" content="本笔记主要针对《强化学习精要-核心算法与TensorFlow实现》进行问题及相关心得的记录">
@@ -314,14 +315,14 @@
             <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
         </a>
         
-        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
-            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
-            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
-        </a>
-        
         <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
             <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
             <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
         <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,编程,技术小结" data-author>
@@ -389,7 +390,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-01-30 13:18:57">2020-01-26 19:21</time>
+        创建时间:<time class="date" title="更新时间: 2020-01-30 20:34:22">2020-01-26 19:21</time>
         
     </div>
     <div class="article-meta">
@@ -422,7 +423,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-第二章硬币问题的概率与熵的关系图"><span class="toc-text">1.第二章硬币问题的概率与熵的关系图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Gaussian-KL"><span class="toc-text">2.Gaussian_KL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-存疑，未解决-momentum与nesterov对比："><span class="toc-text">3.[存疑，未解决 ]momentum与nesterov对比：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-共轭梯度"><span class="toc-text">4.共轭梯度</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-第二章硬币问题的概率与熵的关系图"><span class="toc-text">1.第二章硬币问题的概率与熵的关系图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Gaussian-KL"><span class="toc-text">2.Gaussian_KL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-存疑，未解决-momentum与nesterov对比："><span class="toc-text">3.[存疑，未解决 ]momentum与nesterov对比：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-共轭梯度"><span class="toc-text">4.共轭梯度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#David-Silver视频存疑"><span class="toc-text">David Silver视频存疑</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -522,7 +523,8 @@ pre_grad = np.zeros_like(x)
 </code></pre>
 <p>目的是为了照顾底下数组形式的输入.</p>
 <h1 id="4-共轭梯度"><a href="#4-共轭梯度" class="headerlink" title="4.共轭梯度"></a>4.共轭梯度</h1><p>①备忘：</p>
-<p>$\beta_{t, l}=-\frac{d_{l}^{\top} A u_{l}}{d_{l}^{\mathrm{T}} A d_{l}}$ 公式中的t指的是对于第$t$ 个向量，$l$ 指的是需要去掉的向量的下角标（无需纠结，带入里面算一下就知道了）</p>
+<script type="math/tex; mode=display">
+\beta_{t, l}=-\frac{d_{l}^{\top} A u_{l}}{d_{l}^{\mathrm{T}} A d_{l}}</script><p> 公式中的t指的是对于第$t$ 个向量，$l$ 指的是需要去掉的向量的下角标（无需纠结，带入里面算一下就知道了）</p>
 <p>②备忘：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -532,7 +534,9 @@ pre_grad = np.zeros_like(x)
 &=\boldsymbol{r}_{t}-\alpha_{t} \boldsymbol{A} \boldsymbol{p}_{t}
 \end{aligned}</script><p>可得</p>
 <script type="math/tex; mode=display">
-Ap_t = r_t - r_{t+1}/α</script>
+Ap_t = r_t - r_{t+1}/α</script><h1 id="David-Silver视频存疑"><a href="#David-Silver视频存疑" class="headerlink" title="David Silver视频存疑"></a>David Silver视频存疑</h1><p>①这张图没有完全看懂，不懂offline 与online的区别<img src="/2020/01/26/RLTF/DS1.jpg" alt="img"></p>
+<p>$a_y$ </p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
@@ -549,7 +553,7 @@ Ap_t = r_t - r_{t+1}/α</script>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-01-26, 19:21:06</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-30, 13:18:57</p>
+    <p><span class="copy-title">最后更新:</span>2020-01-30, 20:34:22</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/26/RLTF/" title="RLTF">http://rock-blog.top/2020/01/26/RLTF/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
