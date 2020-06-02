@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>智源大会听学术报告笔记 | Rock-Blog</title>
-  <meta name="keywords" content=" AI , 三省吾身 ">
-  <meta name="description" content="智源大会听学术报告笔记 | Rock-Blog">
+  <title>pytorch_note | Rock-Blog</title>
+  <meta name="keywords" content=" python , 技术小结 , AI ">
+  <meta name="description" content="pytorch_note | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="本笔记主要备忘leetcode中的有疑难问题">
 <meta name="keywords" content="编程,python,数学">
@@ -370,9 +370,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-智源大会听报告笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-pytorch-note" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">智源大会听学术报告笔记</h1>
+        <h1 class="article-title">pytorch_note</h1>
     
     <div class="article-meta">
         
@@ -380,23 +380,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="三省吾身">三省吾身</a>
+                <a href="javascript:" data-rel="AI">AI</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">AI</a>
+            <a href="javascript:" class="color2">python</a>
             
-            <a href="javascript:" class="color5">三省吾身</a>
+            <a href="javascript:" class="color5">技术小结</a>
+            
+            <a href="javascript:" class="color3">AI</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-11-09 16:05:32">2019-11-03 13:24</time>
+        创建时间:<time class="date" title="更新时间: 2020-06-02 21:21:47">2020-06-02 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -429,7 +431,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-31上午-开幕式"><span class="toc-text">10.31上午-开幕式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”"><span class="toc-text">10.31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-31下午-人工智能需要什么样的理论"><span class="toc-text">10.31下午-人工智能需要什么样的理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11月1日上午詹景尧老师-AV-AI"><span class="toc-text">11月1日上午詹景尧老师-AV+AI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地"><span class="toc-text">11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11月1日上午驭势科技的创始人吴甘沙老师"><span class="toc-text">11月1日上午驭势科技的创始人吴甘沙老师</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pytorch-易错点记录"><span class="toc-text">pytorch 易错点记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter1"><span class="toc-text">chapter1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-tensor-tutorial"><span class="toc-text">1_tensor_tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跟着notebook安装好pytorch"><span class="toc-text">跟着notebook安装好pytorch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#torch-randn-torch-rand和torch-empty的区别"><span class="toc-text">torch.randn torch.rand和torch.empty的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#震惊add-copy-和-t-这种函数会有以下效果"><span class="toc-text">震惊add_ copy_ 和 t_ 这种函数会有以下效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#item-只适用于看标量"><span class="toc-text">item()只适用于看标量</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -445,155 +447,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>10.31-11.1两天的2019北京智源大会，听课笔记以及感悟如下</p>
+        <p>pytorch_note <a href="https://github.com/zergtant/pytorch-handbook" target="_blank" rel="noopener">https://github.com/zergtant/pytorch-handbook</a></p>
 <a id="more"></a>
-<h1 id="10-31上午-开幕式"><a href="#10-31上午-开幕式" class="headerlink" title="10.31上午-开幕式"></a>10.31上午-开幕式</h1><p>高文院士首先介绍了国家对人工智能的双布局，包括基础研究和应用需求。分别讲了我国发展人工智能的优势和劣势，其中<strong>优势</strong>为：</p>
-<ul>
-<li>政策支持</li>
-<li>数据支持（数据量大）</li>
-<li>应用场景支持（我国正处于并将长期处于发展中国家阶段，许多岗位还不是很完善，不像发达国家一样，许多岗位已经被人占据<strong>很长时间</strong>，在发达国家中以人工智能的方式取代较为简易的工作岗位难度较大。而在我国AI的应用落地难度较小。）</li>
-<li>人才比较充足</li>
+<h1 id="pytorch-易错点记录"><a href="#pytorch-易错点记录" class="headerlink" title="pytorch 易错点记录"></a>pytorch 易错点记录</h1><h2 id="chapter1"><a href="#chapter1" class="headerlink" title="chapter1"></a>chapter1</h2><h3 id="1-tensor-tutorial"><a href="#1-tensor-tutorial" class="headerlink" title="1_tensor_tutorial"></a>1_tensor_tutorial</h3><h4 id="跟着notebook安装好pytorch"><a href="#跟着notebook安装好pytorch" class="headerlink" title="跟着notebook安装好pytorch"></a>跟着notebook安装好pytorch</h4><h4 id="torch-randn-torch-rand和torch-empty的区别"><a href="#torch-randn-torch-rand和torch-empty的区别" class="headerlink" title="torch.randn torch.rand和torch.empty的区别"></a>torch.randn torch.rand和torch.empty的区别</h4><ul>
+<li>rand是0-1的均匀分布</li>
+<li>randn是均值为0，方差是1的正态分布（理解为n是normal的意思）</li>
+<li>empty是创建出来一个指定维度的tensor张量，其中有个stride的属性意思是<strong>在张量的第k维从一个元素跳转到下一个元素所需的内存</strong><a href="https://blog.csdn.net/qq_32806793/article/details/102950838" target="_blank" rel="noopener">https://blog.csdn.net/qq_32806793/article/details/102950838</a></li>
+<li>可以从他的例子中看出虽然tensor转置了，但是在转置前从0.0834到0.0364需要跨过5个单位的内存，从0.0834到0.8865只需要一个单位的内存。转置之后，虽然变为5行2列的tensor，但是从0.0834跳到0.0364还是需要1个单位的内存，从0.0834到0.0364表面上看是在一起了，实际上还是需要跨国5个单位的内存（2020_0602的粗浅理解，可继续改）</li>
 </ul>
-<p>而<strong>劣势或短板</strong>是：</p>
-<ul>
-<li>我国的科研评估体系还不完善，基础理论研究不足，有追热风的现象存在</li>
-<li>硬件条件不足</li>
-<li>开源开放平台和框架较少</li>
-<li>高端人才不足</li>
-</ul>
-<p>针对劣势和不足，首先，鹏城实验室联合众多互联网企业建立云脑开源开放平台。其次，建设<strong>高效与风险可控的AI开源代码托管平台</strong> —汇智平台（公益性平台，后期托管给基金组织）。（目的是建设属于我们自己的平台，为了防止gtihub有一天被限制使用了，导致原先代码不可用，不安全等问题）</p>
-<p>详情可见<a href="http://www.pcl.ac.cn/" target="_blank" rel="noopener">http://www.pcl.ac.cn/</a></p>
-<p>另一个需要关注的事情是，最近开始了首届全国人工智能大赛，得多看看<a href="http://www.china-ai.ac.cn/" target="_blank" rel="noopener">http://www.china-ai.ac.cn/</a></p>
-<p>感想：</p>
-<ul>
-<li>自己不能只停留在调参，跑模型这种初级阶段，需要向高端人才进军，既知其然，也要知其所以然。</li>
-<li>多关注那个代码托管平台</li>
-<li>首届全国人工智能大赛需要多关注，有机会的话可以尝试参加一下，理论需要结合实践！</li>
-</ul>
-<h1 id="10-31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”"><a href="#10-31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”" class="headerlink" title="10.31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”"></a>10.31上午-加州大学洛杉矶分校的朱纯松老师讲“通用人工智能”</h1><p>朱老师对“AI=big data+deeplearning+GPU算力”的公式表示反对，因为目前这种考数据量与算力堆叠上去的“智能”与人类身上通常意义的认知与智能不一致。且将当前的智能模式比喻成“鹦鹉模式”，这种模式缺乏对常识的理解</p>
-<p>下面写一下朱老师关于鹦鹉模式和乌鸦模式的举例：</p>
-<p><strong>鹦鹉模式</strong>：人总对叨叨鹦鹉那么几句话，通过“大数据”的堆叠，使得鹦鹉会说固定的那几个词语。（但是鹦鹉未必真的知道那几个词是什么意思，也不知道什么时候应该说，什么时候不该说，更不知道说完那句“话”之后的影响）</p>
-<p><strong>乌鸦模式</strong>：乌鸦想吃核桃一类的干果，于是把核桃放在马路上，等车飞驰过去后再去吃干果。但是这有个弊端，就是乌鸦也不知道什么时候车会来，什么时候不会来，万一吃着核桃突然来了辆车岂不gg?</p>
-<p>然后乌鸦想到的解决办法是将核桃放在红绿灯+人行道那里，等车过去碾碎核桃后，乌鸦再等红灯时且人比较少（估计乌鸦也会感知到人走过来比较慢，想飞也来得及，而车开过来太快了，来不及躲闪。）由此可见，乌鸦模式是具有一定的“智能”的，乌鸦知道：自己想吃核桃是基本任务，按照这个基本任务去在马路上找规律，选择自己未来获益最大，危害最小的方式去压核桃。</p>
-<p>由此可见：<strong>鹦鹉模式</strong>是大数据+小任务的智能模式。<strong>乌鸦模式</strong>是小数据+大任务的智能模式。且基于此，朱老师提出通用人工智能就是要理解什么是任务以及相应的工具怎么去用且需要将cv+nlp+认知科学联系到一起。</p>
-<p>因此，这就需要人为的去定义<strong>任务</strong>，但是这件事情的难题是任务的种类太多，遍历所有的任务根本不可能。因此朱老师提出可以将学习的过程放到虚拟环境中（类似于GTA-5那种感觉的场景），在虚拟环境中训练智能体，再拿到现实环境中与人交互。</p>
-<h1 id="10-31下午-人工智能需要什么样的理论"><a href="#10-31下午-人工智能需要什么样的理论" class="headerlink" title="10.31下午-人工智能需要什么样的理论"></a>10.31下午-人工智能需要什么样的理论</h1><ul>
-<li>张平文老师作为首席科学家提到了两个观点<ul>
-<li>深度学习</li>
-<li>认为工程问题需要数学，科学化有两条路子：<ul>
-<li>通过工程技术创新找理论（理解起来类似于先干后解释）</li>
-<li>先研究理论科学，再应用到工程中</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>朱老师更认同上面说的先干后解释<ul>
-<li>提到了高维流体模型与离散拓扑-&gt;这两个属于基础数学，是智源研究院里面缺少的分支</li>
-<li>模型应该趋于参数少</li>
-<li>算法凭空想是不行的，需要通过实际问题驱动-problem driven</li>
-</ul>
-</li>
-</ul>
-<p>接着主持人希望各位老师从自己专业的角度讲讲需要什么样的理论：</p>
-<ul>
-<li><p>从统计的观点</p>
-<ul>
-<li>模型应该与算法结合起来，提高其泛化能力（以加上drop out为例子）</li>
-<li>鲁棒统计，贝叶斯理论，MC采样在原先统计理论中早就提出来了，但是受限于当时没有足够的数据，没有巨大的算力，所以效果没有特别明显，可以尝试将老的比较有道理的数学统计方法加上现有的算力和数据—&gt;可能会work out</li>
-<li>统计方法中的数学方法较多处于低维问题，而目前的深度神经网络是过参数化的高维模型，如果直接将统计方法与当前大数据和深度神经网络结合起来的话可能不合适，所以高维分析尤为重要。</li>
-</ul>
-</li>
-<li><p>从优化的角度：</p>
-<ul>
-<li>在求解问题时，可分为这么几个步骤：<ul>
-<li>找函数：光滑，易逼近还最好是凸函数</li>
-<li>找问题：结合实践找到什么样的问题可以用这种函数解决</li>
-<li>非凸问题求解目前缺乏好的解决方法，可能得到的解并不是我们想要的解，需要更深一步研究，以免错过了最优解</li>
-<li>怎么解释我们得到是我们想要的答案</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>结论：</p>
-<p>有个老师挺有意思，说要是问人工智能需要什么样的理论，他们也不知道，但是需要将任务，数据，框架，算法，模型结合在一起，需要抓住人物本身的特点和问题，且需要将各种学科结合起来从而实现知识多元化。</p>
-<h1 id="11月1日上午詹景尧老师-AV-AI"><a href="#11月1日上午詹景尧老师-AV-AI" class="headerlink" title="11月1日上午詹景尧老师-AV+AI"></a>11月1日上午詹景尧老师-AV+AI</h1><p>詹老师首先讲了目前自动驾驶的几点挑战：</p>
-<ul>
-<li>提到了两个数据：waymo的CEO在2018年8月对外宣称的数字是一千七百五十亿，而在上个月就变成了一千零五十亿，表明理论科学与技术突破是一方面，资本市场对自动驾驶的冲击还是很大的</li>
-<li>苹果创始人Steve Wozniak 从自动驾驶中撤资，放弃对自动驾驶的研发，为自动驾驶行业浇了盆冷水~~</li>
-<li><p>自动驾驶是否符合社会需求，尤其是我国的需求，符合的程度能有多大？需要搞明白我国交通与人民需求的主要矛盾：</p>
-<ul>
-<li>如果是交通拥挤问题，那自动驾驶还不能解决这一问题。</li>
-<li>如果是人们想在车上办公，解放双手，那自动驾驶可以解决这问题。</li>
-</ul>
-</li>
-<li><p>安全问题：</p>
-<ul>
-<li><p>詹老师举美国的例子平均80M英里会有伤亡事故发生，而假设一年开2万英里，一辈子开20年，就需要80辈子发生一次交通事故—&gt;引出需求性并不会特别高。</p>
-</li>
-<li><p>第二个例子是2016年，美国发生37461起车祸，而其中70%是因为驾驶员的疏忽，从这方面看自动驾驶可以减少70%的交通事故，这么看自动驾驶还是十分值得研究开发。</p>
-</li>
-<li><p>但是，自动驾驶会带来新问题（机器会不稳定，会出错，因此在减少70%伤亡的同时也会带来新的伤亡）</p>
-</li>
-<li><p>而这新的伤亡占比多少才会被社会大众所接受就又是一个哲学问题。</p>
-<p><img src="/2019/11/03/智源大会听报告笔记/占比.png" alt="加上前"> </p>
-</li>
-<li><p>AI是否可以common-sense还存疑：</p>
-<ul>
-<li>举例为tesla的无人驾驶汽车训练集中以前没有出现过消防车的概念，所以在实际出行的时候，碰到消防车会撞上去。</li>
-<li>无人驾驶汽车是否可以区分类似于公交车上面打广告的小人图像与现实的人？</li>
-</ul>
-</li>
-<li><p>社会能否接受不完美的无人驾驶？</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地"><a href="#11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地" class="headerlink" title="11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地"></a>11月1日上午滴滴韦俊青老师-滴滴如何用多维度的AI应用加速RobotTaxi落地</h1><p>首先韦峻青老师介绍了滴滴的研发无人驾驶关键点如下：</p>
-<ul>
-<li>以<strong>大数据</strong>作为驱动，让出行变得更美好。</li>
-<li>成立于2016年的滴滴autonomous driving于前一段时间独立出来，目的是搞无人驾驶+真人车主混合派单</li>
-<li>核心问题如下：<ul>
-<li>通过智能交通设施（例如交通信号灯）收集大数据，方便滴滴车主出行。</li>
-<li>通过上问提到的数据优势采集地图并验证，构建并更新地图。</li>
-<li>对于rare case 需要通过大量的摄像头采集到大数据从而丰富数据集</li>
-</ul>
-</li>
-<li>目前在上海-嘉定已经实现在一个固定区域内让用户体验自动驾驶。</li>
-</ul>
-<h1 id="11月1日上午驭势科技的创始人吴甘沙老师"><a href="#11月1日上午驭势科技的创始人吴甘沙老师" class="headerlink" title="11月1日上午驭势科技的创始人吴甘沙老师"></a>11月1日上午驭势科技的创始人吴甘沙老师</h1><p>感觉吴老师口才相当好~~首先，不仅告诉听众驭势科技的研究成果，还把驭势科技的观点（<strong>与先行者同行，与开创者共创</strong>）也顺道的讲了出来，同时宣传了一波驭势科技公司</p>
-<p>其次，讲了无人驾驶的几个难点：</p>
-<ul>
-<li>对物体检测有相当高的要求</li>
-<li>泛化性能要求高：<ul>
-<li>在A地训练好的无人驾驶车子，在B地如果有灌木丛，车子的驾驶情况就非常差</li>
-<li>A地多雨，B地多雪，不能很好的泛化</li>
-</ul>
-</li>
-<li>visual slam是不够的，应该语义化<ul>
-<li>举例为A地的交通灯是横向的<img src="/2019/11/03/智源大会听报告笔记/heng.png" alt="heng">而B地的交通灯是纵向的<img src="/2019/11/03/智源大会听报告笔记/zong.png" alt="heng">其实他们表达的语义是相同的，“应该”通用，但是车子的实际判断情况很糟。</li>
-</ul>
-</li>
-</ul>
-<p>落地难题：</p>
-<ul>
-<li>获得的数据涉及到隐私问题</li>
-<li>数据的权益分配问题</li>
-<li>大数据，细粒度，长尾</li>
-</ul>
-<p>对于上述的问题，吴老师提了几个解决方案：</p>
-<ul>
-<li>应该用半自动化标注细粒度，长尾的大量数据</li>
-<li>将背景知识和常识加入到无人驾驶系统中</li>
-<li>增强无人驾驶的可解释性</li>
-<li>无人驾驶的计算架构应为：以5G通信为基础+车上计算单元+车外计算单元</li>
-</ul>
-<p>感悟：</p>
-<ul>
-<li>提高英语能力，尤其是口语与听力能力已经是迫在眉睫的任务了，需要抓紧时间练习，否则我就像一个聋哑人，思想根本碰撞不了，因为口语和听力能力的欠缺导致没能接收到学术前沿的先进思想，实在是太可惜了。</li>
-<li><strong>深度强化学习</strong>技术在滴滴智能派单中得到应用，滴滴设计基于马尔科夫决策过程的智能派单方案，将派单任务建模为序列决策问题，结合强化学习和组合优化，为车主智能派单。</li>
-</ul>
-
+<h4 id="震惊add-copy-和-t-这种函数会有以下效果"><a href="#震惊add-copy-和-t-这种函数会有以下效果" class="headerlink" title="震惊add_ copy_ 和 t_ 这种函数会有以下效果"></a>震惊add_ copy_ 和 t_ 这种函数会有以下效果</h4><p>任何 以<code>_</code> 结尾的操作都会用结果替换原变量. 例如: <code>x.copy_(y)</code>, <code>x.t_()</code>, 都会改变 <code>x</code>.</p>
+<h4 id="item-只适用于看标量"><a href="#item-只适用于看标量" class="headerlink" title="item()只适用于看标量"></a>item()只适用于看标量</h4>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
@@ -606,12 +469,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>智源大会听学术报告笔记</p>
+    <p><span class="copy-title">文章标题:</span>pytorch_note</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-11-03, 13:24:12</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-09, 16:05:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/03/智源大会听报告笔记/" title="智源大会听学术报告笔记">http://rock-blog.top/2019/11/03/智源大会听报告笔记/</a>
+    <p><span class="copy-title">发布时间:</span>2020-06-02, 20:19:39</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-02, 21:21:47</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/02/pytorch-note/" title="pytorch_note">http://rock-blog.top/2020/06/02/pytorch-note/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
