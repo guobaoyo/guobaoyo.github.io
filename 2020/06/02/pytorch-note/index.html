@@ -297,6 +297,11 @@
             <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
         </a>
         
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
         <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
             <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
             <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
@@ -305,11 +310,6 @@
         <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,编程,python" data-author>
             <span class="post-title" title="leetcode">leetcode</span>
             <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
-        </a>
-        
-        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
-            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
-            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
         </a>
         
         <a class href="/2020/06/05/lgb-note/" data-tag="AI,编程,python" data-author>
@@ -412,7 +412,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-06-08 16:41:13">2020-06-02 20:19</time>
+        创建时间:<time class="date" title="更新时间: 2020-06-08 16:44:22">2020-06-02 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -558,14 +558,10 @@ print(d)
 </li>
 </ul>
 <h3 id="2-1-2-pytorch-basics-autograd"><a href="#2-1-2-pytorch-basics-autograd" class="headerlink" title="2.1.2-pytorch-basics-autograd"></a>2.1.2-pytorch-basics-autograd</h3><p>看到这里有几个不明白的点：</p>
-<ol>
-<li>在简单的自动求导部分为什么运行一遍，导数显示增加1？</li>
-</ol>
+<p>问：在简单的自动求导部分为什么运行一遍，导数显示增加1？</p>
 <p>​    <img src="/2020/06/02/pytorch-note/pic_3.png" alt></p>
 <p>答：目前的理解是如果不对缓存进行清空，调用backward()函数会自动在其上面进行叠加。</p>
-<ol>
-<li>复杂的自动求导部分，为什么必须在backward里面加上torch.ones_like参数？</li>
-</ol>
+<p>问：复杂的自动求导部分，为什么必须在backward里面加上torch.ones_like参数？</p>
 <p><img src="/2020/06/02/pytorch-note/pic4.png" alt></p>
 <p>答：其传入的参数应该与output输出的维度一样，可以理解为每个output分量对输入张量求导时的权重。将下面的两篇文章和官方的教程结合理解，如果输出是一个标量，直接执行out.backward()默认参数是torch.tensor(1.0)，也就是说在输出的导数或梯度上乘以1，也就是其本身。输出如果不是一个标量而是一个向量的话，会输出<em>grad can be implicitly created only for scalar outputs</em> </p>
 <p>上面的解答是从资料<a href="https://zhuanlan.zhihu.com/p/79801410" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79801410</a> 和 <a href="https://www.cnblogs.com/JeasonIsCoding/p/10164948.html" target="_blank" rel="noopener">https://www.cnblogs.com/JeasonIsCoding/p/10164948.html</a> 推理出来的</p>
@@ -591,7 +587,7 @@ print(d)
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-06-02, 20:19:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-08, 16:41:13</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-08, 16:44:22</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/02/pytorch-note/" title="pytorch_note">http://rock-blog.top/2020/06/02/pytorch-note/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
