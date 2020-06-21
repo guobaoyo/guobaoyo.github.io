@@ -6,20 +6,18 @@
   <meta name="keywords" content=" AI , python , 技术小结 ">
   <meta name="description" content="pytorch_note | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="A*算法的总结，不理解原理可以直接看下方原博客 根据https://www.cnblogs.com/21207-iHome/p/6048969.html">
-<meta name="keywords" content="AI,数学,编程">
+<meta name="description" content="本笔记是对tianshou平台的代码阅读笔记，内含部分之前不懂的Python写法，算法记录等">
+<meta name="keywords" content="AI,强化学习,编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A*_algorithm">
-<meta property="og:url" content="http://rock-blog.top/2020/06/08/A-algorithm/index.html">
+<meta property="og:title" content="tianshou平台源码阅读笔记">
+<meta property="og:url" content="http://rock-blog.top/2020/06/11/tianshou-a2c-note/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="A*算法的总结，不理解原理可以直接看下方原博客 根据https://www.cnblogs.com/21207-iHome/p/6048969.html">
+<meta property="og:description" content="本笔记是对tianshou平台的代码阅读笔记，内含部分之前不懂的Python写法，算法记录等">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://rock-blog.top/2020/06/08/A-algorithm/pic1.png">
-<meta property="og:updated_time" content="2020-06-08T07:12:03.443Z">
+<meta property="og:updated_time" content="2020-06-19T08:22:00.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A*_algorithm">
-<meta name="twitter:description" content="A*算法的总结，不理解原理可以直接看下方原博客 根据https://www.cnblogs.com/21207-iHome/p/6048969.html">
-<meta name="twitter:image" content="http://rock-blog.top/2020/06/08/A-algorithm/pic1.png">
+<meta name="twitter:title" content="tianshou平台源码阅读笔记">
+<meta name="twitter:description" content="本笔记是对tianshou平台的代码阅读笔记，内含部分之前不懂的Python写法，算法记录等">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -112,19 +110,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(20)</small></div></li>
+    <li><div class="all active">全部文章<small>(21)</small></div></li>
     
         
             
             <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="强化学习">强化学习<small>(2)</small></div>
                 
             </li>
             
@@ -141,6 +131,14 @@
         
             
             <li><div data-rel="编程">编程<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(3)</small></div>
                 
             </li>
             
@@ -172,7 +170,7 @@
     </div>
     <div><a class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_posts_number" value="21">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -223,10 +221,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">编程</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">深度学习</a>
     </li>
     
@@ -244,6 +238,10 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -277,24 +275,9 @@
             <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
         </a>
         
-        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="AI,数学,编程" data-author>
-            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
-            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
-        </a>
-        
         <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
             <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
             <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
-        </a>
-        
-        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
-            <span class="post-title" title="DLwords">DLwords</span>
-            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
-        </a>
-        
-        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
-            <span class="post-title" title="RLTF">RLTF</span>
-            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
         </a>
         
         <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
@@ -302,24 +285,19 @@
             <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
         </a>
         
-        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="go,编程" data-author>
             <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
             <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
         </a>
         
-        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,编程,python" data-author>
-            <span class="post-title" title="leetcode">leetcode</span>
-            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
-        </a>
-        
-        <a class href="/2020/06/05/lgb-note/" data-tag="AI,编程,python" data-author>
-            <span class="post-title" title="lgb_note">lgb_note</span>
-            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
-        </a>
-        
-        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
-            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
-            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
+            <span class="post-title" title="RLTF">RLTF</span>
+            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
         </a>
         
         <a class="AI " href="/2020/06/02/pytorch-note/" data-tag="AI,python,技术小结" data-author>
@@ -327,14 +305,24 @@
             <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
         </a>
         
-        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="编程,python,技术小结" data-author>
+        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,python,编程" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="AI,数学,编程" data-author>
+            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
+            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
+        </a>
+        
+        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,编程,技术小结" data-author>
             <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
             <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
         </a>
         
-        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
-            <span class="post-title" title="强化学习在滴滴网约车的应用记录">强化学习在滴滴网约车的应用记录</span>
-            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
         </a>
         
         <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
@@ -347,7 +335,7 @@
             <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
-        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
+        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,编程,技术小结" data-author>
             <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
             <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
         </a>
@@ -355,6 +343,11 @@
         <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
             <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
             <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class href="/2020/06/05/lgb-note/" data-tag="AI,python,编程" data-author>
+            <span class="post-title" title="lgb_note">lgb_note</span>
+            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
         </a>
         
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
@@ -370,6 +363,16 @@
         <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="三省吾身,AI,NLP" data-author>
             <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
             <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="AI,强化学习,编程" data-author>
+            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
+            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
+            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
         </a>
         
     </nav>
@@ -412,7 +415,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-06-08 16:44:22">2020-06-02 20:19</time>
+        创建时间:<time class="date" title="更新时间: 2020-06-21 22:17:17">2020-06-02 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -445,7 +448,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pytorch-易错点记录"><span class="toc-text">pytorch 易错点记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter1"><span class="toc-text">chapter1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-tensor-tutorial"><span class="toc-text">1_tensor_tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跟着notebook安装好pytorch"><span class="toc-text">跟着notebook安装好pytorch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#torch-randn-torch-rand和torch-empty的区别"><span class="toc-text">torch.randn torch.rand和torch.empty的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#震惊add-copy-和-t-这种函数会有以下效果"><span class="toc-text">震惊add_ copy_ 和 t_ 这种函数会有以下效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#item-只适用于看标量"><span class="toc-text">item()只适用于看标量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-autograd-tutorial"><span class="toc-text">2_autograd_tutorial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-neural-networks-tutorial"><span class="toc-text">3_neural_networks_tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在查看卷积层的size-时需要注意的问题"><span class="toc-text">在查看卷积层的size()时需要注意的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#torch接收小批量的样本"><span class="toc-text">torch接收小批量的样本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pytorch的unsequeeze"><span class="toc-text">pytorch的unsequeeze</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter2"><span class="toc-text">chapter2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-pytorch-basics-tensor"><span class="toc-text">2.1.1.pytorch-basics-tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-pytorch-basics-autograd"><span class="toc-text">2.1.2-pytorch-basics-autograd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-pytorch-basics-nerual-network"><span class="toc-text">2.1.3-pytorch-basics-nerual-network</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pytorch-handbook-易错点记录"><span class="toc-text">pytorch-handbook 易错点记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter1"><span class="toc-text">chapter1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-tensor-tutorial"><span class="toc-text">1_tensor_tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跟着notebook安装好pytorch"><span class="toc-text">跟着notebook安装好pytorch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#torch-randn-torch-rand和torch-empty的区别"><span class="toc-text">torch.randn torch.rand和torch.empty的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#震惊add-copy-和-t-这种函数会有以下效果"><span class="toc-text">震惊add_ copy_ 和 t_ 这种函数会有以下效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#item-只适用于看标量"><span class="toc-text">item()只适用于看标量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-autograd-tutorial"><span class="toc-text">2_autograd_tutorial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-neural-networks-tutorial"><span class="toc-text">3_neural_networks_tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在查看卷积层的size-时需要注意的问题"><span class="toc-text">在查看卷积层的size()时需要注意的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#torch接收小批量的样本"><span class="toc-text">torch接收小批量的样本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pytorch的unsequeeze"><span class="toc-text">pytorch的unsequeeze</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapter2"><span class="toc-text">chapter2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-pytorch-basics-tensor"><span class="toc-text">2.1.1.pytorch-basics-tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意："><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-pytorch-basics-autograd"><span class="toc-text">2.1.2-pytorch-basics-autograd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-pytorch-basics-nerual-network"><span class="toc-text">2.1.3-pytorch-basics-nerual-network</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2线性回归"><span class="toc-text">2.2.2线性回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3损失函数"><span class="toc-text">2.2.3损失函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-cnn"><span class="toc-text">2.4-cnn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-RNN"><span class="toc-text">2.5 RNN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-logistic-regression"><span class="toc-text">3-1-logistic-regression</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -463,7 +466,7 @@
       
         <p>pytorch_note <a href="https://github.com/zergtant/pytorch-handbook" target="_blank" rel="noopener">https://github.com/zergtant/pytorch-handbook</a></p>
 <a id="more"></a>
-<h1 id="pytorch-易错点记录"><a href="#pytorch-易错点记录" class="headerlink" title="pytorch 易错点记录"></a>pytorch 易错点记录</h1><h2 id="chapter1"><a href="#chapter1" class="headerlink" title="chapter1"></a>chapter1</h2><h3 id="1-tensor-tutorial"><a href="#1-tensor-tutorial" class="headerlink" title="1_tensor_tutorial"></a>1_tensor_tutorial</h3><h4 id="跟着notebook安装好pytorch"><a href="#跟着notebook安装好pytorch" class="headerlink" title="跟着notebook安装好pytorch"></a>跟着notebook安装好pytorch</h4><h4 id="torch-randn-torch-rand和torch-empty的区别"><a href="#torch-randn-torch-rand和torch-empty的区别" class="headerlink" title="torch.randn torch.rand和torch.empty的区别"></a>torch.randn torch.rand和torch.empty的区别</h4><ul>
+<h1 id="pytorch-handbook-易错点记录"><a href="#pytorch-handbook-易错点记录" class="headerlink" title="pytorch-handbook 易错点记录"></a>pytorch-handbook 易错点记录</h1><h2 id="chapter1"><a href="#chapter1" class="headerlink" title="chapter1"></a>chapter1</h2><h3 id="1-tensor-tutorial"><a href="#1-tensor-tutorial" class="headerlink" title="1_tensor_tutorial"></a>1_tensor_tutorial</h3><h4 id="跟着notebook安装好pytorch"><a href="#跟着notebook安装好pytorch" class="headerlink" title="跟着notebook安装好pytorch"></a>跟着notebook安装好pytorch</h4><h4 id="torch-randn-torch-rand和torch-empty的区别"><a href="#torch-randn-torch-rand和torch-empty的区别" class="headerlink" title="torch.randn torch.rand和torch.empty的区别"></a>torch.randn torch.rand和torch.empty的区别</h4><ul>
 <li>rand是0-1的均匀分布</li>
 <li>randn是均值为0，方差是1的正态分布（理解为n是normal的意思）</li>
 <li>empty是创建出来一个指定维度的tensor张量，其中有个stride的属性意思是<strong>在张量的第k维从一个元素跳转到下一个元素所需的内存</strong><a href="https://blog.csdn.net/qq_32806793/article/details/102950838" target="_blank" rel="noopener">https://blog.csdn.net/qq_32806793/article/details/102950838</a></li>
@@ -570,7 +573,105 @@ print(d)
 <li>浮点类型的数才可以自动求导</li>
 <li>在调用<code>backward()</code>时，只计算<code>requires_grad</code>和<code>is_leaf</code>同时为真的节点的梯度。</li>
 </ul>
-<h3 id="2-1-3-pytorch-basics-nerual-network"><a href="#2-1-3-pytorch-basics-nerual-network" class="headerlink" title="2.1.3-pytorch-basics-nerual-network"></a>2.1.3-pytorch-basics-nerual-network</h3>
+<h3 id="2-1-3-pytorch-basics-nerual-network"><a href="#2-1-3-pytorch-basics-nerual-network" class="headerlink" title="2.1.3-pytorch-basics-nerual-network"></a>2.1.3-pytorch-basics-nerual-network</h3><p>注意在这里第一个参数的意思是这个batch的大小为1，第二个参数的意思是通道数，后两个是长和宽</p>
+<pre><code class="lang-python">input = torch.randn(1, 1, 32, 32) # 这里的对应前面forward的输入是32
+out = net(input)
+out.size()
+</code></pre>
+<h3 id="2-2-2线性回归"><a href="#2-2-2线性回归" class="headerlink" title="2.2.2线性回归"></a>2.2.2线性回归</h3><pre><code class="lang-python">x = np.random.rand(256)#这里面的数字的意思是又256个点
+</code></pre>
+<p>这里的256的意思是一共输出256个点，且这些数值均服从“0~1”均匀分布</p>
+<h3 id="2-2-3损失函数"><a href="#2-2-3损失函数" class="headerlink" title="2.2.3损失函数"></a>2.2.3损失函数</h3><p>注意：损失函数的计算出来的结果已经对batch取了平均</p>
+<h3 id="2-4-cnn"><a href="#2-4-cnn" class="headerlink" title="2.4-cnn"></a>2.4-cnn</h3><p><a href="https://zhuanlan.zhihu.com/p/87117010" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/87117010</a></p>
+<p><a href="https://www.cnblogs.com/CJT-blog/p/9314134.html" target="_blank" rel="noopener">https://www.cnblogs.com/CJT-blog/p/9314134.html</a></p>
+<p>LRN的作用是在不同的通道之间增加相互竞争的关系，使用如下的计算公式使得相对大的值变的更大，且抑制其他数值较小的神经元,其想法来自神经生物学中的横向抑制，意思就是兴奋的神经细胞抑制周围神经细胞的能力</p>
+<script type="math/tex; mode=display">
+b_{x, y}^{i}=a_{x, y}^{i} /\left(k+\alpha \sum_{j=\max (0, i-n / 2)}^{\min (N-1, i+n / 2)}\left(a_{x, y}^{j}\right)^{2}\right)^{\beta}</script><p>从2变成0.1的计算：</p>
+<script type="math/tex; mode=display">
+b = 2/(0+1*(1^2 + 2^2 +4^2))^1 = 0.10</script><p><img src="/2020/06/02/pytorch-note/pic5.jpg" alt="img"></p>
+<p>注意2：在alexnet中第六层的9216是摊平后的结果（6<em>6\</em>256 = 9216）</p>
+<h3 id="2-5-RNN"><a href="#2-5-RNN" class="headerlink" title="2.5 RNN"></a>2.5 RNN</h3><p><a href="https://blog.csdn.net/qq_27825451/article/details/88988755" target="_blank" rel="noopener">https://blog.csdn.net/qq_27825451/article/details/88988755</a></p>
+<p>在循环神经网络中需要注意的点是rnn的输入参数也就是input_size和hidden_size</p>
+<pre><code class="lang-python">class RNN(object):
+    def __init__(self,input_size,hidden_size):
+        super().__init__()
+        self.W_xh=torch.nn.Linear(input_size,hidden_size) #因为最后的操作是相加 所以hidden要和output 的shape一致
+        self.W_hh=torch.nn.Linear(hidden_size,hidden_size)
+
+    def __call__(self,x,hidden):
+        return self.step(x,hidden)
+    def step(self, x, hidden):
+        #前向传播的一步
+        h1=self.W_hh(hidden)
+        w1=self.W_xh(x)
+        out = torch.tanh( h1+w1)
+        hidden=self.W_hh.weight
+        return out,hidden
+
+rnn = RNN(20,50)
+input = torch.randn( 32 , 20)
+h_0 =torch.randn(32 , 50) 
+seq_len = input.shape[0]
+
+for i in range(seq_len):
+    output,hn= rnn(input[i, :], h_0)
+print(output.size(),h_0.size())
+</code></pre>
+<p>从上述代码中可以看出输入大小是（32，20）也就是32个维度为20的具有时间属性的样本，每个样本的维度是20，且在官方的例子里面是将self.W_xh与self.W_hh相加，所以输出的是32个标签，每个标签的维度是50,所以最后的输出是（32，50）</p>
+<p><img src="/2020/06/02/pytorch-note/gif1.gif" alt="img"></p>
+<p>直接看pytorch的handbook描述lstm并不是特别细致，在这里做个简要的备忘笔记：</p>
+<p>参考<a href="https://www.jianshu.com/p/95d5c461924c" target="_blank" rel="noopener">https://www.jianshu.com/p/95d5c461924c</a></p>
+<p>如下图所示lstm的一个单元内有四个网络层</p>
+<p><img src="/2020/06/02/pytorch-note/pic6.png" alt="img"></p>
+<p>首先是遗忘门输出的$f_t$决定以多少程度丢弃哪些信息，其中决定$f_t$是多少的输入参数主要是$h_{t-1}$ 和$x_t$ 可以理解为根据当前的输入和前一状态的隐藏层信息决定前一状态$C_{t-1}$ 有多少被遗忘，而激活函数是sigmoid函数，输出值是0-1的向量，0表示全部遗忘，1表示全保留，将$C_{t-1}$ 与$f_t$结合可以理解为弱化上一轮的信息部分记忆</p>
+<p><img src="/2020/06/02/pytorch-note/pic7.png" alt="img"></p>
+<p>其次是输入门决定了给当前状态增加哪些新的信息，可以从公式中看出$i_t$的形式与上一步的$f_t$ 一致，激活函数都是sigmoid函数，输入也都是$h_{t-1}$ 和$x_t$ 是要更新信息的系数，而<script type="math/tex">\tilde{C}_{t}</script> 是当前的状态信息其主要输入是$h_{t-1}$ 和$x_t$ 将<script type="math/tex">\tilde{C}_{t}</script>与$i_t$结合即可得到哪些信息是要被加强记忆</p>
+<p><img src="/2020/06/02/pytorch-note/pic8.png" alt="img"></p>
+<p>下一步则是将$C_{t-1}$更新为$C_t$的过程，将上一状态的$C_{t-1}$与$f_t$相点乘确定忘记部分信息，再加上当前状态需要加强记忆的信息则得到$C_t$ </p>
+<p><img src="/2020/06/02/pytorch-note/pic.png" alt="img"></p>
+<p>最后一步则是输出当前细胞状态的隐藏层状态$h_t$ 该参数是由$o_t$和$C_t$点乘计算后得到的，其中$o_t$可以理解为根据当前输入$x_t$和前一状态隐藏层信息$h_{t-1}$得到的历史信息+现在信息的重要程度信息，而使用$o_t$与$tanh(C_t)$相乘表示从最原始状态到现在状态信息的重要程度信息</p>
+<p><img src="/2020/06/02/pytorch-note/pic10.png" alt="img"></p>
+<h3 id="3-1-logistic-regression"><a href="#3-1-logistic-regression" class="headerlink" title="3-1-logistic-regression"></a>3-1-logistic-regression</h3><pre><code class="lang-python">def test(pred,lab):
+    t=pred.max(-1)[1]==lab
+    return torch.mean(t.float())
+</code></pre>
+<p><a href="https://jianzhuwang.blog.csdn.net/article/details/103267516" target="_blank" rel="noopener">https://jianzhuwang.blog.csdn.net/article/details/103267516</a></p>
+<p>参考上面的大佬做了个笔记：</p>
+<p>在pred.max(-1)[1]中的(-1)指的是按照pred的最后的那个维度来取最大值，且[1]代表返回最大值的索引，进而于lab进行直接比较。下面是更具体的例子，方便理解torch的max函数</p>
+<pre><code>a = torch.randn(2,3,4)
+print(a)
+print(a.max(-1))
+print(a.max(0))
+print(a.max(1))
+
+#下方为输出
+
+tensor([[[-0.8042, -1.9735,  0.3806, -1.1213],
+         [-0.6722, -0.3348,  0.4051,  0.1693],
+         [ 0.4199,  1.0681, -2.2424,  1.3049]],
+
+        [[ 0.2313,  0.7321, -1.2748,  4.0471],
+         [-1.2841, -0.3507, -1.5445,  1.6310],
+         [-0.5556,  1.6177,  0.8500, -0.3895]]])
+torch.return_types.max(
+values=tensor([[0.3806, 0.4051, 1.3049],
+        [4.0471, 1.6310, 1.6177]]),
+indices=tensor([[2, 2, 3],
+        [3, 3, 1]]))
+torch.return_types.max(
+values=tensor([[ 0.2313,  0.7321,  0.3806,  4.0471],
+        [-0.6722, -0.3348,  0.4051,  1.6310],
+        [ 0.4199,  1.6177,  0.8500,  1.3049]]),
+indices=tensor([[1, 1, 0, 1],
+        [0, 0, 0, 1],
+        [0, 1, 1, 0]]))
+torch.return_types.max(
+values=tensor([[0.4199, 1.0681, 0.4051, 1.3049],
+        [0.2313, 1.6177, 0.8500, 4.0471]]),
+indices=tensor([[2, 2, 1, 2],
+        [0, 2, 2, 0]]))
+</code></pre><p>注意点2：<br>区分模型中 net.train()和net.eval()，这两个函数并没起到之前理解的训练和预测作用，而是起到指示作用，跟BatchNormalization 和 Dropout的启用与关闭有关，train后面将启用 BatchNormalization 和 Dropout，eval()后面将不启用 BatchNormalization 和 Dropout</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
@@ -587,7 +688,7 @@ print(d)
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-06-02, 20:19:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-08, 16:44:22</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-21, 22:17:17</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/02/pytorch-note/" title="pytorch_note">http://rock-blog.top/2020/06/02/pytorch-note/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -670,7 +771,7 @@ print(d)
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#三省吾身','#AI','#数学','#编程','#深度学习','#CV','#python','#强化学习','#go','#技术小结','#组会报告','#考研','#NLP',],
+            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#强化学习','#go','#编程','#技术小结','#组会报告','#考研','#NLP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
