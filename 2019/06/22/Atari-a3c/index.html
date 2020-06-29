@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Aatri_A3c | Rock-Blog</title>
+  <meta name="keywords" content=" 深度学习 , AI , 强化学习 ">
+  <meta name="description" content="Aatri_A3c | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="pytorch_note https://github.com/zergtant/pytorch-handbook">
+<meta name="keywords" content="AI,python,技术小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch_note">
+<meta property="og:url" content="http://rock-blog.top/2020/06/02/pytorch-note/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="pytorch_note https://github.com/zergtant/pytorch-handbook">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/图例_1.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/print_1.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/print_2.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic_3.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic4.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic5.jpg">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/gif1.gif">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic6.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic7.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic8.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic.png">
+<meta property="og:image" content="http://rock-blog.top/2020/06/02/pytorch-note/pic10.png">
+<meta property="og:updated_time" content="2020-06-21T14:21:01.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pytorch_note">
+<meta name="twitter:description" content="pytorch_note https://github.com/zergtant/pytorch-handbook">
+<meta name="twitter:image" content="http://rock-blog.top/2020/06/02/pytorch-note/图例_1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/guobaoyo" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:1415500736@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=1415500736&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=280020740" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(22)</small></div></li>
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="AI">AI<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="编程">编程<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会报告">组会报告<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="22">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="http://zivblog.top">王金锋</a></li>
+            
+            <li><a target="_blank" href="http://yearing1017.cn/">进哥</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">AI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">组会报告</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a class="强化学习 " href="/2019/06/22/Atari-a3c/" data-tag="深度学习,AI,强化学习" data-author>
+            <span class="post-title" title="Aatri_A3c">Aatri_A3c</span>
+            <span class="post-date" title="2019-06-22 21:25:01">2019/06/22</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="AI,三省吾身,数学" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="深度学习,AI" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="AI,数学,编程" data-author>
+            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
+            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
+        </a>
+        
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="深度学习,强化学习,数学" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,强化学习,数学" data-author>
+            <span class="post-title" title="RLTF">RLTF</span>
+            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
+        </a>
+        
+        <a class href="/2020/06/05/lgb-note/" data-tag="AI,python,编程" data-author>
+            <span class="post-title" title="lgb_note">lgb_note</span>
+            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
+        </a>
+        
+        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="数学 " href="/2019/04/25/math/" data-tag="深度学习,AI,数学" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/pytorch-note/" data-tag="AI,python,技术小结" data-author>
+            <span class="post-title" title="pytorch_note">pytorch_note</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,编程,技术小结" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="AI,强化学习,编程" data-author>
+            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
+            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
+        </a>
+        
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="深度学习,AI,数学" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="AI,三省吾身" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
+            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,编程,技术小结" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="AI,三省吾身,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,python,编程" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Atari-a3c" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Aatri_A3c</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="强化学习">强化学习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">深度学习</a>
+            
+            <a href="javascript:" class="color3">AI</a>
+            
+            <a href="javascript:" class="color5">强化学习</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2020-06-29 10:51:04">2019-06-22 21:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A3C算法原理"><span class="toc-text">A3C算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Asynchronous-异步"><span class="toc-text">Asynchronous-异步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Advantage"><span class="toc-text">Advantage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪代码"><span class="toc-text">伪代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arari环境备注"><span class="toc-text">Arari环境备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码知识点备注"><span class="toc-text">代码知识点备注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ELU函数"><span class="toc-text">ELU函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多进程"><span class="toc-text">多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRU"><span class="toc-text">GRU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#detach"><span class="toc-text">detach()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-cat"><span class="toc-text">torch.cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gather"><span class="toc-text">gather</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#imresize"><span class="toc-text">imresize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存疑"><span class="toc-text">存疑</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要为A3C原理总结以及根据<a href="https://github.com/greydanus/baby-a3c修改其代码的备注笔记" target="_blank" rel="noopener">https://github.com/greydanus/baby-a3c修改其代码的备注笔记</a></p>
+<a id="more"></a>
+<h2 id="A3C算法原理"><a href="#A3C算法原理" class="headerlink" title="A3C算法原理"></a>A3C算法原理</h2><p><strong>Asynchronous Advantage Actor Critic</strong></p>
+<p><img src="/2019/06/22/Atari-a3c/pic2.png" alt></p>
+<h3 id="Asynchronous-异步"><a href="#Asynchronous-异步" class="headerlink" title="Asynchronous-异步"></a>Asynchronous-异步</h3><ul>
+<li><p>并行的交互采样和训练</p>
+</li>
+<li><p>同时启用N个线程，Agent将在N个线程中同时进行交互,收集到样本</p>
+</li>
+<li><p>每一个线程独立完成训练并得到参数更新量，异步更新到全局模型中</p>
+</li>
+<li><p>下一次训练时，多线程的模型参数将和全局参数完成同步再使用新的参数进行新一轮的训练</p>
+</li>
+<li>且异步的理解为worker-A不需要等待其他worker与环境的交互，每次更新时只需要保持本地与全局相同即可，不用理会其他线程，其他线程也是一样</li>
+</ul>
+<p><img src="/2019/06/22/Atari-a3c/Atari-a3c\pic1.png" alt></p>
+<h3 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a>Advantage</h3><ul>
+<li><p>A = Q - V = r + γ*V(s’)-V(s)  </p>
+<ul>
+<li>使用Advantage更能体现出做出当前动作后，相对于均值的大小，</li>
+</ul>
+</li>
+<li><p>n步回报估计法（n-step）</p>
+<ul>
+<li>第一种解释：之前是一个即时奖励r只影响一个Q(s,a)，然后被影响的Q值再间接地传递给其他的Q函数，这样使得更新Q函数比较慢，而N-step的方法可以使得一个r直接影响n个Q值，使得传播更加有效</li>
+<li>n step也相当于是TD与MC的折中版本，均衡方差与偏差</li>
+</ul>
+</li>
+</ul>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><p><img src="/2019/06/22/Atari-a3c/pic3.png" alt></p>
+<p>注意A3C算法提出的一大亮点是充分利用多核cpu的优势而没有使用gpu，有多少核数开启多少个worker与环境进行交互</p>
+<h2 id="Arari环境备注"><a href="#Arari环境备注" class="headerlink" title="Arari环境备注"></a>Arari环境备注</h2><p>Pong-v4与Pong-v0的区别是</p>
+<ul>
+<li>Pong-v0表示会有25%的概率执行上一个action,也就是说当前时刻智能体执行的动作还不一定是网络计算出来的动作，具有25%的重复性，其目的是为了模拟人的控制，让控制不用太精准</li>
+<li>而Pong-v4则是只会执行网络计算出的动作，没有对之前动作的重复性</li>
+</ul>
+<p>环境后面带有Deterministic参数的如Pong-Deterministic表示固定跳4帧，否则跳的帧数是(2,5)内的随机数</p>
+<p>环境后面带有NoFrameskip的env如表示没有跳帧</p>
+<h2 id="代码知识点备注"><a href="#代码知识点备注" class="headerlink" title="代码知识点备注"></a>代码知识点备注</h2><p>由于代码中涉及到使用多进程创建多环境的部分，所以需要在main()最开始部分使用</p>
+<pre><code class="lang-python">mp.set_start_method(&#39;spawn&#39;)
+</code></pre>
+<p>指定进程启动的方式为spawn，spawn需要与join配合使用，如此处理可以在进程间共享 CUDA tensors ，详情请见多线程多进程</p>
+<h3 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h3><p>在代码中遇到了一个新的激活函数-ELU是relu的改进版，可以理解为融合了sigmoid和RELU函数，左侧具有软饱和性，右侧无饱和性。从图中可以看出输入为负数的情况下，是有一定的输出的，而且这部分输出还具有一定的抗干扰能力。</p>
+<ul>
+<li>右侧的线性部分能够缓解梯度消失，而左侧可以使其对输入变化或噪声更加鲁棒</li>
+<li>ELU的输出的均值接近于0，使得收敛速度更快</li>
+</ul>
+<p><img src="/2019/06/22/Atari-a3c/pic11.png" alt="ELU函数公式"></p>
+<p>其函数图像为橙色图像：</p>
+<p><img src="/2019/06/22/Atari-a3c/ELU.png" alt="ELU"></p>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>在代码中关于torch.multiprocessing部分与Python的多进程管理包中的multiprocessing调用几乎相同</p>
+<p>参考<a href="https://www.cnblogs.com/-qing-/p/11291581.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11291581.html</a></p>
+<blockquote>
+<p>p.start()：启动进程，并调用该子进程中的p.run()<br>p.run():进程启动时运行的方法，正是它去调用target指定的函数，我们自定义类的类中一定要实现该方法  </p>
+<p>p.terminate():强制终止进程p，不会进行任何清理操作，如果p创建了子进程，该子进程就成了僵尸进程，使用该方法需要特别小心这种情况。如果p还保存了一个锁那么也将不会被释放，进而导致死锁<br>p.is_alive():如果p仍然运行，返回True</p>
+<p>p.join([timeout]):主线程等待p终止（强调：是主线程处于等的状态，而p是处于运行的状态）。timeout是可选的超时时间，需要强调的是，p.join只能join住start开启的进程，而不能join住run开启的进程</p>
+<p>join()的作用是：主线程一直等待全部的子线程结束之后，主线程自身才结束，程序退出。</p>
+</blockquote>
+<pre><code class="lang-python">mp.set_start_method(&#39;spawn&#39;)#指的是启动进程的一种方式，程序里只能使用一次
+</code></pre>
+<h3 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h3><p>根据<a href="https://zhuanlan.zhihu.com/p/32481747整理的笔记" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747整理的笔记</a></p>
+<blockquote>
+<p>GRU（Gate Recurrent Unit）是循环神经网络（Recurrent Neural Network, RNN）的一种。和LSTM（Long-Short Term Memory）一样，也是为了解决长期记忆和反向传播中的梯度等问题而提出来的。</p>
+</blockquote>
+<p>GRU是2014提出来的，相较于LSTM的优势是更方便计算，节省算力，提高训练效率。</p>
+<p>GRU的结构与RNN比较相似，其输入是本节单元的输入$x_t$ ，上一节单元的隐状态$h^{t-1}$ ,而$h^{t-1}$包含了之前节点的相关信息，其输出也分为两部分，一是当前节点的输出$y^t$ ，二是传递给下一节点的隐状态$h^t$</p>
+<p><img src="/2019/06/22/Atari-a3c/GRU.jpg" alt></p>
+<p>GRU的具体推导过程和图示如下所示：</p>
+<p><img src="/2019/06/22/Atari-a3c/GRU1.jpg" alt></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+r_{t}=\sigma\left(W_{r} \cdot\left[h_{t-1}, x_{t}\right]\right) \\
+z_{t}=\sigma\left(W_{z} \cdot\left[h_{t-1}, x_{t}\right]\right) \\
+\bar{h}_{t}=\tanh \left(W_{\tilde{h}} \cdot\left[r_{t} * h_{t-1}, x_{t}\right]\right) \\
+h_{t}=\left(1-z_{t}\right) * h_{t-1}+z_{t} * \bar{h}_{t} \\
+y_{t}=\sigma\left(W_{o} \cdot h_{t}\right)
+\end{array}</script><ul>
+<li>从第一个公式和图示可以看出r代表的是重置门控，在公式中先将$h_{t-1}$与$x^t$拼接在一起， 并将$W_r$与拼接后的向量相乘，经过sigmoid函数激活后得到重置门控r</li>
+<li>第三个公式：将重置门控与$h^{t-1}$对应位置相乘得到$h^{t-1}$’ ,再将$h^{t-1}$’与$x^t$拼接并于$W_h$矩阵相乘经过tanh激活后得到h’ ,得到的这个h’主要包含$x^t$，相当于对当前输入记忆多少的控制</li>
+<li>z是控制更新的门控，在第二个公式中先将$h_{t-1}$与$x^t$拼接在一起， 并将$W_z$与拼接后的向量相乘，经过sigmoid函数激活后得到更新门控z，z的范围是0-1门控越接近1代表记下来的数据越多，越接近0代表忘的越多</li>
+<li>第四个公式将，$z_t$与h’对应元素相乘表示对当前的记忆，$(1-z_t)*h_{t-1}$ 代表对之前给过来的隐藏状态的遗忘程度 </li>
+</ul>
+<blockquote>
+<p>GRU很聪明的一点就在于，<strong>我们使用了同一个门控 <img src="https://www.zhihu.com/equation?tex=z" alt="[公式]"> 就同时可以进行遗忘和选择记忆（LSTM则要使用多个门控）</strong>。</p>
+</blockquote>
+<p>在代码里面用的是torch的nn.GRUCell只是将隐藏状态$h^t$输出，gru单元中先将ht-1与xt拼接得到800+256=1056的数据，因为后面得到的r_t需要与h_t-1对应元素相乘，所以推出W_r为256*1056的矩阵，最后得到的r_t是256*1的向量,同理z_t也是256*1的向量，W_z也是256*1056的矩阵，W_h同理也是256*1056的矩阵  W_o应该是800*256d的矩阵，最后得到的y_t是800*1的矩阵，可是在这里pytorch的nn.GRUCell输出只有隐藏部分的形状为1,256</p>
+<h3 id="detach"><a href="#detach" class="headerlink" title="detach()"></a>detach()</h3><p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p>detach()函数可以帮助我们实现这个功能：</p>
+<blockquote>
+<p>当我们再训练网络的时候可能希望保持一部分的网络参数不变，只对其中一部分的参数进行调整；或者只训练部分分支网络，并不让其梯度对主网络的梯度造成影响，这时候我们就需要使用detach()函数来切断一些分支的反向传播</p>
+</blockquote>
+<p>调用detach后，会返回一个新的variable，是从当前计算图中分离下来的，但是仍指向原变量的存放位置,不同之处只是requires_grad为false，得到的这个<code>Variable</code>永远不需要计算其梯度，不具有grad，<strong>即使之后重新将它的requires_grad置为true,它也不会具有梯度grad</strong></p>
+<h3 id="torch-cat"><a href="#torch-cat" class="headerlink" title="torch.cat"></a>torch.cat</h3><p>cat是concate的意思，就是拼在一起</p>
+<p>C = torch.cat( (A,B),0 )  #按0维度拼接即竖着拼接（且默认是竖着拼）</p>
+<pre><code class="lang-python">a = torch.zeros([2,2])
+print(a)
+b = torch.ones([2,2])
+print(b)
+c = torch.cat((a,b))
+print(c)
+
+tensor([[0., 0.],
+        [0., 0.]])
+tensor([[1., 1.],
+        [1., 1.]])
+tensor([[0., 0.],
+        [0., 0.],
+        [1., 1.],
+        [1., 1.]])
+</code></pre>
+<h3 id="gather"><a href="#gather" class="headerlink" title="gather"></a>gather</h3><blockquote>
+<p> 1  2  3<br> 4  5  6<br>[torch.FloatTensor of size 2x3]</p>
+<p> 1  2<br> 6  4<br>[torch.FloatTensor of size 2x2]</p>
+<p> 1  5  6<br> 1  2  3<br>[torch.FloatTensor of size 2x3]</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「江户川柯壮」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+<p>可以看出，gather的作用是这样的，index实际上是索引，具体是行还是列的索引要看前面dim 的指定，比如对于我们的栗子，【1,2,3;4,5,6,】，指定dim=1，也就是横向，那么索引就是列号。index的大小就是输出的大小，所以比如index是【1,0;0,0】，那么看index第一行，1列指的是2， 0列指的是1，同理，第二行为4，4 。这样就输入为【2,1;4,4】，参考这样的解释看上面的输出结果，即可理解gather的含义。</p>
+<p>gather在one-hot为输出的多分类问题中，可以把最大值坐标作为index传进去，然后提取到每一行的正确预测结果，这也是gather可能的一个作用。<br>————————————————<br>版权声明：本文为CSDN博主「江户川柯壮」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+<p>X.view(-1)中的-1本意是根据另外一个数来自动调整维度，但是这里只有一个维度，因此就会将X里面的所有维度数据转化成一维的，并且按先后顺序排列。</p>
+</blockquote>
+<h3 id="imresize"><a href="#imresize" class="headerlink" title="imresize"></a>imresize</h3><p>参考<a href="https://www.cnblogs.com/douzujun/p/10280213.html" target="_blank" rel="noopener">https://www.cnblogs.com/douzujun/p/10280213.html</a></p>
+<p>可见该函数是将图片直接进行压缩为指定大小的图片</p>
+<h3 id="存疑"><a href="#存疑" class="headerlink" title="存疑"></a>存疑</h3><p>问：在推导策略梯度时，是否用到了马尔科夫性？在哪里用到的？<img src="/2019/06/22/Atari-a3c/Atari-a3c\pic4.png" alt></p>
+<p>答：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\pi(\mathbf{\tau}) &=\pi\left(\mathbf{s}_{0}, \mathbf{a}_{0}, \cdots, \mathbf{s}_{T}, \mathbf{a}_{T}\right) \\
+&=p\left(s_{0}\right) \prod_{t=0}^{T} \pi_{\theta}\left(a_{t} \mid s_{t}\right) p\left(s_{t+1} \mid s_{t}, a_{t}\right)
+\end{aligned}</script><p>上式推导中用到了马尔可夫性，因为正常来讲求一个序列$\mathbf{\tau}$的概率应该为</p>
+<script type="math/tex; mode=display">
+\pi(\mathbf{\tau}) =\pi\left(\mathbf{s}_{0}, \mathbf{a}_{0}, \cdots, \mathbf{s}_{T}, \mathbf{a}_{T}\right)
+= p(s_0)*\pi(a_0|s_0)*p(s_1|s_0,a_0)*\pi(a_1|s_1)*p(s2|s_1,a_1,s_0,a_0)...</script><p>而在实际推导中将$p(s2|s_1,a_1,s_0,a_0)$写为$p(s2|s_1,a_1)$意为$s_2$出现的概率只是于$s_1$和$a_1$有关，而与再之前的状态和动作是无关的，即在此用马尔科夫性简化公式</p>
+<p>问：在下图中的$b_{i,t’}$表达形式是否合理？</p>
+<p><img src="/2019/06/22/Atari-a3c/Atari-a3c\pic5.png" alt></p>
+<p>在《强化学习精要》书中讲到添加一个baseline，书中的解释是<strong>同一起始点</strong>的<strong>不同序列</strong>在<strong>同一时刻</strong>的长期回报均值其形式是</p>
+<script type="math/tex; mode=display">
+\mathrm{b}_{i, t'}=\frac{1}{N} \sum_{i=1}^{N} \sum_{t'=t}^{T} r\left(s_{i, t'}, a_{i, t'}\right)</script><p>ppt中的编写并没有错，只不过以i,t’作为右下角标可能并不是特别标准容易引起误解，这里的$b_{i,t’}$是按照蒙特卡罗的计算方法求出，按照下图如果想求关于黑色边框状态的baseline值就不可以算第三行的序列，因为他们不在同一时刻，所以求得的b值应该为15（只是突然来的灵感想到的例子，不知正确与否，还需多问）<img src="/2019/06/22/Atari-a3c/pic6.png" alt></p>
+<p>在李宏毅老师的课程中讲到<strong>baseline的作用</strong>说的是：在某些游戏环境下，原来不加baseline得到的值是7，9，11这种非负数值，在策略梯度更新的过程中会使得非常好的动作概率增加较大，不是那么好的动作的概率也增加只不过增加的幅度较小。（这样更新是不合理的，合理的应该是降低不好的动作的概率，增加好动作的概率）</p>
+<p>除此之外还有一方面的作用是，可以<strong>减小方差</strong>，在原来7,9,11的基础上减去平均值变为-2，0，2,方差减小后对算法的稳定性有帮助。这样会在不改变策略梯度公式的前提下，使得方差缩小。至于为什么减去个b不改变策略梯度公式，详情可以看<a href="https://zhuanlan.zhihu.com/p/26174099和sutton329页的一行推导（其均值为0）" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26174099和sutton329页的一行推导（其均值为0）</a></p>
+<script type="math/tex; mode=display">
+\sum_{a} b(s) \nabla \pi(a \mid s, \boldsymbol{\theta})=b(s) \nabla \sum_{a} \pi(a \mid s, \boldsymbol{\theta})=b(s) \nabla 1=0</script><p>问：更新w的公式是哪里来的？为什么还跟$\delta$有关？</p>
+<p><img src="/2019/06/22/Atari-a3c/pic7.png" alt></p>
+<script type="math/tex; mode=display">
+\mathbf{w} \leftarrow \mathbf{w}+\alpha^{\mathbf{w}} \delta \nabla \hat{v}(S, \mathbf{w})</script><p>答：该公式最早是从sutton书中201页的Stochastic-gradient and Semi-gradient Methods 讲到的，在这里w是critic的网络参数，那么其目的是使得下式中的$\hat{v}(S_{t},w_t)$越接近$v_\pi(S_t)$越好（在这里$v_\pi(S_t)$是所谓的“标答”），也就是$v_{\pi}(S_{t})-\hat{v}(S_{t})$越小越好，所以将$v_{\pi}(S_{t})-\hat{v}(S_{t})$对w求梯度，在更新w时采用梯度下降的方法如下式所示，而与sutton书中不同的地方有两点，其一是学习率用指数次方的形式去表示这样可以达到学习率递减的效果，其二是将标答换为<script type="math/tex">R+\gamma \hat{v}\left(S^{\prime}, \mathbf{w}\right)</script> 即以实际走出一步得到reward奖励+一步之后的折扣评估值作为标答，即可推出w的更新公式，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{w}_{t+1} & \doteq \mathbf{w}_{t}-\frac{1}{2} \alpha \nabla\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right]^{2} \\
+&=\mathbf{w}_{t}+\alpha\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right] \nabla \hat{v}\left(S_{t}, \mathbf{w}_{t}\right)
+\end{aligned}</script><p>问：GAE的表达形式，怎么平衡的偏差与方差？</p>
+<p>答：因为之前在actor-critic算法中计算长期回报估值的公式是</p>
+<script type="math/tex; mode=display">
+\sum_{t' = t}^Tγ^{t'-t}r_{t'}</script><p>虽然这种计算方法的每一个值都是从实际回报计算得来的，是无偏的计算方法，但是这会使得梯度的方差比较大（一个值的计算依赖于如此多的$r$，所以方差大），因此产生较大的波动，使得算法的稳定性较差。</p>
+<p>为了平衡偏差与方差，需要重新定义一个advantage函数，且在这里给出一个$\gamma-just$的定义，指的是当一个函数$\hat A_t$满足$\gamma-just$的条件时，它满足下面公式</p>
+<script type="math/tex; mode=display">
+\mathbb{E}_{s_{0: \infty}\\a_{0: \infty}}\left[\hat{A}_{t}\left(s_{0: \infty}, a_{0: \infty}\right) \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\right]=\mathbb{E}_{s_{0: \infty}\\a_{0: \infty}}\left[A^{\pi, \gamma}\left(s_{t}, a_{t}\right) \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\right]</script><p>意思是找到的$\hat A_t$可以使得之前计算的梯度估计值不变。在<a href="https://zhuanlan.zhihu.com/p/45107835中提到如下四种计算方法都符合$\gamma-just$条件" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/45107835中提到如下四种计算方法都符合$\gamma-just$条件</a></p>
+<p>$\sum_{l=0}^{\infty} \gamma^{l} r_{t+l}$<br>$A^{\pi, \gamma}\left(s_{t}, a_{t}\right)$<br>$Q^{\pi, \gamma}\left(s_{t}, a_{t}\right)$<br>$ r_{t}+\gamma V^{\pi, \gamma}\left(s_{t+1}\right)-V^{\pi, \gamma}\left(s_{t}\right)$</p>
+<p>而在<a href="https://arxiv.org/pdf/1506.02438.pdf提到的一种估值方式为" target="_blank" rel="noopener">https://arxiv.org/pdf/1506.02438.pdf提到的一种估值方式为</a></p>
+<script type="math/tex; mode=display">
+\widehat{A}_{t}^{G A E(\gamma, \lambda)}=\sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}=\sum_{l=0}^{\infty}(\gamma \lambda)^{l}\left(r_{t}+\gamma V\left(s_{t+l+1}\right)-V\left(s_{t+l}\right)\right)</script><p>下面分两步介绍这个公式的具体推导过程：</p>
+<p>一、且论文中证明$ r_{t}+\gamma V^{\pi, \gamma}\left(s_{t+1}\right)-V^{\pi, \gamma}\left(s_{t}\right)$满足$\gamma-just$条件，后面的公式推导也都基于此展开。</p>
+<p>二、我们将注意力放到n-step advantage estimation 在强化学习精要中的258页的k也就是n步的n</p>
+<p>258页的推导如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{(1)} &=\delta_{t}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right) \\
+\hat{A}_{t}^{(2)} &=\delta_{t}^{V}+\gamma \delta_{t+1}^{V} \\
+&=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)+\gamma\left(-V\left(s_{t+1}\right)+r_{t+1}+\gamma V\left(s_{t+2}\right)\right) \\
+&=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\gamma^{2} V\left(s_{t+2}\right)
+\end{aligned}</script><p>上面的式子不好理解的化也可以以反向思路去思考：</p>
+<p>首先n=1时公式为</p>
+<script type="math/tex; mode=display">
+\hat{A}_{t}^{(1)} =\delta_{t}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)</script><p>而n=2时公式可以写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{(2)} &=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\gamma^{2} V\left(s_{t+2}\right)\\
+&= -V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)+\gamma\left(-V\left(s_{t+1}\right)+r_{t+1}+\gamma V\left(s_{t+2}\right)\right)\\
+&=\delta_{t}^{V}+\gamma \delta_{t+1}^{V}
+\end{aligned}</script><p>这样可以推出在A3C_baby.py中是以n=5进行计算的，而sc2是以n=8进行计算</p>
+<p>因此如果n取$∞$就可以得到使用蒙特卡罗方法估计优势函数的公式：</p>
+<script type="math/tex; mode=display">
+\hat{A}_{t}^{(\infty)}=\sum_{l=0}^{\infty} \gamma^{l} \delta_{t+l}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\cdots+\gamma^{k} r_{t+k}+\cdots</script><p>也就是说随着n的越来越大偏差越来越小，但是方差越来越大，而论文中最终证明的公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{\mathrm{GAE}(\gamma, \lambda)}=&(1-\lambda)\left(\hat{A}_{t}^{(1)}+\lambda \hat{A}_{t}^{(2)}+\lambda^{2} \hat{A}_{t}^{(3)}+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}+\lambda\left(\delta_{t}^{V}+\gamma\delta_{t+1}^{V}\right)+\lambda^{2}\left(\delta_{t}^{V}+\gamma \delta_{t+1}^{V}+\gamma^{2} \delta_{t+2}^{V}\right)+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}\left(1+\lambda+\lambda^{2}+\cdots\right)+\gamma \delta_{t+1}^{V}\left(\lambda+\lambda^{2}+\lambda^{3}+\cdots\right)\right.\\
+&\left.+\gamma^{2} \delta_{t+2}^{V}\left(\lambda^{2}+\lambda^{3}+\lambda^{4}+\cdots\right)+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}\left(\frac{1}{1-\lambda}\right)+\gamma \delta_{t+1}^{V}\left(\frac{\lambda}{1-\lambda}\right)+\gamma^{2} \delta_{t+2}^{V}\left(\frac{\lambda^{2}}{1-\lambda}\right)+\cdots\right) \\
+=& \sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}
+\end{aligned}</script><p>但是在第三行推至第四行时，等比数列的计算公式为</p>
+<script type="math/tex; mode=display">
+S_{n}=\frac{a_{1}\left(1-q^{n}\right)}{1-q}(q \neq 1)</script><font color="red">**存疑：** </font>所以第四行和第五行是否应该写为下面的公式（首项为1省略了）
+$$
+\begin{aligned}
+&=(1-\lambda^n)(1-\lambda)\left(\delta_{t}^{V}\left(\frac{1}{1-\lambda}\right)+\gamma \delta_{t+1}^{V}\left(\frac{\lambda}{1-\lambda}\right)+\gamma^{2} \delta_{t+2}^{V}\left(\frac{\lambda^{2}}{1-\lambda}\right)+\cdots\right)\\
+&=(1-\lambda^n) \sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}
+\end{aligned}
+$$
+如果按照论文中的计算公式来看，具有如下性质：
+
+当$\lambda$等于0时，在上面公式的第二行就可以简化为下式，可以看作计算TD-error
+$$
+\operatorname{GAE}(\gamma, 0):  \hat{A}_{t}:=\delta_{t}  =r_{t}+\gamma v\left(s_{t+1}\right)-v\left(s_{t}\right)
+$$
+当$\lambda$等于1时，代入最底下的公式得到如下计算公式，可以看作使用蒙特卡罗方法
+$$
+\begin{array}{lll}
+\operatorname{GAE}(\gamma, 1): & \hat{A}_{t}:=\sum_{l=0}^{\infty} \gamma^{l} \delta_{t+l} & =\operatorname{sum}_{t=0}^{\infty} \gamma^{l} r_{t+l}-v\left(s_{t}\right)
+\end{array}
+$$
+推导如下：
+$$
+\begin{aligned}
+& \sum_{l=0}^{\infty}(\gamma)^{l} \delta_{t+l}^{V} \\
+=& \delta_{t}^{V}+\gamma \delta_{t+1}^{V}+\gamma^{2} \delta_{t+2}^{V}+\gamma^{3} \delta_{t+3}^{V} \cdots \\
+=& _{t}+\gamma V\left(s_{t+1}\right)-V\left(s_{t}\right)+\gamma\left(r_{t+1}+\gamma   V\left(s_{t+2}\right)-V\left(s_{t+1}\right)\right)  \\
+=& r_{t}+ \gamma r_{t+1}+\gamma^{2} r_{t+2} \cdots-V\left(s_{t}\right) \\
+=& \sum_{l=0}^{\infty} \gamma^{l} \delta_{t+1}-V\left(s_{t}\right)
+\end{aligned}
+$$
+因此可以通过调整$\lambda$使得模型在方差与偏差之间找到平衡。
+
+注意点1：实际的a3c_baby.py代码文件中设置了"tau"也就是上文说的$\lambda$等于1，会把列表中的5个delta全部包括在内计算得到$\hat{A}_{5}$注意这里区分5-step和蒙特卡罗的区别，虽然书中说当$\lambda$等于1的时候是按照蒙特卡洛的计算方法计算，但是在实际应用的时候，列表中只有时间长度为5的历史序列，所以是把这长度为”5“的序列全部计算也就相当于使用蒙特卡罗计算方法来计算，而实际上从上帝视角来看这个序列是远远大于5的，所以计算方法产生的效果是5-step的效果。
+
+注意点2：因为后面要和5个$V(s_t)$进行相减计算，所以在代码中计算出来的是5个advantage值分别是从后到前进行计算如下图，在最后的结果再除以adjustment值如下面代码所示
+
+![](Atari-a3c\pic8.png)
+
+而至于代码中使用一行计算GAE的精妙之处在于传入函数的x是经过错位相减得到长度为5的$\delta_t$ ，先将顺序颠倒计算$\gamma^4 \delta_{t+4}^V+\gamma^3 \delta_{t+3}^V+\gamma^2 \delta_{t+2}^V+\gamma^1 \delta_{t+1}^V+\delta_{t}^V$ 
+
+```python
+discount = lambda x, gamma: lfilter([1], [1, -gamma], x[::-1])[::-1]  # discounted rewards one liner
+delta_t = np.asarray(rewards) + args.gamma * np_values[1:] - np_values[:-1]
+gen_adv_est = discount(delta_t, args.gamma * args.tau)
+```
+
+```python
+rewards = np.arange(0,5)
+print(rewards)
+# print(rewards[::-1])
+gamma = 0.9
+discount = lambda x, gamma: lfilter([1], [1, -gamma], x[::-1])[::-1]  # discounted rewards one liner
+discounted_r = discount(rewards, gamma)
+print(discounted_r)
+print('****')
+rewards1 = np.arange(0,5)
+print(rewards1)
+rewards1 = rewards1[::-1]
+adjustment = (gamma) ** np.arange(5, 0, -1)
+print(rewards1)
+print(adjustment)
+print(rewards1*adjustment)
+print(np.cumsum(rewards1 * adjustment, axis=0)/ adjustment)
+advantage = (np.cumsum(rewards1 * adjustment, axis=0) / adjustment)[::-1]
+print(advantage)
+print('自己写的')
+delta_1 = np.arange(0,5)
+gamma = 0.9
+adjustment = (gamma) ** np.arange(1, 6, 1)
+print(delta_1)
+print(adjustment)
+advantage1 = (np.cumsum((delta_1 * adjustment)[::-1], axis=0) / adjustment[::-1])
+print(advantage1)
+```
+
+上面部分的代码是A3C_baby.py的代码（不知道这个lfilter的具体作用，但是换个环境能使用），下面是星际争霸sc2aibot.py的代码（行数多点儿但是完全能理解）
+
+<font color="red">**存疑：** </font> 
+
+<p>结论:scipy.signal的lfilter函数不是特别清楚，但是代码的意思能与公式对上</p>
+<p>问：A2C相比于A3C的优势体现在哪？</p>
+<p>答：参考<a href="https://openai.com/blog/baselines-acktr-a2c/" target="_blank" rel="noopener">https://openai.com/blog/baselines-acktr-a2c/</a></p>
+<blockquote>
+<p>After reading the paper, AI researchers wondered whether the asynchrony led to improved performance <strong>(e.g. “perhaps the added noise would provide some regularization or exploration?”),</strong> or if it was just an implementation detail that allowed for faster training with a CPU-based implementation.</p>
+<p>As an alternative to the asynchronous implementation, researchers found you can write a synchronous, deterministic implementation that waits for each actor to finish its segment of experience before performing an update, averaging over all of the actors. <strong>One advantage of this method is that it can more effectively use of GPUs, which perform best with large batch sizes.</strong> This algorithm is naturally called A2C, short for advantage actor critic. (This term has been used in several papers.)</p>
+<p>Our synchronous A2C implementation performs better than our asynchronous implementations — we have not seen any evidence that the noise introduced by asynchrony provides any performance benefit. This A2C implementation is more cost-effective than A3C when using single-GPU machines, and is faster than a CPU-only A3C implementation when using larger policies.</p>
+<p>We have included code in Baselines for training feedforward convnets and LSTMs on the Atari benchmark using A2C.</p>
+</blockquote>
+<p>文中第一段中写的增加噪声和正则化的效果可以理解为从主进程分出n个子进程进行异步学习，不会完全依赖于某一个进程的学习，所以多个子进程同时学习，再将学到的梯度信息传给主进程，这样主进程的多个子进程在一定程度上都相当于“噪声”，使得主进程不会过度依赖某一个子进程，从而不会发生“过拟合”的现象。</p>
+<p>第二段的理解为，因为A3C一开始就是为cpu计算准备的，而改进后的A2C可以利用上GPU,所以改进后的A2C可以有效使用GPU进行计算因此也就会更快一些。此外，可以推理出来的是如果网络结构比较深或者一个batch比较大，那么使用GPU的优势就更加明显。</p>
+<p>问：A3C的shared_adam到底在哪里更新的本地和全局网络模型的参数？</p>
+<p>答：一开始猛然看pytorch代码并没有完全看懂shared_adam，所以先看看莫烦大神写的A3C的tensflow版本的代码<a href="https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/blob/master/contents/10_A3C/A3C_discrete_action.py" target="_blank" rel="noopener">https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/blob/master/contents/10_A3C/A3C_discrete_action.py</a></p>
+<p>发现在tensorflow代码是:</p>
+<pre><code class="lang-python">    def work(self):
+        global GLOBAL_RUNNING_R, GLOBAL_EP
+        total_step = 1
+        buffer_s, buffer_a, buffer_r = [], [], []
+        while not COORD.should_stop() and GLOBAL_EP &lt; MAX_GLOBAL_EP:
+            s = self.env.reset()
+            ep_r = 0
+            while True:
+                # if self.name == &#39;W_0&#39;:
+                #     self.env.render()
+                a = self.AC.choose_action(s)
+                s_, r, done, info = self.env.step(a)
+                if done: r = -5
+                ep_r += r
+                buffer_s.append(s)
+                buffer_a.append(a)
+                buffer_r.append(r)
+
+                if total_step % UPDATE_GLOBAL_ITER == 0 or done:   
+                    # update global and assign to local net
+                    if done:
+                        v_s_ = 0   # terminal
+                    else:
+                        v_s_ = SESS.run(self.AC.v, {self.AC.s: s_[np.newaxis, :]})[0, 0]
+                    buffer_v_target = []
+                    for r in buffer_r[::-1]:    # reverse buffer r
+                        v_s_ = r + GAMMA * v_s_
+                        buffer_v_target.append(v_s_)
+                    buffer_v_target.reverse()
+
+                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.array(buffer_a), np.vstack(buffer_v_target)
+                    feed_dict = {
+                        self.AC.s: buffer_s,
+                        self.AC.a_his: buffer_a,
+                        self.AC.v_target: buffer_v_target,
+                    }
+                    self.AC.update_global(feed_dict)
+
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    self.AC.pull_global()
+
+                s = s_
+                total_step += 1
+                if done:
+                    if len(GLOBAL_RUNNING_R) == 0:  # record running episode reward
+                        GLOBAL_RUNNING_R.append(ep_r)
+                    else:
+                        GLOBAL_RUNNING_R.append(0.99 * GLOBAL_RUNNING_R[-1] + 0.01 * ep_r)
+                    print(
+                        self.name,
+                        &quot;Ep:&quot;, GLOBAL_EP,
+                        &quot;| Ep_r: %i&quot; % GLOBAL_RUNNING_R[-1],
+                          )
+                    GLOBAL_EP += 1
+                    break
+</code></pre>
+<p>其中最重要的部分是：</p>
+<pre><code class="lang-python">                    feed_dict = {
+                        self.AC.s: buffer_s,
+                        self.AC.a_his: buffer_a,
+                        self.AC.v_target: buffer_v_target,
+                    }
+                    self.AC.update_global(feed_dict)
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    self.AC.pull_global()
+    def update_global(self, feed_dict):  # run by a local
+        SESS.run([self.update_a_op, self.update_c_op], feed_dict) 
+        # local grads applies to global net
+    def pull_global(self):  # run by a local
+        SESS.run([self.pull_a_params_op, self.pull_c_params_op])
+
+
+    with tf.name_scope(&#39;sync&#39;):
+        with tf.name_scope(&#39;pull&#39;):
+            self.pull_a_params_op = [l_p.assign(g_p) for l_p, g_p in zip(self.a_params, globalAC.a_params)]
+            self.pull_c_params_op = [l_p.assign(g_p) for l_p, g_p in zip(self.c_params, globalAC.c_params)]
+        with tf.name_scope(&#39;push&#39;):
+            self.update_a_op = OPT_A.apply_gradients(zip(self.a_grads, globalAC.a_params))
+            self.update_c_op = OPT_C.apply_gradients(zip(self.c_grads, globalAC.c_params))
+</code></pre>
+<p>可见于之前的理解完全相同就是将局部计算的梯度用到全局网络参数的更新中，更新完全局网络后，再将全局的网络同步到本地局部网络模型</p>
+<p>在pytorch中使用的是shared_adam方式更新全局网络参数,其中放入的参数就是全局网络的参数</p>
+<pre><code class="lang-python">shared_optimizer = SharedAdam(shared_model.parameters(), lr=args.lr)
+</code></pre>
+<p>而至于在讲代码时卡住的地方：</p>
+<pre><code class="lang-python">loss = cost_func(args, torch.cat(values), torch.cat(logps), torch.cat(actions), np.asarray(rewards))#计算loss
+eploss += loss.item()#将计算的loss加到episode_loss里面
+shared_optimizer.zero_grad()
+loss.backward()#可以看出每个子进程与环境交互5次，算一次loss并且计算梯度并回传。
+torch.nn.utils.clip_grad_norm_(model.parameters(), 40)
+#梯度的最大番薯是40，不能超过40，默认是L2范数
+for param, shared_param in zip(model.parameters(), shared_model.parameters()):
+    if shared_param.grad is None: shared_param._grad = param.grad  
+        # sync gradients with shared model
+shared_optimizer.step()
+</code></pre>
+<p>这里不清楚的点是为什么要先进行一次关于shared_param.grad是否为None的判断？</p>
+<p>而在莫烦的pytorch里面写的如下，并没有进行判断：</p>
+<pre><code class="lang-python">    loss = lnet.loss_func(
+            v_wrap(np.vstack(bs)),
+            v_wrap(np.array(ba), dtype=np.int64) if ba[0].dtype == np.int64 else                     v_wrap(np.vstack(ba)),
+            v_wrap(np.array(buffer_v_target)[:, None]))
+
+    # calculate local gradients and push local parameters to global
+    opt.zero_grad()
+    loss.backward()
+    for lp, gp in zip(lnet.parameters(), gnet.parameters()):
+    gp._grad = lp.grad
+    opt.step()
+
+    # pull global parameters
+    lnet.load_state_dict(gnet.state_dict())
+</code></pre>
+<p>在服务器上试试去掉判断的效果如何？</p>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/clksjx/article/details/104053216" target="_blank" rel="noopener">https://blog.csdn.net/clksjx/article/details/104053216</a></p>
+<p><a href="https://gym.openai.com/envs/#atari" target="_blank" rel="noopener">https://gym.openai.com/envs/#atari</a></p>
+<p><a href="https://www.cntofu.com/book/169/docs/1.0/multiprocessing.md" target="_blank" rel="noopener">https://www.cntofu.com/book/169/docs/1.0/multiprocessing.md</a></p>
+<p><a href="https://blog.csdn.net/zfjBIT/article/details/91633424" target="_blank" rel="noopener">https://blog.csdn.net/zfjBIT/article/details/91633424</a></p>
+<p><a href="https://blog.csdn.net/zrh_CSDN/article/details/81266188" target="_blank" rel="noopener">https://blog.csdn.net/zrh_CSDN/article/details/81266188</a></p>
+<p><a href="http://sofasofa.io/forum_main_post.php?postid=1002018" target="_blank" rel="noopener">http://sofasofa.io/forum_main_post.php?postid=1002018</a></p>
+<p><a href="https://www.jianshu.com/p/dc4e53fc73a0" target="_blank" rel="noopener">https://www.jianshu.com/p/dc4e53fc73a0</a></p>
+<p><a href="https://www.cnblogs.com/-qing-/p/11291581.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11291581.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747</a></p>
+<p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p><a href="https://www.cnblogs.com/JeasonIsCoding/p/10162356.html" target="_blank" rel="noopener">https://www.cnblogs.com/JeasonIsCoding/p/10162356.html</a></p>
+<p><a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Aatri_A3c</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-06-22, 21:25:01</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-29, 10:51:04</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/06/22/Atari-a3c/" title="Aatri_A3c">http://rock-blog.top/2019/06/22/Atari-a3c/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'ff543555c057397a2a97',
+            clientSecret: 'b307c20f57abf09094a4ff85a4b95f98ed9f6b61',
+            repo: 'guobaoyo.github.io',
+            owner: 'guobaoyo',
+            admin: ['guobaoyo'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Rock&#39;s  blog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#深度学习','#AI','#强化学习','#三省吾身','#数学','#CV','#python','#编程','#go','#技术小结','#组会报告','#考研','#NLP',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
