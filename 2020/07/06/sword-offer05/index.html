@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>剑指offer04 | Rock-Blog</title>
+  <title>剑指offer05 | Rock-Blog</title>
   <meta name="keywords" content=" python , 技术小结 , leetcode ">
-  <meta name="description" content="剑指offer04 | Rock-Blog">
+  <meta name="description" content="剑指offer05 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="剑指offer_第四题二维数组中的查找 以及74. 搜索二维矩阵">
 <meta name="keywords" content="python,技术小结,leetcode">
@@ -411,9 +411,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-sword-offer04" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-sword-offer05" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">剑指offer04</h1>
+        <h1 class="article-title">剑指offer05</h1>
     
     <div class="article-meta">
         
@@ -439,7 +439,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-07-06 09:50:36">2020-07-06 20:19</time>
+        创建时间:<time class="date" title="更新时间: 2020-07-06 10:04:52">2020-07-06 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -472,7 +472,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍"><span class="toc-text">简要介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单粗暴直接比较"><span class="toc-text">简单粗暴直接比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从右上角往左下角看"><span class="toc-text">从右上角往左下角看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似题目"><span class="toc-text">相似题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#74-搜索二维矩阵"><span class="toc-text">74. 搜索二维矩阵</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二分法"><span class="toc-text">二分法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍"><span class="toc-text">简要介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一、库函数"><span class="toc-text">方法一、库函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二、在后面逐渐拼接👍"><span class="toc-text">方法二、在后面逐渐拼接👍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三、同法二区别为使用列表"><span class="toc-text">方法三、同法二区别为使用列表</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -488,81 +488,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>剑指offer_第四题<a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof" target="_blank" rel="noopener">二维数组中的查找</a> 以及<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a> </p>
+        <p>剑指offer_第五题</p>
 <a id="more"></a>
-<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>本篇笔记主要是针对剑指offer中第四题以及与其相似的两道题解法的记录</p>
-<p><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/</a></p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>出自<a href="https://leetcode-cn.com/u/mjt123/" target="_blank" rel="noopener">初学者</a>和<a href="https://leetcode-cn.com/u/jyd/" target="_blank" rel="noopener">Krahets</a></p>
-<h3 id="简单粗暴直接比较"><a href="#简单粗暴直接比较" class="headerlink" title="简单粗暴直接比较"></a>简单粗暴直接比较</h3><pre><code class="lang-python">class Solution:
-    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -&gt; bool:
-        for i in matrix:
-            for j in i:
-                if target == j:
-                    return True
-        return False
+<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>本篇笔记是针对剑指offer-第五题的多种不同时间空间复杂度的解法</p>
+<h3 id="方法一、库函数"><a href="#方法一、库函数" class="headerlink" title="方法一、库函数"></a>方法一、库函数</h3><pre><code class="lang-python">return s.replace(&quot; &quot;,&quot;%20&quot;)
 </code></pre>
-<p>最无脑的方法没有用到数组matrix本身的递增属性，可以作为最开始的基础想法方便后面改进</p>
-<h3 id="从右上角往左下角看"><a href="#从右上角往左下角看" class="headerlink" title="从右上角往左下角看"></a>从右上角往左下角看</h3><pre><code class="lang-python">class Solution:
-    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -&gt; bool:
-        if len(matrix)==0:return False
-        i,j = 0,len(matrix[0])-1
-        while i&lt;=len(matrix)-1 and j &gt;=0:
-            if matrix[i][j]&gt;target:
-                j-=1
-            elif matrix[i][j]&lt;target:
-                i+=1
-            else:return True
-        return False
-</code></pre>
-<h2 id="相似题目"><a href="#相似题目" class="headerlink" title="相似题目"></a>相似题目</h2><h4 id="74-搜索二维矩阵"><a href="#74-搜索二维矩阵" class="headerlink" title="74. 搜索二维矩阵"></a><a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a></h4><p>与上一题类似的方法，只不过是站在左下角往右上角看</p>
-<pre><code class="lang-python">class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
-        if len(matrix)==0 or matrix == [[]]:
-            return False
-        i = len(matrix) - 1
-        j = 0
-        while i&gt;=0 and j&lt;= len(matrix[0])-1:
-            print(matrix[i][j])
-            if target&lt;matrix[i][j]:
-                i-=1
-            elif target&gt;matrix[i][j]:
-                j+=1
+<h3 id="方法二、在后面逐渐拼接👍"><a href="#方法二、在后面逐渐拼接👍" class="headerlink" title="方法二、在后面逐渐拼接👍"></a>方法二、在后面逐渐拼接👍</h3><pre><code class="lang-python">class Solution:
+    def replaceSpace(self, s: str) -&gt; str:
+        ans = &#39;&#39;
+        for i in s:
+            if i==&#39; &#39;:
+                ans+=&#39;%20&#39;
             else:
-                return True
-        return False
+                ans+=i
+        return ans
 </code></pre>
-<h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><p>如果将矩阵展开是一个递增的列表，那么就可以使用如下解法</p>
-<p>仿照<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/solution/ju-zhen-de-er-fen-cha-zhao-shou-hui-man-hua-tu-jie/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-a-2d-matrix/solution/ju-zhen-de-er-fen-cha-zhao-shou-hui-man-hua-tu-jie/</a> 写的python版本的</p>
-<pre><code class="lang-python">class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
-        if len(matrix)==0 or len(matrix[0])==0:
-            return False
-        m = len(matrix)
-        n = len(matrix[0])
-        left = 0
-        right = m*n - 1
-        mid = (left+right)//2
-        while left&lt;right:
-            mid = (left+right)//2
-            # print(&#39;*&#39;)
-            # print(left)
-            # print(right)
-            # print(mid)
-            # print(&#39;*&#39;)
-            if matrix[mid//n][mid%n]&gt;target:
-                # print(&#39;大了&#39;)
-                right = mid
-            elif matrix[mid//n][mid%n]&lt;target:
-                # print(&#39;小了&#39;)
-                left = mid + 1
-            else:
-                left = mid
-                break
-        #print(left)
-        if matrix[left//n][left%n]==target:
-            return True
-        return False
+<p>运行时间：44ms 内存消耗：13.8M</p>
+<h3 id="方法三、同法二区别为使用列表"><a href="#方法三、同法二区别为使用列表" class="headerlink" title="方法三、同法二区别为使用列表"></a>方法三、同法二区别为使用列表</h3><pre><code class="lang-python">res = []
+        for c in s:
+            if c == &#39; &#39;: res.append(&quot;%20&quot;)
+            else: res.append(c)
+        return &quot;&quot;.join(res)
+
+#作者：jyd
+#链接：https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/solution/mian-shi-ti-05-ti-#huan-kong-ge-ji-jian-qing-xi-tu-/
+#来源：力扣（LeetCode）
+#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 </code></pre>
+<p>运行时间：52ms 内存消耗：13.8M</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -576,12 +529,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>剑指offer04</p>
+    <p><span class="copy-title">文章标题:</span>剑指offer05</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-07-06, 20:19:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-07-06, 09:50:36</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/06/sword-offer04/" title="剑指offer04">http://rock-blog.top/2020/07/06/sword-offer04/</a>
+    <p><span class="copy-title">最后更新:</span>2020-07-06, 10:04:52</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/06/sword-offer05/" title="剑指offer05">http://rock-blog.top/2020/07/06/sword-offer05/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
