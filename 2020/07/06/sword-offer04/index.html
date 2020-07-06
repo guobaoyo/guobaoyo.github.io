@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>组会报告-0930-QLearning | Rock-Blog</title>
-  <meta name="keywords" content=" 深度学习 , 强化学习 , 组会报告 ">
-  <meta name="description" content="组会报告-0930-QLearning | Rock-Blog">
+  <title>剑指offer04 | Rock-Blog</title>
+  <meta name="keywords" content=" python , 技术小结 , leetcode ">
+  <meta name="description" content="剑指offer04 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="剑指offer_第三题&amp;amp;a,b = b,a备注">
 <meta name="keywords" content="python,技术小结,leetcode">
@@ -406,9 +406,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-组会报告-0930-QLearning" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-sword-offer04" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">组会报告-0930-QLearning</h1>
+        <h1 class="article-title">剑指offer04</h1>
     
     <div class="article-meta">
         
@@ -416,25 +416,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="组会报告">组会报告</a>
+                <a href="javascript:" data-rel="编程">编程</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">深度学习</a>
+            <a href="javascript:" class="color2">python</a>
             
-            <a href="javascript:" class="color5">强化学习</a>
+            <a href="javascript:" class="color5">技术小结</a>
             
-            <a href="javascript:" class="color5">组会报告</a>
+            <a href="javascript:" class="color4">leetcode</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-11-26 11:11:28">2019-09-26 15:15</time>
+        创建时间:<time class="date" title="更新时间: 2020-07-06 09:50:36">2020-07-06 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -467,7 +467,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Q-learning"><span class="toc-text">Q-learning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#铺垫知识："><span class="toc-text">铺垫知识：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-马尔可夫决策的要求"><span class="toc-text">1.马尔可夫决策的要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-马尔可夫决策过程4要素以及数学符号表示"><span class="toc-text">2.马尔可夫决策过程4要素以及数学符号表示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-on-policy与off-policy"><span class="toc-text">3.on-policy与off-policy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-贝尔曼方程和贝尔曼最优方程"><span class="toc-text">4.贝尔曼方程和贝尔曼最优方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-动态规划与TD，MC"><span class="toc-text">5.动态规划与TD，MC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-动态规划"><span class="toc-text">1.动态规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-monte-carlo-MC"><span class="toc-text">2.monte-carlo(MC)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Temporal-difference-TD"><span class="toc-text">3.Temporal-difference(TD)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-雏形"><span class="toc-text">1.雏形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-改进"><span class="toc-text">2.改进</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-target-network"><span class="toc-text">1.target network</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-epsilon-greedy"><span class="toc-text">2.$\epsilon $ -greedy</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-replay-buffer"><span class="toc-text">3.replay-buffer</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-算法流程"><span class="toc-text">3.算法流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要注意的点："><span class="toc-text">需要注意的点：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于模型和非基于模型"><span class="toc-text">基于模型和非基于模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#待改进："><span class="toc-text">待改进：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Prioritized-Reply"><span class="toc-text">Prioritized Reply</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Multi-step-balance-between-MC-and-TD"><span class="toc-text">Multi-step-balance between MC and TD</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Noisy-Net"><span class="toc-text">Noisy Net</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Double-DQN"><span class="toc-text">Double DQN</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍"><span class="toc-text">简要介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单粗暴直接比较"><span class="toc-text">简单粗暴直接比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从右上角往左下角看"><span class="toc-text">从右上角往左下角看</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似题目"><span class="toc-text">相似题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#74-搜索二维矩阵"><span class="toc-text">74. 搜索二维矩阵</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二分法"><span class="toc-text">二分法</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -483,91 +483,81 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>组会报告-0930-QLearning</p>
+        <p>剑指offer_第四题<a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof" target="_blank" rel="noopener">二维数组中的查找</a> 以及<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a> </p>
 <a id="more"></a>
-<h1 id="Q-learning"><a href="#Q-learning" class="headerlink" title="Q-learning"></a>Q-learning</h1><h2 id="铺垫知识："><a href="#铺垫知识：" class="headerlink" title="铺垫知识："></a>铺垫知识：</h2><h3 id="1-马尔可夫决策的要求"><a href="#1-马尔可夫决策的要求" class="headerlink" title="1.马尔可夫决策的要求"></a>1.马尔可夫决策的要求</h3><p>1.能够检测到理想状态</p>
-<p>2.支持多    次尝试</p>
-<p>3.系统的下一个状态只与当前状态信息和当前所做动作有关，与更早之前的状态无关。</p>
-<h3 id="2-马尔可夫决策过程4要素以及数学符号表示"><a href="#2-马尔可夫决策过程4要素以及数学符号表示" class="headerlink" title="2.马尔可夫决策过程4要素以及数学符号表示"></a>2.马尔可夫决策过程4要素以及数学符号表示</h3><p><strong>S状态（state）、A动作（action）、策略（policy）、R奖励（reward）</strong> 其中策略是状态到动作的映射，回报是奖励随时间步的折现或积累。^[3]^ </p>
-<p>$S_t$表示t时刻的环境状态</p>
-<p>$A_t$表示t时刻的动作</p>
-<p>$R_t$表示t+1时刻，环境变化至$S_ {t+1} $时的奖励</p>
-<p><em>π</em>(<em>a</em>|<em>s</em>)=<em>P</em>($A_t$ = <em>a</em>|<em>$S_t$</em>=<em>s</em>)最常见的策略表达方式是一个条件概率分布<em>π</em>(<em>a</em>|<em>s</em>), 即在状态<em>s</em>时采取动作<em>a</em>的概率.</p>
-<p>$v^π (s)$ 是个体在策略π和状态s采取行动的<strong>累计</strong>价值</p>
-<script type="math/tex; mode=display">
-V^{\pi}(s)=\mathbb{E}_{\pi}\left[r_{t+1}+\gamma r_{t+2}+\gamma^{2} r_{t+3}+\cdots | s_{t}=s\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} {\gamma^{k} r_{t+k+1}} | s_{t}=s\right]</script><p>γ是衰减因子</p>
-<p>$P^a_{ss’}$ 是状态s下采取动作a，跳到状态s’的概率。</p>
-<p>$\epsilon $ 是探索的概率</p>
-<h3 id="3-on-policy与off-policy"><a href="#3-on-policy与off-policy" class="headerlink" title="3.on-policy与off-policy"></a>3.on-policy与off-policy</h3><p>on-policy：我们要得到的agent和跟环境互动的agent如果是同一个agent，叫on-policy(要学习的agent是一边与环境互动，一边学习的话，叫on-policy)</p>
-<p>off-policy：我们要得到的agent和跟环境互动的agent如果不是同一个agent，叫off-policy（这个agent通过看别人玩儿来学习，叫off-policy）</p>
-<h3 id="4-贝尔曼方程和贝尔曼最优方程"><a href="#4-贝尔曼方程和贝尔曼最优方程" class="headerlink" title="4.贝尔曼方程和贝尔曼最优方程"></a>4.贝尔曼方程和贝尔曼最优方程</h3><p>贝尔曼方程表明了当前状态的值函数与下个状态的值函数的关系。 </p>
-<p>$V^{\pi}(\mathrm{s})=\sum_{s^{\prime} \in S} p\left(s^{\prime} | s, \pi(s)\right)\left[r\left(s^{\prime} | s, \pi(s)\right)+\gamma V^{π}(s)\right]=E_{\pi}\left[r\left(s^{\prime} | s, a\right)+\gamma V^{\pi}\left(s^{\prime}\right) | s_{0}=s\right]$  </p>
-<p>贝尔曼最优方程：</p>
-<script type="math/tex; mode=display">
-V^{*}(\mathrm{s})=\max _{a} E\left[r\left(s^{\prime} | s, a\right)+\gamma V^{*}(\mathrm{s}) | s_{0}=s\right]\\ \quad \quad \quad \quad \quad \quad \quad =\max _{\alpha∈A(s)} \sum p\left(\mathrm{s}^{\prime} | s, \pi(\mathrm{s})\right)\left[\mathrm{r}\left(\mathrm{s}^{\prime} | \mathrm{s}, \pi(\mathrm{s})\right)+\gamma V^{\pi}\left(\mathrm{s}^{\prime}\right)\right]</script><p><img src="/2019/09/26/组会报告-0930-QLearning/贝尔曼方程.png" alt>     </p>
-<p>这个式子告诉我们，一个状态的价值由该状态的奖励以及后续状态价值按一定的衰减比例联合组成。</p>
-<p>同理推至Q-function</p>
-<p>贝尔曼最优方程：</p>
-<script type="math/tex; mode=display">
- \mathrm{Q}^{*}(\mathrm{s})=E\left[r\left(s^{\prime} | s, a\right)+\gamma \max _{a^{\prime}} Q^{*}\left(\mathrm{s}^{\prime}, \mathrm{a}\right) | s_{0}=s, \mathrm{a}_{0}=\mathrm{a}\right]</script><script type="math/tex; mode=display">
-=\sum p\left(\mathrm{s}^{\prime} | \mathrm{s}, \pi(\mathrm{s})\right)\left[\mathrm{r}\left(\mathrm{s}^{\prime} | \mathrm{s}, \pi(\mathrm{s})\right)+\gamma \max _{(\mathrm{a}∈A(s))} Q^{*}\left(\mathrm{s}^{\prime}, \mathrm{a}\right)\right]</script><p>$Q^{\pi}(s, a)=\mathbb{E}_{\pi}\left[r_{t+1}+\gamma r_{t+2}+\gamma^{2} r_{t+3}+\cdots | s_{t}=s, a_{t}=a\right]$<br>$Q^{\pi}(s, a)=\mathbb{E}\left[r_{t+1}+\gamma \sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t}=s, a_{t}=a\right]$<br>$Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left\{R_{s s^{\prime}}^{a}+\gamma \sum_{a^{\prime}} \mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} r_{t+k+2} | s_{t+1}=s^{\prime}, a_{t+1}=a^{\prime}\right]\right\}$ </p>
-<script type="math/tex; mode=display">
-Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\gamma \sum_{a^{\prime}} Q^{\pi}\left(s^{\prime}, a^{\prime}\right)\right]​</script><h3 id="5-动态规划与TD，MC"><a href="#5-动态规划与TD，MC" class="headerlink" title="5.动态规划与TD，MC"></a>5.动态规划与TD，MC</h3><h4 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1.动态规划"></a>1.动态规划</h4><p>动态规划的关键点有两个：一是问题的最优解可以由若干小问题的最优解构成，即通过寻找子问题的最优解来得到问题的最优解。第二是可以找到子问题状态之间的递推关系，通过较小的子问题状态递推出较大的子问题的状态。而强化学习的问题恰好是满足这两个条件的。^[2]^</p>
-<h4 id="2-monte-carlo-MC"><a href="#2-monte-carlo-MC" class="headerlink" title="2.monte-carlo(MC)"></a>2.monte-carlo(MC)</h4><p>蒙特卡罗法通过采样若干经历完整的状态序列(episode)来估计状态的真实价值。</p>
-<p>缺点，这就是它每次采样都需要一个完整的状态序列。</p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/monte-carlo.png" alt></p>
-<h4 id="3-Temporal-difference-TD"><a href="#3-Temporal-difference-TD" class="headerlink" title="3.Temporal-difference(TD)"></a>3.Temporal-difference(TD)</h4><p>因为第一种monte-carlo的方法需要将游戏玩到结束，所以比较耗时，在这里TD方法不需要将游戏玩到底,不需要得到总奖励值，只需要用神经网络判断出$s_t $与$s_{t+1}$的value值即可，核心公式是：$V^{\pi}\left(s_{t}\right)=V^{\pi}\left(s_{t+1}\right)+r_{t}$  </p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/TD.png" alt></p>
-<p>这两种方法区别与优劣：</p>
-<p>1.因为游戏具有很强的随机性，所以MC这种估计总奖励值的方法所得结果的方差比较大（随机性太大，$G_a$实际上是很多state的reward之和。）</p>
-<p>2.而用TD方法所得的r会比较稳定，但是缺点是$V^{\pi}\left(s_{t}\right)$和$V^{\pi}\left(s_{t+1}\right)$是当前状态价值的有偏估计，不一定很准，会导致整个式子是无效的。而蒙特卡洛算法需要知道整个序列的奖励信息，所以是当前状态价值的无偏估计。且TD更常见~</p>
-<p>3.MC可以在持续的试探中学习。</p>
-<p>6.Q-learning</p>
-<h4 id="1-雏形"><a href="#1-雏形" class="headerlink" title="1.雏形"></a>1.雏形</h4><p> <img src="/2019/09/26/组会报告-0930-QLearning/Q-learning.png" alt> </p>
-<ol>
-<li>Actor-π与环境进行互动</li>
-<li>使用TD或者MC的方法学到$Q^π （s,a）$ </li>
-<li>找到比π<strong>好</strong>的Actor-π‘然后代替π   </li>
-</ol>
-<h4 id="2-改进"><a href="#2-改进" class="headerlink" title="2.改进"></a>2.改进</h4><h5 id="1-target-network"><a href="#1-target-network" class="headerlink" title="1.target network"></a>1.target network</h5><p>在训练$Q^π （s,a）$ 模型的时候，因为输出值和目标值都是在变化的，所以训练过程很不稳定，故将$s_{t+1} $的$Q^π$ 固定住，只更新$s_{t} $的$Q^π$  ，使$r_t$ 达到最大而用梯度上升法更新参数，更新小数量次数后，再用更新过的参数替换掉之前固定的$Q^π$ </p>
-<p><img src="/2019/09/26/组会报告-0930-QLearning/targetnetwork.png" alt></p>
-<h5 id="2-epsilon-greedy"><a href="#2-epsilon-greedy" class="headerlink" title="2.$\epsilon $ -greedy"></a>2.$\epsilon $ -greedy</h5><p>因为之前是强制让action为能获得最大奖励的动作，这个是存在一定问题的：就是一旦有个策略之前没有被发掘出来（没有被example到的话），那么就永远定格了。</p>
-<p>——————————————-小分割线—————————————↓</p>
-<p>这个问题就像去餐厅点餐一样，如果第一次吃麻辣香锅还行，那么如果按照之前的算法来搞的话，就是每次都去点麻辣香锅，这是不科学的。</p>
-<p>——————————————-小分割线—————————————↑</p>
-<p>解决办法1：</p>
-<p>epsilon greedy ($\epsilon$ 随着时间减少)</p>
-<p>$a=\left\{\begin{array}{cc}{\arg \max \limits_{a} Q(s, a),} &amp; {\text { with probability } 1-\varepsilon} \ {\text { random, }} &amp; {\text { otherwise }}\end{array}\right.$</p>
-<p>解决办法2：</p>
-<p>根据Q值设定几率：</p>
-<p>$P(a | s)=\frac{\exp (Q(s, a))}{\sum_{a} \exp (Q(s, a))}$ </p>
-<h5 id="3-replay-buffer"><a href="#3-replay-buffer" class="headerlink" title="3.replay-buffer"></a>3.replay-buffer</h5><p>1.把之前不同情况下π与环境做互动所收集到的data都放到一个buffer里面，使数据多样化，有利于训练。</p>
-<p>2.将π’得到的新data替换掉之前的旧data，更新数据。</p>
-<p>3.buffer里面不是trajectory，而是一些experience，所以即使里面是别的经验也都OK。 </p>
-<h4 id="3-算法流程"><a href="#3-算法流程" class="headerlink" title="3.算法流程"></a>3.算法流程</h4><p><img src="/2019/09/26/组会报告-0930-QLearning/算法流程.png" alt> </p>
-<h3 id="需要注意的点："><a href="#需要注意的点：" class="headerlink" title="需要注意的点："></a>需要注意的点：</h3><h4 id="基于模型和非基于模型"><a href="#基于模型和非基于模型" class="headerlink" title="基于模型和非基于模型"></a>基于模型和非基于模型</h4><p>基于模型 (Model-based) 和非基于模型 (Model-free)。基于模型的强化学习算法是知道并可以存储所有马尔科夫决策过程信息，非基于模型的强化学习算法则需要自己探索未知的马尔科夫过程。</p>
-<h4 id="待改进："><a href="#待改进：" class="headerlink" title="待改进："></a>待改进：</h4><h5 id="Prioritized-Reply"><a href="#Prioritized-Reply" class="headerlink" title="Prioritized Reply"></a>Prioritized Reply</h5><p>好的数据经验应该有更大的几率被选到。</p>
-<h5 id="Multi-step-balance-between-MC-and-TD"><a href="#Multi-step-balance-between-MC-and-TD" class="headerlink" title="Multi-step-balance between MC and TD"></a>Multi-step-balance between MC and TD</h5><p>在experience buffer里面存储N个step</p>
-<p>$\left(s_{t}, a_{t}, r_{t}, \cdots, s_{t+N}, a_{t+N}, r_{t+N}, s_{t+N+1}\right)$</p>
-<p>因此式子改为：$Q\left(s_{t}, a_{t}\right)&lt;-&gt;\sum_{t^{\prime}=t}^{t+N} r_{t^{\prime}}+\hat{Q}\left(s_{t+N+1}, a_{t+N+1}\right)$ </p>
-<h5 id="Noisy-Net"><a href="#Noisy-Net" class="headerlink" title="Noisy Net"></a>Noisy Net</h5><p>原来是用epsilon-greedy的方法</p>
-<p>但是这个方法存在个问题：给同样的state，智能体所采取的动作不一定相同，具有很强的随机性，这是不合适的。举个例子就是：我去食堂打饭，如果每次遇到的场景相同，我应该选择相同的菜(麻辣香锅)，而不是之前说的epsilon-greedy方法还会有一定的概率会选别的菜，在这里的一定概率就体现为随机乱试。而如果我的Q进行微调(加入今天中午就想吃点儿酸甜的，那我不会选麻辣香锅，而是选择糖醋里脊，这是因为我的某一个控制酸甜的参数增高了，这是非常系统的尝试。)</p>
-<p>因此现在将Q的参数加上高斯噪音，变为$\tilde{Q}(s, a)$  直到本场游戏玩到结束，再对参数更改。</p>
-<h5 id="Double-DQN"><a href="#Double-DQN" class="headerlink" title="Double DQN"></a>Double DQN</h5><p>之前单独的DQN存在的问题：</p>
-<p>Q-function对实际情况的判断会有虚高：</p>
-<p>$Q\left(s_{t}, a_{t}\right)  &lt;-&gt; r_{t}+\max \limits_{a} Q\left(s_{t+1}, a\right)$</p>
-<p>因为target值中有一项是$\max\limits_{a} Q\left(s_{t+1}, a\right)$ 很容易会被设的特别高，但是真正的$Q\left(s_{t+1}, a\right)$ 可能没有那么高，所以导致$Q\left(s_{t}, a_{t}\right) $虚高。</p>
-<p>而Double-DQN的做法是用两个Q-function，即选Action的Q-function和算Q-value的Q-function不是同一个。</p>
-<p>$Q\left(s_{t}, a_{t}\right) &lt;-&gt; r_{t}+Q^{\prime}\left(s_{t+1}, \arg \max \limits_{a} Q\left(s_{t+1}, a\right)\right)$  </p>
-<p>其中Q’是没更新之前，Q是正在更新的Q-function。</p>
-<p>——————————————-小分割线—————————————↓</p>
-<p>通俗理解就是：我现在正在上研究生，$Q\left(s_{t+1}, a\right)$ 为我选择工作的公司所带给我的价值，以目前的视野所见，最厉害的可能是去google即Q(选公司，去谷歌)=100，其实实际上Q(选公司，去谷歌)的真实值没有那么高，也就90，但以我目前的价值观会认为他贼高，这样就直接把双箭头右侧的的值判断过高，间接的使得当前的$Q\left(s_{t}, a_{t}\right)$也判断虚高。</p>
-<p>而Double-DQN的深层一点可理解的含义是2个不同的价值观，其中Q’是参数未更新的价值判断函数，Q是正在准备更新的价值判断函数，也就是说Q’是我大学本科时候的价值观，Q是我现在的价值观，即使$\arg \max \limits_{a} Q\left(s_{t+1}, a\right)$ 所判断的动作是虚高的去谷歌，但是在本科时候的价值观体系里去华为和思科这种网络巨头的价值才是最大的，所以Q’（本科找工作，去谷歌）的值会相应的减小，这样就达到了防止Q-function判断价值虚高情况。</p>
-<p>——————————————-小分割线—————————————↑</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>Qlearning的<strong>主要优势</strong>就是使用了<strong>时间差分法TD</strong>（融合了蒙特卡洛和动态规划）能够进行<strong>离线学习</strong>, 使用<strong>bellman方程</strong>可以对<strong>马尔科夫过程</strong>求解最优策略。^[1]^</p>
-<p>[1] <a href="https://blog.csdn.net/qq_30615903/article/details/80739243" target="_blank" rel="noopener">https://blog.csdn.net/qq_30615903/article/details/80739243</a></p>
-<p>[2] <a href="https://www.cnblogs.com/pinard/p/9463815.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/9463815.html</a></p>
-<p>[3]<a href="https://baike.baidu.com/item/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/6171383?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/6171383?fr=aladdin</a></p>
+<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>本篇笔记主要是针对剑指offer中第四题以及与其相似的两道题解法的记录</p>
+<p><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/</a></p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>出自<a href="https://leetcode-cn.com/u/mjt123/" target="_blank" rel="noopener">初学者</a>和<a href="https://leetcode-cn.com/u/jyd/" target="_blank" rel="noopener">Krahets</a></p>
+<h3 id="简单粗暴直接比较"><a href="#简单粗暴直接比较" class="headerlink" title="简单粗暴直接比较"></a>简单粗暴直接比较</h3><pre><code class="lang-python">class Solution:
+    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -&gt; bool:
+        for i in matrix:
+            for j in i:
+                if target == j:
+                    return True
+        return False
+</code></pre>
+<p>最无脑的方法没有用到数组matrix本身的递增属性，可以作为最开始的基础想法方便后面改进</p>
+<h3 id="从右上角往左下角看"><a href="#从右上角往左下角看" class="headerlink" title="从右上角往左下角看"></a>从右上角往左下角看</h3><pre><code class="lang-python">class Solution:
+    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -&gt; bool:
+        if len(matrix)==0:return False
+        i,j = 0,len(matrix[0])-1
+        while i&lt;=len(matrix)-1 and j &gt;=0:
+            if matrix[i][j]&gt;target:
+                j-=1
+            elif matrix[i][j]&lt;target:
+                i+=1
+            else:return True
+        return False
+</code></pre>
+<h2 id="相似题目"><a href="#相似题目" class="headerlink" title="相似题目"></a>相似题目</h2><h4 id="74-搜索二维矩阵"><a href="#74-搜索二维矩阵" class="headerlink" title="74. 搜索二维矩阵"></a><a href="https://leetcode-cn.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. 搜索二维矩阵</a></h4><p>与上一题类似的方法，只不过是站在左下角往右上角看</p>
+<pre><code class="lang-python">class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
+        if len(matrix)==0 or matrix == [[]]:
+            return False
+        i = len(matrix) - 1
+        j = 0
+        while i&gt;=0 and j&lt;= len(matrix[0])-1:
+            print(matrix[i][j])
+            if target&lt;matrix[i][j]:
+                i-=1
+            elif target&gt;matrix[i][j]:
+                j+=1
+            else:
+                return True
+        return False
+</code></pre>
+<h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><p>如果将矩阵展开是一个递增的列表，那么就可以使用如下解法</p>
+<p>仿照<a href="https://leetcode-cn.com/problems/search-a-2d-matrix/solution/ju-zhen-de-er-fen-cha-zhao-shou-hui-man-hua-tu-jie/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/search-a-2d-matrix/solution/ju-zhen-de-er-fen-cha-zhao-shou-hui-man-hua-tu-jie/</a> 写的python版本的</p>
+<pre><code class="lang-python">class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -&gt; bool:
+        if len(matrix)==0 or len(matrix[0])==0:
+            return False
+        m = len(matrix)
+        n = len(matrix[0])
+        left = 0
+        right = m*n - 1
+        mid = (left+right)//2
+        while left&lt;right:
+            mid = (left+right)//2
+            # print(&#39;*&#39;)
+            # print(left)
+            # print(right)
+            # print(mid)
+            # print(&#39;*&#39;)
+            if matrix[mid//n][mid%n]&gt;target:
+                # print(&#39;大了&#39;)
+                right = mid
+            elif matrix[mid//n][mid%n]&lt;target:
+                # print(&#39;小了&#39;)
+                left = mid + 1
+            else:
+                left = mid
+                break
+        #print(left)
+        if matrix[left//n][left%n]==target:
+            return True
+        return False
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -581,12 +571,12 @@ Q^{\pi}(s, a)=\sum_{s^{\prime}} P_{s s^{\prime}}^{a}\left[R_{s s^{\prime}}^{a}+\
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>组会报告-0930-QLearning</p>
+    <p><span class="copy-title">文章标题:</span>剑指offer04</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-09-26, 15:15:04</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-26, 11:11:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/26/组会报告-0930-QLearning/" title="组会报告-0930-QLearning">http://rock-blog.top/2019/09/26/组会报告-0930-QLearning/</a>
+    <p><span class="copy-title">发布时间:</span>2020-07-06, 20:19:39</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-06, 09:50:36</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/06/sword-offer04/" title="剑指offer04">http://rock-blog.top/2020/07/06/sword-offer04/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
