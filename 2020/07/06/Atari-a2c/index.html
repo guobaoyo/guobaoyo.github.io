@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>20190708日记 | Rock-Blog</title>
-  <meta name="keywords" content=" AI , 数学 , 三省吾身 ">
-  <meta name="description" content="20190708日记 | Rock-Blog">
+  <title>Aatri_A2c&amp;ppo | Rock-Blog</title>
+  <meta name="keywords" content=" AI , 深度学习 , 强化学习 ">
+  <meta name="description" content="Aatri_A2c&amp;ppo | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="剑指 Offer 07. 重建二叉树">
 <meta name="keywords" content="python,leetcode,技术小结">
@@ -431,9 +431,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-20190708日记" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Atari-a2c" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">20190708日记</h1>
+        <h1 class="article-title">Aatri_A2c&amp;ppo</h1>
     
     <div class="article-meta">
         
@@ -441,7 +441,7 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="三省吾身">三省吾身</a>
+                <a href="javascript:" data-rel="强化学习">强化学习</a>
             
         </span>
         
@@ -450,16 +450,16 @@
             
             <a href="javascript:" class="color3">AI</a>
             
-            <a href="javascript:" class="color3">数学</a>
+            <a href="javascript:" class="color5">深度学习</a>
             
-            <a href="javascript:" class="color5">三省吾身</a>
+            <a href="javascript:" class="color5">强化学习</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-10-26 21:52:32">2019-07-08 19:43</time>
+        创建时间:<time class="date" title="更新时间: 2020-07-07 10:19:02">2020-07-06 10:16</time>
         
     </div>
     <div class="article-meta">
@@ -492,7 +492,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A2C算法原理"><span class="toc-text">A2C算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、nn-init-orthogonal-和nn-init-constant-的作用"><span class="toc-text">1、nn.init.orthogonal_和nn.init.constant_的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、no-grad在代码中的作用？怎么体现？"><span class="toc-text">2、no_grad在代码中的作用？怎么体现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、done标志位的顺序问题"><span class="toc-text">3、done标志位的顺序问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、swap操作是否为关键点，全都不执行swap是否还会收敛？"><span class="toc-text">4、swap操作是否为关键点，全都不执行swap是否还会收敛？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、detach的作用"><span class="toc-text">5、detach的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、multienv如何实现"><span class="toc-text">6、multienv如何实现</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -508,17 +508,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>暑期学校上课有感</p>
+        <p>主要为A2C原理总结以及根据<a href="https://github.com/TianhongDai/reinforcement-learning-algorithms修改其代码的备注笔记" target="_blank" rel="noopener">https://github.com/TianhongDai/reinforcement-learning-algorithms修改其代码的备注笔记</a></p>
 <a id="more"></a>
-<hr>
-<p><strong>L1,L2正则化</strong></p>
-<p><a href="https://www.zhihu.com/question/37096933/answer/70426653" target="_blank" rel="noopener">https://www.zhihu.com/question/37096933/answer/70426653</a></p>
-<p><a href="https://www.zhihu.com/people/maigo" target="_blank" rel="noopener">王赟</a>大佬解释的关于L1 L2正则化的部分让我受益匪浅，通过上面的讲解可以了解到L1正则化利用了绝对值函数的“尖”，导致L1正则化比L2正则化更容易得到稀疏解，使得一部分w值变为0。而使用L2正则化的结果是使得一部分参数w变的非常小（接近于0但不等于0），这样就可以让这部分参数还发挥作用，但是不至于完全消除掉他们。</p>
-<p>​        纵观L1,L2正则化，都可以使一些“过大”的参数变小，从而实现防止过拟合的作用。但是L2正则化却更柔和一些，相比于L1也更中庸。</p>
-<p>​        举个例子（可能不太贴切，意会即可）：</p>
-<p>​                在一个大集体里面有一部分人直接作用不大，例如保洁员，门口保安对一个互联网公司的<strong>直接</strong>作用没有首席科学家或者算法工程师的作用大。（在这里不是刻意贬低这两个岗位，我母亲就是保洁员，我父亲曾做过门口保安，每位劳动人民都是受人尊敬的~）那我们难道因为作用大小而把这两个岗位裁掉？一天两天的缺失这种基础岗位或许可以容忍，但是长期的缺失显然是一个完备的公司所不能忍受，也不可能发生的。所以就需要以市场规律为基础，给首席科学家高薪工资，给基础工作人员一些基本工资。在这里高薪对应着训练中的较大的参数，低薪对应着训练过程中的较小参数（钱少也是钱啊，也不能像L1正则化一样咔嚓全给砍掉，一点儿也不给是不行的，那样不和谐。）   </p>
-<p>​        所以像L2正则化的这种中庸的思想可能是我以后需要注意的，需要将中华传统文化中的中庸之道和“和谐”的思想融入到智能科学这个方向中去。</p>
+<h2 id="A2C算法原理"><a href="#A2C算法原理" class="headerlink" title="A2C算法原理"></a>A2C算法原理</h2><p>在最开始学习actor-critic算法簇的时候，有一种说法是A3C中多了一个Asynchronous异步更新，所以是A2C的升级版，在这里需要备注一下这种说法是<font color="red"><strong>错误的</strong> </font> ，在强化学习精要和openAI的<a href="https://blog.openai.com/baselines-acktr-a2c/" target="_blank" rel="noopener">blog</a>都有提到说是针对A3C产生了一些疑问：</p>
+<blockquote>
+<p>After reading the paper, AI researchers wondered whether the asynchrony led to improved performance <strong>(e.g. “perhaps the added noise would provide some regularization or exploration?”),</strong> or if it was just an implementation detail that allowed for faster training with a CPU-based implementation.</p>
+<p>As an alternative to the asynchronous implementation, researchers found you can write a synchronous, deterministic implementation that waits for each actor to finish its segment of experience before performing an update, averaging over all of the actors. <strong>One advantage of this method is that it can more effectively use of GPUs, which perform best with large batch sizes.</strong> This algorithm is naturally called A2C, short for advantage actor critic. (This term has been used in several papers.)</p>
+</blockquote>
+<p>发现A2C效果也不错，且可以利用上GPU使得速度变快</p>
+<p>那么A2C相比于A3C的区别点在哪里呢？做如下总结</p>
+<ul>
+<li>首先是更新方式不同<ul>
+<li>A3C是异步更新，主网络接收子网络传来的梯度信息，利用该梯度信息更新参数再将新参数传给自网络，</li>
+<li>A2C是收集多个环境传来的s,a,r,s’ 在主网络中进行状态的价值评估，在主网络中利用得到的梯度更新参数</li>
+</ul>
+</li>
+<li>其次是使用硬件资源的不同<ul>
+<li>A3C是为没有GPU环境设计的算法，摆脱对显卡的依赖还能获得不错的效果</li>
+<li>A2C可以使用GPU进行训练，因此加快了训练的速度，因为有了显卡的加持，更适合于batch较大或者网络结构较为复杂的情况（<strong>感觉</strong>脱离硬件资源，单说收敛速度是不合适的）</li>
+</ul>
+</li>
+</ul>
+<p>A2C工作流程</p>
+<p>1.开启多个线程(Worker)，从Global Network同步最新的网络参数；<br>2.每个Worker独立地进行采样；<br>3.当数据总量达到mini-batch size时，全部停止采样；<br>4.Global Network根据mini-batch的数据统一训练学习；<br>5.每个Worker更新Global Network的参数<br>重复2~5。</p>
+<p>捋代码遗留问题：</p>
+<h3 id="1、nn-init-orthogonal-和nn-init-constant-的作用"><a href="#1、nn-init-orthogonal-和nn-init-constant-的作用" class="headerlink" title="1、nn.init.orthogonal_和nn.init.constant_的作用"></a>1、nn.init.orthogonal_和nn.init.constant_的作用</h3><p>如下在代码使用nn.init.orthogonal_和nn.init.constant_</p>
+<pre><code class="lang-python"># the convolution layer of deepmind
+class deepmind(nn.Module):
+    def __init__(self):
+        super(deepmind, self).__init__()
+        self.conv1 = nn.Conv2d(4, 32, 8, stride=4)
+        self.conv2 = nn.Conv2d(32, 64, 4, stride=2)
+        self.conv3 = nn.Conv2d(64, 32, 3, stride=1)
+        self.fc1 = nn.Linear(32 * 7 * 7, 512)
+        # start to do the init...
+        nn.init.orthogonal_(self.conv1.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.conv2.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.conv3.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.fc1.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        # init the bias...
+        nn.init.constant_(self.conv1.bias.data, 0)
+        nn.init.constant_(self.conv2.bias.data, 0)
+        nn.init.constant_(self.conv3.bias.data, 0)
+        nn.init.constant_(self.fc1.bias.data, 0)
 
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        x = F.relu(self.conv3(x))
+        x = x.view(-1, 32 * 7 * 7)
+        x = F.relu(self.fc1(x))
+        return x
+</code></pre>
+<p>其中</p>
+<p>nn.init.orthogonal_的作用是正交初始化，如果初始化一个2行3列的tensor矩阵，那么最后得到的是2行3列的正交矩阵，而后面的gain=nn.init.calculate_gain(‘relu’)指的是对于给定的非线性函数，返回推荐的增益值。</p>
+<p><a href="https://blog.csdn.net/ccbrid/article/details/89353817" target="_blank" rel="noopener">https://blog.csdn.net/ccbrid/article/details/89353817</a></p>
+<p>而nn.init.constant_的作用是对常数进行初始化，值为0</p>
+<h3 id="2、no-grad在代码中的作用？怎么体现？"><a href="#2、no-grad在代码中的作用？怎么体现？" class="headerlink" title="2、no_grad在代码中的作用？怎么体现？"></a>2、no_grad在代码中的作用？怎么体现？</h3><p>在A2C代码中的a2c_agent主要有两大功能一个是learn函数，一个是update函数而在learn函数中计算动作概率和状态的价值都用的是no_grad</p>
+<pre><code class="lang-python">with torch.no_grad():
+    input_tensor = self._get_tensors(self.obs)
+    _, pi = self.net(input_tensor)
+
+with torch.no_grad():
+    input_tensor = self._get_tensors(self.obs)
+    last_values, _ = self.net(input_tensor)
+</code></pre>
+<p>经过会斌学长一番讲解后，总结如下：</p>
+<p>使用no_grad是因为在learn函数中只是得到当前网络参数下的动作概率和状态价值，并不需要计算梯度和更新参数，所以使用no_grad标志着在这里不用将自动计算得到的梯度值保存下来，从而节省了一定的空间。</p>
+<p>而具体的计算梯度和更新网络参数是在update函数中实现的，所以在update函数中就使用自动计算梯度的方法</p>
+<h3 id="3、done标志位的顺序问题"><a href="#3、done标志位的顺序问题" class="headerlink" title="3、done标志位的顺序问题"></a>3、done标志位的顺序问题</h3><p>因为在原来的代码（如下）是先判断是否结束，如果结束将结束的obs置为0</p>
+<p>而最奇怪的是置为0后又执行self.obs = obs 操作，将不管worker是否结束，直接将obs赋值给self.obs，因此感觉上面的判断无用，应该调换位置</p>
+<pre><code class="lang-python">for n, done in enumerate(dones):
+    if done:
+        self.obs[n] = self.obs[n] * 0#这一句不就没用了嘛？
+self.obs = obs#
+</code></pre>
+<h3 id="4、swap操作是否为关键点，全都不执行swap是否还会收敛？"><a href="#4、swap操作是否为关键点，全都不执行swap是否还会收敛？" class="headerlink" title="4、swap操作是否为关键点，全都不执行swap是否还会收敛？"></a>4、swap操作是否为关键点，全都不执行swap是否还会收敛？</h3><pre><code class="lang-python">mb_obs = np.asarray(mb_obs, dtype=np.uint8).swapaxes(1, 0).reshape(self.batch_ob_shape)
+mb_rewards = np.asarray(mb_rewards, dtype=np.float32).swapaxes(1, 0)
+mb_actions = np.asarray(mb_actions, dtype=np.int32).swapaxes(1, 0)
+mb_dones = np.asarray(mb_dones, dtype=np.bool).swapaxes(1, 0)
+</code></pre>
+<p>如上所示，将四个列表都执行swap操作，也就是将第一维和第二维调换位置</p>
+<h3 id="5、detach的作用"><a href="#5、detach的作用" class="headerlink" title="5、detach的作用"></a>5、detach的作用</h3><p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p>detach()函数可以帮助我们实现这个功能：</p>
+<blockquote>
+<p>当我们再训练网络的时候可能希望保持一部分的网络参数不变，只对其中一部分的参数进行调整；或者只训练部分分支网络，并不让其梯度对主网络的梯度造成影响，这时候我们就需要使用detach()函数来切断一些分支的反向传播</p>
+</blockquote>
+<p>调用detach后，会返回一个新的variable，是从当前计算图中分离下来的，但是仍指向原变量的存放位置,不同之处只是requires_grad为false，得到的这个<code>Variable</code>永远不需要计算其梯度，不具有grad，<strong>即使之后重新将它的requires_grad置为true,它也不会具有梯度grad</strong></p>
+<p><strong>而在代码中的detach的作用我更倾向于理解为得到一个新的变量</strong></p>
+<h3 id="6、multienv如何实现"><a href="#6、multienv如何实现" class="headerlink" title="6、multienv如何实现"></a>6、multienv如何实现</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
     </div>
@@ -531,12 +609,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>20190708日记</p>
+    <p><span class="copy-title">文章标题:</span>Aatri_A2c&amp;ppo</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-08, 19:43:26</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-26, 21:52:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/08/20190708日记/" title="20190708日记">http://rock-blog.top/2019/07/08/20190708日记/</a>
+    <p><span class="copy-title">发布时间:</span>2020-07-06, 10:16:15</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-07, 10:19:02</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/06/Atari-a2c/" title="Aatri_A2c&amp;ppo">http://rock-blog.top/2020/07/06/Atari-a2c/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -566,6 +644,44 @@
 
 
 
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 
     
 

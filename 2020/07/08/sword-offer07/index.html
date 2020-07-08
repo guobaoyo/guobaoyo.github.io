@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>20190708日记 | Rock-Blog</title>
-  <meta name="keywords" content=" AI , 数学 , 三省吾身 ">
-  <meta name="description" content="20190708日记 | Rock-Blog">
+  <title>剑指offer07 | Rock-Blog</title>
+  <meta name="keywords" content=" python , leetcode , 技术小结 ">
+  <meta name="description" content="剑指offer07 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="剑指 Offer 07. 重建二叉树">
 <meta name="keywords" content="python,leetcode,技术小结">
@@ -431,9 +431,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-20190708日记" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-sword-offer07" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">20190708日记</h1>
+        <h1 class="article-title">剑指offer07</h1>
     
     <div class="article-meta">
         
@@ -441,25 +441,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="三省吾身">三省吾身</a>
+                <a href="javascript:" data-rel="编程">编程</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">AI</a>
+            <a href="javascript:" class="color2">python</a>
             
-            <a href="javascript:" class="color3">数学</a>
+            <a href="javascript:" class="color4">leetcode</a>
             
-            <a href="javascript:" class="color5">三省吾身</a>
+            <a href="javascript:" class="color5">技术小结</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2019-10-26 21:52:32">2019-07-08 19:43</time>
+        创建时间:<time class="date" title="更新时间: 2020-07-08 14:33:09">2020-07-08 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -492,7 +492,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#剑指-Offer-07-重建二叉树"><span class="toc-text">剑指 Offer 07. 重建二叉树</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍"><span class="toc-text">简要介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法一"><span class="toc-text">解法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解法二👍"><span class="toc-text">解法二👍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似题目"><span class="toc-text">相似题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#106-从中序与后序遍历序列构造二叉树"><span class="toc-text">106. 从中序与后序遍历序列构造二叉树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#889-根据前序和后序遍历构造二叉树"><span class="toc-text">889. 根据前序和后序遍历构造二叉树</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -504,20 +504,110 @@
         display: none !important;
     }
 </style>
-</div>
+</li></div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>暑期学校上课有感</p>
-<a id="more"></a>
-<hr>
-<p><strong>L1,L2正则化</strong></p>
-<p><a href="https://www.zhihu.com/question/37096933/answer/70426653" target="_blank" rel="noopener">https://www.zhihu.com/question/37096933/answer/70426653</a></p>
-<p><a href="https://www.zhihu.com/people/maigo" target="_blank" rel="noopener">王赟</a>大佬解释的关于L1 L2正则化的部分让我受益匪浅，通过上面的讲解可以了解到L1正则化利用了绝对值函数的“尖”，导致L1正则化比L2正则化更容易得到稀疏解，使得一部分w值变为0。而使用L2正则化的结果是使得一部分参数w变的非常小（接近于0但不等于0），这样就可以让这部分参数还发挥作用，但是不至于完全消除掉他们。</p>
-<p>​        纵观L1,L2正则化，都可以使一些“过大”的参数变小，从而实现防止过拟合的作用。但是L2正则化却更柔和一些，相比于L1也更中庸。</p>
-<p>​        举个例子（可能不太贴切，意会即可）：</p>
-<p>​                在一个大集体里面有一部分人直接作用不大，例如保洁员，门口保安对一个互联网公司的<strong>直接</strong>作用没有首席科学家或者算法工程师的作用大。（在这里不是刻意贬低这两个岗位，我母亲就是保洁员，我父亲曾做过门口保安，每位劳动人民都是受人尊敬的~）那我们难道因为作用大小而把这两个岗位裁掉？一天两天的缺失这种基础岗位或许可以容忍，但是长期的缺失显然是一个完备的公司所不能忍受，也不可能发生的。所以就需要以市场规律为基础，给首席科学家高薪工资，给基础工作人员一些基本工资。在这里高薪对应着训练中的较大的参数，低薪对应着训练过程中的较小参数（钱少也是钱啊，也不能像L1正则化一样咔嚓全给砍掉，一点儿也不给是不行的，那样不和谐。）   </p>
-<p>​        所以像L2正则化的这种中庸的思想可能是我以后需要注意的，需要将中华传统文化中的中庸之道和“和谐”的思想融入到智能科学这个方向中去。</p>
+        <h4 id="剑指-Offer-07-重建二叉树"><a href="#剑指-Offer-07-重建二叉树" class="headerlink" title="剑指 Offer 07. 重建二叉树"></a><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/" target="_blank" rel="noopener">剑指 Offer 07. 重建二叉树</a></h4><a id="more"></a>
+<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>本篇笔记是针对剑指offer-第七题的多种不同解法</p>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>第七题为根据前序和中序重建二叉树</p>
+<p>因为前序的排序特点为“根左右”，所以前序的第一个节点是树的根节点</p>
+<p>而后序的排序特点是“左右根”，所以可以以后序遍历的”root”为分界点分为左右两部分</p>
+<p>而根的左子树或者右子树也满足上述特点，所以可以用递归的方法解题</p>
+<p><strong>时：O(N)</strong> </p>
+<p>在一开始初始化字典的时候占用0(N),N为树的节点数量，递归的时候一共建立N个新的节点因此递归占用O(N)</p>
+<p>递归的深度要分最好和最差情况，最差的情况是只有左节点或右节点，递归深度为O(N)，平均为$O(log_2N)$</p>
+<p><strong>空：O(N)</strong></p>
+<p>创建字典的时候需要额外的N个空间</p>
+<pre><code class="lang-python">class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -&gt; TreeNode:
+        self.dic, self.po = {}, preorder
+        for i in range(len(inorder)):
+            self.dic[inorder[i]] = i
+        return self.recur(0, 0, len(inorder) - 1)
+
+    def recur(self, pre_root, in_left, in_right):
+        if in_left &gt; in_right: return # 终止条件：中序遍历为空
+        root = TreeNode(self.po[pre_root]) # 建立当前子树的根节点
+        i = self.dic[self.po[pre_root]]    # 搜索根节点在中序遍历中的索引，从而可对根节点、左子树、右子树完成划分。
+        root.left = self.recur(pre_root + 1, in_left, i - 1) # 开启左子树的下层递归
+        root.right = self.recur(i - in_left + pre_root + 1, i + 1, in_right) # 开启右子树的下层递归
+        return root # 返回根节点，作为上层递归的左（右）子节点
+
+作者：jyd
+链接：https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/solution/mian-shi-ti-07-zhong-jian-er-cha-shu-di-gui-fa-qin/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre>
+<p>在这里先创建一个空字典，将preorder赋值给self.po，然后将以这个唯一存在的节点的值作为字典的键，将节点在中序遍历所在的位置作为字典的值。</p>
+<p>在recur函数中，先判断in_left与in_right的关系，如果left&gt;right就马上返回。</p>
+<p>值得注意的是在具体递归的时候recur中放入的三个数分别是根节点的索引和左右边界</p>
+<p>确定左子树的根节点索引为pre_root+1，边界为in_left,i-1</p>
+<p>右子树的根节点索引为pre_root+i-in_left+1边界为i+1,right</p>
+<h3 id="解法二👍"><a href="#解法二👍" class="headerlink" title="解法二👍"></a>解法二👍</h3><p>更简便一些的 Python 递归详解-&gt; <a href="https://leetcode-cn.com/u/jalan/" target="_blank" rel="noopener">江不知</a></p>
+<pre><code class="lang-python">class Solution(object):
+    def buildTree(self, preorder, inorder):
+        &quot;&quot;&quot;
+        :type preorder: List[int]
+        :type inorder: List[int]
+        :rtype: TreeNode
+        &quot;&quot;&quot;
+        if len(inorder) == 0:
+            return None
+        # 前序遍历第一个值为根节点
+        root = TreeNode(preorder[0])
+        # 因为没有重复元素，所以可以直接根据值来查找根节点在中序遍历中的位置
+        mid = inorder.index(preorder[0])
+        # 构建左子树
+        root.left = self.buildTree(preorder[1:mid+1], inorder[:mid])
+        # 构建右子树
+        root.right = self.buildTree(preorder[mid+1:], inorder[mid+1:])
+
+        return root
+
+作者：jalan
+链接：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/python-di-gui-xiang-jie-by-jalan/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre>
+<h2 id="相似题目"><a href="#相似题目" class="headerlink" title="相似题目"></a>相似题目</h2><h4 id="106-从中序与后序遍历序列构造二叉树"><a href="#106-从中序与后序遍历序列构造二叉树" class="headerlink" title="106. 从中序与后序遍历序列构造二叉树"></a><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">106. 从中序与后序遍历序列构造二叉树</a></h4><p>与上一题不同之处在于给出了中序和后序列，让求出二叉树</p>
+<pre><code class="lang-python">class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -&gt; TreeNode:
+        # 实际上inorder 和 postorder一定是同时为空的，因此你无论判断哪个都行
+        if not inorder:
+            return None
+        root = TreeNode(postorder[-1])
+        i = inorder.index(root.val)
+        root.left = self.buildTree(inorder[:i], postorder[:i])
+        root.right = self.buildTree(inorder[i+1:], postorder[i:-1])
+
+        return root
+
+作者：fe-lucifer
+链接：https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/solution/si-lu-qing-xi-dai-ma-jian-ji-he-105ti-si-lu-yi-zhi/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre>
+<h4 id="889-根据前序和后序遍历构造二叉树"><a href="#889-根据前序和后序遍历构造二叉树" class="headerlink" title="889. 根据前序和后序遍历构造二叉树"></a><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/" target="_blank" rel="noopener">889. 根据前序和后序遍历构造二叉树</a></h4><pre><code class="lang-python">class Solution:
+    def constructFromPrePost(self, pre: List[int], post: List[int]) -&gt; TreeNode:
+        if not pre:
+            return None
+        node = TreeNode(pre[0])
+        if len(pre) == 1:
+            return node
+        i = post.index(pre[1])
+
+        node.left = self.constructFromPrePost(pre[1:i + 2], post[:i + 1])
+        node.right = self.constructFromPrePost(pre[i + 2:], post[i + 1:-1])
+
+        return node
+
+作者：fe-lucifer
+链接：https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/solution/si-lu-qing-xi-dai-ma-jian-ji-he-106ti-si-lu-yi-zhi/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre>
+<p>注意前序和后序得到的二叉树不唯一</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -531,12 +621,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>20190708日记</p>
+    <p><span class="copy-title">文章标题:</span>剑指offer07</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-07-08, 19:43:26</p>
-    <p><span class="copy-title">最后更新:</span>2019-10-26, 21:52:32</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/08/20190708日记/" title="20190708日记">http://rock-blog.top/2019/07/08/20190708日记/</a>
+    <p><span class="copy-title">发布时间:</span>2020-07-08, 20:19:39</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-08, 14:33:09</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/08/sword-offer07/" title="剑指offer07">http://rock-blog.top/2020/07/08/sword-offer07/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -566,6 +656,44 @@
 
 
 
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 
     
 
