@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Aatri_A3C_A2c | Rock-Blog</title>
+  <meta name="keywords" content=" AI , 深度学习 , 强化学习 ">
+  <meta name="description" content="Aatri_A3C_A2c | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta name="keywords" content="python,技术小结,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer10">
+<meta property="og:url" content="http://rock-blog.top/2020/07/10/sword-offer10/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-12T23:22:19.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer10">
+<meta name="twitter:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/guobaoyo" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:1415500736@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=1415500736&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=280020740" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(39)</small></div></li>
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(12)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="AI">AI<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="编程">编程<small>(13)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会报告">组会报告<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="39">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="http://zivblog.top">王金锋</a></li>
+            
+            <li><a target="_blank" href="http://yearing1017.cn/">进哥</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">AI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">组会报告</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="编程,AI,数学" data-author>
+            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
+            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="AI,数学,三省吾身" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
+            <span class="post-title" title="RLTF">RLTF</span>
+            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/RL_A3C_A2C_note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="A3C_note">A3C_note</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/08/02/RL-PPO-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="pg_note">pg_note</span>
+            <span class="post-date" title="2020-08-02 21:25:01">2020/08/02</span>
+        </a>
+        
+        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/26/RL_AC-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="ac_note">ac_note</span>
+            <span class="post-date" title="2019-07-26 21:25:01">2019/07/26</span>
+        </a>
+        
+        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class href="/2020/06/05/lgb-note/" data-tag="编程,AI,python" data-author>
+            <span class="post-title" title="lgb_note">lgb_note</span>
+            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/12/atari-env-note/" data-tag="编程,深度学习,强化学习" data-author>
+            <span class="post-title" title="Atari游戏环境笔记">Atari游戏环境笔记</span>
+            <span class="post-date" title="2020-07-12 10:00:12">2020/07/12</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/pytorch-note/" data-tag="AI,python,技术小结" data-author>
+            <span class="post-title" title="pytorch_note">pytorch_note</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/06/rl-questions/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="RL_questions">RL_questions</span>
+            <span class="post-date" title="2020-07-06 21:25:01">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/07/sword-offer06/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer06">剑指offer06</span>
+            <span class="post-date" title="2020-07-07 20:19:39">2020/07/07</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/06/sword-offer05/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer05">剑指offer05</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/08/sword-offer07/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer07">剑指offer07</span>
+            <span class="post-date" title="2020-07-08 20:19:39">2020/07/08</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/06/sword-offer04/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer04">剑指offer04</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/09/sword-offer09/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer09">剑指offer09</span>
+            <span class="post-date" title="2020-07-09 20:19:39">2020/07/09</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer10/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer11/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="编程,python,技术小结" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/19/动态规划/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-19 20:19:39">2020/07/19</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="编程,AI,强化学习" data-author>
+            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
+            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/19/dpg-ddpg/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A2c&amp;ppo">Aatri_A2c&amp;ppo</span>
+            <span class="post-date" title="2019-07-19 21:25:01">2019/07/19</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/04/sword-offer03/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer03">剑指offer03</span>
+            <span class="post-date" title="2020-07-04 20:19:39">2020/07/04</span>
+        </a>
+        
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A3c">Aatri_A3c</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="AI,三省吾身" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
+        </a>
+        
+        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="编程,数学,python" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
+        </a>
+        
+        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="AI,三省吾身,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/21/RL_pg-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="pg_note">pg_note</span>
+            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/06/Atari-a2c/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A3C_A2c">Aatri_A3C_A2c</span>
+            <span class="post-date" title="2019-07-06 21:25:01">2019/07/06</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
+            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-Atari-a2c" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Aatri_A3C_A2c</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="强化学习">强化学习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color3">AI</a>
+            
+            <a href="javascript:" class="color5">深度学习</a>
+            
+            <a href="javascript:" class="color5">强化学习</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2020-07-31 11:39:19">2019-07-06 21:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arari环境备注"><span class="toc-text">Arari环境备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码知识点备注"><span class="toc-text">代码知识点备注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ELU函数"><span class="toc-text">ELU函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多进程"><span class="toc-text">多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRU"><span class="toc-text">GRU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#detach"><span class="toc-text">detach()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#torch-cat"><span class="toc-text">torch.cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gather"><span class="toc-text">gather</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#imresize"><span class="toc-text">imresize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存疑"><span class="toc-text">存疑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A2C算法原理"><span class="toc-text">A2C算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、nn-init-orthogonal-和nn-init-constant-的作用"><span class="toc-text">1、nn.init.orthogonal_和nn.init.constant_的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、no-grad在代码中的作用？怎么体现？"><span class="toc-text">2、no_grad在代码中的作用？怎么体现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、done标志位的顺序问题"><span class="toc-text">3、done标志位的顺序问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、swap操作是否为关键点，全都不执行swap是否还会收敛？"><span class="toc-text">4、swap操作是否为关键点，全都不执行swap是否还会收敛？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、detach的作用"><span class="toc-text">5、detach的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、multienv如何实现"><span class="toc-text">6、multienv如何实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、dqn-a2c-ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？"><span class="toc-text">7、dqn,a2c,ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dqn训练流程如下："><span class="toc-text">dqn训练流程如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#a2c训练流程如下："><span class="toc-text">a2c训练流程如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ppo训练流程"><span class="toc-text">ppo训练流程</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>暂未整理</p>
+<p>主要为A3C,A2C原理总结以及根据<a href="https://github.com/TianhongDai/reinforcement-learning-algorithms修改其代码的备注笔记" target="_blank" rel="noopener">https://github.com/TianhongDai/reinforcement-learning-algorithms修改其代码的备注笔记</a></p>
+<p>相比于之前的A3C,A2C</p>
+<a id="more"></a>
+<h2 id="Arari环境备注"><a href="#Arari环境备注" class="headerlink" title="Arari环境备注"></a>Arari环境备注</h2><p>Pong-v4与Pong-v0的区别是</p>
+<ul>
+<li>Pong-v0表示会有25%的概率执行上一个action,也就是说当前时刻智能体执行的动作还不一定是网络计算出来的动作，具有25%的重复性，其目的是为了模拟人的控制，让控制不用太精准</li>
+<li>而Pong-v4则是只会执行网络计算出的动作，没有对之前动作的重复性</li>
+</ul>
+<p>环境后面带有Deterministic参数的如Pong-Deterministic表示固定跳4帧，否则跳的帧数是(2,5)内的随机数</p>
+<p>环境后面带有NoFrameskip的env如表示没有跳帧</p>
+<h2 id="代码知识点备注"><a href="#代码知识点备注" class="headerlink" title="代码知识点备注"></a>代码知识点备注</h2><p>由于代码中涉及到使用多进程创建多环境的部分，所以需要在main()最开始部分使用</p>
+<pre><code class="lang-python">mp.set_start_method(&#39;spawn&#39;)
+</code></pre>
+<p>指定进程启动的方式为spawn，spawn需要与join配合使用，如此处理可以在进程间共享 CUDA tensors ，详情请见多线程多进程</p>
+<h3 id="ELU函数"><a href="#ELU函数" class="headerlink" title="ELU函数"></a>ELU函数</h3><p>在代码中遇到了一个新的激活函数-ELU是relu的改进版，可以理解为融合了sigmoid和RELU函数，左侧具有软饱和性，右侧无饱和性。从图中可以看出输入为负数的情况下，是有一定的输出的，而且这部分输出还具有一定的抗干扰能力。</p>
+<ul>
+<li>右侧的线性部分能够缓解梯度消失，而左侧可以使其对输入变化或噪声更加鲁棒</li>
+<li>ELU的输出的均值接近于0，使得收敛速度更快</li>
+</ul>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic11.png" alt="ELU函数公式"></p>
+<p>其函数图像为橙色图像：</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/ELU.png" alt="ELU"></p>
+<h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>在代码中关于torch.multiprocessing部分与Python的多进程管理包中的multiprocessing调用几乎相同</p>
+<p>参考<a href="https://www.cnblogs.com/-qing-/p/11291581.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11291581.html</a></p>
+<blockquote>
+<p>p.start()：启动进程，并调用该子进程中的p.run()<br>p.run():进程启动时运行的方法，正是它去调用target指定的函数，我们自定义类的类中一定要实现该方法  </p>
+<p>p.terminate():强制终止进程p，不会进行任何清理操作，如果p创建了子进程，该子进程就成了僵尸进程，使用该方法需要特别小心这种情况。如果p还保存了一个锁那么也将不会被释放，进而导致死锁<br>p.is_alive():如果p仍然运行，返回True</p>
+<p>p.join([timeout]):主线程等待p终止（强调：是主线程处于等的状态，而p是处于运行的状态）。timeout是可选的超时时间，需要强调的是，p.join只能join住start开启的进程，而不能join住run开启的进程</p>
+<p>join()的作用是：主线程一直等待全部的子线程结束之后，主线程自身才结束，程序退出。</p>
+</blockquote>
+<pre><code class="lang-python">mp.set_start_method(&#39;spawn&#39;)#指的是启动进程的一种方式，程序里只能使用一次
+</code></pre>
+<h3 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h3><p>根据<a href="https://zhuanlan.zhihu.com/p/32481747整理的笔记" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747整理的笔记</a></p>
+<blockquote>
+<p>GRU（Gate Recurrent Unit）是循环神经网络（Recurrent Neural Network, RNN）的一种。和LSTM（Long-Short Term Memory）一样，也是为了解决长期记忆和反向传播中的梯度等问题而提出来的。</p>
+</blockquote>
+<p>GRU是2014提出来的，相较于LSTM的优势是更方便计算，节省算力，提高训练效率。</p>
+<p>GRU的结构与RNN比较相似，其输入是本节单元的输入$x_t$ ，上一节单元的隐状态$h^{t-1}$ ,而$h^{t-1}$包含了之前节点的相关信息，其输出也分为两部分，一是当前节点的输出$y^t$ ，二是传递给下一节点的隐状态$h^t$</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/GRU.jpg" alt></p>
+<p>GRU的具体推导过程和图示如下所示：</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/GRU1.jpg" alt></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+r_{t}=\sigma\left(W_{r} \cdot\left[h_{t-1}, x_{t}\right]\right) \\
+z_{t}=\sigma\left(W_{z} \cdot\left[h_{t-1}, x_{t}\right]\right) \\
+\bar{h}_{t}=\tanh \left(W_{\tilde{h}} \cdot\left[r_{t} * h_{t-1}, x_{t}\right]\right) \\
+h_{t}=\left(1-z_{t}\right) * h_{t-1}+z_{t} * \bar{h}_{t} \\
+y_{t}=\sigma\left(W_{o} \cdot h_{t}\right)
+\end{array}</script><ul>
+<li>从第一个公式和图示可以看出r代表的是重置门控，在公式中先将$h_{t-1}$与$x^t$拼接在一起， 并将$W_r$与拼接后的向量相乘，经过sigmoid函数激活后得到重置门控r</li>
+<li>第三个公式：将重置门控与$h^{t-1}$对应位置相乘得到$h^{t-1}$’ ,再将$h^{t-1}$’与$x^t$拼接并于$W_h$矩阵相乘经过tanh激活后得到h’ ,得到的这个h’主要包含$x^t$，相当于对当前输入记忆多少的控制</li>
+<li>z是控制更新的门控，在第二个公式中先将$h_{t-1}$与$x^t$拼接在一起， 并将$W_z$与拼接后的向量相乘，经过sigmoid函数激活后得到更新门控z，z的范围是0-1门控越接近1代表记下来的数据越多，越接近0代表忘的越多</li>
+<li>第四个公式将，$z_t$与h’对应元素相乘表示对当前的记忆，$(1-z_t)*h_{t-1}$ 代表对之前给过来的隐藏状态的遗忘程度 </li>
+</ul>
+<blockquote>
+<p>GRU很聪明的一点就在于，<strong>我们使用了同一个门控 <img src="https://www.zhihu.com/equation?tex=z" alt="[公式]"> 就同时可以进行遗忘和选择记忆（LSTM则要使用多个门控）</strong>。</p>
+</blockquote>
+<p>在代码里面用的是torch的nn.GRUCell只是将隐藏状态$h^t$输出，gru单元中先将ht-1与xt拼接得到800+256=1056的数据，因为后面得到的r_t需要与h_t-1对应元素相乘，所以推出W_r为256*1056的矩阵，最后得到的r_t是256*1的向量,同理z_t也是256*1的向量，W_z也是256*1056的矩阵，W_h同理也是256*1056的矩阵  W_o应该是800*256d的矩阵，最后得到的y_t是800*1的矩阵，可是在这里pytorch的nn.GRUCell输出只有隐藏部分的形状为1,256</p>
+<h3 id="detach"><a href="#detach" class="headerlink" title="detach()"></a>detach()</h3><p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p>detach()函数可以帮助我们实现这个功能：</p>
+<blockquote>
+<p>当我们再训练网络的时候可能希望保持一部分的网络参数不变，只对其中一部分的参数进行调整；或者只训练部分分支网络，并不让其梯度对主网络的梯度造成影响，这时候我们就需要使用detach()函数来切断一些分支的反向传播</p>
+</blockquote>
+<p>调用detach后，会返回一个新的variable，是从当前计算图中分离下来的，但是仍指向原变量的存放位置,不同之处只是requires_grad为false，得到的这个<code>Variable</code>永远不需要计算其梯度，不具有grad，<strong>即使之后重新将它的requires_grad置为true,它也不会具有梯度grad</strong></p>
+<h3 id="torch-cat"><a href="#torch-cat" class="headerlink" title="torch.cat"></a>torch.cat</h3><p>cat是concate的意思，就是拼在一起</p>
+<p>C = torch.cat( (A,B),0 )  #按0维度拼接即竖着拼接（且默认是竖着拼）</p>
+<pre><code class="lang-python">a = torch.zeros([2,2])
+print(a)
+b = torch.ones([2,2])
+print(b)
+c = torch.cat((a,b))
+print(c)
+
+tensor([[0., 0.],
+        [0., 0.]])
+tensor([[1., 1.],
+        [1., 1.]])
+tensor([[0., 0.],
+        [0., 0.],
+        [1., 1.],
+        [1., 1.]])
+</code></pre>
+<h3 id="gather"><a href="#gather" class="headerlink" title="gather"></a>gather</h3><blockquote>
+<p> 1  2  3<br> 4  5  6<br> [torch.FloatTensor of size 2x3]</p>
+<p> 1  2<br> 6  4<br> [torch.FloatTensor of size 2x2]</p>
+<p> 1  5  6<br> 1  2  3<br> [torch.FloatTensor of size 2x3]</p>
+<p> ————————————————<br> 版权声明：本文为CSDN博主「江户川柯壮」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br> 原文链接：<a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+<p>可以看出，gather的作用是这样的，index实际上是索引，具体是行还是列的索引要看前面dim 的指定，比如对于我们的栗子，【1,2,3;4,5,6,】，指定dim=1，也就是横向，那么索引就是列号。index的大小就是输出的大小，所以比如index是【1,0;0,0】，那么看index第一行，1列指的是2， 0列指的是1，同理，第二行为4，4 。这样就输入为【2,1;4,4】，参考这样的解释看上面的输出结果，即可理解gather的含义。</p>
+<p>gather在one-hot为输出的多分类问题中，可以把最大值坐标作为index传进去，然后提取到每一行的正确预测结果，这也是gather可能的一个作用。<br>————————————————<br>版权声明：本文为CSDN博主「江户川柯壮」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+<p>X.view(-1)中的-1本意是根据另外一个数来自动调整维度，但是这里只有一个维度，因此就会将X里面的所有维度数据转化成一维的，并且按先后顺序排列。</p>
+</blockquote>
+<h3 id="imresize"><a href="#imresize" class="headerlink" title="imresize"></a>imresize</h3><p>参考<a href="https://www.cnblogs.com/douzujun/p/10280213.html" target="_blank" rel="noopener">https://www.cnblogs.com/douzujun/p/10280213.html</a></p>
+<p>可见该函数是将图片直接进行压缩为指定大小的图片</p>
+<h3 id="存疑"><a href="#存疑" class="headerlink" title="存疑"></a>存疑</h3><p>问：在推导策略梯度时，是否用到了马尔科夫性？在哪里用到的？<img src="/2019/07/06/Atari-a2c/Atari-a3c/pic4.png" alt></p>
+<p>答：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\pi(\mathbf{\tau}) &=\pi\left(\mathbf{s}_{0}, \mathbf{a}_{0}, \cdots, \mathbf{s}_{T}, \mathbf{a}_{T}\right) \\
+&=p\left(s_{0}\right) \prod_{t=0}^{T} \pi_{\theta}\left(a_{t} \mid s_{t}\right) p\left(s_{t+1} \mid s_{t}, a_{t}\right)
+\end{aligned}</script><p>上式推导中用到了马尔可夫性，因为正常来讲求一个序列$\mathbf{\tau}$的概率应该为</p>
+<script type="math/tex; mode=display">
+\pi(\mathbf{\tau}) =\pi\left(\mathbf{s}_{0}, \mathbf{a}_{0}, \cdots, \mathbf{s}_{T}, \mathbf{a}_{T}\right)
+= p(s_0)*\pi(a_0|s_0)*p(s_1|s_0,a_0)*\pi(a_1|s_1)*p(s2|s_1,a_1,s_0,a_0)...</script><p>而在实际推导中将$p(s2|s_1,a_1,s_0,a_0)$写为$p(s2|s_1,a_1)$意为$s_2$出现的概率只是于$s_1$和$a_1$有关，而与再之前的状态和动作是无关的，即在此用马尔科夫性简化公式</p>
+<p>问：在下图中的$b_{i,t’}$表达形式是否合理？</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic5.png" alt></p>
+<p>在《强化学习精要》书中讲到添加一个baseline，书中的解释是<strong>同一起始点</strong>的<strong>不同序列</strong>在<strong>同一时刻</strong>的长期回报均值其形式是</p>
+<script type="math/tex; mode=display">
+\mathrm{b}_{i, t'}=\frac{1}{N} \sum_{i=1}^{N} \sum_{t'=t}^{T} r\left(s_{i, t'}, a_{i, t'}\right)</script><p>ppt中的编写并没有错，只不过以i,t’作为右下角标可能并不是特别标准容易引起误解，这里的$b_{i,t’}$是按照蒙特卡罗的计算方法求出，按照下图如果想求关于黑色边框状态的baseline值就不可以算第三行的序列，因为他们不在同一时刻，所以求得的b值应该为15（只是突然来的灵感想到的例子，不知正确与否，还需多问）<img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic6.png" alt></p>
+<p>在李宏毅老师的课程中讲到<strong>baseline的作用</strong>说的是：在某些游戏环境下，原来不加baseline得到的值是7，9，11这种非负数值，在策略梯度更新的过程中会使得非常好的动作概率增加较大，不是那么好的动作的概率也增加只不过增加的幅度较小。（这样更新是不合理的，合理的应该是降低不好的动作的概率，增加好动作的概率）</p>
+<p>除此之外还有一方面的作用是，可以<strong>减小方差</strong>，在原来7,9,11的基础上减去平均值变为-2，0，2,方差减小后对算法的稳定性有帮助。这样会在不改变策略梯度公式的前提下，使得方差缩小。至于为什么减去个b不改变策略梯度公式，详情可以看<a href="https://zhuanlan.zhihu.com/p/26174099和sutton329页的一行推导（其均值为0）" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26174099和sutton329页的一行推导（其均值为0）</a></p>
+<script type="math/tex; mode=display">
+\sum_{a} b(s) \nabla \pi(a \mid s, \boldsymbol{\theta})=b(s) \nabla \sum_{a} \pi(a \mid s, \boldsymbol{\theta})=b(s) \nabla 1=0</script><p>在sutton书RLbook329页对于baseline的解释如下<img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic9.png" alt></p>
+<p>从解释的倒数第二行可以看出直接就以$v(s_t)$作为bsaeline的值，没有写具体的b值的具体计算形式</p>
+<p>而在李宏毅2018版视频中讲该部分时的ppt如下：</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic10.png" alt></p>
+<p>在视频中讲b值是很多个episode的期望值，也就是之前使用蒙特卡罗方法得到N个episode的均值，且在这里李宏毅老师提到这个b值是在训练的过程中不断变化的</p>
+<p>在2020版的讲解视频中只是说可以减掉一个b值，没说具体怎么算</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic13.png" alt></p>
+<p>在周博磊老师的强化学习视频中关于baseline值的计算如图</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic14.png" alt></p>
+<p>计算b值可以对采集到的很多个“$G_t$”,取多个$G_t$的平均值</p>
+<p>问：更新w的公式是哪里来的？为什么还跟$\delta$有关？</p>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic7.png" alt></p>
+<script type="math/tex; mode=display">
+\mathbf{w} \leftarrow \mathbf{w}+\alpha^{\mathbf{w}} \delta \nabla \hat{v}(S, \mathbf{w})</script><p>答：该公式最早是从sutton书中201页的Stochastic-gradient and Semi-gradient Methods 讲到的，在这里w是critic的网络参数，那么其目的是使得下式中的$\hat{v}(S_{t},w_t)$越接近$v_\pi(S_t)$越好（在这里$v_\pi(S_t)$是所谓的“标答”），也就是$v_{\pi}(S_{t})-\hat{v}(S_{t})$越小越好，所以将$v_{\pi}(S_{t})-\hat{v}(S_{t})$对w求梯度，在更新w时采用梯度下降的方法如下式所示，而与sutton书中不同的地方有两点，其一是学习率用指数次方的形式去表示这样可以达到学习率递减的效果，其二是将标答换为<script type="math/tex">R+\gamma \hat{v}\left(S^{\prime}, \mathbf{w}\right)</script> 即以实际走出一步得到reward奖励+一步之后的折扣评估值作为标答，即可推出w的更新公式，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{w}_{t+1} & \doteq \mathbf{w}_{t}-\frac{1}{2} \alpha \nabla\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right]^{2} \\
+&=\mathbf{w}_{t}+\alpha\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right] \nabla \hat{v}\left(S_{t}, \mathbf{w}_{t}\right)
+\end{aligned}</script><p>且在DQN里面也有相关体现<img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic12.png" alt></p>
+<p>问：GAE的表达形式，怎么平衡的偏差与方差？</p>
+<blockquote>
+<p>一种能够广泛适用的advantage的估计方法，所估计的advantage应用在策略梯度类方法里面能够有效减小梯度估计的方差，从而降低训练所需要的样本。</p>
+</blockquote>
+<p>最开始的表达公式：这种计算方法的每一个值都是从实际回报计算得来的，是无偏的计算方法，但是这会使得梯度的方差比较大（一个值的计算依赖于如此多的$r$，所以方差大），因此产生较大的波动，使得算法的稳定性较差。</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=0}^{T} r\left(s_{i, t}, a_{i, t}\right)\right]</script><p>改进1、作为对t时刻动作重要程度的评估值，应该只算该动作发出后对序列产生的影响，而不应该将之前时间的reward值计算进来):</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=t'}^{T} r\left(s_{i, t'}, a_{i, t'}\right)\right]</script><p>改进2、减去baseline</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=t'}^{T} r\left(s_{i, t'}, a_{i, t'}\right)-b(s)\right]</script><p>改进3、使用Q与V代替上式</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right)\left(Q^{\pi}\left(s_{i}, a_{i}\right)-V^{\pi}\left(s_{i}\right)\right)\right]</script><p>改进4、使用r+v代替Q</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right)\left(r\left(s_{i, t}, a_{i, t}\right)+V\left(s_{i, t+1}, w\right)-V\left(s_{i, t}, w\right)\right)\right]</script><p>抛出结论：</p>
+<p>在<a href="https%3A//arxiv.org/pdf/1506.02438">Schulman, John, et al. “High-dimensional continuous control using generalized advantage estimation.” arXiv preprint arXiv:1506.02438 (2015).</a>文中提出一种新的计算A值的方法：</p>
+<script type="math/tex; mode=display">
+\widehat{A}_{t}^{G A E(\gamma, \lambda)}=\sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}=\sum_{l=0}^{\infty}(\gamma \lambda)^{l}\left(r_{t}+\gamma V\left(s_{t+l+1}\right)-V\left(s_{t+l}\right)\right)</script><p>为什么有效：</p>
+<p>是基于<strong>多步优势函数估计</strong>的想法扩展出来的：</p>
+<p>所以首先看多步优势函数估计的算法，在强化学习精要中的258页的推导如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{(1)} &=\delta_{t}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right) \\
+\hat{A}_{t}^{(2)} &=\delta_{t}^{V}+\gamma \delta_{t+1}^{V} \\
+&=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)+\gamma\left(-V\left(s_{t+1}\right)+r_{t+1}+\gamma V\left(s_{t+2}\right)\right) \\
+&=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\gamma^{2} V\left(s_{t+2}\right)
+\end{aligned}</script><p>上面的式子不好理解的化也可以以反向思路去思考：</p>
+<p>首先n=1时公式为</p>
+<script type="math/tex; mode=display">
+\hat{A}_{t}^{(1)} =\delta_{t}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)</script><p>而n=2时公式可以写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{(2)} &=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\gamma^{2} V\left(s_{t+2}\right)\\
+&= -V\left(s_{t}\right)+r_{t}+\gamma V\left(s_{t+1}\right)+\gamma\left(-V\left(s_{t+1}\right)+r_{t+1}+\gamma V\left(s_{t+2}\right)\right)\\
+&=\delta_{t}^{V}+\gamma \delta_{t+1}^{V}
+\end{aligned}</script><p>这样可以推出在A3C_baby.py中是以n=5进行计算的，而sc2是以n=8进行计算</p>
+<p>因此如果n取$∞$就可以得到使用蒙特卡罗方法估计优势函数的公式：</p>
+<script type="math/tex; mode=display">
+\hat{A}_{t}^{(\infty)}=\sum_{l=0}^{\infty} \gamma^{l} \delta_{t+l}^{V}=-V\left(s_{t}\right)+r_{t}+\gamma r_{t+1}+\cdots+\gamma^{k} r_{t+k}+\cdots</script><p>也就是说随着n的越来越大偏差越来越小，但是方差越来越大，基于这种想法可以得到多个估计值加权平均后的公式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\hat{A}_{t}^{\mathrm{GAE}(\gamma, \lambda)}=&(1-\lambda)\left(\hat{A}_{t}^{(1)}+\lambda \hat{A}_{t}^{(2)}+\lambda^{2} \hat{A}_{t}^{(3)}+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}+\lambda\left(\delta_{t}^{V}+\gamma\delta_{t+1}^{V}\right)+\lambda^{2}\left(\delta_{t}^{V}+\gamma \delta_{t+1}^{V}+\gamma^{2} \delta_{t+2}^{V}\right)+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}\left(1+\lambda+\lambda^{2}+\cdots\right)+\gamma \delta_{t+1}^{V}\left(\lambda+\lambda^{2}+\lambda^{3}+\cdots\right)\right.\\
+&\left.+\gamma^{2} \delta_{t+2}^{V}\left(\lambda^{2}+\lambda^{3}+\lambda^{4}+\cdots\right)+\cdots\right) \\
+=&(1-\lambda)\left(\delta_{t}^{V}\left(\frac{1}{1-\lambda}\right)+\gamma \delta_{t+1}^{V}\left(\frac{\lambda}{1-\lambda}\right)+\gamma^{2} \delta_{t+2}^{V}\left(\frac{\lambda^{2}}{1-\lambda}\right)+\cdots\right) \\
+=& \sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}
+\end{aligned}</script><script type="math/tex; mode=display">
+G_{t}^{\lambda}=(1-\lambda) \sum_{n=1}^{\infty} \lambda^{n-1} G_{t}^{(n)}</script><p>具有如下性质：</p>
+<p>当$\lambda$等于0时，在上面公式的第二行就可以简化为下式，可以看作计算TD-error</p>
+<script type="math/tex; mode=display">
+\operatorname{GAE}(\gamma, 0):  \hat{A}_{t}:=\delta_{t}  =r_{t}+\gamma v\left(s_{t+1}\right)-v\left(s_{t}\right)</script><p>当$\lambda$等于1时，代入最底下的公式得到如下计算公式，可以看作使用蒙特卡罗方法</p>
+<script type="math/tex; mode=display">
+\begin{array}{lll}
+\operatorname{GAE}(\gamma, 1): & \hat{A}_{t}:=\sum_{l=0}^{\infty} \gamma^{l} \delta_{t+l} & =\operatorname{sum}_{l=0}^{\infty} \gamma^{l} r_{t+l}-v\left(s_{t}\right)
+\end{array}</script><p>推导如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \sum_{l=0}^{\infty}(\gamma)^{l} \delta_{t+l}^{V} \\
+=& \delta_{t}^{V}+\gamma \delta_{t+1}^{V}+\gamma^{2} \delta_{t+2}^{V}+\gamma^{3} \delta_{t+3}^{V} \cdots \\
+=& _{t}+\gamma V\left(s_{t+1}\right)-V\left(s_{t}\right)+\gamma\left(r_{t+1}+\gamma   V\left(s_{t+2}\right)-V\left(s_{t+1}\right)\right)  \\
+=& r_{t}+ \gamma r_{t+1}+\gamma^{2} r_{t+2} \cdots-V\left(s_{t}\right) \\
+=& \sum_{l=0}^{\infty} \gamma^{l} \delta_{t+1}-V\left(s_{t}\right)
+\end{aligned}</script><p>因此可以通过调整$\lambda$使得模型在方差与偏差之间找到平衡,看代码中如何应用：</p>
+<pre><code class="lang-python">rewards = np.arange(0,5)
+print(rewards)
+# print(rewards[::-1])
+gamma = 0.9
+discount = lambda x, gamma: lfilter([1], [1, -gamma], x[::-1])[::-1]  # discounted rewards one liner
+discounted_r = discount(rewards, gamma)
+print(discounted_r)
+print(&#39;上为a3c_baby.py的简写形式，下为星际争霸的写法&#39;)
+delta = np.arange(0,5)
+print(delta)
+delta = delta[::-1]
+adjustment = (gamma) ** np.arange(5, 0, -1)
+print(delta)
+print(adjustment)
+print(delta*adjustment)
+print(np.cumsum(delta * adjustment, axis=0)/ adjustment)
+advantage = (np.cumsum(delta * adjustment, axis=0) / adjustment)[::-1]
+print(advantage)
+
+#下为print结果
+[0 1 2 3 4]
+[7.3314 8.146  7.94   6.6    4.    ]
+****
+[0 1 2 3 4]
+[4 3 2 1 0]
+[0.59049 0.6561  0.729   0.81    0.9    ]
+[2.36196 1.9683  1.458   0.81    0.     ]
+[4.     6.6    7.94   8.146  7.3314]
+[7.3314 8.146  7.94   6.6    4.    ]
+</code></pre>
+<p><img src="/2019/07/06/Atari-a2c/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic8.png" alt></p>
+<p>注意点1：</p>
+<p>实际的a3c_baby.py代码文件中设置了”tau”也就是上文说的$\lambda$等于1，会把列表中的5个delta全部包括在内计算得到$\hat{A}_{5}$注意这里区分5-step和蒙特卡罗的区别，虽然书中说当$\lambda$等于1的时候是按照蒙特卡洛的计算方法计算，但是在实际应用的时候，列表中只有时间长度为5的历史序列，所以是把这长度为”5“的序列全部计算也就相当于使用蒙特卡罗计算方法来计算，而实际上从上帝视角来看这个序列是远远大于5的，所以计算方法产生的效果是5-step的效果。</p>
+<p>注意点2：</p>
+<p>在第三行推至第四行时，等比数列的计算公式为</p>
+<script type="math/tex; mode=display">
+S_{n}=\frac{a_{1}\left(1-q^{n}\right)}{1-q}(q \neq 1)</script><p><font color="red"><strong>存疑：</strong> </font>所以第四行和第五行是否应该写为下面的公式（首项为1省略了）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&=(1-\lambda^n)(1-\lambda)\left(\delta_{t}^{V}\left(\frac{1}{1-\lambda}\right)+\gamma \delta_{t+1}^{V}\left(\frac{\lambda}{1-\lambda}\right)+\gamma^{2} \delta_{t+2}^{V}\left(\frac{\lambda^{2}}{1-\lambda}\right)+\cdots\right)\\
+&=(1-\lambda^n) \sum_{l=0}^{\infty}(\gamma \lambda)^{l} \delta_{t+l}^{V}
+\end{aligned}</script><p>问：遗留问题TD(λ)和GAE的关系？</p>
+<p>通过蒙特卡罗方法得到$V({S_t})$ </p>
+<script type="math/tex; mode=display">
+G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\ldots \gamma^{T-t-1} R_{T}</script><script type="math/tex; mode=display">
+V\left(S_{t}\right)=V\left(S_{t}\right)+\frac{1}{N\left(S_{t}\right)}\left(G_{t}-V\left(S_{t}\right)\right)</script><p>通过时序差分得到$V({S_t})$ </p>
+<script type="math/tex; mode=display">
+G(t)=R_{t+1}+\gamma V\left(S_{t+1}\right)</script><script type="math/tex; mode=display">
+V\left(S_{t}\right)=V\left(S_{t}\right)+\frac{1}{N\left(S_{t}\right)}\left(G_{t}-V\left(S_{t}\right)\right)</script><p>可见时序差分方法向前一步来近似$G_t$</p>
+<p>那么向前两部公式如下</p>
+<script type="math/tex; mode=display">
+G_{t}^{(2)}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} V\left(S_{t+2}\right)</script><p>向前n步如下</p>
+<script type="math/tex; mode=display">
+G_{t}^{(n)}=R_{t+1}+\gamma R_{t+2}+\ldots+\gamma^{n-1} R_{t+n}+\gamma^{n} V\left(S_{t+n}\right)</script><blockquote>
+<p>当n越来越大，趋于无穷，或者说趋于使用完整的状态序列时，n步时序差分就等价于蒙特卡罗法了。对于n步时序差分来说，和普通的时序差分的区别就在于收获的计算方式的差异。那么既然有这个n步的说法，那么n到底是多少步好呢？如何衡量n的好坏呢？</p>
+</blockquote>
+<p>引入TD(λ)，目的是在不增加计算复杂度的情况下综合考虑所有步数的预测，所以引入了一个新[0,1]的参数λ，定义$G_t^\lambda$是n从1到$∞$所有步的收获乘以权重的和。每一步的权重是$(1−λ)λ^{n−1}$，这样$G_t$的计算公式表示为</p>
+<script type="math/tex; mode=display">
+G_{t}^{\lambda}=(1-\lambda) \sum_{n=1}^{\infty} \lambda^{n-1} G_{t}^{(n)}</script><p>进而得到TD(λ)的价值函数迭代公式</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+V\left(S_{t}\right)=V\left(S_{t}\right)+\alpha\left(G_{t}^{\lambda}-V\left(S_{t}\right)\right) \\
+Q\left(S_{t}, A_{t}\right)=Q\left(S_{t}, A_{t}\right)+\alpha\left(G_{t}^{\lambda}-Q\left(S_{t}, A_{t}\right)\right)
+\end{array}</script><p>在TD(λ)中，当λ=0时,变为普通的时序差分法</p>
+<script type="math/tex; mode=display">
+G_{t}^{\lambda}-V(S_t)=(1-\lambda) \sum_{n=1}^{\infty} \lambda^{n-1} G_{t}^{(n)}-V(S_t)\\=G_t^{(1)}-V(S_t)= R_{t+1}+\gamma V\left(S_{t+1}\right)-V(S_t)</script><p>当λ=1时，变为蒙特卡罗方法</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_{t}^{\lambda}-V\left(S_{t}\right) &=-V\left(S_{t}\right)+(1-\lambda) \lambda^{0}\left(R_{t+1}+\gamma V\left(S_{t+1}\right)\right) \\
+&+(1-\lambda) \lambda^{1}\left(R_{t+1}+\gamma R_{t+2}+\gamma^{2} V\left(S_{t+2}\right)\right) \\
+&+(1-\lambda) \lambda^{2}\left(R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\gamma^{3} V\left(S_{t+3}\right)\right) \\
+&+\ldots \\
+&=-V\left(S_{t}\right)+(\gamma \lambda)^{0}\left(R_{t+1}+\gamma V\left(S_{t+1}\right)-\gamma \lambda V\left(S_{t+1}\right)\right) \\
+&+(\gamma \lambda)^{1}\left(R_{t+2}+\gamma V\left(S_{t+2}\right)-\gamma \lambda V\left(S_{t+2}\right)\right) \\
+&+(\gamma \lambda)^{2}\left(R_{t+3}+\gamma V\left(S_{t+3}\right)-\gamma \lambda V\left(S_{t+3}\right)\right) \\
+&+\ldots \\
+&=(\gamma \lambda)^{0}\left(R_{t+1}+\gamma V\left(S_{t+1}\right)-V\left(S_{t}\right)\right) \\
+&+(\gamma \lambda)^{1}\left(R_{t+2}+\gamma V\left(S_{t+2}\right)-V\left(S_{t+1}\right)\right) \\
+&+(\gamma \lambda)^{2}\left(R_{t+3}+\gamma V\left(S_{t+3}\right)-V\left(S_{t+2}\right)\right) \\
+&+\ldots \\
+&=\delta_{t}+\gamma \lambda \delta_{t+1}+(\gamma \lambda)^{2} \delta_{t+2}+\ldots
+\end{aligned}</script><p>不同之处在于TD(λ)是对<strong>值函数</strong>的估计，而GAE(γ,λ)是对<strong>优势函数</strong>的估计</p>
+<p>相同之处在于使用相同的权重指数下降的方法，综合考虑所有步数的预测。</p>
+<p>问：A2C相比于A3C的优势体现在哪？</p>
+<p>答：参考<a href="https://openai.com/blog/baselines-acktr-a2c/" target="_blank" rel="noopener">https://openai.com/blog/baselines-acktr-a2c/</a></p>
+<blockquote>
+<p>After reading the paper, AI researchers wondered whether the asynchrony led to improved performance <strong>(e.g. “perhaps the added noise would provide some regularization or exploration?”),</strong> or if it was just an implementation detail that allowed for faster training with a CPU-based implementation.</p>
+<p>As an alternative to the asynchronous implementation, researchers found you can write a synchronous, deterministic implementation that waits for each actor to finish its segment of experience before performing an update, averaging over all of the actors. <strong>One advantage of this method is that it can more effectively use of GPUs, which perform best with large batch sizes.</strong> This algorithm is naturally called A2C, short for advantage actor critic. (This term has been used in several papers.)</p>
+<p>Our synchronous A2C implementation performs better than our asynchronous implementations — we have not seen any evidence that the noise introduced by asynchrony provides any performance benefit. This A2C implementation is more cost-effective than A3C when using single-GPU machines, and is faster than a CPU-only A3C implementation when using larger policies.</p>
+<p>We have included code in Baselines for training feedforward convnets and LSTMs on the Atari benchmark using A2C.</p>
+</blockquote>
+<p>文中第一段中写的增加噪声和正则化的效果可以理解为从主进程分出n个子进程进行异步学习，不会完全依赖于某一个进程的学习，所以多个子进程同时学习，再将学到的梯度信息传给主进程，这样主进程的多个子进程在一定程度上都相当于“噪声”，使得主进程不会过度依赖某一个子进程，从而不会发生“过拟合”的现象。</p>
+<p>第二段的理解为，因为A3C一开始就是为cpu计算准备的，而改进后的A2C可以利用上GPU,所以改进后的A2C可以有效使用GPU进行计算因此也就会更快一些。此外，可以推理出来的是如果网络结构比较深或者一个batch比较大，那么使用GPU的优势就更加明显。</p>
+<p>问：A3C的shared_adam到底在哪里更新的本地和全局网络模型的参数？</p>
+<p>答：一开始猛然看pytorch代码并没有完全看懂shared_adam，所以先看看莫烦大神写的A3C的tensflow版本的代码<a href="https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/blob/master/contents/10_A3C/A3C_discrete_action.py" target="_blank" rel="noopener">https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow/blob/master/contents/10_A3C/A3C_discrete_action.py</a></p>
+<p>发现在tensorflow代码是:</p>
+<pre><code class="lang-python">    def work(self):
+        global GLOBAL_RUNNING_R, GLOBAL_EP
+        total_step = 1
+        buffer_s, buffer_a, buffer_r = [], [], []
+        while not COORD.should_stop() and GLOBAL_EP &lt; MAX_GLOBAL_EP:
+            s = self.env.reset()
+            ep_r = 0
+            while True:
+                # if self.name == &#39;W_0&#39;:
+                #     self.env.render()
+                a = self.AC.choose_action(s)
+                s_, r, done, info = self.env.step(a)
+                if done: r = -5
+                ep_r += r
+                buffer_s.append(s)
+                buffer_a.append(a)
+                buffer_r.append(r)
+
+                if total_step % UPDATE_GLOBAL_ITER == 0 or done:   
+                    # update global and assign to local net
+                    if done:
+                        v_s_ = 0   # terminal
+                    else:
+                        v_s_ = SESS.run(self.AC.v, {self.AC.s: s_[np.newaxis, :]})[0, 0]
+                    buffer_v_target = []
+                    for r in buffer_r[::-1]:    # reverse buffer r
+                        v_s_ = r + GAMMA * v_s_
+                        buffer_v_target.append(v_s_)
+                    buffer_v_target.reverse()
+
+                    buffer_s, buffer_a, buffer_v_target = np.vstack(buffer_s), np.array(buffer_a), np.vstack(buffer_v_target)
+                    feed_dict = {
+                        self.AC.s: buffer_s,
+                        self.AC.a_his: buffer_a,
+                        self.AC.v_target: buffer_v_target,
+                    }
+                    self.AC.update_global(feed_dict)
+
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    self.AC.pull_global()
+
+                s = s_
+                total_step += 1
+                if done:
+                    if len(GLOBAL_RUNNING_R) == 0:  # record running episode reward
+                        GLOBAL_RUNNING_R.append(ep_r)
+                    else:
+                        GLOBAL_RUNNING_R.append(0.99 * GLOBAL_RUNNING_R[-1] + 0.01 * ep_r)
+                    print(
+                        self.name,
+                        &quot;Ep:&quot;, GLOBAL_EP,
+                        &quot;| Ep_r: %i&quot; % GLOBAL_RUNNING_R[-1],
+                          )
+                    GLOBAL_EP += 1
+                    break
+</code></pre>
+<p>其中最重要的部分是：</p>
+<pre><code class="lang-python">                    feed_dict = {
+                        self.AC.s: buffer_s,
+                        self.AC.a_his: buffer_a,
+                        self.AC.v_target: buffer_v_target,
+                    }
+                    self.AC.update_global(feed_dict)
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    self.AC.pull_global()
+    def update_global(self, feed_dict):  # run by a local
+        SESS.run([self.update_a_op, self.update_c_op], feed_dict) 
+        # local grads applies to global net
+    def pull_global(self):  # run by a local
+        SESS.run([self.pull_a_params_op, self.pull_c_params_op])
+
+
+    with tf.name_scope(&#39;sync&#39;):
+        with tf.name_scope(&#39;pull&#39;):
+            self.pull_a_params_op = [l_p.assign(g_p) for l_p, g_p in zip(self.a_params, globalAC.a_params)]
+            self.pull_c_params_op = [l_p.assign(g_p) for l_p, g_p in zip(self.c_params, globalAC.c_params)]
+        with tf.name_scope(&#39;push&#39;):
+            self.update_a_op = OPT_A.apply_gradients(zip(self.a_grads, globalAC.a_params))
+            self.update_c_op = OPT_C.apply_gradients(zip(self.c_grads, globalAC.c_params))
+</code></pre>
+<p>可见于之前的理解完全相同就是将局部计算的梯度用到全局网络参数的更新中，更新完全局网络后，再将全局的网络同步到本地局部网络模型</p>
+<p>在pytorch中使用的是shared_adam方式更新全局网络参数,其中放入的参数就是全局网络的参数</p>
+<pre><code class="lang-python">shared_optimizer = SharedAdam(shared_model.parameters(), lr=args.lr)
+</code></pre>
+<p>而至于在讲代码时卡住的地方：</p>
+<pre><code class="lang-python">loss = cost_func(args, torch.cat(values), torch.cat(logps), torch.cat(actions), np.asarray(rewards))#计算loss
+eploss += loss.item()#将计算的loss加到episode_loss里面
+shared_optimizer.zero_grad()
+loss.backward()#可以看出每个子进程与环境交互5次，算一次loss并且计算梯度并回传。
+torch.nn.utils.clip_grad_norm_(model.parameters(), 40)
+#梯度的最大番薯是40，不能超过40，默认是L2范数
+for param, shared_param in zip(model.parameters(), shared_model.parameters()):
+    if shared_param.grad is None: shared_param._grad = param.grad  
+        # sync gradients with shared model
+shared_optimizer.step()
+</code></pre>
+<p>这里不清楚的点是为什么要先进行一次关于shared_param.grad是否为None的判断？</p>
+<p>而在莫烦的pytorch里面写的如下，并没有进行判断：</p>
+<pre><code class="lang-python">    loss = lnet.loss_func(
+            v_wrap(np.vstack(bs)),
+            v_wrap(np.array(ba), dtype=np.int64) if ba[0].dtype == np.int64 else                     v_wrap(np.vstack(ba)),
+            v_wrap(np.array(buffer_v_target)[:, None]))
+
+    # calculate local gradients and push local parameters to global
+    opt.zero_grad()
+    loss.backward()
+    for lp, gp in zip(lnet.parameters(), gnet.parameters()):
+    gp._grad = lp.grad
+    opt.step()
+
+    # pull global parameters
+    lnet.load_state_dict(gnet.state_dict())
+</code></pre>
+<p>在服务器上试试去掉判断的效果如何？</p>
+<p>效果没有显著改变</p>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/clksjx/article/details/104053216" target="_blank" rel="noopener">https://blog.csdn.net/clksjx/article/details/104053216</a></p>
+<p><a href="https://gym.openai.com/envs/#atari" target="_blank" rel="noopener">https://gym.openai.com/envs/#atari</a></p>
+<p><a href="https://www.cntofu.com/book/169/docs/1.0/multiprocessing.md" target="_blank" rel="noopener">https://www.cntofu.com/book/169/docs/1.0/multiprocessing.md</a></p>
+<p><a href="https://blog.csdn.net/zfjBIT/article/details/91633424" target="_blank" rel="noopener">https://blog.csdn.net/zfjBIT/article/details/91633424</a></p>
+<p><a href="https://blog.csdn.net/zrh_CSDN/article/details/81266188" target="_blank" rel="noopener">https://blog.csdn.net/zrh_CSDN/article/details/81266188</a></p>
+<p><a href="http://sofasofa.io/forum_main_post.php?postid=1002018" target="_blank" rel="noopener">http://sofasofa.io/forum_main_post.php?postid=1002018</a></p>
+<p><a href="https://www.jianshu.com/p/dc4e53fc73a0" target="_blank" rel="noopener">https://www.jianshu.com/p/dc4e53fc73a0</a></p>
+<p><a href="https://www.cnblogs.com/-qing-/p/11291581.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11291581.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747</a></p>
+<p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p><a href="https://www.cnblogs.com/JeasonIsCoding/p/10162356.html" target="_blank" rel="noopener">https://www.cnblogs.com/JeasonIsCoding/p/10162356.html</a></p>
+<p><a href="https://blog.csdn.net/edogawachia/article/details/80515038" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80515038</a></p>
+<h2 id="A2C算法原理"><a href="#A2C算法原理" class="headerlink" title="A2C算法原理"></a>A2C算法原理</h2><p>发现A2C效果也不错，且可以利用上GPU使得速度变快</p>
+<p>捋代码遗留问题：</p>
+<h3 id="1、nn-init-orthogonal-和nn-init-constant-的作用"><a href="#1、nn-init-orthogonal-和nn-init-constant-的作用" class="headerlink" title="1、nn.init.orthogonal_和nn.init.constant_的作用"></a>1、nn.init.orthogonal_和nn.init.constant_的作用</h3><p>如下在代码使用nn.init.orthogonal_和nn.init.constant_</p>
+<pre><code class="lang-python"># the convolution layer of deepmind
+class deepmind(nn.Module):
+    def __init__(self):
+        super(deepmind, self).__init__()
+        self.conv1 = nn.Conv2d(4, 32, 8, stride=4)
+        self.conv2 = nn.Conv2d(32, 64, 4, stride=2)
+        self.conv3 = nn.Conv2d(64, 32, 3, stride=1)
+        self.fc1 = nn.Linear(32 * 7 * 7, 512)
+        # start to do the init...
+        nn.init.orthogonal_(self.conv1.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.conv2.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.conv3.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        nn.init.orthogonal_(self.fc1.weight.data, gain=nn.init.calculate_gain(&#39;relu&#39;))
+        # init the bias...
+        nn.init.constant_(self.conv1.bias.data, 0)
+        nn.init.constant_(self.conv2.bias.data, 0)
+        nn.init.constant_(self.conv3.bias.data, 0)
+        nn.init.constant_(self.fc1.bias.data, 0)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
+        x = F.relu(self.conv3(x))
+        x = x.view(-1, 32 * 7 * 7)
+        x = F.relu(self.fc1(x))
+        return x
+</code></pre>
+<p>其中nn.init.orthogonal_的作用是正交初始化，如果初始化一个2行3列的tensor矩阵，那么最后得到的是2行3列的正交矩阵，而后面的gain=nn.init.calculate_gain(‘relu’)指的是对于给定的非线性函数，返回推荐的增益值。</p>
+<p><a href="https://blog.csdn.net/ccbrid/article/details/89353817" target="_blank" rel="noopener">https://blog.csdn.net/ccbrid/article/details/89353817</a></p>
+<p>而nn.init.constant_的作用是对常数进行初始化，值为0</p>
+<h3 id="2、no-grad在代码中的作用？怎么体现？"><a href="#2、no-grad在代码中的作用？怎么体现？" class="headerlink" title="2、no_grad在代码中的作用？怎么体现？"></a>2、no_grad在代码中的作用？怎么体现？</h3><p>在A2C代码中的a2c_agent主要有两大功能一个是learn函数，一个是update函数而在learn函数中计算动作概率和状态的价值都用的是no_grad</p>
+<pre><code class="lang-python">with torch.no_grad():
+    input_tensor = self._get_tensors(self.obs)
+    _, pi = self.net(input_tensor)
+
+with torch.no_grad():
+    input_tensor = self._get_tensors(self.obs)
+    last_values, _ = self.net(input_tensor)
+</code></pre>
+<p>经过会斌学长一番讲解后，总结如下：</p>
+<p>使用no_grad是因为在learn函数中只是得到当前网络参数下的动作概率和状态价值，并不需要计算梯度和更新参数，所以使用no_grad标志着在这里不用将自动计算得到的梯度值保存下来，从而节省了一定的空间。</p>
+<p>而具体的计算梯度和更新网络参数是在update函数中实现的，所以在update函数中就使用自动计算梯度的方法</p>
+<h3 id="3、done标志位的顺序问题"><a href="#3、done标志位的顺序问题" class="headerlink" title="3、done标志位的顺序问题"></a>3、done标志位的顺序问题</h3><p>因为在原来的代码（如下）是先判断是否结束，如果结束将结束的obs置为0</p>
+<p>而最奇怪的是置为0后又执行self.obs = obs 操作，将不管worker是否结束，直接将obs赋值给self.obs，因此感觉上面的判断无用，应该调换位置</p>
+<pre><code class="lang-python">for n, done in enumerate(dones):
+    if done:
+        self.obs[n] = self.obs[n] * 0#这一句不就没用了嘛？
+self.obs = obs#
+</code></pre>
+<h3 id="4、swap操作是否为关键点，全都不执行swap是否还会收敛？"><a href="#4、swap操作是否为关键点，全都不执行swap是否还会收敛？" class="headerlink" title="4、swap操作是否为关键点，全都不执行swap是否还会收敛？"></a>4、swap操作是否为关键点，全都不执行swap是否还会收敛？</h3><pre><code class="lang-python">mb_obs = np.asarray(mb_obs, dtype=np.uint8).swapaxes(1, 0).reshape(self.batch_ob_shape)
+mb_rewards = np.asarray(mb_rewards, dtype=np.float32).swapaxes(1, 0)
+mb_actions = np.asarray(mb_actions, dtype=np.int32).swapaxes(1, 0)
+mb_dones = np.asarray(mb_dones, dtype=np.bool).swapaxes(1, 0)
+</code></pre>
+<p>如上所示，将四个列表都执行swap操作，也就是将第一维和第二维调换位置</p>
+<h3 id="5、detach的作用"><a href="#5、detach的作用" class="headerlink" title="5、detach的作用"></a>5、detach的作用</h3><p><a href="https://www.cnblogs.com/wanghui-garcia/p/10677071.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10677071.html</a></p>
+<p>detach()函数可以帮助我们实现这个功能：</p>
+<blockquote>
+<p>当我们再训练网络的时候可能希望保持一部分的网络参数不变，只对其中一部分的参数进行调整；或者只训练部分分支网络，并不让其梯度对主网络的梯度造成影响，这时候我们就需要使用detach()函数来切断一些分支的反向传播</p>
+</blockquote>
+<p>调用detach后，会返回一个新的variable，是从当前计算图中分离下来的，但是仍指向原变量的存放位置,不同之处只是requires_grad为false，得到的这个<code>Variable</code>永远不需要计算其梯度，不具有grad，<strong>即使之后重新将它的requires_grad置为true,它也不会具有梯度grad</strong></p>
+<p><strong>而在代码中的detach的作用我更倾向于理解为得到一个新的变量</strong></p>
+<h3 id="6、multienv如何实现"><a href="#6、multienv如何实现" class="headerlink" title="6、multienv如何实现"></a>6、multienv如何实现</h3><h3 id="7、dqn-a2c-ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？"><a href="#7、dqn-a2c-ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？" class="headerlink" title="7、dqn,a2c,ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？"></a>7、dqn,a2c,ppo数据的训练方式是什么样的？是否有打乱数据之间的排列方式？</h3><h4 id="dqn训练流程如下："><a href="#dqn训练流程如下：" class="headerlink" title="dqn训练流程如下："></a>dqn训练流程如下：</h4><ul>
+<li><p>调用dqn_agent.py的init函数进行初始化</p>
+<ul>
+<li>初始化behavior网络和target网络（卷积+全连接）</li>
+<li>优化器（Adam）:输入为网络参数、学习率、epsilon、alpha</li>
+<li>创建replay_buffer</li>
+</ul>
+<pre><code class="lang-python"># define the dqn agent
+class dqn_agent:
+    def __init__(self, env, args):
+        # define some important 
+        self.env = env
+        self.args = args 
+        # define the network
+        self.net = net(self.env.action_space.n, self.args.use_dueling)
+        # copy the self.net as the 
+        self.target_net = copy.deepcopy(self.net)
+        # make sure the target net has the same weights as the network
+        self.target_net.load_state_dict(self.net.state_dict())
+        if self.args.cuda:
+            self.net.cuda()
+            self.target_net.cuda()
+        # define the optimizer
+        self.optimizer = torch.optim.Adam(self.net.parameters(), lr=self.args.lr)
+        # define the replay memory
+        self.buffer = replay_buffer(self.args.buffer_size)
+        # define the linear schedule of the exploration
+        self.exploration_schedule = linear_schnedule(int(self.args.total_timesteps * self.args.exploration_fraction), \
+                                                    self.args.final_ratio, self.args.init_ratio)
+        # create the folder to save the models
+        if not os.path.exists(self.args.save_dir):
+            os.mkdir(self.args.save_dir)
+        # set the environment folder
+        self.model_path = os.path.join(self.args.save_dir, self.args.env_name)
+        if not os.path.exists(self.model_path):
+            os.mkdir(self.model_path)
+</code></pre>
+</li>
+<li><p>调用learn函数进行训练，共训练1e7次</p>
+<ul>
+<li><p>每次都从buffer中拿出完全不相关的数据样本</p>
+</li>
+<li><p>将obs输入到行为网络得到Q价值函数</p>
+</li>
+<li><p>以$\epsilon-greedy$的方式选取动作，执行该动作后得到s’,r,done等信息，并将s,a,r,s’,done存至buffer</p>
+<ul>
+<li>如果游戏结束，重开游戏，且将刚才的那局游戏结算，在reward列表后再增加一位0以便新游戏的reward累加</li>
+<li>如果step大于初始训练阈值，且是训练频率的整数倍则从buffer里采样数据，用来计算Loss更新target网络</li>
+<li>如果step大于初始训练阈值，且是目标网络更新频率的整数倍，则将行为网络更新至behavior网络</li>
+<li>如果step大于初始训练阈值，且是输出信息与保存模型的整数倍，则显示模型信息并保存模型</li>
+</ul>
+<pre><code class="lang-python">    # start to do the training
+    def learn(self):
+        # the episode reward
+        episode_reward = reward_recorder()
+        obs = np.array(self.env.reset())
+        td_loss = 0
+        for timestep in range(self.args.total_timesteps):
+            explore_eps = self.exploration_schedule.get_value(timestep)
+            with torch.no_grad():
+                obs_tensor = self._get_tensors(obs)
+                action_value = self.net(obs_tensor)
+            # select actions
+            action = select_actions(action_value, explore_eps)
+            # excute actions
+            obs_, reward, done, _ = self.env.step(action)
+            obs_ = np.array(obs_)
+            # tryint to append the samples
+            self.buffer.add(obs, action, reward, obs_, float(done))
+            obs = obs_
+            # add the rewards
+            episode_reward.add_rewards(reward)
+            if done:
+                obs = np.array(self.env.reset())
+                # start new episode to store rewards
+                episode_reward.start_new_episode()
+            if timestep &gt; self.args.learning_starts and timestep % self.args.train_freq == 0:
+                # start to sample the samples from the replay buffer
+                batch_samples = self.buffer.sample(self.args.batch_size)
+                td_loss = self._update_network(batch_samples)
+            if timestep &gt; self.args.learning_starts and timestep % self.args.target_network_update_freq == 0:
+                # update the target network
+                self.target_net.load_state_dict(self.net.state_dict())
+            if done and episode_reward.num_episodes % self.args.display_interval == 0:
+                print(&#39;[{}] Frames: {}, Episode: {}, Mean: {:.3f}, Loss: {:.3f}&#39;.format(datetime.now(), timestep, episode_reward.num_episodes, \
+                        episode_reward.mean, td_loss))
+                torch.save(self.net.state_dict(), self.model_path + &#39;/model.pt&#39;)
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>调用_update_network函数进行更新目标网络</p>
+<ul>
+<li>将samples分解为多个obses, actions, rewards, obses_next, dones</li>
+<li>将obses_next输入到target网络取极大值目的是与r与$\gamma$计算目标值</li>
+<li>将obses输入到行为网络得到Q值，与actions联合一起计算真实Q价值函数，再计算TD—error</li>
+<li>计算loss，梯度回传，更新behavior network参数</li>
+</ul>
+<pre><code class="lang-python"># update the network
+    def _update_network(self, samples):
+        obses, actions, rewards, obses_next, dones = samples
+        # convert the data to tensor
+        obses = self._get_tensors(obses)
+        actions = torch.tensor(actions, dtype=torch.int64).unsqueeze(-1)
+        rewards = torch.tensor(rewards, dtype=torch.float32).unsqueeze(-1)
+        obses_next = self._get_tensors(obses_next)
+        dones = torch.tensor(1 - dones, dtype=torch.float32).unsqueeze(-1)
+        # convert into gpu
+        if self.args.cuda:
+            actions = actions.cuda()
+            rewards = rewards.cuda()
+            dones = dones.cuda()
+        # calculate the target value
+        with torch.no_grad():
+            # if use the double network architecture
+            if self.args.use_double_net:
+                q_value_ = self.net(obses_next)
+                action_max_idx = torch.argmax(q_value_, dim=1, keepdim=True)
+                target_action_value = self.target_net(obses_next)
+                target_action_max_value = target_action_value.gather(1, action_max_idx)
+            else:
+                target_action_value = self.target_net(obses_next)
+                target_action_max_value, _ = torch.max(target_action_value, dim=1, keepdim=True)
+        # target
+        expected_value = rewards + self.args.gamma * target_action_max_value * dones
+        # get the real q value
+        action_value = self.net(obses)
+        real_value = action_value.gather(1, actions)
+        loss = (expected_value - real_value).pow(2).mean()
+        # start to update
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        return loss.item()
+</code></pre>
+</li>
+<li><p>总结</p>
+<ul>
+<li>完全打乱顺序</li>
+<li>没有使用GAE的计算方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="a2c训练流程如下："><a href="#a2c训练流程如下：" class="headerlink" title="a2c训练流程如下："></a>a2c训练流程如下：</h4><ul>
+<li>调用a2c_agent.py的init函数进行初始化<ul>
+<li>初始化网络（卷积+全连接）</li>
+<li>优化器（RMSprop）:输入为网络参数、学习率、epsilon、alpha</li>
+<li>初始化self.batch_obs_shape的为(80,84,84,4)</li>
+<li>初始化self.obs初始化为envs.reset()得到的(16,84,84,4)的矩阵</li>
+<li>初始化dones为长度为16的全为false的列表</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-python">class a2c_agent:
+    def __init__(self, envs, args):
+        self.envs = envs
+        self.args = args
+        # define the network
+        self.net = net(self.envs.action_space.n)
+        if self.args.cuda:
+            self.net.cuda()
+        # define the optimizer
+        self.optimizer = torch.optim.RMSprop(self.net.parameters(), lr=self.args.lr, eps=self.args.eps, alpha=self.args.alpha)
+        if not os.path.exists(self.args.save_dir):
+            os.mkdir(self.args.save_dir)
+        # check the saved path for envs..
+        self.model_path = self.args.save_dir + self.args.env_name + &#39;/&#39;
+        if not os.path.exists(self.model_path):
+            os.mkdir(self.model_path)
+        # get the obs..
+        #nsteps=5,更新网络的步数，num_works=16 创建的环境个数
+        self.batch_ob_shape = (self.args.num_workers * self.args.nsteps,) + self.envs.observation_space.shape
+        #print(self.batch_ob_shape)#(80,84,84,4)
+        self.obs = np.zeros((self.args.num_workers,) + self.envs.observation_space.shape, dtype=self.envs.observation_space.dtype.name)
+        #print(self.obs.shape)   #(16,84,84,4)
+        self.obs[:] = self.envs.reset()
+        #self.obs = self.envs.reset() 效果一致
+        #print(type(self.obs))#&lt;class &#39;numpy.ndarray&#39;&gt;
+        #print(self.envs.reset().shape)#(16, 84, 84, 4)
+        #print(self.obs[:].shape)#(16,84,84,4)
+        self.dones = [False for _ in range(self.args.num_workers)]#长度为16的列表
+</code></pre>
+<ul>
+<li>调用a2c_trainer.learn()函数更新self.args.total_frames // (self.args.num_workers * self.args.nsteps)=2500000次网络，每次网络更新使用的数据batch为80<ul>
+<li>得到数据的方式为agent与16个环境同步进行交互，每个环境走5步，得到数据为<ul>
+<li>mb_obs:(5,16,84,84,4)</li>
+<li>mb_actions:(5,16)</li>
+<li>mb_dones:(5,16)</li>
+<li>mb_reward:(5,16)</li>
+</ul>
+</li>
+<li>对(5,16)数据进行交换轴的操作，变为(16,5)使得每5个相邻样本之间具有时间相关性</li>
+<li>通过mb_rewards与mb_dones计算return</li>
+<li>将数据进行reshape，得到<ul>
+<li>mb_obs:(80,84,84,4)</li>
+<li>mb_actions:(80，)</li>
+<li>mb_dones:(80，)</li>
+<li>mb_reward:(80，)</li>
+</ul>
+</li>
+<li>将一个batch（80）的数据放到神经网络进行更新</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-python">def discount_with_dones(rewards, dones, gamma):
+    discounted = []
+    r = 0
+    for reward, done in zip(rewards[::-1], dones[::-1]):
+        r = reward + gamma * r * (1.-done)
+        discounted.append(r)
+    return discounted[::-1]
+</code></pre>
+<p><img src="/2019/07/06/Atari-a2c/Atari-a3c/pic8.png" alt></p>
+<p>注意，这里没用参数中的$\tau$没有用</p>
+<pre><code class="lang-python">def learn(self):
+    num_updates = self.args.total_frames // (self.args.num_workers * self.args.nsteps)#
+    # get the reward to calculate other information
+    episode_rewards = np.zeros((self.args.num_workers, ), dtype=np.float32)
+    final_rewards = np.zeros((self.args.num_workers, ), dtype=np.float32)
+    #print(episode_rewards.shape)#(16,)
+    #print(episode_rewards.shape)#(16,)
+
+    # start to update
+    for update in range(num_updates):#2000000 // (16*5) = 250000 网络更新的次数
+        mb_obs, mb_rewards, mb_actions, mb_dones = [],[],[],[]
+        for step in range(self.args.nsteps):
+            with torch.no_grad():   #数据不需要计算梯度，也不会进行反向传播
+                input_tensor = self._get_tensors(self.obs)#torch.Size([16, 4, 84, 84])
+                _, pi = self.net(input_tensor)
+                #print(pi.shape)#torch.Size([16, 4]) 4指的是Breakout的动作个数
+            # select actions
+            actions = select_actions(pi)    #torch.Size([16, 1])
+            #print(actions.shape)
+            cpu_actions = actions.squeeze(1).cpu().numpy()
+            #squeeze(1)代表若第二维度值为1则去除第二维度
+            #print(cpu_actions.shape)    #(16,)
+            # start to store the information
+            mb_obs.append(np.copy(self.obs))
+            mb_actions.append(cpu_actions)
+            mb_dones.append(self.dones)#?
+            # step
+            obs, rewards, dones, _ = self.envs.step(cpu_actions)
+            #print(obs.shape)#(16, 84, 84, 4)
+            #print(rewards.shape)#(16,)
+            #print(dones.shape)#(16,)
+            #print(dones)
+            #[False True False False False False False True False False False False True False False False]
+            # start to store the rewards
+            self.dones = dones
+            mb_rewards.append(rewards)
+            for n, done in enumerate(dones):
+                if done:    #如果done为true，说明游戏结束，该环境obs设为全0
+                    self.obs[n] = self.obs[n]*0
+                    #print(self.obs[n])
+            self.obs = obs
+            episode_rewards += rewards  #对游戏的reward进行累加
+            #print(episode_rewards)
+            # get the masks
+            #游戏结束设为0，不结束设为1
+            masks = np.array([0.0 if done else 1.0 for done in dones], dtype=np.float32)
+            final_rewards *= masks  #把reward中的游戏结束时的设为0，没有结束保持原样
+            final_rewards += (1 - masks) * episode_rewards  
+            #游戏尚未结束设为0，游戏结束时的保持原样
+            episode_rewards *= masks    
+            #把episode_reward中的游戏结束时的设为0，没有结束保持原样
+            # update the obs
+        #print(np.array(mb_dones).shape)#(5,16)
+        mb_dones.append(self.dones)
+        #print(np.array(mb_dones).shape)#(6,16)
+        # process the rollouts
+        #print(np.array(mb_obs).shape)#(5, 16, 84, 84, 4)
+        mb_obs = np.asarray(mb_obs, dtype=np.uint8).swapaxes(1, 0).reshape(self.batch_ob_shape)
+        #print(mb_obs.shape)#(80, 84, 84, 4)
+        #print(np.asarray(mb_rewards, dtype=np.float32).shape)#(5,16)
+        mb_rewards = np.asarray(mb_rewards, dtype=np.float32).swapaxes(1, 0)
+        #print(mb_rewards.shape)#(16,5)
+        mb_actions = np.asarray(mb_actions, dtype=np.int32).swapaxes(1, 0)
+        #print(mb_actions.shape)#(16,5)
+        mb_dones = np.asarray(mb_dones, dtype=np.bool).swapaxes(1, 0)
+        #print(mb_dones)#(16, 6)
+        mb_masks = mb_dones[:, :-1]
+        #print(mb_masks)#(16, 5)
+        mb_dones = mb_dones[:, 1:]
+        #去掉初始的dones，第二个done是第一轮是否结束标志位，如果第一个step得到done为true，则游戏结束
+        # calculate the last value
+        with torch.no_grad():
+            input_tensor = self._get_tensors(self.obs)#torch.Size([16, 4, 84, 84])
+            last_values, _ = self.net(input_tensor)#计算出第五步的s&#39;
+            #print(last_values.shape)#torch.Size([16, 1])
+            #detach阻断反向传播，返回值仍为一个新的变量tensor
+            #cpu()将变量放在cpu上，仍为tensor，numpy()将tensor转换为numpy
+            #squeeze()这个函数主要对数据的维度进行压缩，去掉维数为1的的维度
+            #print(last_values.detach().cpu().numpy().squeeze().shape)#(16,)
+        # compute returns
+        for n, (rewards, dones, value) in enumerate(zip(mb_rewards, mb_dones, last_values.detach().cpu().numpy().squeeze())):
+            #print(rewards.shape)#(5,)
+            #print(type(rewards))#&lt;class &#39;numpy.ndarray&#39;&gt;
+            rewards = rewards.tolist()
+            #print(type(rewards))#&lt;class &#39;list&#39;&gt;
+            dones = dones.tolist()#
+            #print(dones)#[False, False, False, False, False]
+            #print(dones+[0])#[False, False, False, False, False, 0]
+            #print(rewards)#[0.0, 0.0, 0.0, 0.0, 0.0]
+            #print(value)#-0.12980714
+            #print(rewards+[value])#[0.0, 0.0, 0.0, 0.0, 0.0, -0.12980714]
+            if dones[-1] == 0:#第五步对应的done==0，说明游戏没有结束，value为第六步状态的值
+                rewards = discount_with_dones(rewards+[value], dones+[0], self.args.gamma)[:-1]#把第六个状态的值切掉，得到了第一步状态到第五个状态的状态值
+            else:
+                rewards = discount_with_dones(rewards, dones, self.args.gamma)  
+                #如果在第五步游戏结束，则第六个个状态的值为0，
+            mb_rewards[n] = rewards
+            #print(mb_rewards.shape)#(16,5)
+        mb_rewards = mb_rewards.flatten()   #80个状态对应的return
+        #print(mb_rewards.shape)#(80,)
+        mb_actions = mb_actions.flatten()   #80个action
+        #print(mb_actions.shape)#(80,)
+        # start to update network
+        vl, al, ent = self._update_network(mb_obs, mb_rewards, mb_actions)
+        if update % self.args.log_interval == 0:
+            print(&#39;[{}] Update: {}/{}, Frames: {}, Rewards: {:.1f}, VL: {:.3f}, PL: {:.3f}, Ent: {:.2f}, Min: {}, Max:{}&#39;.format(\
+                datetime.now(), update, num_updates, (update+1)*(self.args.num_workers * self.args.nsteps),\
+                final_rewards.mean(), vl, al, ent, final_rewards.min(), final_rewards.max()))
+            torch.save(self.net.state_dict(), self.model_path + &#39;model.pt&#39;)
+            #final_rewards:16个环境中每个环境中的某个episode的reward的总和。
+</code></pre>
+<ul>
+<li><p>调用update_network()，更新网络</p>
+<ul>
+<li>首先将输入的obs，returns，actions转为tensor变量</li>
+<li>将obs输入网络得到维度为(80,1)的value，维度为(80,4)的pi</li>
+<li>调用evaluate_actions(pi, actions)得到action_log_probs, dist_entropy 分别是logpi和熵</li>
+<li>advantage = returns - values#returns是所谓的标答，values是critic输出的价值函数</li>
+<li>分别计算value_loss，action_loss，total_loss </li>
+</ul>
+<pre><code class="lang-python">def _update_network(self, obs, returns, actions):
+    #print(&quot;obs:&quot;+str(obs.shape))#obs:(80, 84, 84, 4)
+    #print(&quot;returns:&quot;+str(returns.shape))#(80,)
+    #print(&quot;actions:&quot;+str(actions.shape))#(80,)
+    # evaluate the actions
+    #正向计算时候会计算梯度，并记录下来。等反向传播时候可以直接拿来用梯度信息
+    #如果用with_no_grad则不会记录这些梯度信息，如果只需要得到状态值则无需记录梯度信息，节省资源
+    input_tensor = self._get_tensors(obs)   #对输入状态进行预处理，调整维度，变为tensor
+    #print(input_tensor.shape)#torch.Size([80, 4, 84, 84])收集到[5,16,4,84,84]的数据
+    values, pi = self.net(input_tensor) 
+    #网络输入为80张4*84*84的图片，输出为状态值和候选动作的概率
+    #print(values.shape)#torch.Size([80, 1])
+    #print(pi.shape)#torch.Size([80, 4]) 4对应动作个数
+
+    # define the tensor of actions, returns，将return和action变为tensor
+    returns = torch.tensor(returns, dtype=torch.float32).unsqueeze(1)#在第1维增加一个维度
+    #print(&quot;return_shape:&quot;+str(returns.shape))#torch.Size([80, 1])
+    actions = torch.tensor(actions, dtype=torch.int64).unsqueeze(1)
+    #print(actions.shape)# torch.Size([80, 1])
+    if self.args.cuda:
+        returns = returns.cuda()
+        actions = actions.cuda()
+    # evaluate actions
+    action_log_probs, dist_entropy = evaluate_actions(pi, actions)#log pi|s,熵
+    # calculate advantages...
+    #参照readme公式
+    advantages = returns - values    #torch.Size([80, 1])
+    # get the value loss先二次方再求均值
+    value_loss = advantages.pow(2).mean()# tensor(2.9680e-06, grad_fn=&lt;MeanBackward0&gt;)
+    # get the action loss
+    action_loss = -(advantages.detach() * action_log_probs).mean()
+    #print(action_loss)#tensor(0.0129, grad_fn=&lt;NegBackward&gt;)
+    # total loss
+    # value_loss_coef=0.5，价值损失系数.entropy_coef=0.01,熵的系数
+    total_loss = action_loss + self.args.value_loss_coef * value_loss - self.args.entropy_coef * dist_entropy
+    # start to update
+    self.optimizer.zero_grad()
+    total_loss.backward()
+    torch.nn.utils.clip_grad_norm_(self.net.parameters(), self.args.max_grad_norm)
+    self.optimizer.step()   #只有用了optimizer.step()，模型才会更新
+    return value_loss.item(), action_loss.item(), dist_entropy.item()
+</code></pre>
+</li>
+<li><p>总结</p>
+<ul>
+<li>没有完全打乱顺序（相邻5个之间是有时间相关性的）</li>
+<li>n_steps = 5</li>
+<li>没有使用GAE的计算方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="ppo训练流程"><a href="#ppo训练流程" class="headerlink" title="ppo训练流程"></a>ppo训练流程</h4><ul>
+<li>通过ppo.init()函数进行初始化<ul>
+<li>初始化两个网络</li>
+<li>优化器使用optim.Adam</li>
+<li>初始化self.batch_obs_shape的为(1024,84,84,4) 128*8 = 1024</li>
+<li>初始化self.obs初始化为envs.reset()得到的(8,84,84,4)的矩阵</li>
+<li>初始化dones为长度为8的全为false的列表</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-python">class ppo_agent:
+    def __init__(self, envs, args):
+        self.envs = envs 
+        self.args = args
+        # start to build the network.
+        if self.args.env_type == &#39;atari&#39;:
+            self.net = cnn_net(envs.action_space.n)
+        elif self.args.env_type == &#39;mujoco&#39;:
+            self.net = mlp_net(envs.observation_space.shape[0], envs.action_space.shape[0], self.args.dist)
+        self.old_net = copy.deepcopy(self.net)#两份网络
+        # if use the cuda...
+        if self.args.cuda:
+            self.net.cuda()
+            self.old_net.cuda()
+        # define the optimizer...
+        self.optimizer = optim.Adam(self.net.parameters(), self.args.lr, eps=self.args.eps)
+        # running filter...
+        if self.args.env_type == &#39;mujoco&#39;:
+            num_states = self.envs.observation_space.shape[0]
+            self.running_state = ZFilter((num_states, ), clip=5)
+        # check saving folder..
+        if not os.path.exists(self.args.save_dir):
+            os.mkdir(self.args.save_dir)
+        # env folder..
+        self.model_path = os.path.join(self.args.save_dir, self.args.env_name)
+        if not os.path.exists(self.model_path):
+            os.mkdir(self.model_path)
+        # get the observation
+        self.batch_ob_shape = (self.args.num_workers * self.args.nsteps, ) + self.envs.observation_space.shape#nsteps=128，num_workers=8
+        # print(np.array(self.batch_ob_shape).shape)#(4,)
+        # print(self.batch_ob_shape)#(256, 84, 84, 4)
+        #(1024,84,84,4)
+        self.obs = np.zeros((self.args.num_workers, ) + self.envs.observation_space.shape, dtype=self.envs.observation_space.dtype.name)
+        if self.args.env_type == &#39;mujoco&#39;:
+            self.obs[:] = np.expand_dims(self.running_state(self.envs.reset()), 0)
+        else:
+            self.obs[:] = self.envs.reset()
+        self.dones = [False for _ in range(self.args.num_workers)]#初始化dones信息
+</code></pre>
+<ul>
+<li><p>调用learn函数，更新次数为self.args.total_frames // (self.args.nsteps * self.args.num_workers)  （20000000//(1024)）</p>
+<ul>
+<li>得到数据的方式为agent与8个环境同步进行交互，每个环境走128步，得到数据为<ul>
+<li>mb_obs:(128,8,84,84,4)</li>
+<li>mb_actions:(128,8)</li>
+<li>mb_dones:(128,8)</li>
+<li>mb_reward:(128,8)</li>
+</ul>
+</li>
+<li>执行128步，每步计算8个环境的GAE值用于计算policy loss</li>
+<li>通过mb_rewards与mb_dones计算return用于计算value loss</li>
+<li>对(128,8）数据进行交换轴的操作，变为(8，128)使得每128个相邻样本之间具有时间相关性</li>
+<li>将数据进行flatten，得到<ul>
+<li>mb_obs:(1024,84,84,4)</li>
+<li>mb_actions:(1024，)</li>
+<li>mb_advs:(1024，)</li>
+<li>mb_returns:(1024，)</li>
+</ul>
+</li>
+<li>旧网络更新参数</li>
+<li>调用_update_network</li>
+</ul>
+<pre><code class="lang-python"># start to train the network...
+    def learn(self):
+        num_updates = self.args.total_frames // (self.args.nsteps * self.args.num_workers)#20000000//(1024)
+        # get the reward to calculate other informations
+        episode_rewards = np.zeros((self.args.num_workers, ), dtype=np.float32)#(16,)
+        final_rewards = np.zeros((self.args.num_workers, ), dtype=np.float32)#(16,)
+        for update in range(num_updates):
+            mb_obs, mb_rewards, mb_actions, mb_dones, mb_values = [], [], [], [], []
+            if self.args.lr_decay:
+                self._adjust_learning_rate(update, num_updates)#学习率递减
+            for step in range(self.args.nsteps):#128步
+                with torch.no_grad():
+                    # get tensors
+                    obs_tensor = self._get_tensors(self.obs)
+                    values, pis = self.net(obs_tensor)
+                # select actions
+                actions = select_actions(pis, self.args.dist, self.args.env_type)
+                if self.args.env_type == &#39;atari&#39;:
+                    input_actions = actions 
+                else:
+                    if self.args.dist == &#39;gauss&#39;:
+                        input_actions = actions.copy()
+                    elif self.args.dist == &#39;beta&#39;:
+                        input_actions = -1 + 2 * actions
+                # start to store information
+                mb_obs.append(np.copy(self.obs))
+                mb_actions.append(actions)
+                mb_dones.append(self.dones)
+                mb_values.append(values.detach().cpu().numpy().squeeze())
+                # start to excute the actions in the environment
+                obs, rewards, dones, _ = self.envs.step(input_actions)
+                # update dones
+                if self.args.env_type == &#39;mujoco&#39;:
+                    dones = np.array([dones])
+                    rewards = np.array([rewards])
+                self.dones = dones
+                mb_rewards.append(rewards)
+                # clear the observation
+                for n, done in enumerate(dones):
+                    if done:
+                        self.obs[n] = self.obs[n] * 0
+                        if self.args.env_type == &#39;mujoco&#39;:
+                            # reset the environment
+                            obs = self.envs.reset()
+                self.obs = obs if self.args.env_type == &#39;atari&#39; else np.expand_dims(self.running_state(obs), 0)
+                # process the rewards part -- display the rewards on the screen
+                episode_rewards += rewards
+                masks = np.array([0.0 if done_ else 1.0 for done_ in dones], dtype=np.float32)
+                final_rewards *= masks
+                final_rewards += (1 - masks) * episode_rewards
+                episode_rewards *= masks
+            # process the rollouts
+            mb_obs = np.asarray(mb_obs, dtype=np.float32)
+            mb_rewards = np.asarray(mb_rewards, dtype=np.float32)
+            mb_actions = np.asarray(mb_actions, dtype=np.float32)
+            mb_dones = np.asarray(mb_dones, dtype=np.bool)
+            mb_values = np.asarray(mb_values, dtype=np.float32)
+            if self.args.env_type == &#39;mujoco&#39;:
+                mb_values = np.expand_dims(mb_values, 1)
+            # compute the last state value
+            with torch.no_grad():
+                obs_tensor = self._get_tensors(self.obs)
+                last_values, _ = self.net(obs_tensor)
+                last_values = last_values.detach().cpu().numpy().squeeze()
+            # start to compute advantages...
+            mb_returns = np.zeros_like(mb_rewards)
+            mb_advs = np.zeros_like(mb_rewards)
+            lastgaelam = 0
+            print(mb_rewards.shape)
+            for t in reversed(range(self.args.nsteps)):
+                if t == self.args.nsteps - 1:
+                    nextnonterminal = 1.0 - self.dones
+                    nextvalues = last_values
+                else:
+                    nextnonterminal = 1.0 - mb_dones[t + 1]
+                    nextvalues = mb_values[t + 1]
+                delta = mb_rewards[t] + self.args.gamma * nextvalues * nextnonterminal - mb_values[t]
+                mb_advs[t] = lastgaelam = delta + self.args.gamma * self.args.tau * nextnonterminal * lastgaelam
+                # print(mb_advs.shape)#(128,2)
+            mb_returns = mb_advs + mb_values
+            # after compute the returns, let&#39;s process the rollouts
+            mb_obs = mb_obs.swapaxes(0, 1).reshape(self.batch_ob_shape)
+            if self.args.env_type == &#39;atari&#39;:
+                mb_actions = mb_actions.swapaxes(0, 1).flatten()
+            mb_returns = mb_returns.swapaxes(0, 1).flatten()
+            mb_advs = mb_advs.swapaxes(0, 1).flatten()
+            # before update the network, the old network will try to load the weights
+            self.old_net.load_state_dict(self.net.state_dict())
+            # start to update the network
+            pl, vl, ent = self._update_network(mb_obs, mb_actions, mb_returns, mb_advs)
+            # display the training information
+            if update % self.args.display_interval == 0:
+                print(&#39;[{}] Update: {} / {}, Frames: {}, Rewards: {:.3f}, Min: {:.3f}, Max: {:.3f}, PL: {:.3f},&#39;\
+                    &#39;VL: {:.3f}, Ent: {:.3f}&#39;.format(datetime.now(), update, num_updates, (update + 1)*self.args.nsteps*self.args.num_workers, \
+                    final_rewards.mean(), final_rewards.min(), final_rewards.max(), pl, vl, ent))
+                # save the model
+                if self.args.env_type == &#39;atari&#39;:
+                    torch.save(self.net.state_dict(), self.model_path + &#39;/model.pt&#39;)
+                else:
+                    # for the mujoco, we also need to keep the running mean filter!
+                    torch.save([self.net.state_dict(), self.running_state], self.model_path + &#39;/model.pt&#39;)
+</code></pre>
+</li>
+<li><p><img src="/2019/07/06/Atari-a2c/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200717153733120.png" alt="image-20200717153733120"></p>
+</li>
+<li><p>将1024个数据放到update_network函数进行更新</p>
+<ul>
+<li>对于1024个数据训练4次</li>
+<li>每次都将1024的索引数字进行打乱</li>
+<li>将打乱后的1024数据分为4份，每份256个数据，将每份分别输入到新，旧网络中得到values(计算value loss),pis(计算概率比),old_pis（计算概率比）</li>
+<li>计算value_loss policy_loss total_loss </li>
+<li>梯度回传，更新参数</li>
+</ul>
+<pre><code class="lang-python"> # update the network
+    def _update_network(self, obs, actions, returns, advantages):
+        inds = np.arange(obs.shape[0])
+        # print(obs.shape[0])#是num_workers*n_steps
+        nbatch_train = obs.shape[0] // self.args.batch_size
+        #在这里batch_size = 4 nbatch_train=256
+        for _ in range(self.args.epoch):#4
+            np.random.shuffle(inds)
+            for start in range(0, obs.shape[0], nbatch_train):
+                #从0到1024 每次增加256,start就是0,256,512,768,1024
+                # print(start)
+                # get the mini-batchs
+                end = start + nbatch_train#
+                # print(end) end =64,128,192,256
+                mbinds = inds[start:end]#取得中间的256个数据
+                # print(mbinds)#完全混乱的256个索引
+                mb_obs = obs[mbinds]
+                mb_actions = actions[mbinds]
+                mb_returns = returns[mbinds]
+                mb_advs = advantages[mbinds]
+                # convert minibatches to tensor
+                mb_obs = self._get_tensors(mb_obs)
+                mb_actions = torch.tensor(mb_actions, dtype=torch.float32)
+                mb_returns = torch.tensor(mb_returns, dtype=torch.float32).unsqueeze(1)
+                mb_advs = torch.tensor(mb_advs, dtype=torch.float32).unsqueeze(1)
+                # normalize adv
+                mb_advs = (mb_advs - mb_advs.mean()) / (mb_advs.std() + 1e-8)
+                #对advs进行归一化处理
+                if self.args.cuda:
+                    mb_actions = mb_actions.cuda()
+                    mb_returns = mb_returns.cuda()
+                    mb_advs = mb_advs.cuda()
+                # start to get values
+                mb_values, pis = self.net(mb_obs)#得到mb_values
+                # print(mb_values.shape)#64
+                # start to calculate the value loss...
+                value_loss = (mb_returns - mb_values).pow(2).mean()
+                #returns用来计算value_loss
+                # start to calculate the policy loss
+                with torch.no_grad():
+                    _, old_pis = self.old_net(mb_obs)#得到旧的概率
+                    # get the old log probs
+                    old_log_prob, _ = evaluate_actions(old_pis, mb_actions, self.args.dist, self.args.env_type)
+                    old_log_prob = old_log_prob.detach()
+                # evaluate the current policy
+                log_prob, ent_loss = evaluate_actions(pis, mb_actions, self.args.dist, self.args.env_type)#新的概率
+                prob_ratio = torch.exp(log_prob - old_log_prob)#新比旧
+                # surr1
+                surr1 = prob_ratio * mb_advs
+                surr2 = torch.clamp(prob_ratio, 1 - self.args.clip, 1 + self.args.clip) * mb_advs#advs用来求policy loss
+                policy_loss = -torch.min(surr1, surr2).mean()
+                # final total loss
+                total_loss = policy_loss + self.args.vloss_coef * value_loss - ent_loss * self.args.ent_coef
+                # clear the grad buffer
+                self.optimizer.zero_grad()
+                total_loss.backward()
+                torch.nn.utils.clip_grad_norm_(self.net.parameters(), self.args.max_grad_norm)
+                # update
+                self.optimizer.step()
+        return policy_loss.item(), value_loss.item(), ent_loss.item()
+</code></pre>
+</li>
+<li><p>总结</p>
+<ul>
+<li>n_steps = 128</li>
+<li>使用GAE的计算方法</li>
+<li>完全打乱顺序（计算完GAE的值再打乱）</li>
+</ul>
+</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>Aatri_A3C_A2c</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-07-06, 21:25:01</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-31, 11:39:19</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/06/Atari-a2c/" title="Aatri_A3C_A2c">http://rock-blog.top/2019/07/06/Atari-a2c/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'e78b4c19bc08850d88df',
+            clientSecret: '308b55a6d580ee7a819af0f950b3188be697ae29',
+            repo: 'guobaoyo.github.io',
+            owner: 'guobaoyo',
+            admin: ['guobaoyo'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Rock&#39;s  blog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#编程','#AI','#数学','#三省吾身','#深度学习','#CV','#python','#强化学习','#go','#技术小结','#leetcode','#考研','#组会报告','#NLP',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

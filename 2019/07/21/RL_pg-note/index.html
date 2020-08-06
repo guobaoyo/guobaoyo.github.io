@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>pg_note | Rock-Blog</title>
+  <meta name="keywords" content=" AI , 深度学习 , 强化学习 ">
+  <meta name="description" content="pg_note | Rock-Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta name="keywords" content="python,技术小结,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer10">
+<meta property="og:url" content="http://rock-blog.top/2020/07/10/sword-offer10/index.html">
+<meta property="og:site_name" content="Rock-Blog">
+<meta property="og:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-12T23:22:19.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指offer10">
+<meta name="twitter:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>Rock</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/guobaoyo" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:1415500736@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=1415500736&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=280020740" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(39)</small></div></li>
+    
+        
+            
+            <li><div data-rel="强化学习">强化学习<small>(12)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="AI">AI<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="编程">编程<small>(13)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数学">数学<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="组会报告">组会报告<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="39">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="http://zivblog.top">王金锋</a></li>
+            
+            <li><a target="_blank" href="http://yearing1017.cn/">进哥</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="以 in: 开头进行全文搜索" autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none">
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">AI</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">数学</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">三省吾身</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">深度学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">python</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">强化学习</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">go</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小结</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">考研</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">组会报告</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">NLP</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="编程,AI,数学" data-author>
+            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
+            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="AI,数学,三省吾身" data-author>
+            <span class="post-title" title="20190708日记">20190708日记</span>
+            <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
+        </a>
+        
+        <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
+            <span class="post-title" title="DLwords">DLwords</span>
+            <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
+            <span class="post-title" title="RLTF">RLTF</span>
+            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/RL_A3C_A2C_note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="A3C_note">A3C_note</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/08/02/RL-PPO-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="pg_note">pg_note</span>
+            <span class="post-date" title="2020-08-02 21:25:01">2020/08/02</span>
+        </a>
+        
+        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/26/RL_AC-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="ac_note">ac_note</span>
+            <span class="post-date" title="2019-07-26 21:25:01">2019/07/26</span>
+        </a>
+        
+        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class href="/2020/06/05/lgb-note/" data-tag="编程,AI,python" data-author>
+            <span class="post-title" title="lgb_note">lgb_note</span>
+            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/12/atari-env-note/" data-tag="编程,深度学习,强化学习" data-author>
+            <span class="post-title" title="Atari游戏环境笔记">Atari游戏环境笔记</span>
+            <span class="post-date" title="2020-07-12 10:00:12">2020/07/12</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/pytorch-note/" data-tag="AI,python,技术小结" data-author>
+            <span class="post-title" title="pytorch_note">pytorch_note</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/06/rl-questions/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="RL_questions">RL_questions</span>
+            <span class="post-date" title="2020-07-06 21:25:01">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/07/sword-offer06/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer06">剑指offer06</span>
+            <span class="post-date" title="2020-07-07 20:19:39">2020/07/07</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/06/sword-offer05/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer05">剑指offer05</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/08/sword-offer07/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer07">剑指offer07</span>
+            <span class="post-date" title="2020-07-08 20:19:39">2020/07/08</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/06/sword-offer04/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer04">剑指offer04</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/09/sword-offer09/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer09">剑指offer09</span>
+            <span class="post-date" title="2020-07-09 20:19:39">2020/07/09</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer10/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer11/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="编程,python,技术小结" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/19/动态规划/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-19 20:19:39">2020/07/19</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="编程,AI,强化学习" data-author>
+            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
+            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/19/dpg-ddpg/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A2c&amp;ppo">Aatri_A2c&amp;ppo</span>
+            <span class="post-date" title="2019-07-19 21:25:01">2019/07/19</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/04/sword-offer03/" data-tag="python,技术小结,leetcode" data-author>
+            <span class="post-title" title="剑指offer03">剑指offer03</span>
+            <span class="post-date" title="2020-07-04 20:19:39">2020/07/04</span>
+        </a>
+        
+        <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="数值计算与凸优化补充笔记">数值计算与凸优化补充笔记</span>
+            <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A3c">Aatri_A3c</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="AI,三省吾身" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
+        </a>
+        
+        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="编程,数学,python" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
+        </a>
+        
+        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
+            <span class="post-title" title="考研历程反思总结">考研历程反思总结</span>
+            <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
+        </a>
+        
+        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
+        </a>
+        
+        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="AI,三省吾身,NLP" data-author>
+            <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
+            <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/21/RL_pg-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="pg_note">pg_note</span>
+            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/06/Atari-a2c/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A3C_A2c">Aatri_A3C_A2c</span>
+            <span class="post-date" title="2019-07-06 21:25:01">2019/07/06</span>
+        </a>
+        
+        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
+            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-RL_pg-note" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">pg_note</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="强化学习">强化学习</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color3">AI</a>
+            
+            <a href="javascript:" class="color5">深度学习</a>
+            
+            <a href="javascript:" class="color5">强化学习</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2020-07-31 10:42:04">2019-07-21 21:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PG-Policy-Gradient"><span class="toc-text">PG(Policy Gradient )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#交互流程"><span class="toc-text">交互流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#策略梯度算法思路"><span class="toc-text">策略梯度算法思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#策略梯度算法公式推导过程"><span class="toc-text">策略梯度算法公式推导过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#策略梯度法的改进"><span class="toc-text">策略梯度法的改进</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#改进一、合适的权值"><span class="toc-text">改进一、合适的权值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改进二、添加折扣因子"><span class="toc-text">改进二、添加折扣因子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改进三、添加偏置值（基线baseline）"><span class="toc-text">改进三、添加偏置值（基线baseline）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于值函数方法的局限性"><span class="toc-text">基于值函数方法的局限性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结：policy-based的优缺点？"><span class="toc-text">总结：policy-based的优缺点？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#policy-based和value-based算法的主要区别是什么？"><span class="toc-text">policy-based和value-based算法的主要区别是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#英文算法流程图"><span class="toc-text">英文算法流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问：如果目标函数不可导怎么办？"><span class="toc-text">问：如果目标函数不可导怎么办？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？"><span class="toc-text">问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要为pg的算法总结</p>
+<a id="more"></a>
+<h2 id="PG-Policy-Gradient"><a href="#PG-Policy-Gradient" class="headerlink" title="PG(Policy Gradient )"></a>PG(Policy Gradient )</h2><h4 id="交互流程"><a href="#交互流程" class="headerlink" title="交互流程"></a>交互流程</h4><p><img src="/2019/07/21/RL_pg-note/D:/rockblog\source\rockblog\source\_posts\pg-ac\8.png" alt></p>
+<p>如图所示策略梯度算法的输入是从游戏环境得来的图像，将图像输入到神经网络中，会得到相应的动作概率分布，从图中所示为上这个动作概率为0.1，以0.7的概率执行下这个动作，按照概率采样动作后将该动作输入到游戏环境中，会得到新的状态，奖励值，游戏是否结束信息，再将更新后的游戏状态输入到神经网络中，如此循环往复。</p>
+<h4 id="策略梯度算法思路"><a href="#策略梯度算法思路" class="headerlink" title="策略梯度算法思路"></a>策略梯度算法思路</h4><p>在目标函数与策略函数具有良好的求导性质的前提下，求出价值函数（目标函数）对策略$\theta$的梯度，通过梯度上升的方法，更新策略参数$\theta$，且强化学习的目的是得到最后能使目标函数最大化的策略$\pi^*$</p>
+<script type="math/tex; mode=display">
+\pi^{*}=\operatorname{argmax}_{\pi} E_{\mathbf{\tau} \sim \pi_{\theta}(\mathbf{\tau})}[r(\mathbf{\tau})]</script><p>其中$\tau$表示使用策略进行交互得到的一条轨迹， $r(τ)$表示这条轨迹的总体回报</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\theta}_{t+1} \doteq \boldsymbol{\theta}_{t}+\alpha G_{t} \frac{\nabla \pi\left(A_{t} \mid S_{t}, \boldsymbol{\theta}_{t}\right)}{\pi\left(A_{t} \mid S_{t}, \boldsymbol{\theta}_{t}\right)}</script><h4 id="策略梯度算法公式推导过程"><a href="#策略梯度算法公式推导过程" class="headerlink" title="策略梯度算法公式推导过程"></a>策略梯度算法公式推导过程</h4><p>用J(θ)表示目标函数，并将轨迹的期望展开得到</p>
+<script type="math/tex; mode=display">
+J(\theta)=E_{\mathbf{\tau} \sim \pi_{\theta}(\mathbf{\tau})}[r(\mathbf{\tau})]=\int_{\mathbf{\tau} \sim \pi_{\theta}(\tau)} \pi_{\theta}(\mathbf{\tau}) r(\mathbf{\tau}) \mathrm{d} \mathbf{\tau}</script><p>下面对公式进行求导，由于策略函数通常是定义良好的函数，故求导运算可以和积分运算互换</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\int_{\tau \sim \pi_{\theta}(\tau)} \nabla_{\theta} \pi_{\theta}(\tau) r(\tau) \mathrm{d} \tau</script><p>有如下技巧可以替换</p>
+<script type="math/tex; mode=display">
+\nabla_{x} \log y=\frac{1}{y} \nabla_{x} y \quad y \nabla_{x} \log y=\nabla_{x} y</script><script type="math/tex; mode=display">
+\nabla_{\theta} \pi_{\theta}(\tau)=\pi_{\theta}(\tau) \nabla_{\theta} \log \pi_{\theta}(\tau)</script><p>带回原式得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\nabla_{\theta} J(\theta)=& \int_{\tau \sim \pi_{\theta}(\tau)} \pi_{\theta}(\tau) \nabla_{\theta} \log \pi_{\theta}(\tau) r(\tau) \mathrm{d} \tau \\
+&=E_{\tau \sim \pi_{\theta}(\tau)}\left[\nabla_{\theta} \log \pi_{\theta}(\tau) r(\tau)\right]
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\pi(\mathbf{\tau}) &=\pi\left(\mathbf{s}_{0}, \mathbf{d}_{0}, \cdots, \mathbf{s}_{T}, \mathbf{a}_{T}\right) \\
+&=p\left(s_{0}\right) \prod_{t=0}^{T} \pi_{\theta}\left(a_{t} \mid s_{t}\right) p\left(s_{t+1} \mid s_{t}, a_{t}\right)
+\end{aligned}</script><p>对其进行求导得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\nabla_{\theta} \log \pi(\tau) &=\nabla_{\theta} \log \left[p\left(s_{0}\right) \prod_{t=0}^{T} \pi_{\theta}\left(a_{t} \mid s_{t}\right) p\left(s_{t+1} \mid s_{t}, a_{t}\right)\right] \\
+&=\nabla_{\theta}\left[\log p\left(s_{0}\right)+\sum_{t=0}^{T} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)+\sum_{t=0}^{T} \log p\left(s_{t+1} \mid s_{t}, a_{t}\right)\right] \\
+&=\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)
+\end{aligned}</script><p>将公式中的期望用蒙特卡罗近似的方式进行替换，整理得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\nabla_{\theta} J(\theta) &=E_{\tau \sim \pi_{\theta}(\tau)}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=0}^{T} r\left(s_{i, t}, a_{i, t}\right)\right] \\
+&=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=0}^{T} r\left(s_{i, t}, a_{i, t}\right)\right]
+\end{aligned}</script><h4 id="策略梯度法的改进"><a href="#策略梯度法的改进" class="headerlink" title="策略梯度法的改进"></a>策略梯度法的改进</h4><h5 id="改进一、合适的权值"><a href="#改进一、合适的权值" class="headerlink" title="改进一、合适的权值"></a>改进一、合适的权值</h5><p>初步的策略梯度公式为</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} \sum_{t=0}^{T-1} \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)
+R\left(\tau_{i}\right)</script><p>其中$R\left(\tau_{i}\right)$是整个序列的总回报奖励值</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t=0}^{T} r\left(s_{i, t}, a_{i, t}\right)\right] \\
+\end{array}</script><p>无论哪个时间段，都要用策略的梯度乘以所有时刻的回报值总和是不合理的，因为在t时刻做出决策后只能影响t时刻之后的所有回报，所以应该将式子改为如下形式：</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right) \sum_{t'=t}^{T} r\left(s_{i, t'}, a_{i, t'}\right)\right]</script><p>例如下图第一行为改变之前的计算方式，将整个序列的总回报值作为每个动作的权重值，而第二行的权重计算方法是在某一时刻以后的reward的和作为该动作的权重值</p>
+<p><img src="/2019/07/21/RL_pg-note/pg-ac/3.png" alt></p>
+<p>如左上图所示，在做改进之前对于所有的动作所对应的G值都是G都为3，而改进后计算的是执行该动作后所得的奖励值分别为3,-2,-2。</p>
+<h5 id="改进二、添加折扣因子"><a href="#改进二、添加折扣因子" class="headerlink" title="改进二、添加折扣因子"></a>改进二、添加折扣因子</h5><p>按照上述公式计算该序列的总回报奖励是有待改进的，改进点是添加折扣因子，其目的是有两个，一是在没有终止状态的游戏环境中，如果不用折扣因子会使得回报值G趋近于无穷大，而添加折扣因子后，使得回报值G有界。添加折扣因子的第二种理解角度是，对于同等数量奖励值，添加(0,1)的$\gamma$可以更看重近期奖励。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right)\left(\sum_{t^{\prime}=t}^{T} r\left(s_{i, t^{\prime}}, a_{i, t^{\prime}}\right)\right)\right] \\
+\nabla_{\theta} J(\theta)=\frac{1}{N} \sum_{i=1}^{N}\left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}\left(a_{i, t} \mid s_{i, t}\right)\left(\sum_{t^{\prime}=t}^{T} \gamma^{t^{\prime}-t} r\left(s_{i, t^{\prime}}, a_{i, t^{\prime}}\right)\right)\right] \\
+\end{array}</script><h5 id="改进三、添加偏置值（基线baseline）"><a href="#改进三、添加偏置值（基线baseline）" class="headerlink" title="改进三、添加偏置值（基线baseline）"></a>改进三、添加偏置值（基线baseline）</h5><p>存在的问题：不论决策如何，最终的长期回报值都为正，即我们增强所有策略（对实际效果不好的策略的提升程度有所降低）是不合理的，应该降低不好的行动的概率，而不是轻微提升不好的行动的概率。所以应给所有时刻的长期累计回报减去一个偏移量，用b表示“baseline”</p>
+<p>初始公式</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta}}[R]=\mathbb{E}_{\tau}\left[\sum_{t=0}^{T-1} G_{t} \cdot \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\right]</script><p>添加baseline</p>
+<script type="math/tex; mode=display">
+\nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta}}[R]=\mathbb{E}_{\tau}\left[\sum_{t=0}^{T-1}\left(G_{t}-b\left(s_{t}\right)\right) \cdot \nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\right]</script><p>其中baseline的计算方法为</p>
+<script type="math/tex; mode=display">
+b\left(s_{t}\right)=\mathbb{E}\left[r_{t}+r_{t+1}+\ldots+r_{T-1}\right]</script><p>关于baseline的性质如下</p>
+<ul>
+<li>期望为0，不改变原来公式的期望值</li>
+<li>减小方差，提高算法稳定性</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb{E}_{\tau}\left[\nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right) b\left(s_{t}\right)\right] &=0 \\
+E_{\tau}\left[\nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\left(G_{t}-b\left(s_{t}\right)\right)\right] &=E_{\tau}\left[\nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right) G_{t}\right] \\
+\operatorname{Var}_{\tau}\left[\nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right)\left(G_{t}-b\left(s_{t}\right)\right)\right] &<\operatorname{Var}_{\tau}\left[\nabla_{\theta} \log \pi_{\theta}\left(a_{t} \mid s_{t}\right) G_{t}\right]
+\end{aligned}</script><p><img src="/2019/07/21/RL_pg-note/D:/rockblog\source\rockblog\source\_posts\pg-ac\9.png" alt></p>
+<p>sutton书中直接说明baseline的取值方法可以用$v(S_t,w)$，所以在”REINFORCE with baseline”中使用第二套网络对状态进行估值得到状态的价值函数。</p>
+<p><img src="/2019/07/21/RL_pg-note/D:/rockblog\source\rockblog\source\_posts\pg-ac\11.png" alt></p>
+<h4 id="基于值函数方法的局限性"><a href="#基于值函数方法的局限性" class="headerlink" title="基于值函数方法的局限性"></a>基于值函数方法的局限性</h4><p>基于值函数的方法主要有以下几个局限性</p>
+<ul>
+<li>对连续动作的处理能力较差<ul>
+<li>在基于值函数的算法中，需要先计算出下一时刻状态下所有动作的价值，并从中选出最优的行动价值，如果动作数量是有限的，这是可行的，而如果动作空间连续，无法进行这种计算和选择。</li>
+<li>策略梯度法直接对轨迹的价值期望求导，不需要进行最优行动的选择，因此连续型动作空间的问题可以使用策略梯度算法求解。</li>
+</ul>
+</li>
+<li>通常不好解决随机策略问题<ul>
+<li>基于值函数的强化学习方法对应的最优策略通常是确定性策略，因为其是从众多行为价值中选择一个最大价值的行为，而有些问题的最优策略却是随机策略。</li>
+<li>以走迷宫为例，智能体无法区分迷宫中的灰色格子，只能对灰色格子产生一种策略（都向左走或者都向右走）这种确定性策略会导致智能体卡在图中的某个灰色格子中。</li>
+<li><img src="/2019/07/21/RL_pg-note/pg-ac/1.png" alt></li>
+</ul>
+</li>
+</ul>
+<h4 id="总结：policy-based的优缺点？"><a href="#总结：policy-based的优缺点？" class="headerlink" title="总结：policy-based的优缺点？"></a>总结：policy-based的优缺点？</h4><p>答：<a href="https://www.bilibili.com/video/BV1fZ4y1x7mp?from=search&amp;seid=2347657740900666455" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1fZ4y1x7mp?from=search&amp;seid=2347657740900666455</a></p>
+<ul>
+<li>优点为<ul>
+<li>无论数据的多少，我们都会得到一个策略函数（数据的多少决定是全局最优还是局部最优）</li>
+<li>在高维的动作空间更有效（相比于value-based方法不需要输出非常多的动作个数的神经元，只是输出概率分布即可）</li>
+<li>学得的是随机策略在某些情况下会比确定性策略更有效（可以举迷宫的例子）</li>
+<li>从表达形式可以看出策略梯度的核心思想是求得目标函数对于策略$\theta$的导数，而目标函数可以写为关于状态的价值函数，一个episode的总奖励值等，通过梯度上升的方法迭代求出目标函数的极大值。</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>收敛到局部最优解</li>
+<li>方差较大（reward波动非常大）</li>
+</ul>
+</li>
+</ul>
+<h4 id="policy-based和value-based算法的主要区别是什么？"><a href="#policy-based和value-based算法的主要区别是什么？" class="headerlink" title="policy-based和value-based算法的主要区别是什么？"></a>policy-based和value-based算法的主要区别是什么？</h4><ul>
+<li>神经网络输出（或者说学的东西）不一样<ul>
+<li>value-based算法输出的是各个动作的Q值（学的是价值函数，通过价值函数得到策略 ）</li>
+<li>policy-based输出的是动作的概率分布（不学价值函数，直接学策略）</li>
+</ul>
+</li>
+</ul>
+<h4 id="英文算法流程图"><a href="#英文算法流程图" class="headerlink" title="英文算法流程图"></a>英文算法流程图</h4><p><img src="/2019/07/21/RL_pg-note/pg-ac/6.png" alt></p>
+<p><img src="/2019/07/21/RL_pg-note/D:/rockblog\source\rockblog\source\_posts\pg-ac\7.png" alt>以下为补充知识点：</p>
+<h4 id="问：如果目标函数不可导怎么办？"><a href="#问：如果目标函数不可导怎么办？" class="headerlink" title="问：如果目标函数不可导怎么办？"></a>问：如果目标函数不可导怎么办？</h4><ul>
+<li><p>可以用cross entropy method或者finite difference的方法求解</p>
+<ul>
+<li><p><img src="/2019/07/21/RL_pg-note/rl-questions/14.png" alt></p>
+</li>
+<li><p>简而言之意思就是先从最原始的策略的概率分布$\theta$采样出100组参数，用100组参数与环境交互得到100个目标函数，根据这100个目标函数排序得到前10组参数，利用10组参数对原先的策略参数$\theta$进行更新，后面就反复循环</p>
+</li>
+<li><p>finite difference的目的是使用如下方法去求得梯度的近似解</p>
+<script type="math/tex; mode=display">
+\frac{\partial J(\theta)}{\partial \theta_{k}} \approx \frac{J\left(\theta+\epsilon u_{k}\right)-J(\theta)}{\epsilon}</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？"><a href="#问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？" class="headerlink" title="问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？"></a>问：AC算法有哪些不同形式？为什么critic那里也需要计算TD-error？</h4><p>答：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\nabla_{\theta} J(\theta) &=\mathbb{E}_{\pi_{\theta}}\left[\nabla_{\theta} \log \pi_{\theta}(s, a) G_{t}\right]-\text { REINFORCE } \\&=\mathbb{E}_{\pi_{\theta}}\left[\nabla_{\theta} \log \pi_{\theta}(s, a) Q^{w}(s, a)\right]-\text { Q Actor-Critic } \\&=\mathbb{E}_{\pi_{\theta}}\left[\nabla_{\theta} \log \pi_{\theta}(s, a) A^{\mathrm{w}}(s, a)\right]-\text { Advantage Actor-Critic } \\&=\mathbb{E}_{\pi_{\theta}}\left[\nabla_{\theta} \log \pi_{\theta}(s, a) \delta\right]-\text { TD Actor-Critic }\end{aligned}</script><p><img src="/2019/07/21/RL_pg-note/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic7.png" alt></p>
+<script type="math/tex; mode=display">
+\mathbf{w} \leftarrow \mathbf{w}+\alpha^{\mathbf{w}} \delta \nabla \hat{v}(S, \mathbf{w})</script><p>答：该公式最早是从sutton书中201页的Stochastic-gradient and Semi-gradient Methods 讲到的，在这里w是critic的网络参数，那么其目的是使得下式中的$\hat{v}(S_{t},w_t)$越接近$v_\pi(S_t)$越好（在这里$v_\pi(S_t)$是所谓的“标答”），也就是$v_{\pi}(S_{t})-\hat{v}(S_{t})$越小越好，所以将$v_{\pi}(S_{t})-\hat{v}(S_{t})$对w求梯度，在更新w时采用梯度下降的方法如下式所示，而与sutton书中不同的地方有两点，其一是学习率用指数次方的形式去表示这样可以达到学习率递减的效果，其二是将标答换为<script type="math/tex">R+\gamma \hat{v}\left(S^{\prime}, \mathbf{w}\right)</script> 即以实际走出一步得到reward奖励+一步之后的折扣评估值作为标答，即可推出w的更新公式，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbf{w}_{t+1} & \doteq \mathbf{w}_{t}-\frac{1}{2} \alpha \nabla\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right]^{2} \\
+&=\mathbf{w}_{t}+\alpha\left[v_{\pi}\left(S_{t}\right)-\hat{v}\left(S_{t}, \mathbf{w}_{t}\right)\right] \nabla \hat{v}\left(S_{t}, \mathbf{w}_{t}\right)
+\end{aligned}</script><p>且在DQN里面也有相关体现<img src="/2019/07/21/RL_pg-note/D:/rockblog/source/rockblog/source/_posts/Atari-a3c/pic12.png" alt></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>pg_note</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-07-21, 21:25:01</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-31, 10:42:04</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/07/21/RL_pg-note/" title="pg_note">http://rock-blog.top/2019/07/21/RL_pg-note/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: 'e78b4c19bc08850d88df',
+            clientSecret: '308b55a6d580ee7a819af0f950b3188be697ae29',
+            repo: 'guobaoyo.github.io',
+            owner: 'guobaoyo',
+            admin: ['guobaoyo'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Rock&#39;s  blog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1"></script>
+
+<script src="/js/script.js?v=1.0.1"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#编程','#AI','#数学','#三省吾身','#深度学习','#CV','#python','#强化学习','#go','#技术小结','#leetcode','#考研','#组会报告','#NLP',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #c1bfc1;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
