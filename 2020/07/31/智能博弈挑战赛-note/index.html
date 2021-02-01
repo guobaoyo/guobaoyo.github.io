@@ -2,22 +2,30 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>Aatri_A3c | Rock-Blog</title>
+  <title>智能博弈挑战赛 | Rock-Blog</title>
   <meta name="keywords" content=" AI , 深度学习 , 强化学习 ">
-  <meta name="description" content="Aatri_A3c | Rock-Blog">
+  <meta name="description" content="智能博弈挑战赛 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
-<meta name="keywords" content="python,技术小结,leetcode">
+<meta name="description" content="主要为TRPO基本算法介绍和PPO的算法总结">
+<meta name="keywords" content="AI,深度学习,强化学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指offer10">
-<meta property="og:url" content="http://rock-blog.top/2020/07/10/sword-offer10/index.html">
+<meta property="og:title" content="pg_note">
+<meta property="og:url" content="http://rock-blog.top/2020/08/02/RL-PPO-note/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta property="og:description" content="主要为TRPO基本算法介绍和PPO的算法总结">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-12T23:22:19.018Z">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803191710538.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803191757577.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803191945922.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803192255260.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803211820422.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803211828154.png">
+<meta property="og:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803212057835.png">
+<meta property="og:updated_time" content="2020-08-03T22:57:21.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指offer10">
-<meta name="twitter:description" content="剑指 Offer 10- I. 斐波那契数列&amp;amp;剑指 Offer 10- II. 青蛙跳台阶问题">
+<meta name="twitter:title" content="pg_note">
+<meta name="twitter:description" content="主要为TRPO基本算法介绍和PPO的算法总结">
+<meta name="twitter:image" content="http://rock-blog.top/2020/08/02/RL-PPO-note/image-20200803191710538.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -110,15 +118,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(39)</small></div></li>
-    
-        
-            
-            <li><div data-rel="强化学习">强化学习<small>(12)</small></div>
-                
-            </li>
-            
-        
+    <li><div class="all active">全部文章<small>(48)</small></div></li>
     
         
             
@@ -130,7 +130,7 @@
     
         
             
-            <li><div data-rel="AI">AI<small>(6)</small></div>
+            <li><div data-rel="AI">AI<small>(7)</small></div>
                 
             </li>
             
@@ -138,7 +138,15 @@
     
         
             
-            <li><div data-rel="编程">编程<small>(13)</small></div>
+            <li><div data-rel="强化学习">强化学习<small>(16)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="编程">编程<small>(17)</small></div>
                 
             </li>
             
@@ -170,7 +178,7 @@
     </div>
     <div><a class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="39">
+<input type="hidden" id="yelog_site_posts_number" value="48">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -209,7 +217,7 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">编程</a>
+        <a href="javascript:" class="color5">三省吾身</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -218,10 +226,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">数学</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">三省吾身</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -241,7 +245,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">go</a>
+        <a href="javascript:" class="color3">编程</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">技术小节</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">leetcode</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -249,7 +261,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">leetcode</a>
+        <a href="javascript:" class="color3">go</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -274,19 +286,9 @@
     
     <nav id="title-list-nav">
         
-        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="编程,AI,数学" data-author>
-            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
-            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
-        </a>
-        
-        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="AI,数学,三省吾身" data-author>
+        <a class="三省吾身 " href="/2019/07/08/20190708日记/" data-tag="三省吾身,AI,数学" data-author>
             <span class="post-title" title="20190708日记">20190708日记</span>
             <span class="post-date" title="2019-07-08 19:43:26">2019/07/08</span>
-        </a>
-        
-        <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
-            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
-            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
         </a>
         
         <a class="三省吾身 " href="/2019/04/29/DLwords/" data-tag="AI,深度学习" data-author>
@@ -294,19 +296,19 @@
             <span class="post-date" title="2019-04-29 19:17:39">2019/04/29</span>
         </a>
         
-        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
-            <span class="post-title" title="RLTF">RLTF</span>
-            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
+        <a class="AI " href="/2019/05/08/DLwithPython/" data-tag="深度学习,CV,python" data-author>
+            <span class="post-title" title="DeepLearning with Python">DeepLearning with Python</span>
+            <span class="post-date" title="2019-05-08 17:54:01">2019/05/08</span>
         </a>
         
-        <a class="强化学习 " href="/2020/07/31/RL_A3C_A2C_note/" data-tag="AI,深度学习,强化学习" data-author>
-            <span class="post-title" title="A3C_note">A3C_note</span>
-            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        <a class="强化学习 " href="/2019/09/10/RL-DP-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="RL_DP">RL_DP</span>
+            <span class="post-date" title="2019-09-10 21:25:01">2019/09/10</span>
         </a>
         
-        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
-            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
-            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        <a class="强化学习 " href="/2020/06/08/A-algorithm/" data-tag="AI,数学,编程" data-author>
+            <span class="post-title" title="A*_algorithm">A*_algorithm</span>
+            <span class="post-date" title="2020-06-08 21:25:01">2020/06/08</span>
         </a>
         
         <a class="强化学习 " href="/2020/08/02/RL-PPO-note/" data-tag="AI,深度学习,强化学习" data-author>
@@ -314,9 +316,64 @@
             <span class="post-date" title="2020-08-02 21:25:01">2020/08/02</span>
         </a>
         
-        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
-            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
-            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
+        <a class="强化学习 " href="/2019/08/20/RL-MP-MRP-MDP-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="RL_MDP">RL_MDP</span>
+            <span class="post-date" title="2019-08-20 21:25:01">2019/08/20</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
+            <span class="post-title" title="RLTF">RLTF</span>
+            <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
+        </a>
+        
+        <a class="AI " href="/20120/09/25/DRL-report/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="DRL_report">DRL_report</span>
+            <span class="post-date" title="20120-09-25 19:17:39">20120/09/25</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/21/RL-basic-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="rl_basic_note">rl_basic_note</span>
+            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/RL_A3C_A2C_note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="A3C_note">A3C_note</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/12/atari-env-note/" data-tag="深度学习,强化学习,编程" data-author>
+            <span class="post-title" title="Atari游戏环境笔记">Atari游戏环境笔记</span>
+            <span class="post-date" title="2020-07-12 10:00:12">2020/07/12</span>
+        </a>
+        
+        <a class="编程 " href="/2020/10/08/docker-base/" data-tag="python,编程,技术小节" data-author>
+            <span class="post-title" title="docker-base">docker-base</span>
+            <span class="post-date" title="2020-10-08 17:54:01">2020/10/08</span>
+        </a>
+        
+        <a class="编程 " href="/2020/09/25/effective-python/" data-tag="python,技术小节" data-author>
+            <span class="post-title" title="effective_python_note">effective_python_note</span>
+            <span class="post-date" title="2020-09-25 19:17:39">2020/09/25</span>
+        </a>
+        
+        <a class="编程 " href="/2021/02/01/hot100/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title></span>
+            <span class="post-date" title="2021-02-01 20:19:39">2021/02/01</span>
+        </a>
+        
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
+        </a>
+        
+        <a class href="/2020/06/05/lgb-note/" data-tag="AI,python,编程" data-author>
+            <span class="post-title" title="lgb_note">lgb_note</span>
+            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
+        </a>
+        
+        <a class="强化学习 " href="/2019/07/21/RL_pg-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="pg_note">pg_note</span>
+            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
         </a>
         
         <a class="强化学习 " href="/2019/07/26/RL_AC-note/" data-tag="AI,深度学习,强化学习" data-author>
@@ -324,19 +381,9 @@
             <span class="post-date" title="2019-07-26 21:25:01">2019/07/26</span>
         </a>
         
-        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
-            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
-            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
-        </a>
-        
-        <a class href="/2020/06/05/lgb-note/" data-tag="编程,AI,python" data-author>
-            <span class="post-title" title="lgb_note">lgb_note</span>
-            <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
-        </a>
-        
-        <a class="强化学习 " href="/2020/07/12/atari-env-note/" data-tag="编程,深度学习,强化学习" data-author>
-            <span class="post-title" title="Atari游戏环境笔记">Atari游戏环境笔记</span>
-            <span class="post-date" title="2020-07-12 10:00:12">2020/07/12</span>
+        <a class="强化学习 " href="/2019/08/05/RL-DDPG-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Aatri_A2c&amp;ppo">Aatri_A2c&amp;ppo</span>
+            <span class="post-date" title="2019-08-05 21:25:01">2019/08/05</span>
         </a>
         
         <a class="AI " href="/2020/06/02/pytorch-note/" data-tag="AI,python,技术小结" data-author>
@@ -344,69 +391,69 @@
             <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
         </a>
         
+        <a class="编程 " href="/2020/07/06/sword-offer05/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer05">剑指offer05</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/06/sword-offer04/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer04">剑指offer04</span>
+            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/04/sword-offer03/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer03">剑指offer03</span>
+            <span class="post-date" title="2020-07-04 20:19:39">2020/07/04</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/07/sword-offer06/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer06">剑指offer06</span>
+            <span class="post-date" title="2020-07-07 20:19:39">2020/07/07</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/09/sword-offer09/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer09">剑指offer09</span>
+            <span class="post-date" title="2020-07-09 20:19:39">2020/07/09</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/08/sword-offer07/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer07">剑指offer07</span>
+            <span class="post-date" title="2020-07-08 20:19:39">2020/07/08</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer10/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="编程 " href="/2020/07/10/sword-offer11/" data-tag="python,leetcode,技术小结" data-author>
+            <span class="post-title" title="剑指offer10">剑指offer10</span>
+            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="AI,强化学习,编程" data-author>
+            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
+            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/10/23/tstar/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="Tstarbots_note">Tstarbots_note</span>
+            <span class="post-date" title="2020-10-23 21:25:01">2020/10/23</span>
+        </a>
+        
+        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,python,编程" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
+        </a>
+        
         <a class="强化学习 " href="/2020/07/06/rl-questions/" data-tag="AI,深度学习,强化学习" data-author>
             <span class="post-title" title="RL_questions">RL_questions</span>
             <span class="post-date" title="2020-07-06 21:25:01">2020/07/06</span>
         </a>
         
-        <a class="编程 " href="/2020/07/07/sword-offer06/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer06">剑指offer06</span>
-            <span class="post-date" title="2020-07-07 20:19:39">2020/07/07</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/06/sword-offer05/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer05">剑指offer05</span>
-            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/08/sword-offer07/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer07">剑指offer07</span>
-            <span class="post-date" title="2020-07-08 20:19:39">2020/07/08</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/06/sword-offer04/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer04">剑指offer04</span>
-            <span class="post-date" title="2020-07-06 20:19:39">2020/07/06</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/09/sword-offer09/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer09">剑指offer09</span>
-            <span class="post-date" title="2020-07-09 20:19:39">2020/07/09</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/10/sword-offer10/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer10">剑指offer10</span>
-            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/10/sword-offer11/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer10">剑指offer10</span>
-            <span class="post-date" title="2020-07-10 20:19:39">2020/07/10</span>
-        </a>
-        
-        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="编程,python,技术小结" data-author>
-            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
-            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/19/动态规划/" data-tag="python,技术小结,leetcode" data-author>
+        <a class="编程 " href="/2020/07/19/动态规划/" data-tag="python,leetcode,技术小结" data-author>
             <span class="post-title" title="剑指offer10">剑指offer10</span>
             <span class="post-date" title="2020-07-19 20:19:39">2020/07/19</span>
-        </a>
-        
-        <a class="强化学习 " href="/2020/06/11/tianshou-a2c-note/" data-tag="编程,AI,强化学习" data-author>
-            <span class="post-title" title="tianshou平台源码阅读笔记">tianshou平台源码阅读笔记</span>
-            <span class="post-date" title="2020-06-11 21:25:01">2020/06/11</span>
-        </a>
-        
-        <a class="强化学习 " href="/2019/07/19/dpg-ddpg/" data-tag="AI,深度学习,强化学习" data-author>
-            <span class="post-title" title="Aatri_A2c&amp;ppo">Aatri_A2c&amp;ppo</span>
-            <span class="post-date" title="2019-07-19 21:25:01">2019/07/19</span>
-        </a>
-        
-        <a class="编程 " href="/2020/07/04/sword-offer03/" data-tag="python,技术小结,leetcode" data-author>
-            <span class="post-title" title="剑指offer03">剑指offer03</span>
-            <span class="post-date" title="2020-07-04 20:19:39">2020/07/04</span>
         </a>
         
         <a class="数学 " href="/2019/10/24/数值计算与凸优化补充笔记/" data-tag="AI,数学,深度学习" data-author>
@@ -414,24 +461,34 @@
             <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
         </a>
         
-        <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
-            <span class="post-title" title="Aatri_A3c">Aatri_A3c</span>
-            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        <a class="编程 " href="/2019/07/23/go-http搭建服务器知识点儿/" data-tag="编程,go" data-author>
+            <span class="post-title" title="go-http搭建服务器知识点儿">go-http搭建服务器知识点儿</span>
+            <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
         </a>
         
-        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="AI,三省吾身" data-author>
+        <a class="编程 " href="/2019/04/29/使用Python实现excel中固定数据排序且改名至另一个文件夹/" data-tag="python,编程,技术小结" data-author>
+            <span class="post-title" title="基于python实现excel中读取文件目录+相应数据排序+将文件重命名">基于python实现excel中读取文件目录+相应数据排序+将文件重命名</span>
+            <span class="post-date" title="2019-04-29 19:30:06">2019/04/29</span>
+        </a>
+        
+        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="python,编程,技术小结" data-author>
+            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
+            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
+            <span class="post-title" title="线性代数补充笔记">线性代数补充笔记</span>
+            <span class="post-date" title="2019-04-25 21:25:01">2019/04/25</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
             <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
             <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
-        <a class="编程 " href="/2020/01/31/leetcode/" data-tag="编程,数学,python" data-author>
-            <span class="post-title" title="leetcode">leetcode</span>
-            <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
-        </a>
-        
-        <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
-            <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
-            <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
+            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
+            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
         </a>
         
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
@@ -444,19 +501,19 @@
             <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
         </a>
         
-        <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
-            <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
-            <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
-        </a>
-        
-        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="AI,三省吾身,NLP" data-author>
+        <a class="AI " href="/2019/07/29/达观杯比赛记录/" data-tag="三省吾身,AI,NLP" data-author>
             <span class="post-title" title="达观杯比赛记录">达观杯比赛记录</span>
             <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
         </a>
         
-        <a class="强化学习 " href="/2019/07/21/RL_pg-note/" data-tag="AI,深度学习,强化学习" data-author>
-            <span class="post-title" title="pg_note">pg_note</span>
-            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
+        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
+            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
+            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        </a>
+        
+        <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="智能博弈挑战赛">智能博弈挑战赛</span>
+            <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
         </a>
         
         <a class="强化学习 " href="/2019/07/06/Atari-a2c/" data-tag="AI,深度学习,强化学习" data-author>
@@ -464,9 +521,9 @@
             <span class="post-date" title="2019-07-06 21:25:01">2019/07/06</span>
         </a>
         
-        <a class="AI " href="/2020/06/02/强化学习在滴滴网约车的应用记录/" data-tag="AI,强化学习,组会报告" data-author>
-            <span class="post-title" title="强化学习在滴滴网约车的应用笔记">强化学习在滴滴网约车的应用笔记</span>
-            <span class="post-date" title="2020-06-02 20:19:39">2020/06/02</span>
+        <a class="编程 " href="/2020/08/05/lucifer-91/" data-tag="数学,python,编程" data-author>
+            <span class="post-title" title="leetcode">leetcode</span>
+            <span class="post-date" title="2020-08-05 10:14:45">2020/08/05</span>
         </a>
         
     </nav>
@@ -483,7 +540,7 @@
     <div class="pjax">
         <article id="post-智能博弈挑战赛-note" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Aatri_A3c</h1>
+        <h1 class="article-title">智能博弈挑战赛</h1>
     
     <div class="article-meta">
         
@@ -509,7 +566,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-08-04 21:32:49">2020-07-31 21:25</time>
+        创建时间:<time class="date" title="更新时间: 2020-11-02 14:18:05">2020-07-31 21:25</time>
         
     </div>
     <div class="article-meta">
@@ -542,7 +599,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境安装"><span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#了解平台"><span class="toc-text">了解平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态"><span class="toc-text">状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动作"><span class="toc-text">动作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奖励"><span class="toc-text">奖励</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-text">难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#熟悉游戏规则（胜负判断）"><span class="toc-text">熟悉游戏规则（胜负判断）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于规则的智能体有什么规律？如何操作的？"><span class="toc-text">基于规则的智能体有什么规律？如何操作的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#蓝方"><span class="toc-text">蓝方</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#红方"><span class="toc-text">红方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遗留问题"><span class="toc-text">遗留问题</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境安装"><span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#了解平台"><span class="toc-text">了解平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态"><span class="toc-text">状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动作"><span class="toc-text">动作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奖励"><span class="toc-text">奖励</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-text">难点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遗留问题："><span class="toc-text">遗留问题：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#熟悉游戏规则（胜负判断）"><span class="toc-text">熟悉游戏规则（胜负判断）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兵力配置特点"><span class="toc-text">兵力配置特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#胜负规则"><span class="toc-text">胜负规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于规则的智能体有什么规律？如何操作的？"><span class="toc-text">基于规则的智能体有什么规律？如何操作的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#蓝方"><span class="toc-text">蓝方</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#红方"><span class="toc-text">红方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遗留问题解答"><span class="toc-text">遗留问题解答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析基于规则的智能体优缺点以及与强化学习结合的方法"><span class="toc-text">分析基于规则的智能体优缺点以及与强化学习结合的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蓝方："><span class="toc-text">蓝方：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-预警机"><span class="toc-text">1.预警机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-歼击机"><span class="toc-text">2.歼击机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-轰炸机"><span class="toc-text">3.轰炸机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-蓝方地导营"><span class="toc-text">4.蓝方地导营</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#红方攻击方："><span class="toc-text">红方攻击方：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#具体动作以及状态表示"><span class="toc-text">具体动作以及状态表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原始状态标识"><span class="toc-text">原始状态标识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#导弹信息"><span class="toc-text">导弹信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#备注："><span class="toc-text">备注：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遗留问题：-1"><span class="toc-text">遗留问题：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0814组会"><span class="toc-text">0814组会</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始版本的问题（设置特点）："><span class="toc-text">初始版本的问题（设置特点）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改动："><span class="toc-text">改动：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#腾讯方案的地图划分"><span class="toc-text">腾讯方案的地图划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TStarBot1动作处理方式"><span class="toc-text">TStarBot1动作处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TStarBot1状态处理方式"><span class="toc-text">TStarBot1状态处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#building-count-feature和-unit-count-feature"><span class="toc-text">_building_count_feature和_unit_count_feature</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unit-stat-count-feature"><span class="toc-text">_unit_stat_count_feature</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#player-feature"><span class="toc-text">_player_feature</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ScoreFeature"><span class="toc-text">ScoreFeature</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#worker-feature"><span class="toc-text">_worker_feature</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#game-progress-feature"><span class="toc-text">_game_progress_feature</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比赛建模"><span class="toc-text">比赛建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#地图的划分"><span class="toc-text">地图的划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）"><span class="toc-text">动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态处理"><span class="toc-text">状态处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在蓝方基础上的更改条目："><span class="toc-text">在蓝方基础上的更改条目：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下述为对红方的修改"><span class="toc-text">下述为对红方的修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结蓝方底层规则："><span class="toc-text">总结蓝方底层规则：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-轰炸机"><span class="toc-text">1.轰炸机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-歼击机-1"><span class="toc-text">2.歼击机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-护卫舰"><span class="toc-text">3.护卫舰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-预警机"><span class="toc-text">4.预警机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-地导营"><span class="toc-text">5.地导营</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-地面雷达"><span class="toc-text">6.地面雷达</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -624,18 +681,27 @@
 </li>
 </ul>
 <p>在示例代码中返回的是cmd_list2</p>
-<h3 id="奖励"><a href="#奖励" class="headerlink" title="奖励"></a>奖励</h3><h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>具体动作的定义</p>
+<h3 id="奖励"><a href="#奖励" class="headerlink" title="奖励"></a>奖励</h3><p>最终的游戏是否胜利的奖励值（-1，0，+1）</p>
+<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><p>具体动作的定义</p>
 <p>奖励机制（可根据己方飞机编队，船舰，机场，指挥所的受损情况自行定义）</p>
-<p>基本智能体的具体战术逻辑，规律？<br>多看几把规则智能体对打的细节，具体限制是什么？<br>损毁哪个目标更有利？<br>看游戏是否有<strong>微操</strong>？哪几个绑定在一起，哪几个分开了？轰炸机用来干嘛？每个兵种的任务？<br>复盘游戏</p>
+<h3 id="遗留问题："><a href="#遗留问题：" class="headerlink" title="遗留问题："></a>遗留问题：</h3><p>Q基本智能体的具体战术逻辑，规律？</p>
+<p>A底层规则比较低级，分配攻击单位数量不合理，热身赛版本是基于基本智能体做的更改。</p>
+<p>Q多看几把规则智能体对打的细节，具体限制是什么？</p>
+<p>A存在较多的bug，主办方正在修改，蓝方的主要限制是兵力过少，且防护任务过大。</p>
+<p>Q损毁哪个目标更有利？</p>
+<p>A作为红方先攻击北部指挥所更有利，也更容易。</p>
+<p>Q看游戏是否有<strong>微操</strong>？哪几个绑定在一起，哪几个分开了？轰炸机用来干嘛？每个兵种的任务？<br>复盘游戏</p>
+<p>A游戏没有微操，或者说微操不是强化学习智能体需要操作的事项，作为红方有编队设置，蓝方没有编队设置。</p>
+<p>轰炸机用来攻击指挥所和护卫舰。歼击机可以攻击任何空中单位。</p>
 <h3 id="熟悉游戏规则（胜负判断）"><a href="#熟悉游戏规则（胜负判断）" class="headerlink" title="熟悉游戏规则（胜负判断）"></a>熟悉游戏规则（胜负判断）</h3><p>红方为进攻方，设置 7 种兵力共 45个作战单位，通过机场起飞容量控制战场兵力投入，可考虑多波次使用，弹药补给时间20分钟。</p>
 <p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\1.png" alt></p>
 <p>蓝方为防守方，设置 7种兵力共30个作战单位</p>
 <p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\2.png" alt></p>
-<p>红方具有无人侦察机，蓝方不具有无人侦察机，无人侦察机只具有巡逻侦查，不具有攻击能力。</p>
+<h3 id="兵力配置特点"><a href="#兵力配置特点" class="headerlink" title="兵力配置特点"></a>兵力配置特点</h3><p>红方具有无人侦察机，蓝方不具有无人侦察机，无人侦察机只具有巡逻侦查，不具有攻击能力。</p>
 <p>攻击方红方具有干扰压制的电子战飞机，防守方蓝方不具有干扰机，干扰机的干扰距离60公里，初赛只开放<strong>阻塞干扰模式</strong>，阻塞干扰模式对处于干扰区域范围内双方目标均生效。</p>
 <p>从上述表格可见具有攻击能力共4种，分别是两类飞机（轰炸机和歼击机）一类舰艇防空（防空驱逐舰）蓝方为地导营具有攻击能力，，具体而言，轰炸机挂载两枚编号为 ’360’ 的中距弹既可以打击地面目标也可以打击水面目标；歼击机挂载6枚编号为 ’170’ 的中距空空弹；地防配备12枚编号同样为‘170‘但攻击距离为100km的地空导弹；护卫舰配备36枚编号为 ’519’ 的舰空导弹。除了正常探测手段外，所有单位目视距离统一设置为20km。</p>
 <p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\3.png" alt></p>
-<p>在比赛时间（ 150分钟）内，若2个守卫目标均被摧毁，判红方胜；两个守卫目标均未被摧毁，判定蓝方胜；达到作战时间时，若摧毁一个指挥所，另一个未被摧毁，则统计战损比和<strong>非军事目标</strong>误伤比，优者判胜。</p>
+<h4 id="胜负规则"><a href="#胜负规则" class="headerlink" title="胜负规则"></a>胜负规则</h4><p>在比赛时间（ 150分钟）内，若2个守卫目标均被摧毁，判红方胜；两个守卫目标均未被摧毁，判定蓝方胜；达到作战时间时，若摧毁一个指挥所，另一个未被摧毁，则统计战损比和<strong>非军事目标</strong>误伤比，优者判胜。</p>
 <ul>
 <li>其中<ul>
 <li>指挥所可以承受4枚导弹攻击。</li>
@@ -671,10 +737,10 @@
 <li>首先派<strong>一架</strong>歼击机在巡逻点1进行起飞区域巡逻（就是在飞机的机场转圈，防止敌方轰炸机摧毁飞机场），将状态码转到自定义第二个状态‘</li>
 <li>派出预警机到指定位置巡逻</li>
 <li>再派<strong>一架</strong>歼击机在巡逻点1进行起飞区域巡逻</li>
-<li>再派<strong>一架</strong>歼击机在巡逻点1进行区域巡逻</li>
-<li>再派<strong>一架</strong>歼击机在巡逻点1进行区域巡逻</li>
-<li>再派<strong>一架</strong>歼击机在巡逻点1进行区域巡逻</li>
-<li>再派<strong>一架</strong>歼击机在巡逻点1进行区域巡逻</li>
+<li>再派<strong>一架</strong>歼击机在巡逻点2进行区域巡逻</li>
+<li>再派<strong>一架</strong>歼击机在巡逻点3进行区域巡逻</li>
+<li>再派<strong>一架</strong>歼击机在巡逻点4进行区域巡逻</li>
+<li>再派<strong>一架</strong>歼击机在巡逻点5进行区域巡逻</li>
 </ul>
 </li>
 <li><p>发现红方，立马攻击，并且派最近的编队去支援，同时机场再派出替补编队去替补支援编队空出的位置</p>
@@ -742,8 +808,550 @@
 </ul>
 </li>
 </ul>
-<h3 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h3><p>问：蓝方作为防守方为什么还要有轰炸机？去炸什么？</p>
+<h3 id="遗留问题解答"><a href="#遗留问题解答" class="headerlink" title="遗留问题解答"></a>遗留问题解答</h3><p>问：蓝方作为防守方为什么还要有轰炸机？去炸什么？</p>
 <p>答：蓝方可以用轰炸机去炸毁红方的机场（炸坏机场可以限制红方的起飞攻击能力），雷达站（可以限制红方侦察能力）、驱逐（护卫舰）舰（限制红方的对空攻击能力，侦察能力）</p>
+<h3 id="分析基于规则的智能体优缺点以及与强化学习结合的方法"><a href="#分析基于规则的智能体优缺点以及与强化学习结合的方法" class="headerlink" title="分析基于规则的智能体优缺点以及与强化学习结合的方法"></a>分析基于规则的智能体优缺点以及与强化学习结合的方法</h3><p>备注：坐标原点在地图的正中间</p>
+<h3 id="蓝方："><a href="#蓝方：" class="headerlink" title="蓝方："></a>蓝方：</h3><h4 id="1-预警机"><a href="#1-预警机" class="headerlink" title="1.预警机"></a>1.预警机</h4><p><strong>目标位置</strong>： [-100000, 0, 7500]</p>
+<p>从图中可以看出基于规则的智能体只是指定了一个位置让其进行区域巡逻，整场游戏并没有改变巡逻中心点。</p>
+<p>初次理解：高度改动的意义不大，可以通过改变x,y的值，例如可以在一开始的时间段让x大一些，争取提前探测到红方飞机的动向（预警机的目的就是尽量探测到所有敌机的位置），随着时间向后推移，巡逻位置的中心点需要逐步向左移动，防止红军从后方进行突击轰炸。<img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\6.png" alt></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807132942825.png" alt="image-20200807132942825"></p>
+<p>能探测到的具体信息为：</p>
+<p>{‘type’: ‘Intelligence’, ‘ID’: 2604, ‘X’: 12777.77621, ‘Y’: -94372.17749, ‘Z’: -0.16257, ‘JB’: 3, ‘HX’: 285.52823, ‘SP’: 0.0, ‘LX’: 29, ‘XH’: ‘civil-ship’, ‘WH’: 1, ‘DA’: 0, ‘TMID’: 8321, ‘SBID’: 1, ‘TM’: 105.0}</p>
+<p>其中ID是唯一标识这个目标的代号，探测到的这个目标的x,y,z,JB为军别，3对应的是中立目标，2对应的不明（在发现距离，不在识别距离）JB为1对应的是敌对目标,HX对应的是航向，即该目标是向哪里运动（单位是度）SP指的是速度单位是m/s，LX指的是目标具体属于哪一类，是轰炸机还是歼击机是民船还是民航？XH是具体的解释,WH表示是否存活，DA表示损伤的百分比（示例为无损伤），TMID表示这个目标所属编队号，SBID表示这个目标在这个编队的序号，TM表示得到这个信息的时间</p>
+<p><strong>巡逻参数</strong>：[270, 20000, 20000, 160, 7200, 2]</p>
+<p>分别指的是巡逻方向，巡逻的长度，巡逻宽度，巡逻速度，巡逻时间，巡逻方式（对海，对空，海空交替巡逻）</p>
+<p>注意预警机、电子战飞机、无人侦察机、舰船不需考虑燃油消耗</p>
+<h4 id="2-歼击机"><a href="#2-歼击机" class="headerlink" title="2.歼击机"></a>2.歼击机</h4><p>PATROL_POINT1 = [-5000, 65000, AREA_PATROL_HEIGHT]<br>PATROL_POINT2 = [-5000, -65000, AREA_PATROL_HEIGHT]<br>PATROL_POINT3 = [-55000, 35000, AREA_PATROL_HEIGHT]<br>PATROL_POINT4 = [-55000, -35000, AREA_PATROL_HEIGHT]<br>PATROL_POINT5 = [-65000, 5000, AREA_PATROL_HEIGHT]<br>PATROL_POINT6 = [-65000, -5000, AREA_PATROL_HEIGHT]</p>
+<p>5</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807131028219.png" alt="image-20200807131028219"><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807131044802.png" alt="image-20200807131044802"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807131113403.png" alt="image-20200807131113403"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807132036733.png" alt="image-20200807132036733"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807131014030.png" alt="image-20200807131014030"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807131216245.png" alt="image-20200807131216245"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807132717150.png" alt="image-20200807132717150"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807132728333.png" alt="image-20200807132728333"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807132739652.png" alt="image-20200807132739652"></p>
+<p>拦截的命令为：</p>
+<pre><code class="lang-python">    @staticmethod
+    def _airattack(unit_id, target_id):
+        return [EnvCmd.make_airattack(unit_id, target_id, 1)]
+</code></pre>
+<p>给己方单位的是敌方的目标单位ID，再根据qb情报情况获得具体位置。</p>
+<p><strong>关于歼击机的拦截算法会自动引导调节，不用选手调整。</strong>（在攻击距离内自动发射导弹）</p>
+<p>从图中的六个框可以看出，在最外面（靠中间）布置了两个对称的歼击机区域巡逻，在靠近岛屿（左侧）布置了两对比较紧凑的歼击机巡逻区域</p>
+<h4 id="3-轰炸机"><a href="#3-轰炸机" class="headerlink" title="3.轰炸机"></a>3.轰炸机</h4><p>在蓝方的规则智能体中每次step都会判断己方情报中是否有敌方护卫舰，一旦发现派2只轰炸机进行区域轰炸。（因为护卫舰具有36导弹，具有较强攻击能力，优先级较高）</p>
+<p>可以增加发现<strong>无人机，预警机，干扰机</strong> 采取派歼击机进行目标突击的措施</p>
+<h4 id="4-蓝方地导营"><a href="#4-蓝方地导营" class="headerlink" title="4.蓝方地导营"></a>4.蓝方地导营</h4><p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807152439212.png" alt="image-20200807152439212"></p>
+<p>初始的蓝方并没有对地面防空进行特殊设置，可以在南部进行交叉摆放</p>
+<h3 id="红方攻击方："><a href="#红方攻击方：" class="headerlink" title="红方攻击方："></a><strong>红方攻击方</strong>：</h3><p>派出两艘护卫舰到指定地点，可见红方的护卫舰位置偏上，主要打击目标就是北部岛屿，护卫舰偏上也是为了保护区北部岛屿进行轰炸和护航的轰炸机以及歼击机</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807140202662.png" alt="image-20200807140202662"><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807140211675.png" alt="image-20200807140211675"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807140240098.png" alt="image-20200807140240098"></p>
+<p>预警机到如图地点（携带两架歼击机护航）</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807140457475.png" alt="image-20200807140457475"></p>
+<p>派6架歼击机到如下图所示地点进行区域巡逻（在路程中就与蓝方交火无法到达目的地）</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807144131740.png" alt="image-20200807144131740"></p>
+<p>派2轰炸机+2歼击机护航到北部警戒区</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807151347274.png" alt="image-20200807151347274"></p>
+<p>派6轰炸机+2歼击机进行护航 执行航线巡逻</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807151207265.png" alt></p>
+<p>问：有多少个群组？群组之间是否可以再组合？</p>
+<p>答：蓝方没有编队，红方有编队</p>
+<blockquote>
+<p>1<br>预警机1架—YA + 护航歼击机2机编队—JA</p>
+<p>干扰机3架(一起使用作360°干扰)—RA + 护航歼击机2机编队—JB</p>
+<p>轰炸机2机编队—HA + 护航歼击机2机编队—JC </p>
+<p>轰炸机6机编队—HB + 护航歼击机2机编队—JD</p>
+<p>阻援歼击机2机编队—JE</p>
+<p>歼击机JG, JH—&gt;中部阻援阵位(第二阶段从中部南下警戒) 连带上面一行共6架飞机</p>
+<p>2<br>轰炸机HC起飞突击南部/北部 +2架歼击机进行护航</p>
+<p>3<br>2架歼击机JK区域巡逻</p>
+<p>轰炸机6机编队—HD + 护航歼击机2机编队—JL</p>
+</blockquote>
+<p>共16个群组，群组之间组合有限制，只能同型号飞机进行编组，且编队数量只支持1，2，4三种，支持编队巡逻、编队护航、编队突击等任务。</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807142957232.png" alt="image-20200807142957232"></p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200807142625686.png" alt="image-20200807142625686"></p>
+<h4 id="具体动作以及状态表示"><a href="#具体动作以及状态表示" class="headerlink" title="具体动作以及状态表示"></a>具体动作以及状态表示</h4><p>游戏开始：</p>
+<p>地导营的位置设置，护卫舰的初始位置设置</p>
+<p>动作一共分两层，第一层是强化学习，第二层是基于规则：<br>具体分为<strong>攻击</strong>和<strong>巡逻</strong>两个动作</p>
+<p>具体的攻击和巡逻这两个动作暂时由多项规则写死</p>
+<p>蓝方兵力：    </p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\8.png" alt></p>
+<p>红方兵力：</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/C:/Users\14155\AppData\Roaming\Typora\typora-user-images\image-20200810172029101.png" alt></p>
+<p>攻击：</p>
+<p>方案一：</p>
+<p>初步设想智能体在一个时间步以一定的概率分布只能执行攻击或者巡逻其中的一个大动作，在两个动作下的全是规则判断，己方以敌方的变化作为依赖来改变详细策略，与腾讯的设置方式十分相似。</p>
+<h4 id="原始状态标识"><a href="#原始状态标识" class="headerlink" title="原始状态标识"></a>原始状态标识</h4><ul>
+<li>己方airports  16</li>
+<li>己方编队信息（暂不确定）8*n(有待讨论)</li>
+<li>己方units武器平台信息  566</li>
+<li>敌方情报信息 855</li>
+<li>敌方导弹信息 （暂不确定） 13*n（暂不考虑）</li>
+</ul>
+<p>己方“airports”为<strong>16</strong>个己方机场信息：（确定蓝方只有一个机场）</p>
+<pre><code class="lang-json">&quot;airports&quot;: [
+            {
+                &quot;type&quot;: &quot;AIRPORT&quot;,    # 信息类型-机场
+                &quot;ID&quot;: 20001,          # 机场编号
+                &quot;JB&quot;: 0,              # 军别信息(0-蓝方, 1-红方)
+                &quot;CA&quot;: 50,             # 容量(单位: 架, 下同)
+                &quot;NM&quot;: 4,              # 机场停放的飞机数量
+                &quot;KY&quot;: 4,              # 可用飞机总数
+                &quot;AIR&quot;: 0,             # 可用歼击机数量
+                &quot;AWCS&quot;: 0,            # 可用预警机数量
+                &quot;JAM&quot;: 0,             # 可用干扰机数量
+                &quot;UAV&quot;: 0,             # 可用无人侦察机数量
+                &quot;BOM&quot;: 4,             # 可用轰炸机数量
+                &quot;X&quot;: -130870.0,       # 机场x轴坐标(单位: 米, 下同)
+                &quot;Y&quot;: -86854.0,        # 机场y轴坐标
+                &quot;Z&quot;: 103.6,           # 机场z轴坐标
+                &quot;WH&quot;: 1,              # 是否存活
+                &quot;DA&quot;: 0               # 受损百分比(整型, [0-100])
+            }
+        ],
+</code></pre>
+<p>每个编队都有<strong>8条</strong>信息字段（己方，暂不确定己方编队信息）：</p>
+<pre><code class="lang-json">&quot;teams&quot;: [
+            {
+                &quot;type&quot;: &quot;TEAMS&quot;,        # 信息类型
+                &quot;Task&quot;: &quot;&quot;,             # 上一指令信息(json串形式, 默认为&quot;&quot;)
+                &quot;TMID&quot;: 6801,           # 编队编号(整型, 下同)
+                &quot;ST&quot;: 0,                # 编队状态编码
+                &quot;LX&quot;: 21,               # 编队类型编码(整型, 这里21为护卫舰)
+                &quot;JB&quot;: 0,                # 军别(0-蓝方, 1-红方)
+                &quot;Num&quot;: 1,               # 编队内平台数量(整型)
+                &quot;PT&quot;: [[2207, 1]]       # 编队内平台列表[[平台编号, 队内序号], ...]
+            },
+</code></pre>
+<p>units武器平台信息（己方）：</p>
+<p>共有30个己方单位，除1个机场（在airports体现），2个指挥所除指挥所外共27个每个平台有<strong>20个</strong>字段信息</p>
+<p>540+22=566</p>
+<pre><code class="lang-json">&quot;units&quot;: [
+            {
+                &quot;type&quot;: &quot;TARGET&quot;,             # 信息类型
+                &quot;ID&quot;: 2207,                   # 平台编号
+                &quot;X&quot;: -105218.71868,           # 平台位置x轴坐标(浮点型, 单位: 米, 下同)
+                &quot;Y&quot;: 68644.7195,              # 平台位置y轴坐标
+                &quot;Z&quot;: -0.64348,                # 平台位置z轴坐标
+                &quot;JB&quot;: 0,                      # 军别(0-蓝方, 1-红方)
+                &quot;HX&quot;: 90.00052,               # 航向(浮点型, 单位: 度, [0-360])
+                &quot;SP&quot;: 0.04917,                # 速度(单位: 米/秒)
+                &quot;LX&quot;: 21,                     # 平台类型(21-护卫舰)
+                &quot;XH&quot;: &quot;Bpk&quot;,                  # 型号
+                &quot;TMID&quot;: 6801,                 # 所属编队号
+                &quot;SBID&quot;: 1,                    # 该平台在编队内序号
+                &quot;TM&quot;: 672.6,                  # 仿真时间
+                &quot;Locked&quot;: 0,                  # 是否被锁定(针对飞机而言, 0-未锁定, 1-锁定)
+                &quot;WH&quot;: 1,                      # 存活(0-死亡, 1-存活)
+                &quot;DA&quot;: 0,                      # 受损百分比(整型, [0-100])
+                &quot;Hang&quot;: 100000.0,             # 滞空时间(浮点型, 单位: 秒, 针对飞机而言, 数值不准确, 目前参考意义不大)
+                &quot;Fuel&quot;: 10000.0,              # 剩余油料(浮点型, 单位: 升)
+                &quot;ST&quot;: 41,                     # 平台状态
+                &quot;WP&quot;: {&quot;519&quot;: 36}             # 武器字典{弹药名: 剩余数量, ...}
+            },
+</code></pre>
+<p>其中指挥所有如下11条字段信息</p>
+<pre><code class="lang-json">{
+                &quot;type&quot;: &quot;COMMAND&quot;,            # 信息类型-指挥所
+                &quot;TMID&quot;: 5077,                 # 所属编队号
+                &quot;ID&quot;: 557,                    # 平台编号
+                &quot;X&quot;: -131156.63859,           # x轴坐标
+                &quot;Y&quot;: -87887.86736,            # y轴坐标
+                &quot;Z&quot;: 99.7043,                 # z轴坐标
+                &quot;JB&quot;: 0,                      # 军别(0-蓝方, 1-红方)
+                &quot;LX&quot;: 41,                     # 类型
+                &quot;HIT&quot;: 0,                     # 是否被击中(0-未被击中, 1-被击中)
+                &quot;WH&quot;: 1,                      # 存活(0-死亡, 1-存活)
+                &quot;DA&quot;: 0                       # 受损百分比(整型, [0-100])
+            },
+</code></pre>
+<p>qb为情报信息：</p>
+<p><strong>12</strong>个中立目单位，<strong>45</strong>个敌方单位，每个单位有<strong>15条</strong>字段信息</p>
+<p>57*15=855</p>
+<pre><code class="lang-json">&quot;qb&quot;: [
+            {
+                &quot;type&quot;: &quot;Intelligence&quot;,       # 信息类型-情报
+                &quot;ID&quot;: 3695,                   # 平台编号
+                &quot;X&quot;: -79530.32479,            # x轴坐标(浮点型, 单位: 米, 下同)
+                &quot;Y&quot;: -62197.40873,            # y轴坐标
+                &quot;Z&quot;: 7999.98926,              # z轴坐标
+                &quot;JB&quot;: 3,                      # 军别(1-红方, 2-未知, 3-中立(即民用目标))
+                &quot;HX&quot;: 113.38897,              # 航向(浮点型, 单位: 度, [0-360])
+                &quot;SP&quot;: 166.62482,              # 速度(单位: 米/秒)
+                &quot;LX&quot;: 19,                     # 平台类型(19-民航)
+                &quot;XH&quot;: &quot;civil-aircraft&quot;,       # 型号
+                &quot;WH&quot;: 1,                      # 存活(0-死亡, 1-存活)
+                &quot;DA&quot;: 0,                      # 受损百分比(整型, [0-100])
+                &quot;TMID&quot;: 8127,                 # 所属编队号
+                &quot;SBID&quot;: 1,                    # 该平台在编队内序号
+                &quot;TM&quot;: 672.6                   # 仿真时间
+            },
+</code></pre>
+<h4 id="导弹信息"><a href="#导弹信息" class="headerlink" title="导弹信息"></a>导弹信息</h4><p>蓝方的导弹信息收到的是红方发来但尚未爆炸的导弹信息（数量暂未确定）每个有<strong>13条</strong>字段信息</p>
+<pre><code class="lang-json">&quot;rockets&quot;: [
+            {
+                &quot;type&quot;: &quot;Rocket&quot;,     # 信息类型
+                &quot;ID&quot;: 4527,           # 导弹编号
+                &quot;X&quot;: 47.5813,         # 导弹位置x轴坐标(浮点型, 单位: 米)
+                &quot;Y&quot;: 5143.7549,       # 导弹位置y轴坐标
+                &quot;Z&quot;: 2285.0684,       # 导弹位置z轴坐标
+                &quot;FY&quot;: 6.8116,         # 俯仰角度(浮点型, 单位: 度)
+                &quot;HG&quot;: -149.7087,      # 横滚角
+                &quot;HX&quot;: -72.0413,       # 航向, 即偏航角
+                &quot;GJSX&quot;: 1,            # 来袭导弹所属军别
+                &quot;N1&quot;: 168,            # 来袭导弹发射平台编号
+                &quot;N2&quot;: 1549,           # 来袭导弹目标平台编号
+                &quot;WH&quot;: 1,              # 是否存活/爆炸(0-已爆炸, 1-未爆炸)
+                &quot;TM&quot;: 672.6           # 仿真时间
+            },
+</code></pre>
+<h4 id="备注："><a href="#备注：" class="headerlink" title="备注："></a>备注：</h4><p>复赛/决赛根据晋级AI间的循环对战积分，综合考量AI算法技术性和军事合理性，筛选出最高水平选手，确定比赛排名。具体裁决规则如下：<br>l胜负积分：综合任务完成度（每摧毁1个守卫目标得30分）、非军事目标误伤情况（按非军事目标存活比例计分，无误伤得10分，全部误伤得0分）、战损比（按己方单位存活比例计分，无毁伤得10分，全部毁伤得0分）计算；<br>l对战积分：lAI算法技术性：模型复杂度由神经网络的浮点数运算次数FLOPS、神经网络参数量以及中间层数据复杂度共同表示；模型训练效率由AI训练达到最佳效果所需的时间和样本量决定；<br>军事合理性：由专家组和裁判组根据AI进行兵力编组、目标分配、兵种协同运用等行动的军事性进行评判。</p>
+<h4 id="遗留问题：-1"><a href="#遗留问题：-1" class="headerlink" title="遗留问题："></a>遗留问题：</h4><p>Q动作的可学习问题？具体参数放在哪？连续和动作搞清楚？</p>
+<p>A1动作的可学习问题设置为歼击机的调遣</p>
+<p>A2具体参数只有歼击机的来源与目的地这两个参数给予智能体学习</p>
+<p>A3将位置这种趋向于连续动作的参数离散化，分为己方的六大区域。</p>
+<h3 id="0814组会"><a href="#0814组会" class="headerlink" title="0814组会"></a>0814组会</h3><p>验证成功（验证游戏命令和实际实际所见是否一致）：<br>初始的位置设置成功，歼击机，轰炸机，预警机，地面雷达，地面防空，护卫舰的初始位置设置成功</p>
+<h4 id="初始版本的问题（设置特点）："><a href="#初始版本的问题（设置特点）：" class="headerlink" title="初始版本的问题（设置特点）："></a>初始版本的问题（设置特点）：</h4><p>护卫舰在攻击范围60%内自动攻击<br>护卫舰接受命令执行拦截任务<br>当主机被击落，护航歼击机默认执行返航任务<br>歼击机可以执行拦截任务<br>轰炸机可以执行轰炸任务</p>
+<p>地导营没有有效攻击</p>
+<h4 id="改动："><a href="#改动：" class="headerlink" title="改动："></a>改动：</h4><p>先让歼击机都暂时于PATROL_POINT5进行区域巡逻</p>
+<p>更改轰炸方向（不是硬编死的）</p>
+<h4 id="腾讯方案的地图划分"><a href="#腾讯方案的地图划分" class="headerlink" title="腾讯方案的地图划分"></a>腾讯方案的地图划分</h4><p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821101405204.png" alt></p>
+<h4 id="TStarBot1动作处理方式"><a href="#TStarBot1动作处理方式" class="headerlink" title="TStarBot1动作处理方式"></a>TStarBot1动作处理方式</h4><p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821103402289.png" alt></p>
+<p>共分为165个宏动作</p>
+<h4 id="TStarBot1状态处理方式"><a href="#TStarBot1状态处理方式" class="headerlink" title="TStarBot1状态处理方式"></a>TStarBot1状态处理方式</h4><p>论文中提到的处理方式为使用pysc2提供的minimap特征图和screen特征图+非空间类型的标量特征</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821092551236.png" alt></p>
+<p>实际代码中的状态只有非空间的标量特征，没有用特征图</p>
+<ul>
+<li>_unit_count_feature(当前拥有的各种虫子种类)</li>
+<li>_building_count_feature（当前各种建筑物的标量信息）</li>
+<li>_unit_stat_count_feature（双方单元状态类别信息）</li>
+<li>_player_feature（玩家特征信息）</li>
+<li>_score_feature（分数特征）</li>
+<li>_worker_feature（工人特征）</li>
+<li>_game_progress_feature（游戏进程特征）</li>
+<li>_action_seq_feature（动作序列特征）</li>
+</ul>
+<p>具体处理：</p>
+<h4 id="building-count-feature和-unit-count-feature"><a href="#building-count-feature和-unit-count-feature" class="headerlink" title="_building_count_feature和_unit_count_feature"></a>_building_count_feature和_unit_count_feature</h4><p>使用UnitType<strong>Count</strong>Feature类计算每一块区域中敌方与我方的单位数量，分别得到10块区域中我方各种虫子有多少个，敌方的各种虫子有多少个</p>
+<p>_building_count_feature 同理计算10块区域中我方与敌方的各种建筑数量</p>
+<p>返回特征的个数为  </p>
+<p>虫子种类<em>区域块数\</em>2*2（第一个2是features的具体数量，第二个2经过log计算的特征）</p>
+<h4 id="unit-stat-count-feature"><a href="#unit-stat-count-feature" class="headerlink" title="_unit_stat_count_feature"></a>_unit_stat_count_feature</h4><p>使用UnitStatCountFeature计算敌我<strong>双方</strong>分别在10块区域中分别具有战斗能力的单位个数，具有飞行能力的单位个数，陆地行走的单位个数，共返回</p>
+<p>4<em>区域块数\</em>2*2（第一个2是features的具体数量，第二个2经过log计算的特征）</p>
+<h4 id="player-feature"><a href="#player-feature" class="headerlink" title="_player_feature"></a>_player_feature</h4><p>计算双方的下列信息（将ID删掉了）</p>
+<p>[ ‘minerals’, ‘vespene’,<br>‘food_used’, ‘food_cap’, ‘food_army’, ‘food_workers’, ‘idle_worker_count’, ‘army_count’, ‘warp_gate_count’, ‘larva_count’]</p>
+<p>当前拥有的数量</p>
+<p>共返回9*2+10（10表示未使用食物的标志位）</p>
+<h4 id="ScoreFeature"><a href="#ScoreFeature" class="headerlink" title="ScoreFeature"></a>ScoreFeature</h4><p> [‘score’, ‘idle_production_time’, ‘idle_worker_time’, ‘total_value_units’, ‘total_value_structures’, ‘…’, ‘collected_vespene’, ‘collection_rate_minerals’, ‘collection_rate_vespene’, ‘spent_minerals’, ‘spent_vespene’]</p>
+<p>已经收集到的总数</p>
+<p>从第四位开始计算分数特征，共20位</p>
+<h4 id="worker-feature"><a href="#worker-feature" class="headerlink" title="_worker_feature"></a>_worker_feature</h4><p>计算关于己方worker个数的信息，分为gas_workers,mineral_workers,可用workers的个数共3位</p>
+<h4 id="game-progress-feature"><a href="#game-progress-feature" class="headerlink" title="_game_progress_feature"></a>_game_progress_feature</h4><p>计算动作的序列特征，维度共self._n_dims_action_space * len(self_action_seq)其中_action_seq=8</p>
+<p>所以一共是165*8</p>
+<p>将上述特征拼接起来，</p>
+<pre><code class="lang-python">    # nonspatial features
+    self._unit_count_feature = UnitTypeCountFeature(
+        type_list=[UNIT_TYPE.ZERG_LARVA.value,
+                   UNIT_TYPE.ZERG_DRONE.value,
+                   UNIT_TYPE.ZERG_ZERGLING.value,
+                   UNIT_TYPE.ZERG_BANELING.value,
+                   UNIT_TYPE.ZERG_ROACH.value,
+                   UNIT_TYPE.ZERG_ROACHBURROWED.value,
+                   UNIT_TYPE.ZERG_RAVAGER.value,
+                   UNIT_TYPE.ZERG_HYDRALISK.value,
+                   UNIT_TYPE.ZERG_LURKERMP.value,
+                   UNIT_TYPE.ZERG_LURKERMPBURROWED.value,
+                   #UNIT_TYPE.ZERG_VIPER.value,
+                   UNIT_TYPE.ZERG_MUTALISK.value,
+                   UNIT_TYPE.ZERG_CORRUPTOR.value,
+                   UNIT_TYPE.ZERG_BROODLORD.value,
+                   #UNIT_TYPE.ZERG_SWARMHOSTMP.value,
+                   UNIT_TYPE.ZERG_LOCUSTMP.value,
+                   #UNIT_TYPE.ZERG_INFESTOR.value,
+                   UNIT_TYPE.ZERG_ULTRALISK.value,
+                   UNIT_TYPE.ZERG_BROODLING.value,
+                   UNIT_TYPE.ZERG_OVERLORD.value,
+                   UNIT_TYPE.ZERG_OVERSEER.value,
+                   #UNIT_TYPE.ZERG_CHANGELING.value,
+                   UNIT_TYPE.ZERG_QUEEN.value],
+        use_regions=use_regions
+    )
+    self._building_count_feature = UnitTypeCountFeature(
+        type_list=[UNIT_TYPE.ZERG_SPINECRAWLER.value,
+                   UNIT_TYPE.ZERG_SPORECRAWLER.value,
+                   #UNIT_TYPE.ZERG_NYDUSCANAL.value,
+                   UNIT_TYPE.ZERG_EXTRACTOR.value,
+                   UNIT_TYPE.ZERG_SPAWNINGPOOL.value,
+                   UNIT_TYPE.ZERG_ROACHWARREN.value,
+                   UNIT_TYPE.ZERG_HYDRALISKDEN.value,
+                   UNIT_TYPE.ZERG_HATCHERY.value,
+                   UNIT_TYPE.ZERG_EVOLUTIONCHAMBER.value,
+                   UNIT_TYPE.ZERG_BANELINGNEST.value,
+                   UNIT_TYPE.ZERG_INFESTATIONPIT.value,
+                   UNIT_TYPE.ZERG_SPIRE.value,
+                   UNIT_TYPE.ZERG_ULTRALISKCAVERN.value,
+                   #UNIT_TYPE.ZERG_NYDUSNETWORK.value,
+                   UNIT_TYPE.ZERG_LURKERDENMP.value,
+                   UNIT_TYPE.ZERG_LAIR.value,
+                   UNIT_TYPE.ZERG_HIVE.value,
+                   UNIT_TYPE.ZERG_GREATERSPIRE.value],
+        use_regions=False
+    )
+    self._unit_stat_count_feature = UnitStatCountFeature(
+        use_regions=use_regions)
+    self._player_feature = PlayerFeature()
+    self._score_feature = ScoreFeature()
+    self._worker_feature = WorkerFeature()
+    if use_game_progress:
+      self._game_progress_feature = GameProgressFeature()
+    self._action_seq_feature = ActionSeqFeature(self.action_space.n,
+                                                action_seq_len)
+    n_dims = sum([
+        self._unit_stat_count_feature.num_dims,
+        self._unit_count_feature.num_dims,
+        self._building_count_feature.num_dims,
+        self._player_feature.num_dims,
+        self._score_feature.num_dims,
+        self._worker_feature.num_dims,
+        self._action_seq_feature.num_dims,
+        self._game_progress_feature.num_dims if use_game_progress else 0,
+        self.env.action_space.n if isinstance(self.env.action_space,
+                                              MaskDiscrete) else 0
+    ])
+</code></pre>
+<h3 id="比赛建模"><a href="#比赛建模" class="headerlink" title="比赛建模"></a>比赛建模</h3><h4 id="地图的划分"><a href="#地图的划分" class="headerlink" title="地图的划分"></a>地图的划分</h4><p>1.</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821145321638.png" alt></p>
+<p>2.</p>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821143337349.png" alt></p>
+<p>初始划分为6块+1块（全部）</p>
+<h4 id="动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）"><a href="#动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）" class="headerlink" title="动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）"></a>动作划分：（巡逻分为点巡逻，航线巡逻，区域巡逻）</h4><p>巡逻+攻击：（6块）</p>
+<p>6*6 共36个攻击+巡逻的动作（目前为区域巡逻）</p>
+<p><em>动作不是越多越好，够用即可。</em></p>
+<p><strong>基于规则</strong>：</p>
+<p>返航</p>
+<p>检查预警机位置</p>
+<p>检查飞机数量</p>
+<p>按照上层指令 调动歼击机攻击（具体规则）</p>
+<ul>
+<li>调遣轰炸机：只要发现敌方护卫舰，发出3架轰炸机进行轰炸</li>
+<li>只要场上歼击机数量小于4，起飞一架剪辑</li>
+<li>预警机没必要使其大范围巡逻，在两岛之间藏好即可（跟敌人的距离，两块区域选择较为安全的地点）</li>
+<li>地导营的朝向</li>
+<li>只要子弹打光或者油量不足即返航</li>
+<li>移动护卫舰：4个动作</li>
+<li></li>
+<li>暂不考虑护航（作为蓝方歼击机数量较少）</li>
+</ul>
+<p><img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200821153011443.png" alt></p>
+<h3 id="状态处理"><a href="#状态处理" class="headerlink" title="状态处理"></a>状态处理</h3><ul>
+<li>building_count :六块区域中机场，指挥所，雷达，地导营所在位置和个数=<strong>6<em>4\</em>2=48</strong>(是否乘以2，使用logfeatures待讨论)</li>
+<li>unit_count：敌我歼击机，轰炸机，无人侦察机，预警机，电子干扰机,护卫舰 在六块区域中的个数（活动状态）<strong>6<em>6\</em>2=72</strong></li>
+<li>airport_available_units_count机场中可用的歼击机，轰炸机个数:<strong>3</strong>(位置确定且一定是我方)</li>
+<li>enemy_rockets_spent:敌方在六块区域中已发射导弹的数量<strong>6</strong></li>
+<li>self_rockets_available:我方在六块区域中未发射导弹的数量<strong>12</strong></li>
+<li>关于编队的信息暂未考虑（借鉴TStarBot1将单位区域划分）</li>
+</ul>
+<p>0-47是building_count的特征，48-95是building_count的log特征，</p>
+<p>96-167是unit_count的特征数，168-239是unit_count的log特征数</p>
+<p>240-241是己方机场中可用的歼击机和轰炸机的个数，242-243</p>
+<p>244-249是enemy_rockets_spent 敌方在六块区域中发射的导弹数量，250-255是敌方在六块区域中发射的导弹数量的log值</p>
+<p>255-260是self_rockets_available我方在六块区域中未发射导弹的数量，261-266是我方在六块区域中未发射导弹的数量的log值</p>
+<p>(注意log处理中为0的数目处理方式为log(features+1)</p>
+<p>思路：</p>
+<p>1.atari思路：在pong游戏中，球板移动至最上方仍然有向上移动的选择只不过由于游戏规则的限制使得球板不能超出游戏方框，但是做出该动作反馈是得分或者失分，通过最后reward指导球板应该如何运动。</p>
+<p>2.共40个动作，其中可用动作为20，每个时刻都维护一个关于可用动作的mask列表，列表中对应位置为1的为可用动作，对应为0的是不可用动作，在每一时刻mask列表都不一定相同，模型给出40个动作的概率分布，根据mask列表将不可用的20个动作的概率值变为一个极小值，再从改变后的动作概率分布中选取动作，选到无效动作的概率非常小，即使选到最后执行的动作是no-op也没有关系。</p>
+<p>问：机场跑道受损问题。比如三架轰炸机都击中了机场中段部位，机场恢复时间是60分钟？这个时间是累积吗</p>
+<p>答：时间是累积的</p>
+<p>Q动作是二维的还是三维的？</p>
+<p>A不考虑飞机高度问题,去向是二维的</p>
+<p>Q是否考虑加油的问题？动作是否有延迟？</p>
+<p>A滞空时间不用考虑，只需考虑导弹个数。记住一个原则，单机也好编队也好，只会执行最新收到的指令</p>
+<p>Q星际争霸里面 怎么写的的攻击？有没有出现没有攻击参数？</p>
+<p>A如上图所示将攻击与巡逻写在了一起，攻击/巡逻区域由命令给出，具体的攻击动作使用规则写出</p>
+<p>Q关于无兵可用，动作不合理的情况怎么处理？（处理异常的思路）</p>
+<p>A将该动作mask掉</p>
+<h4 id="在蓝方基础上的更改条目："><a href="#在蓝方基础上的更改条目：" class="headerlink" title="在蓝方基础上的更改条目："></a>在蓝方基础上的更改条目：</h4><p>1.蓝方的初始的排兵布阵的位置并没有像官方原版一样摆放6个位置，而是集中在大约在两岛中间的位置，且对蓝方的场上处于巡逻状态的歼击机有数量要求，如果小于阈值则认为场上局势较为紧张，在机场可用飞机足够的前提下需要增加兵力。</p>
+<p>2.蓝方增加偷家的策略，在后半段时间，如果蓝方机场中有足够的轰炸机，则命令轰炸机去轰炸红方机场，尽大可能打乱红方发兵的节奏。</p>
+<p>3.蓝方的歼击机具体攻击策略是先选择对蓝方最有威慑力的红方飞机，以该飞机为主体再选择的是离其最近的己方飞机发射导弹，避免原版中出现与敌方飞机擦肩而过而不攻击的问题。</p>
+<p>4.改变了护卫舰的初始位置，且随着场上南北半场飞机的数量的变化而改变巡逻位置，使得护卫舰可以起到拦截红军的作用，而不是原版中固定在某一点。</p>
+<p>5.考虑到蓝方的核心任务为防守，所以将预警机的巡逻位置设为两岛之间的点，防止红方对蓝方的预警机进行打击。</p>
+<p>6.蓝方地导营的设置方向进行了改变，北部地导营完全向右进行防守，南部靠上的地导营以30度偏角进行防御，南部靠下的地导营以90度偏角进行防御.(此处存在的问题是态势显示软件并没有按照对应角度显示，大多数情况下还是完全朝向北)</p>
+<p>7.考虑到敌方护卫舰数量较多，能力强的原因，在发现红方护卫舰的前提下，如果前两次对护卫舰的打击失败，则实现多次打击</p>
+<p><strong>上述更改为热身赛的提交版本，下面为之后的改进事项：</strong></p>
+<p>由于红方势力过于强大，兵力较多，在热身赛阶段己方蓝方与己方红方对抗胜率在<strong>10-30%</strong>左右</p>
+<p>8.考虑到蓝方的根本目的是保存有生力量，抵御红方的攻击保护指挥所。所以为了达到<strong>穷寇莫追</strong>的效果，在判断条件中设置，只要红方飞机的x点的坐标超过15000，就将敌我的这对匹配关系删掉，防止落入敌人圈套。</p>
+<p>9.增加对地导营的利用，只要敌方飞机在自己的攻击范围的95%就对该目标进行打击</p>
+<p>10.己方只有一个护卫舰十分重要，将护卫舰再往左上方移动（初衷是增加对护卫舰的保护），坐标为[-65000, 30000, 0]</p>
+<p>位置的点如下图所示<img src="/2020/07/31/智能博弈挑战赛-note/D:/rockblog\source\rockblog\source\_posts\智能博弈挑战赛-note\image-20200917084613112.png" alt></p>
+<p>11.为了有效限制红方护卫舰的攻击能力，原来版本是派出3架飞机攻击红方护卫舰，现在派出4架轰炸机，且再派出一架歼击机尾随护航</p>
+<p>上述三个更改实施后，测试结果为己方蓝方与己方红方对抗胜率在92%（对抗42局，蓝方胜利39局），且此时蓝方已经加入强化学习模型</p>
+<p><strong>待改进</strong></p>
+<p>12.给护卫舰添加攻击目标（只要发现目标立即发射导弹进行轰炸）</p>
+<p>13.规避红方护卫舰</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>问题</th>
+<th style="text-align:left">改进点</th>
+<th>与己方红方对抗的胜率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td style="text-align:left">热身赛版本的改进点在note上面</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>追穷寇</td>
+<td style="text-align:left">红方飞机的x点的坐标超过15000，就将敌我的这对匹配关系删掉</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>己方地导营利用效率低</td>
+<td style="text-align:left">增加对地导营的利用，只要敌方飞机在自己的攻击范围的95%就对该目标进行打击</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>护卫舰深入敌后十分危险</td>
+<td style="text-align:left">己方只有一个护卫舰十分重要，将护卫舰再往左上方移动</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>对于失去攻击能力的护卫舰仍然攻击（作用不大）</td>
+<td style="text-align:left">增加限制，对于受损程度66%以上的护卫舰不进行攻击</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>己方歼击机趋向于往一个点上靠拢</td>
+<td style="text-align:left">设置时间刷新列表，500s后再重新对歼击机进行强化学习部署</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>轰炸机无人护航，不能有效打击敌方护卫舰</td>
+<td style="text-align:left">给己方去攻击敌方护卫舰的轰炸机进行1架歼击机护航，达到吸引火力的目的</td>
+<td>七点改进后：92%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>己方护卫舰利用率过低</td>
+<td style="text-align:left">下面三点待改进：给护卫舰添加攻击目标（只要发现目标立即轰炸）</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>不管敌方火力多少，硬追不可取</td>
+<td style="text-align:left">规避红方护卫舰</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>歼击机与轰炸机同等比重攻击</td>
+<td style="text-align:left">更注重攻击轰炸机，没有轰炸机的时候再攻击歼击机</td>
+<td>待改进，未测试</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>待做：后面为日期</p>
+<p>1.单独给轰炸机添加攻击目标<strong>（17）</strong>-完成</p>
+<p>2.看地图和兵力是否可以更改？目的为增强红方攻击力，例如增加红方的导弹数量，歼击机轰炸机数量<strong>（18号）</strong></p>
+<p>3.红方的整体一波rush<strong>（18）</strong>-</p>
+<p>4.更新态势框架版本1.4，并且移植代码，下载并安装最新版本的态势显示软件<strong>(18)</strong></p>
+<p>5.使用官方提供的校验程序 校验提供的模型和代码是否合规，避免浪费次数<strong>（18）</strong></p>
+<p>6.<strong>第一次提交</strong>：蓝方带有强化学习模型（使用的<strong>模型</strong>是之前的<strong>半成品</strong>模型，没有进行更改），红方为纯规则rush战略（在等待结果的同时，继续更改红蓝双方的小策略技巧）（目前看来强化学习有比较强的帮助）<strong>(18)</strong></p>
+<p>7.写好上面的剩下的2个蓝方待改进点<strong>（18，19）</strong></p>
+<p>8.再继续优化红方的一波rush策略<strong>（18，19）</strong></p>
+<p>9.用改进的红蓝双方继续训练从19号训练到22号左右。<strong>（19-22）</strong></p>
+<p>10.<strong>第二次提交</strong>：提交训练2-3天的强化学习模型（成品的），提交优化后的rush红方<strong>（22）</strong></p>
+<p>11.若能按时做好上述操作，再继续优化<strong>(22-24)</strong></p>
+<p>12.<strong>第三次提交</strong>：比较前两次的结果看 所谓优化后的结果是否有效，分数如何，再决定最终提交选项<strong>(24)</strong></p>
+<h4 id="下述为对红方的修改"><a href="#下述为对红方的修改" class="headerlink" title="下述为对红方的修改"></a>下述为对红方的修改</h4><p>1.对红方预警机的巡逻区域做出改变，使其在靠近红方区域巡逻，且不派歼击机进行护航。</p>
+<p>2.如若发现蓝方护卫舰，则派出较多数量的轰炸机立即执行轰炸任务，保证红方的突击任务顺利完成。</p>
+<p>3.增加己方南部的巡逻歼击机数量，对南部红方护卫舰进行保护，防止敌方对红方护卫舰执行轰炸任务并提前拦截。</p>
+<p>4.第二波攻击，第三波攻击不以干扰机的是否存活作为判断条件，以时间作为判断条件。</p>
+<p>5.红方对蓝方的指挥所的存活状态进行判断，如果第一波攻击没有完全攻破蓝方北部指挥所，则再派第二支北部轰炸机进行继续轰炸，否则全力轰炸蓝方的南部指挥所。</p>
+<p>6.在比赛后半段使用红方的歼击机硬抗的策略，消耗蓝方火力保护好红方轰炸机。</p>
+<blockquote>
+<p>2020-0921组会报告：</p>
+<p>三次提交：<br>1.版本一的强化学习模型和版本一的红方一波推<br>2.版本二的强化学习模型和改进后的红方一波推<br>3.比较前两次提交看新的强化学习模型是否更好，验证改进后的红方是否更优？<br>结合前两次提交确定最优版本</p>
+<p>计划：<br>1.1训练改进版的蓝方智能体<br>单文件启动多环境会遇到docker反应时间过长导致护卫舰没有按照初始位置摆放的问题<br>2.继续优化红方<br>2.1第二种情况下，先派2架轰炸机去北部进行轰炸，再在下面集合<br>2.2验证轰炸完护卫舰的轰炸机及时做支援操作<br>2.3尝试在红方一波推应该先攻击地导营，再攻击指挥所<br>2.4（红方的攻击敌机不太智能，待改进）尽量2天</p>
+<p>0921提交的初赛简略介绍：</p>
+<p>0923第二次提交规则版本蓝方和强化后的一波推红方，分别做对比试验</p>
+<p>所得胜率表格如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>试验序号</th>
+<th>红方</th>
+<th>蓝方</th>
+<th>红方胜率</th>
+<th>蓝方胜率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（第一次提交）</td>
+<td>初级一波</td>
+<td>RL模型</td>
+<td>0.722</td>
+<td>0.277</td>
+</tr>
+<tr>
+<td>2（第二次提交）</td>
+<td>高级一波</td>
+<td>纯规则</td>
+<td>0.66</td>
+<td>0.33</td>
+</tr>
+<tr>
+<td>3（对比试验1）</td>
+<td>高级一波</td>
+<td>RL模型</td>
+<td>0.92</td>
+<td>0.07</td>
+</tr>
+<tr>
+<td>4（对比试验2）</td>
+<td>初级一波</td>
+<td>纯规则</td>
+<td>0.55</td>
+<td>0.45</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+<h3 id="总结蓝方底层规则："><a href="#总结蓝方底层规则：" class="headerlink" title="总结蓝方底层规则："></a>总结蓝方底层规则：</h3><h4 id="1-轰炸机"><a href="#1-轰炸机" class="headerlink" title="1.轰炸机"></a>1.轰炸机</h4><p>1.1数量与攻击对象：派遣蓝方的轰炸机对红方的护卫舰进行打击，且因为红方有两个护卫舰，所以蓝方此处的攻击策略为对每个护卫舰派遣4架轰炸机进行空对海打击。</p>
+<p>1.2攻击角度：且攻击角度由蓝方南部岛屿位置、红方护卫舰位置共同计算得到轰炸角度，详细计算见guiguzi_blue中的_compute_attack_direction函数。</p>
+<p>1.3攻击距离：轰炸机的攻击距离为80km，且护卫舰的攻击距离为100km，所以此处设置只要达到攻击距离80km的95%，就对红方护卫舰实施轰炸攻击。</p>
+<p>1.4攻击后续：两发中距空对海导弹发射完毕后，立即派遣该轰炸机返航回到基地进行增加油量与弹药补给。</p>
+<p>1.5若初次攻击后红方护卫舰仍然存活，则等进行弹药补给后再对红方护卫舰进行二次攻击，且如果红方护卫舰的损伤值大于等于66%，说明红方护卫舰不具备攻击能力，出于节省兵力和以防护任务为主则不对红方护卫舰进行攻击。</p>
+<p>1.6若时间大于80分钟且红方护卫舰均已损伤，则派出全部轰炸机对红方机场进行轰炸，干扰红方军事任务，尽大可能打乱红方发兵的节奏。</p>
+<h4 id="2-歼击机-1"><a href="#2-歼击机-1" class="headerlink" title="2.歼击机"></a>2.歼击机</h4><p>2.1数量与攻击对象：蓝方的歼击机具体攻击策略是先选择对蓝方最有威慑力的红方轰炸机，以该飞机为主体再选择的是离其最近的己方飞机发射导弹。且只对某一区域的单个飞机进行调度，不对飞机进行编队控制。</p>
+<p>2.2调遣策略：歼击机的移动策略服从于上层强化学习的区域间调遣支配。</p>
+<p>2.3攻击距离：歼击机的攻击距离为80km，当红方飞机在歼击机攻击距离的95%范围内则令蓝方歼击机对红方轰炸机、干扰机、预警机进行空空打击。</p>
+<p>2.4攻击后续：当歼击机的全部导弹发射完毕或者歼击机油量不足则返航进行弹药补给。</p>
+<p>2.5当蓝方机场有可用的未派遣歼击机且场上蓝方歼击机数量少于6，则认为场上兵力不足，将歼击机派遣到指定位置进行支援。</p>
+<p>2.6蓝方歼击机的攻击距离分为三部分避免错过对红方机型的攻击，分别为自动补刀在95%范围内的红方轰炸机，自动补刀在65范围内的红方轰炸机和歼击机，自动补刀在30范围内的红方预警机、电子干扰机、无人侦察机。</p>
+<h4 id="3-护卫舰"><a href="#3-护卫舰" class="headerlink" title="3.护卫舰"></a>3.护卫舰</h4><p>3.1攻击对象：护卫舰主要针对红方轰炸机进行海空打击。如果该时刻没有红方轰炸机只有红方歼击机，则对红方歼击机进行海空打击。如果此时既有红方轰炸机又有红方其他机型，则优先攻击红方轰炸机。</p>
+<p>3.2攻击距离：护卫舰的攻击距离为100Km,设置为只要红方机型在攻击距离的95%范围内就会自动攻击敌方飞机。</p>
+<p>3.3移动策略：根据战场中可侦测到的敌方轰炸机的数量比进行南北调配，若北方轰炸机数量多于南方轰炸机数量则将护卫舰向北部进行调整。若红方的南部轰炸机数量多余北部轰炸机数量，则将护卫舰向南部进行调整。</p>
+<p>3.4攻击范围设定：蓝方护卫舰的攻击距离分为两部分避免错过对红方机型的攻击，在95%范围内的轰炸机和歼击机进行有差别攻击，在30%范围内的任何红方敌机进行无差别补刀攻击。</p>
+<h4 id="4-预警机"><a href="#4-预警机" class="headerlink" title="4.预警机"></a>4.预警机</h4><p>4.1由于蓝方的主要任务为防守，且为了保证蓝方有充足的视野，将蓝方预警机置于南北两岛之间的中间地带执行防御式侦察任务。</p>
+<h4 id="5-地导营"><a href="#5-地导营" class="headerlink" title="5.地导营"></a>5.地导营</h4><p>5.1防御朝向：蓝方地导营的摆放方式为，北部一个地导营，南部两个地导营。所以，北部地导营完全朝向右侧，南部地导营中一个完全向上，另一个完全向右执行防御任务。</p>
+<p>5.2攻击距离：蓝方地导营的攻击距离为100km，此处设置为只要发现敌方轰炸机，就对红方轰炸机进行打击，且当轰炸机与红方歼击机同时出现时，主要针对红方轰炸机进行地空打击。当只有歼击机出现，没有红方轰炸机出现时，则对歼击机进行攻击。</p>
+<h4 id="6-地面雷达"><a href="#6-地面雷达" class="headerlink" title="6.地面雷达"></a>6.地面雷达</h4><p>6.1在开局游戏对地面雷达进行开启，且在中途不对雷达执行其他操作。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -757,12 +1365,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Aatri_A3c</p>
+    <p><span class="copy-title">文章标题:</span>智能博弈挑战赛</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2020-07-31, 21:25:01</p>
-    <p><span class="copy-title">最后更新:</span>2020-08-04, 21:32:49</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/31/智能博弈挑战赛-note/" title="Aatri_A3c">http://rock-blog.top/2020/07/31/智能博弈挑战赛-note/</a>
+    <p><span class="copy-title">最后更新:</span>2020-11-02, 14:18:05</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/31/智能博弈挑战赛-note/" title="智能博弈挑战赛">http://rock-blog.top/2020/07/31/智能博弈挑战赛-note/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -882,7 +1490,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#编程','#AI','#数学','#三省吾身','#深度学习','#CV','#python','#强化学习','#go','#技术小结','#leetcode','#考研','#组会报告','#NLP',],
+            'data': ['#三省吾身','#AI','#数学','#深度学习','#CV','#python','#强化学习','#编程','#技术小节','#leetcode','#技术小结','#go','#考研','#组会报告','#NLP',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
