@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <title>剑指offer09 | Rock-Blog</title>
-  <meta name="keywords" content=" python , 技术小结 , leetcode ">
-  <meta name="description" content="剑指offer09 | Rock-Blog">
+  <title>不正经 | Rock-Blog</title>
+  <meta name="keywords" content=" 三省吾身 ">
+  <meta name="description" content="不正经 | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
 <meta name="keywords" content="数学,深度学习,强化学习">
@@ -537,9 +537,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-sword-offer09" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-不正经" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">剑指offer09</h1>
+        <h1 class="article-title">不正经</h1>
     
     <div class="article-meta">
         
@@ -547,25 +547,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="编程">编程</a>
+                <a href="javascript:" data-rel="三省吾身">三省吾身</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color2">python</a>
-            
-            <a href="javascript:" class="color5">技术小结</a>
-            
-            <a href="javascript:" class="color4">leetcode</a>
+            <a href="javascript:" class="color5">三省吾身</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2020-07-09 07:48:35">2020-07-09 20:19</time>
+        创建时间:<time class="date" title="更新时间: 2021-02-06 16:40:40">2021-02-06 21:25</time>
         
     </div>
     <div class="article-meta">
@@ -598,7 +594,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#剑指-Offer-09-用两个栈实现队列-amp-用两个队列实现栈"><span class="toc-text">剑指 Offer 09. 用两个栈实现队列&amp;用两个队列实现栈</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍"><span class="toc-text">简要介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似题目"><span class="toc-text">相似题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#225-用队列实现栈"><span class="toc-text">225. 用队列实现栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素"><span class="toc-text">法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#法二、使用双队列实现"><span class="toc-text">法二、使用双队列实现</span></a>
+        
     
 <style>
     .left-col .switch-btn,
@@ -610,131 +606,23 @@
         display: none !important;
     }
 </style>
-</li></div>
+</div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="剑指-Offer-09-用两个栈实现队列-amp-用两个队列实现栈"><a href="#剑指-Offer-09-用两个栈实现队列-amp-用两个队列实现栈" class="headerlink" title="剑指 Offer 09. 用两个栈实现队列&amp;用两个队列实现栈"></a><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/" target="_blank" rel="noopener">剑指 Offer 09. 用两个栈实现队列</a>&amp;用两个队列实现栈</h4><a id="more"></a>
-<h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h2><p>本篇笔记是针对剑指offer-第九题的多种不同解法</p>
-<p>题目要求为用两个栈实现队列，队列的特点是先进先出，栈的特点是先进后出，所以在代码中stackin实现入队功能，stackout实现出队功能。</p>
-<pre><code class="lang-python">class CQueue:
-    def __init__(self):
-        self.A, self.B = [], []
-
-    def appendTail(self, value: int) -&gt; None:
-        self.A.append(value)
-
-    def deleteHead(self) -&gt; int:
-        if self.B: return self.B.pop()
-        if not self.A: return -1
-        while self.A:
-            self.B.append(self.A.pop())
-        return self.B.pop()
-
-作者：jyd
-链接：https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/solution/mian-shi-ti-09-yong-liang-ge-zhan-shi-xian-dui-l-2/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-</code></pre>
-<p>上面A入B出</p>
-<p>下面为写的更详细一些的出自大佬<a href="https://leetcode-cn.com/u/jimlee1996/" target="_blank" rel="noopener">JimLee1996</a>（感觉思想一样，在此只是记录了多一种的写法，）</p>
-<pre><code class="lang-python">class CQueue:
-
-    def __init__(self):
-        self.stack_in = []
-        self.stack_out = []
-
-    def appendTail(self, value: int) -&gt; None:
-        self.stack_in.append(value)
-
-    def deleteHead(self) -&gt; int:
-        if not self.stack_out:
-            if not self.stack_in: # 都为空
-                return -1
-            else: # 把in栈中的东西全部倒入out栈中
-                while self.stack_in:
-                    self.stack_out.append(self.stack_in.pop())
-        return self.stack_out.pop()
-</code></pre>
-<h2 id="相似题目"><a href="#相似题目" class="headerlink" title="相似题目"></a>相似题目</h2><h4 id="225-用队列实现栈"><a href="#225-用队列实现栈" class="headerlink" title="225. 用队列实现栈"></a><a href="https://leetcode-cn.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">225. 用队列实现栈</a></h4><p><a href="https://leetcode-cn.com/u/xilepeng/" target="_blank" rel="noopener">席乐朋</a> 的两种题解</p>
-<h3 id="法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素"><a href="#法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素" class="headerlink" title="法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素"></a>法一、用一个list实现，list中每添加一个元素都反转前面n-1个元素</h3><pre><code class="lang-python">class MyStack:
-
-    def __init__(self):
-        &quot;&quot;&quot;
-        Initialize your data structure here.
-        &quot;&quot;&quot;
-        self.q = []
-
-    def push(self, x: int) -&gt; None:
-        &quot;&quot;&quot;
-        Push element x onto stack.
-        &quot;&quot;&quot;
-        self.q.append(x)
-        q_length = len(self.q)
-        while q_length &gt; 1:
-            self.q.append(self.q.pop(0)) #反转前n-1个元素，栈顶元素始终保留在队首
-            q_length -= 1
-
-    def pop(self) -&gt; int:
-        &quot;&quot;&quot;
-        Removes the element on top of the stack and returns that element.
-        &quot;&quot;&quot;
-        return self.q.pop(0)
-
-    def top(self) -&gt; int:
-        &quot;&quot;&quot;
-        Get the top element.
-        &quot;&quot;&quot;
-        return self.q[0]
-
-作者：xilepeng
-链接：https://leetcode-cn.com/problems/implement-stack-using-queues/solution/python3-list-dequeshi-xian-by-xilepeng/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-</code></pre>
-<h3 id="法二、使用双队列实现"><a href="#法二、使用双队列实现" class="headerlink" title="法二、使用双队列实现"></a>法二、使用双队列实现</h3><pre><code class="lang-python">from collections import deque
-class MyStack:
-    def __init__(self):
-        &quot;&quot;&quot;
-        Initialize your data structure here.
-        &quot;&quot;&quot;
-        self.data = deque()
-        self.help = deque()
-    def push(self, x: int) -&gt; None:
-        &quot;&quot;&quot;
-        Push element x onto stack.
-        &quot;&quot;&quot;
-        self.data.append(x)
-    def pop(self) -&gt; int:
-        &quot;&quot;&quot;
-        Removes the element on top of the stack and returns that element.
-        &quot;&quot;&quot;
-        while len(self.data) &gt; 1:
-            self.help.append(self.data.popleft())
-        tmp = self.data.popleft()        
-        self.help,self.data = self.data,self.help
-        return tmp
-    def top(self) -&gt; int:
-        &quot;&quot;&quot;
-        Get the top element.
-        &quot;&quot;&quot;
-        while len(self.data) != 1:
-            self.help.append(self.data.popleft())
-        tmp = self.data.popleft()
-        self.help.append(tmp)
-        self.help,self.data = self.data,self.help
-        return tmp
-    def empty(self) -&gt; bool:
-        &quot;&quot;&quot;
-        Returns whether the stack is empty.
-        &quot;&quot;&quot;
-        return not bool(self.data)
-
-作者：xilepeng
-链接：https://leetcode-cn.com/problems/implement-stack-using-queues/solution/python3-list-dequeshi-xian-by-xilepeng/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-</code></pre>
+        <p>‘一个写日记的人？’</p>
+<p>‘正经人谁写日记啊。’</p>
+<p>‘是啊</p>
+<p>‘你写日记嘛。’</p>
+<p>‘我不写’</p>
+<p>‘你写日记嘛’</p>
+<p>‘谁能把心里话写日记里’</p>
+<p>‘写出来的哪能叫心里话’</p>
+<p>‘下贱’</p>
+<p>‘下贱’</p>
+<p><img src="https://th.bing.com/th/id/R8cac859c5f96e3b767e6e8e7798a8112?rik=t6bm%2fHr8WoaK%2fg&amp;riu=http%3a%2f%2fi0.hdslb.com%2fbfs%2farchive%2fd5b8459af87d63dd8c6075e5d155f28a1e0781e1.jpg&amp;ehk=j9IyTKBJid5%2bN0iPLj5Ewc3XVwHU6niQU07lSOZgayA%3d&amp;risl=&amp;pid=ImgRaw" alt="查看源图像"></p>
+<a id="more"></a>
+<p>test</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1415500736@qq.com </span>
@@ -748,12 +636,12 @@ class MyStack:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>剑指offer09</p>
+    <p><span class="copy-title">文章标题:</span>不正经</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-07-09, 20:19:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-07-09, 07:48:35</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/09/sword-offer09/" title="剑指offer09">http://rock-blog.top/2020/07/09/sword-offer09/</a>
+    <p><span class="copy-title">发布时间:</span>2021-02-06, 21:25:01</p>
+    <p><span class="copy-title">最后更新:</span>2021-02-06, 16:40:40</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/02/06/不正经/" title="不正经">http://rock-blog.top/2021/02/06/不正经/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -783,44 +671,6 @@ class MyStack:
 
 
 
-
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<input type="hidden" id="MathJax-js" value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 
     
 
