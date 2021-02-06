@@ -6,21 +6,20 @@
   <meta name="keywords" content=" python , 技术小节 ">
   <meta name="description" content="effective_python_note | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="均非原创，题解来自评论区">
-<meta name="keywords" content="编程,python,技术小结">
+<meta name="description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
+<meta name="keywords" content="数学,深度学习,强化学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcodehot">
-<meta property="og:url" content="http://rock-blog.top/2021/02/01/hot100/index.html">
+<meta property="og:title" content="DRL_report">
+<meta property="og:url" content="http://rock-blog.top/20120/09/25/DRL-report/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="均非原创，题解来自评论区">
+<meta property="og:description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://rock-blog.top/2021/02/01/hot100/C:/Users/14155/AppData/Roaming/Typora/typora-user-images/image-20210205162942369.png">
-<meta property="og:image" content="https://pic.leetcode-cn.com/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png">
-<meta property="og:updated_time" content="2021-02-06T08:27:57.187Z">
+<meta property="og:image" content="http://rock-blog.top/20120/09/25/DRL-report/D:/rockblog/source/rockblog/source/_posts/DRL-report/1.jpg">
+<meta property="og:updated_time" content="2020-09-26T13:30:39.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcodehot">
-<meta name="twitter:description" content="均非原创，题解来自评论区">
-<meta name="twitter:image" content="http://rock-blog.top/2021/02/01/hot100/C:/Users/14155/AppData/Roaming/Typora/typora-user-images/image-20210205162942369.png">
+<meta name="twitter:title" content="DRL_report">
+<meta name="twitter:description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
+<meta name="twitter:image" content="http://rock-blog.top/20120/09/25/DRL-report/D:/rockblog/source/rockblog/source/_posts/DRL-report/1.jpg">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -113,11 +112,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(48)</small></div></li>
+    <li><div class="all active">全部文章<small>(49)</small></div></li>
     
         
             
-            <li><div data-rel="三省吾身">三省吾身<small>(4)</small></div>
+            <li><div data-rel="三省吾身">三省吾身<small>(5)</small></div>
                 
             </li>
             
@@ -173,7 +172,7 @@
     </div>
     <div><a class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="48">
+<input type="hidden" id="yelog_site_posts_number" value="49">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -321,6 +320,11 @@
             <span class="post-date" title="2019-08-20 21:25:01">2019/08/20</span>
         </a>
         
+        <a class="强化学习 " href="/2019/07/21/RL-basic-note/" data-tag="AI,深度学习,强化学习" data-author>
+            <span class="post-title" title="rl_basic_note">rl_basic_note</span>
+            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
+        </a>
+        
         <a class="强化学习 " href="/2020/08/02/RL-PPO-note/" data-tag="AI,深度学习,强化学习" data-author>
             <span class="post-title" title="pg_note">pg_note</span>
             <span class="post-date" title="2020-08-02 21:25:01">2020/08/02</span>
@@ -329,11 +333,6 @@
         <a class="强化学习 " href="/2020/01/26/RLTF/" data-tag="AI,数学,强化学习" data-author>
             <span class="post-title" title="RLTF">RLTF</span>
             <span class="post-date" title="2020-01-26 19:21:06">2020/01/26</span>
-        </a>
-        
-        <a class="强化学习 " href="/2019/07/21/RL-basic-note/" data-tag="AI,深度学习,强化学习" data-author>
-            <span class="post-title" title="rl_basic_note">rl_basic_note</span>
-            <span class="post-date" title="2019-07-21 21:25:01">2019/07/21</span>
         </a>
         
         <a class="强化学习 " href="/2020/07/31/RL_A3C_A2C_note/" data-tag="AI,深度学习,强化学习" data-author>
@@ -476,14 +475,14 @@
             <span class="post-date" title="2019-10-24 16:14:54">2019/10/24</span>
         </a>
         
-        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
-            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
-            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
-        </a>
-        
         <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
             <span class="post-title" title="智能博弈挑战赛">智能博弈挑战赛</span>
             <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2019/11/03/智源大会听报告笔记/" data-tag="三省吾身,AI" data-author>
+            <span class="post-title" title="智源大会听学术报告笔记">智源大会听学术报告笔记</span>
+            <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
         <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
@@ -496,11 +495,6 @@
             <span class="post-date" title="2019-04-15 21:25:01">2019/04/15</span>
         </a>
         
-        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
-            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
-            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
-        </a>
-        
         <a class="AI " href="/2019/07/21/计算机视觉存疑解答记录/" data-tag="AI,数学,CV" data-author>
             <span class="post-title" title="计算机视觉存疑解答记录">计算机视觉存疑解答记录</span>
             <span class="post-date" title="2019-07-21 13:04:25">2019/07/21</span>
@@ -511,6 +505,11 @@
             <span class="post-date" title="2019-07-29 20:19:39">2019/07/29</span>
         </a>
         
+        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
+        </a>
+        
         <a class="强化学习 " href="/2019/07/06/Atari-a2c/" data-tag="AI,深度学习,强化学习" data-author>
             <span class="post-title" title="Aatri_A3C_A2c">Aatri_A3C_A2c</span>
             <span class="post-date" title="2019-07-06 21:25:01">2019/07/06</span>
@@ -519,6 +518,11 @@
         <a class="编程 " href="/2020/08/05/lucifer-91/" data-tag="数学,编程,python" data-author>
             <span class="post-title" title="leetcode">leetcode</span>
             <span class="post-date" title="2020-08-05 10:14:45">2020/08/05</span>
+        </a>
+        
+        <a class="三省吾身 " href="/2021/02/05/不正经/" data-tag="三省吾身" data-author>
+            <span class="post-title" title="老不正经">老不正经</span>
+            <span class="post-date" title="2021-02-05 21:12:21">2021/02/05</span>
         </a>
         
     </nav>
