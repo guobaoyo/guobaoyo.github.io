@@ -6,20 +6,22 @@
   <meta name="keywords" content=" 编程 , python , 技术小结 ">
   <meta name="description" content="leetcodehot | Rock-Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
-<meta name="keywords" content="数学,深度学习,强化学习">
+<meta name="description" content="主要为TStarBots: Defeating the Cheating Level Builtin AI in StarCraft II in the Full Game学习笔记 论文链接：https://arxiv.org/pdf/1809.07193.pdf 代码连接：https://github.com/Tencent/TStarBot1">
+<meta name="keywords" content="AI,深度学习,强化学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DRL_report">
-<meta property="og:url" content="http://rock-blog.top/20120/09/25/DRL-report/index.html">
+<meta property="og:title" content="Tstarbots_note">
+<meta property="og:url" content="http://rock-blog.top/2020/10/23/tstar/index.html">
 <meta property="og:site_name" content="Rock-Blog">
-<meta property="og:description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
+<meta property="og:description" content="主要为TStarBots: Defeating the Cheating Level Builtin AI in StarCraft II in the Full Game学习笔记 论文链接：https://arxiv.org/pdf/1809.07193.pdf 代码连接：https://github.com/Tencent/TStarBot1">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://rock-blog.top/20120/09/25/DRL-report/D:/rockblog/source/rockblog/source/_posts/DRL-report/1.jpg">
-<meta property="og:updated_time" content="2020-09-26T13:30:39.729Z">
+<meta property="og:image" content="http://rock-blog.top/2020/10/23/tstar/D:/rockblog/source/rockblog/source/_posts/tstar/image-20201023141451747.png">
+<meta property="og:image" content="http://rock-blog.top/2020/10/23/tstar/D:/rockblog/source/rockblog/source/_posts/tstar/image-20201023143727477.png">
+<meta property="og:image" content="http://rock-blog.top/2020/10/23/tstar/D:/rockblog/source/rockblog/source/_posts/tstar/image-20201023150239912.png">
+<meta property="og:updated_time" content="2020-11-03T13:47:53.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DRL_report">
-<meta name="twitter:description" content="2020-09-25智能对抗初赛后的停顿与反思，全文主要 https://mp.weixin.qq.com/s/FFb1HZOQn48V-L7IhFgRGQ 或者 https://zhuanlan.zhihu.com/p/39999667 DRL近三年的应用成果分类 棋牌类游戏（麻将、德克萨斯等游戏）、Atari游戏、星际争霸达到专业玩家水平甚至超人类水平-deepmind  控制机械臂-open">
-<meta name="twitter:image" content="http://rock-blog.top/20120/09/25/DRL-report/D:/rockblog/source/rockblog/source/_posts/DRL-report/1.jpg">
+<meta name="twitter:title" content="Tstarbots_note">
+<meta name="twitter:description" content="主要为TStarBots: Defeating the Cheating Level Builtin AI in StarCraft II in the Full Game学习笔记 论文链接：https://arxiv.org/pdf/1809.07193.pdf 代码连接：https://github.com/Tencent/TStarBot1">
+<meta name="twitter:image" content="http://rock-blog.top/2020/10/23/tstar/D:/rockblog/source/rockblog/source/_posts/tstar/image-20201023141451747.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -355,14 +357,14 @@
             <span class="post-date" title="2020-07-12 10:00:12">2020/07/12</span>
         </a>
         
-        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
-            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
-            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
-        </a>
-        
         <a class="编程 " href="/2020/10/08/docker-base/" data-tag="编程,python,技术小节" data-author>
             <span class="post-title" title="docker-base">docker-base</span>
             <span class="post-date" title="2020-10-08 17:54:01">2020/10/08</span>
+        </a>
+        
+        <a class="AI " href="/2019/09/14/deep-reinforcement-learning/" data-tag="数学,深度学习,强化学习" data-author>
+            <span class="post-title" title="deep-reinforcement-learning">deep-reinforcement-learning</span>
+            <span class="post-date" title="2019-09-14 10:00:12">2019/09/14</span>
         </a>
         
         <a class="编程 " href="/2020/09/25/effective-python/" data-tag="python,技术小节" data-author>
@@ -375,11 +377,6 @@
             <span class="post-date" title="2019-07-23 11:29:08">2019/07/23</span>
         </a>
         
-        <a class="编程 " href="/2021/02/01/hot100/" data-tag="编程,python,技术小结" data-author>
-            <span class="post-title" title="leetcodehot">leetcodehot</span>
-            <span class="post-date" title="2021-02-01 20:19:39">2021/02/01</span>
-        </a>
-        
         <a class="编程 " href="/2020/01/31/leetcode/" data-tag="数学,编程,python" data-author>
             <span class="post-title" title="leetcode">leetcode</span>
             <span class="post-date" title="2020-01-31 10:14:45">2020/01/31</span>
@@ -388,6 +385,11 @@
         <a class href="/2020/06/05/lgb-note/" data-tag="AI,编程,python" data-author>
             <span class="post-title" title="lgb_note">lgb_note</span>
             <span class="post-date" title="2020-06-05 21:25:01">2020/06/05</span>
+        </a>
+        
+        <a class="编程 " href="/2021/02/01/hot100/" data-tag="编程,python,技术小结" data-author>
+            <span class="post-title" title="leetcodehot">leetcodehot</span>
+            <span class="post-date" title="2021-02-01 20:19:39">2021/02/01</span>
         </a>
         
         <a class="数学 " href="/2019/04/25/math/" data-tag="AI,数学,深度学习" data-author>
@@ -485,11 +487,6 @@
             <span class="post-date" title="2019-11-03 13:24:12">2019/11/03</span>
         </a>
         
-        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
-            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
-            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
-        </a>
-        
         <a class="强化学习 " href="/2020/07/31/智能博弈挑战赛-note/" data-tag="AI,深度学习,强化学习" data-author>
             <span class="post-title" title="智能博弈挑战赛">智能博弈挑战赛</span>
             <span class="post-date" title="2020-07-31 21:25:01">2020/07/31</span>
@@ -498,6 +495,11 @@
         <a class="编程 " href="/2019/09/05/物体检测打标小脚本-获取当前图片中鼠标位置/" data-tag="编程,python,技术小结" data-author>
             <span class="post-title" title="物体检测打标小脚本-获取当前图片中鼠标位置">物体检测打标小脚本-获取当前图片中鼠标位置</span>
             <span class="post-date" title="2019-09-05 15:30:36">2019/09/05</span>
+        </a>
+        
+        <a class="组会报告 " href="/2019/09/26/组会报告-0930-QLearning/" data-tag="深度学习,强化学习,组会报告" data-author>
+            <span class="post-title" title="组会报告-0930-QLearning">组会报告-0930-QLearning</span>
+            <span class="post-date" title="2019-09-26 15:15:04">2019/09/26</span>
         </a>
         
         <a class="三省吾身 " href="/2019/04/15/考研历程反思总结/" data-tag="三省吾身,考研" data-author>
@@ -565,7 +567,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title="更新时间: 2021-02-06 16:27:57">2021-02-01 20:19</time>
+        创建时间:<time class="date" title="更新时间: 2021-02-16 15:06:51">2021-02-01 20:19</time>
         
     </div>
     <div class="article-meta">
@@ -598,7 +600,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-两数之和"><span class="toc-text">1. 两数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#167-两数之和-II-输入有序数组"><span class="toc-text">167. 两数之和 II - 输入有序数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#653-两数之和-IV-输入-BST"><span class="toc-text">653. 两数之和 IV - 输入 BST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#560-和为K的子数组"><span class="toc-text">560. 和为K的子数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-三数之和"><span class="toc-text">15. 三数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-四数之和"><span class="toc-text">18. 四数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-两数相加"><span class="toc-text">2. 两数相加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#445-两数相加-II"><span class="toc-text">445. 两数相加 II</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#67-二进制求和"><span class="toc-text">67. 二进制求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#371-两整数之和"><span class="toc-text">371. 两整数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#415-字符串相加"><span class="toc-text">415. 字符串相加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#989-数组形式的整数加法"><span class="toc-text">989. 数组形式的整数加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43-字符串相乘"><span class="toc-text">43. 字符串相乘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-无重复字符的最长子串"><span class="toc-text">3. 无重复字符的最长子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#76-最小覆盖子串"><span class="toc-text">76. 最小覆盖子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-有效的括号"><span class="toc-text">20. 有效的括号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-最长回文子串"><span class="toc-text">5. 最长回文子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#516-最长回文子序列"><span class="toc-text">516. 最长回文子序列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#647-回文子串"><span class="toc-text">647. 回文子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-寻找两个正序数组的中位数"><span class="toc-text">4. 寻找两个正序数组的中位数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-盛最多水的容器"><span class="toc-text">11. 盛最多水的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-接雨水"><span class="toc-text">42. 接雨水</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-最接近的三数之和"><span class="toc-text">16. 最接近的三数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#401-二进制手表"><span class="toc-text">401. 二进制手表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-括号生成"><span class="toc-text">22. 括号生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#888-公平的糖果棒交换"><span class="toc-text">888. 公平的糖果棒交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#424-替换后的最长重复字符"><span class="toc-text">424. 替换后的最长重复字符</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-两数之和"><span class="toc-text">1. 两数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#167-两数之和-II-输入有序数组"><span class="toc-text">167. 两数之和 II - 输入有序数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#653-两数之和-IV-输入-BST"><span class="toc-text">653. 两数之和 IV - 输入 BST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#560-和为K的子数组"><span class="toc-text">560. 和为K的子数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#15-三数之和"><span class="toc-text">15. 三数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#18-四数之和"><span class="toc-text">18. 四数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-两数相加"><span class="toc-text">2. 两数相加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#445-两数相加-II"><span class="toc-text">445. 两数相加 II</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#67-二进制求和"><span class="toc-text">67. 二进制求和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#371-两整数之和"><span class="toc-text">371. 两整数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#415-字符串相加"><span class="toc-text">415. 字符串相加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#989-数组形式的整数加法"><span class="toc-text">989. 数组形式的整数加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#43-字符串相乘"><span class="toc-text">43. 字符串相乘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-无重复字符的最长子串"><span class="toc-text">3. 无重复字符的最长子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#76-最小覆盖子串"><span class="toc-text">76. 最小覆盖子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20-有效的括号"><span class="toc-text">20. 有效的括号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-最长回文子串"><span class="toc-text">5. 最长回文子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#516-最长回文子序列"><span class="toc-text">516. 最长回文子序列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#647-回文子串"><span class="toc-text">647. 回文子串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-寻找两个正序数组的中位数"><span class="toc-text">4. 寻找两个正序数组的中位数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-盛最多水的容器"><span class="toc-text">11. 盛最多水的容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#42-接雨水"><span class="toc-text">42. 接雨水</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16-最接近的三数之和"><span class="toc-text">16. 最接近的三数之和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#401-二进制手表"><span class="toc-text">401. 二进制手表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-括号生成"><span class="toc-text">22. 括号生成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#17-电话号码的字母组合"><span class="toc-text">17. 电话号码的字母组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#46-全排列"><span class="toc-text">46. 全排列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#47-全排列-II"><span class="toc-text">47. 全排列 II</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19-删除链表的倒数第-N-个结点"><span class="toc-text">19. 删除链表的倒数第 N 个结点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#39-组合总和"><span class="toc-text">39. 组合总和</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1003-检查替换后的词是否有效"><span class="toc-text">1003. 检查替换后的词是否有效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21-合并两个有序链表"><span class="toc-text">21. 合并两个有序链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#263-丑数"><span class="toc-text">263. 丑数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#264-丑数-II"><span class="toc-text">264. 丑数 II</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-合并K个升序链表"><span class="toc-text">23. 合并K个升序链表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#888-公平的糖果棒交换"><span class="toc-text">888. 公平的糖果棒交换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#424-替换后的最长重复字符"><span class="toc-text">424. 替换后的最长重复字符</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1442,6 +1444,196 @@ class Solution:
 <li>回溯的思想，就是自己调用自己，且这里的left和right指的是还有多少括号，每次拼接都是从右面进行拼接，用return进行剪枝。下图中如果左大于右，说明再往右面添加什么字符都是无效的括号，因此进行return</li>
 </ul>
 <p><img src="https://pic.leetcode-cn.com/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png" alt="img"></p>
+<h4 id="17-电话号码的字母组合"><a href="#17-电话号码的字母组合" class="headerlink" title="17. 电话号码的字母组合"></a><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">17. 电话号码的字母组合</a></h4><pre><code class="lang-python">class Solution:
+    def letterCombinations(self, digits: str) -&gt; List[str]:
+        if not digits:
+            return []
+        d = [&#39; &#39;, &#39;*&#39;, &#39;abc&#39;, &#39;def&#39;,&#39;ghi&#39;,&#39;jkl&#39;,&#39;mno&#39;,&#39;pqrs&#39;,&#39;tuv&#39;,&#39;wxyz&#39;]
+        ans = [&#39;&#39;]
+        if digits == &#39;&#39;:
+            return []
+        for num in digits:
+            ans = [ pre+str(suf) for pre in ans for suf in d[int(num)]]
+        return ans
+</code></pre>
+<p>注意点</p>
+<ul>
+<li>用列表记录手机键盘占用空间小</li>
+<li>需要将num转为int</li>
+<li>将pre与新的字符串进行拼接</li>
+</ul>
+<h4 id="46-全排列"><a href="#46-全排列" class="headerlink" title="46. 全排列"></a><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. 全排列</a></h4><pre><code class="lang-python">class Solution:
+    def permute(self, nums: List[int]) -&gt; List[List[int]]:
+        ans = []
+        check = [0 for _ in range(len(nums))]
+        def dfs(tmp, depth, check):
+            if len(nums) == depth:
+                ans.append(tmp[:])
+            for i in range(len(nums)):
+                if not check[i]:
+                    check[i] = 1
+                    tmp += [nums[i]]
+                    dfs(tmp, depth + 1, check)
+                    check[i] = 0
+                    if tmp:
+                        tmp.pop()
+        dfs([], 0, check)
+        return ans
+</code></pre>
+<p>注意点</p>
+<ul>
+<li>使用深度优先搜索的方式进行回溯，每次回溯前要检查check的相应位置是否为0，只有为0才可以进行下一步操作，进行dfs回溯后还需要将check位置为0且将最后一位pop出去</li>
+</ul>
+<h4 id="47-全排列-II"><a href="#47-全排列-II" class="headerlink" title="47. 全排列 II"></a><a href="https://leetcode-cn.com/problems/permutations-ii/" target="_blank" rel="noopener">47. 全排列 II</a></h4><pre><code class="lang-python">class Solution:
+    def permuteUnique(self, nums: List[int]) -&gt; List[List[int]]:
+        def dfs(sol,nums,used): 
+            if len(sol)==len(nums):
+                ans.append(sol)
+                return
+            for i in range(len(nums)):
+                if used[i]==1:
+                    continue#相当于剪枝
+                else:
+                    if i&gt;0 and nums[i]==nums[i-1] and used[i-1]==1:
+                        continue
+                    used[i]=1
+                    dfs(sol+[nums[i]],nums,used)
+                    used[i]=0
+        ans = []
+        used = [0 for i in range(len(nums))]
+        nums = sorted(nums)
+        dfs([],nums,used)
+        return ans
+</code></pre>
+<p>注意点</p>
+<ul>
+<li>相比于上一题增加的代码就是去判断，nums[i-1]与nums[i]是否相等，如果相等，而且used[i-1] == 1(代表已经被用过)，那就continue下去，进行剪枝</li>
+</ul>
+<h4 id="19-删除链表的倒数第-N-个结点"><a href="#19-删除链表的倒数第-N-个结点" class="headerlink" title="19. 删除链表的倒数第 N 个结点"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">19. 删除链表的倒数第 N 个结点</a></h4><pre><code class="lang-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+        dummy = ListNode(0, head)
+        first = head
+        second = dummy
+        for i in range(n):
+            first = first.next
+        while first:
+            first = first.next
+            second = second.next
+        second.next = second.next.next
+        return dummy.next
+</code></pre>
+<p>注意点</p>
+<ul>
+<li>用两个指针代表快慢指针向后走，且需要注意的是前三行 dummy是指向head的值为0的节点，first指向head，second指向dummy</li>
+</ul>
+<h4 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a><a href="https://leetcode-cn.com/problems/combination-sum/" target="_blank" rel="noopener">39. 组合总和</a></h4><pre><code class="lang-python">class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -&gt; List[List[int]]:
+        candidates.sort()
+        n = len(candidates)
+        ans = []
+        def helper(i, tmp_sum, tmp):
+            if tmp_sum&gt; target or i == n:
+                return 
+            if tmp_sum == target:
+                ans.append(tmp)
+                return
+            helper(i, tmp_sum + candidates[i], tmp + [candidates[i]])
+            helper(i+1, tmp_sum, tmp)
+        helper(0, 0, [])
+        return ans
+</code></pre>
+<p>注意</p>
+<ul>
+<li>本题使用回溯法，在helper中分出来两种情况，第一种是将candidates[i]无脑加到tmp_sum中，且在tmp后面排上[ candidates[i] ] 这种情况i不会+1</li>
+<li>第二种情况是不管当前这种情况，将i+1 看下一个数</li>
+<li>在进行操作之前需要将列表进行排序</li>
+<li>return方法进行及时剪枝</li>
+</ul>
+<h4 id="1003-检查替换后的词是否有效"><a href="#1003-检查替换后的词是否有效" class="headerlink" title="1003. 检查替换后的词是否有效"></a><a href="https://leetcode-cn.com/problems/check-if-word-is-valid-after-substitutions/" target="_blank" rel="noopener">1003. 检查替换后的词是否有效</a></h4><pre><code class="lang-python">class Solution:
+    def isValid(self, s: str) -&gt; bool:
+        while (&#39;abc&#39; in s):
+            s=s.replace(&#39;abc&#39;,&#39;&#39;)
+        return len(s)==0
+</code></pre>
+<p>感觉真正出题的时候不能出这种类型的，且评论区和解题区没发现正儿八经的题解，就先记录此题</p>
+<h4 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21. 合并两个有序链表"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. 合并两个有序链表</a></h4><pre><code class="lang-python"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
+        res = ListNode(None)
+        node = res
+        while l1 and l2:
+            if l1.val&lt;l2.val:
+                node.next,l1 = l1,l1.next
+            else:
+                node.next,l2 = l2,l2.next
+            node = node.next
+        if l1:
+            node.next = l1
+        else:
+            node.next = l2
+        return res.next
+</code></pre>
+<h4 id="263-丑数"><a href="#263-丑数" class="headerlink" title="263. 丑数"></a><a href="https://leetcode-cn.com/problems/ugly-number/" target="_blank" rel="noopener">263. 丑数</a></h4><pre><code class="lang-python">class Solution:
+    def isUgly(self, num: int) -&gt; bool:
+        if num==0:return False
+        if num ==1:return True
+        if num%2==0:return self.isUgly(num//2)
+        if num%3==0:return self.isUgly(num//3)
+        if num%5==0:return self.isUgly(num//5)
+        return False
+</code></pre>
+<h4 id="264-丑数-II"><a href="#264-丑数-II" class="headerlink" title="264. 丑数 II"></a><a href="https://leetcode-cn.com/problems/ugly-number-ii/" target="_blank" rel="noopener">264. 丑数 II</a></h4><pre><code class="lang-python">class Solution:
+    def nthUglyNumber(self, n: int) -&gt; int:
+        dp, a, b, c = [1] * n, 0, 0, 0
+        for i in range(1, n):
+            n2, n3, n5 = dp[a] * 2, dp[b] * 3, dp[c] * 5
+            dp[i] = min(n2, n3, n5)
+            if dp[i] == n2: a += 1
+            if dp[i] == n3: b += 1
+            if dp[i] == n5: c += 1
+        return dp[-1]
+
+# 作者：jyd
+# 链接：https://leetcode-cn.com/problems/chou-shu-lcof/solution/mian-shi-ti-49-chou-shu-dong-tai-gui-hua-qing-xi-t/
+# 来源：力扣（LeetCode）
+# 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</code></pre>
+<ul>
+<li>丑数Ⅱ实际上相当于合并3个有序列表，a,b,c+=1分别相当于指针向右移动</li>
+</ul>
+<h4 id="23-合并K个升序链表"><a href="#23-合并K个升序链表" class="headerlink" title="23. 合并K个升序链表"></a><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. 合并K个升序链表</a></h4><pre><code class="lang-python">class Solution(object):
+    def mergeKLists(self, lists: List[ListNode]) -&gt; ListNode:
+        if not lists:
+            return
+        n = len(lists)
+        return self.merge(lists, 0, n-1)
+    def merge(self, lists, left, right):
+        if left == right:
+            return lists[left]
+        mid = left + (right - left)//2
+        l1 = self.merge(lists, left, mid)
+        l2 = self.merge(lists, mid+1, right)
+        return self.merge_two_lists(l1, l2)
+    def merge_two_lists(self, l1, l2):
+        if not (l1 and l2):
+            return l1 if l1 else l2
+        if l1.val&lt;l2.val:
+            l1.next = self.merge_two_lists(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.merge_two_lists(l2.next, l1)
+            return l2
+</code></pre>
 <hr>
 <h4 id="888-公平的糖果棒交换"><a href="#888-公平的糖果棒交换" class="headerlink" title="888. 公平的糖果棒交换"></a><a href="https://leetcode-cn.com/problems/fair-candy-swap/" target="_blank" rel="noopener">888. 公平的糖果棒交换</a></h4><pre><code class="lang-python">class Solution:
     def fairCandySwap(self, A: List[int], B: List[int]) -&gt; List[int]:
@@ -1502,7 +1694,7 @@ class Solution:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="Rock">Rock</a></p>
     <p><span class="copy-title">发布时间:</span>2021-02-01, 20:19:39</p>
-    <p><span class="copy-title">最后更新:</span>2021-02-06, 16:27:57</p>
+    <p><span class="copy-title">最后更新:</span>2021-02-16, 15:06:51</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/02/01/hot100/" title="leetcodehot">http://rock-blog.top/2021/02/01/hot100/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
